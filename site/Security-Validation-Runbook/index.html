@@ -1185,6 +1185,88 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1445,10 +1527,10 @@
 <p>Execute in this order to ensure consistent evidence collection.</p>
 <h3 id="step-1-gateway-exposure-check">Step 1: Gateway Exposure Check<a class="headerlink" href="#step-1-gateway-exposure-check" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Verify gateway bind is loopback-only.</li>
-<li>Confirm no unintended public bind (<strong>0.0.0.0</strong>) is active.</li>
-<li>Validate remote access path is SSH tunnel or tailnet-based.</li>
-<li>Validate Ollama on local Windows host is reachable from VPS only via trusted tailnet path and is not publicly exposed.</li>
+<li>Verify gateway bind is loopback-only. (Loopback = only accessible from this computer)</li>
+<li>Confirm no unintended public bind (<strong>0.0.0.0</strong>—which means "accessible to the whole internet") is active.</li>
+<li>Validate remote access path is SSH (Secure Shell—encrypted remote access) tunnel or Tailscale network-based.</li>
+<li>Validate Ollama on local Windows host is reachable from VPS (Virtual Private Server) only via trusted Tailscale path and is not publicly exposed.</li>
 </ul>
 <p><strong>Pass Criteria</strong>
 - Gateway is loopback-bound and remote access is controlled.</p>
@@ -1456,9 +1538,9 @@
 - Any direct public exposure without approved exception.</p>
 <h3 id="step-2-dm-policy-and-allowlist-check">Step 2: DM Policy and Allowlist Check<a class="headerlink" href="#step-2-dm-policy-and-allowlist-check" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Verify DM policy is pairing mode by default.</li>
+<li>Verify DM (Direct Message—private messages to the bot) policy is pairing mode by default.</li>
 <li>Validate unknown sender behavior (no command execution before approval).</li>
-<li>Verify allowlist entries are current and minimal.</li>
+<li>Verify allowlist entries are current and minimal. (Allowlist = list of approved people/channels)</li>
 </ul>
 <p><strong>Pass Criteria</strong>
 - DM pairing flow works and allowlist scope is least-privilege.</p>
@@ -1478,10 +1560,10 @@
 - Sandbox rules match policy for shared/non-main sessions.</p>
 <h3 id="step-5-security-audit-execution">Step 5: Security Audit Execution<a class="headerlink" href="#step-5-security-audit-execution" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Run <strong>Nanobot security audit --deep</strong>.</li>
-<li>Verify deployed Nanobot version is <strong>2026.2.23</strong> or later.</li>
+<li>Run <code>nanobot security audit --deep</code> (automated security check for vulnerabilities)</li>
+<li>Verify deployed Nanobot version is <strong>2026.2.23</strong> or later. (Newer versions have security fixes)</li>
 <li>Review latest Nanobot security advisories and confirm no unpatched High/Critical findings apply to deployed version.</li>
-<li>Capture findings and classify severity.</li>
+<li>Capture findings and classify severity. (Severity = how serious the issue is)</li>
 <li>Confirm critical findings have immediate mitigation plan.</li>
 </ul>
 <p><strong>Pass Criteria</strong>
@@ -1489,9 +1571,9 @@
 - Deployed version is at or above the current patched minimum for published advisories.</p>
 <h3 id="step-6-secrets-and-token-hygiene">Step 6: Secrets and Token Hygiene<a class="headerlink" href="#step-6-secrets-and-token-hygiene" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Confirm tokens/secrets are in <strong>.env</strong> or approved secret store only.</li>
-<li>Confirm no secrets are present in notes, docs, or source-controlled config.</li>
-<li>Validate token rotation readiness and last rotation date.</li>
+<li>Confirm tokens/secrets are in <strong>.env</strong> (configuration file with secrets—NOT shared in code) or approved secret store only.</li>
+<li>Confirm no secrets (API keys, passwords) are present in notes, docs, or source-controlled config.</li>
+<li>Validate token rotation readiness and last rotation date. (Rotation = changing tokens regularly, like changing passwords)</li>
 </ul>
 <p><strong>Pass Criteria</strong>
 - Secret handling policy is fully compliant.</p>

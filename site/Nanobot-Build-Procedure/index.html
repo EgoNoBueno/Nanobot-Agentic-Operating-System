@@ -1474,6 +1474,88 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -2015,7 +2097,7 @@
 <p>Two deployment scenarios:</p>
 <ol>
 <li><strong>Simple Build</strong> (5 min) - Local pip install + cloud LLM (easiest)</li>
-<li><strong>Advanced Build</strong> (30 min) - VPS infrastructure + local Ollama inference</li>
+<li><strong>Advanced Build</strong> (30 min) - VPS (Virtual Private Server) infrastructure + local Ollama inference</li>
 </ol>
 <p>This document covers nanobot build/config steps. For VPS infrastructure (Tailscale, firewall, SSH keys), see your VPS provider's setup guide.</p>
 <hr />
@@ -2024,12 +2106,15 @@
 <strong>Prerequisites:</strong> Python ≥3.11, pip, internet connection<br />
 <strong>Time:</strong> 5 minutes</p>
 <h3 id="step-1-install-nanobot">Step 1: Install nanobot<a class="headerlink" href="#step-1-install-nanobot" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>nanobot-ai
+<div class="highlight"><pre><span></span><code><span class="c1"># pip (Python package installer) downloads and installs nanobot</span>
+pip<span class="w"> </span>install<span class="w"> </span>nanobot-ai
 </code></pre></div>
-<p>Verifies:
-<div class="highlight"><pre><span></span><code>nanobot<span class="w"> </span>version
+<p>Verify installation worked:
+<div class="highlight"><pre><span></span><code><span class="c1"># nanobot version shows which version is installed (should be 0.1.4 or newer)</span>
+nanobot<span class="w"> </span>version
 <span class="c1"># Output: nanobot v0.1.4+ (or higher)</span>
 
+<span class="c1"># nanobot health checks if everything is set up correctly</span>
 nanobot<span class="w"> </span>health
 <span class="c1"># Output: Checking installation...</span>
 </code></pre></div></p>
@@ -2046,12 +2131,14 @@ nanobot<span class="w"> </span>health
 - <strong>Linux/Mac:</strong> <code>~/.nanobot/config.json</code>
 - <strong>Windows:</strong> <code>%APPDATA%\nanobot\config.json</code></p>
 <h3 id="step-3-test-installation">Step 3: Test Installation<a class="headerlink" href="#step-3-test-installation" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>nanobot<span class="w"> </span><span class="nb">test</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># nanobot test starts an interactive test session (type commands, see responses)</span>
+<span class="c1"># This ensures everything is working before you deploy it</span>
+nanobot<span class="w"> </span><span class="nb">test</span>
 </code></pre></div>
 <p>Should start interactive test mode:
 <div class="highlight"><pre><span></span><code>Nanobot Test Mode (type &#39;exit&#39; to quit)
 Loading config: ✓
-Starting LLM provider: openrouter ✓
+Starting LLM (Large Language Model) provider: openrouter ✓
 Connected to: Discord ✓
 
 nanobot&gt; hello
@@ -2076,7 +2163,9 @@ nanobot&gt; exit
 </code></pre></div>
 <p>Nanobot will now listen to Discord, Slack, or other configured channels and respond to messages.</p>
 <p><strong>To run in background (Linux/Mac):</strong>
-<div class="highlight"><pre><span></span><code>nanobot<span class="w"> </span>gateway<span class="w"> </span><span class="p">&amp;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># The &amp; symbol means &quot;run this command in the background&quot;</span>
+<span class="c1"># This lets you keep using the terminal while nanobot runs</span>
+nanobot<span class="w"> </span>gateway<span class="w"> </span><span class="p">&amp;</span>
 <span class="c1"># Or use systemd (see Advanced Build)</span>
 </code></pre></div></p>
 <p><strong>To run in background (Windows):</strong>
@@ -2087,13 +2176,13 @@ Use Task Scheduler or Windows Service installer:
 <hr />
 <h2 id="path-b-advanced-build-vps-local-ollama">Path B: Advanced Build (VPS + Local Ollama)<a class="headerlink" href="#path-b-advanced-build-vps-local-ollama" title="Permanent link">&para;</a></h2>
 <p><strong>For:</strong> Self-hosted inference, privacy-critical workflows, cost optimization with local models.<br />
-<strong>Architecture:</strong> VPS (gateway + routing) ↔️ Local machine (Ollama inference) via Tailscale-encrypted tunnel<br />
+<strong>Architecture:</strong> VPS (Virtual Private Server) (gateway + routing) ↔️ Local machine (Ollama inference) via Tailscale-encrypted tunnel<br />
 <strong>Time:</strong> ~30 minutes for build; ~15 minutes for startup<br />
 <strong>Prerequisites:</strong> VPS access, local machine with Ollama, Tailscale account</p>
 <h3 id="prerequisites-checklist">Prerequisites Checklist<a class="headerlink" href="#prerequisites-checklist" title="Permanent link">&para;</a></h3>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> VPS deployed (Ubuntu 22.04+ recommended)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> SSH access to VPS</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> VPS (Virtual Private Server) deployed (Ubuntu 22.04+ recommended)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> SSH (Secure Shell) access to VPS</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Local machine with Ollama installed (Windows/Mac/Linux)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Tailscale account (free tier OK)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Discord/Slack token ready</li>
@@ -2102,23 +2191,42 @@ Use Task Scheduler or Windows Service installer:
 <hr />
 <h2 id="phase-a-vps-preparation-15-min">Phase A: VPS Preparation (15 min)<a class="headerlink" href="#phase-a-vps-preparation-15-min" title="Permanent link">&para;</a></h2>
 <h3 id="step-1-connect-to-vps">Step 1: Connect to VPS<a class="headerlink" href="#step-1-connect-to-vps" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>your-vps-user@your-vps-ip
+<div class="highlight"><pre><span></span><code><span class="c1"># ssh (Secure Shell) is how you remotely access a server</span>
+<span class="c1"># Replace your-vps-user (e.g., &#39;ubuntu&#39;) and your-vps-ip (e.g., &#39;192.168.1.100&#39;)</span>
+ssh<span class="w"> </span>your-vps-user@your-vps-ip
 <span class="c1"># Or configure SSH key for passwordless access</span>
 </code></pre></div>
 <h3 id="step-2-system-updates">Step 2: System Updates<a class="headerlink" href="#step-2-system-updates" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+<div class="highlight"><pre><span></span><code><span class="c1"># apt is the package manager for Ubuntu (like &#39;store&#39; for software)</span>
+<span class="c1"># update checks for new versions of everything</span>
+<span class="c1"># upgrade installs those new versions</span>
+<span class="c1"># -y means &quot;yes automatically, don&#39;t ask&quot;</span>
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+
+<span class="c1"># Install programs nanobot needs (Python, build tools, etc.)</span>
+<span class="c1"># &amp;&amp; means &quot;if that worked, then run this next command&quot;</span>
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3.11<span class="w"> </span>python3.11-venv<span class="w"> </span>python3-pip<span class="w"> </span>build-essential
 </code></pre></div>
 <h3 id="step-3-install-tailscale">Step 3: Install Tailscale<a class="headerlink" href="#step-3-install-tailscale" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://tailscale.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+<div class="highlight"><pre><span></span><code><span class="c1"># curl -fsSL downloads and runs the Tailscale installer script</span>
+<span class="c1"># | sh pipes (sends) the output to shell to execute it</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://tailscale.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+
+<span class="c1"># Start Tailscale (secure network tunnel)</span>
+<span class="c1"># This creates an encrypted connection between your machines</span>
 sudo<span class="w"> </span>tailscale<span class="w"> </span>up
 <span class="c1"># Will print auth URL; open in browser; authenticate</span>
 </code></pre></div>
 <p>After auth, note your VPS Tailscale IP (e.g., <code>100.87.123.45</code>). Print it:
-<div class="highlight"><pre><span></span><code>tailscale<span class="w"> </span>ip<span class="w"> </span>-4
+<div class="highlight"><pre><span></span><code><span class="c1"># Show your Tailscale IP address (the address other machines will use to find you)</span>
+tailscale<span class="w"> </span>ip<span class="w"> </span>-4
 </code></pre></div></p>
 <h3 id="step-4-create-nanobot-user-optional-but-recommended">Step 4: Create nanobot User (Optional but Recommended)<a class="headerlink" href="#step-4-create-nanobot-user-optional-but-recommended" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>-s<span class="w"> </span>/bin/bash<span class="w"> </span>nanobot
+<div class="highlight"><pre><span></span><code><span class="c1"># useradd -m creates a new user account named &#39;nanobot&#39;</span>
+<span class="c1"># -s /bin/bash sets bash as the default shell</span>
+sudo<span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>-s<span class="w"> </span>/bin/bash<span class="w"> </span>nanobot
+
+<span class="c1"># su - nanobot &quot;switches user&quot; to nanobot (logs in as that user)</span>
 sudo<span class="w"> </span>su<span class="w"> </span>-<span class="w"> </span>nanobot
 <span class="c1"># Now running as nanobot user for isolation</span>
 </code></pre></div>

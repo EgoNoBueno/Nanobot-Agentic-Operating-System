@@ -1336,6 +1336,88 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1728,6 +1810,7 @@
 
 <h1 id="cost-calculator-optimization-guide">Cost Calculator &amp; Optimization Guide<a class="headerlink" href="#cost-calculator-optimization-guide" title="Permanent link">&para;</a></h1>
 <p>Plan your nanobot deployment cost. Estimate monthly spend, optimize provider routing, and set budget controls.</p>
+<p>(A token ≈ 1 word. This guide helps you predict how much you'll spend.)</p>
 <h2 id="document-control">Document Control<a class="headerlink" href="#document-control" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Owner:</strong></li>
@@ -1816,17 +1899,18 @@
 </tbody>
 </table>
 <p><strong>Cost Tier Summary:</strong>
-- <strong>Tier A (Premium):</strong> Claude Opus, GPT-4 → $0.015-0.03/1K tokens (use for high-value tasks)
-- <strong>Tier B (Balanced):</strong> Claude Haiku, GPT-4 Mini, Qwen-72B → $0.0005-0.005/1K tokens
-- <strong>Tier C (Budget):</strong> DeepSeek, Gemini, Cohere → $0.0001-0.0005/1K tokens
-- <strong>Tier D (Free):</strong> Ollama local → $0 (infrastructure only)</p>
+- <strong>Tier A (Premium):</strong> Claude Opus, GPT-4 → $0.015-0.03/1K tokens (use for high-value tasks requiring best quality)
+- <strong>Tier B (Balanced):</strong> Claude Haiku, GPT-4 Mini, Qwen-72B → $0.0005-0.005/1K tokens (good middle ground)
+- <strong>Tier C (Budget):</strong> DeepSeek, Gemini, Cohere → $0.0001-0.0005/1K tokens (cheapest cloud options)
+- <strong>Tier D (Free):</strong> Ollama local → $0 (you pay for your computer hardware, but no API charges)</p>
 <hr />
 <h2 id="2-monthly-cost-calculator">2. Monthly Cost Calculator<a class="headerlink" href="#2-monthly-cost-calculator" title="Permanent link">&para;</a></h2>
 <h3 id="step-1-estimate-daily-token-usage">Step 1: Estimate Daily Token Usage<a class="headerlink" href="#step-1-estimate-daily-token-usage" title="Permanent link">&para;</a></h3>
 <p><strong>Typical token consumption per interaction:</strong>
-- Simple query (web search): 500 tokens
-- Moderate complexity (multi-step): 2,000 tokens
-- Complex task (analysis + synthesis): 5,000 tokens</p>
+(Remember: tokens ≈ words. Complex tasks use more tokens.)
+- Simple query (web search): 500 tokens (⬇️ low complexity)
+- Moderate complexity (multi-step analysis): 2,000 tokens (⬇️ medium)
+- Complex task (long analysis + synthesis): 5,000 tokens (⬆️ high complexity)</p>
 <p><strong>Example team:</strong>
 - 5 users × 10 interactions/day = 50 total interactions/day
 - Average 2,000 tokens per interaction = <strong>100,000 tokens/day</strong></p>

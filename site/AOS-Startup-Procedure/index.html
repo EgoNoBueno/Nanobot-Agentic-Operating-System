@@ -1352,6 +1352,88 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1769,8 +1851,8 @@
 </ul>
 <h2 id="1-overview">1. Overview<a class="headerlink" href="#1-overview" title="Permanent link">&para;</a></h2>
 <p>Two startup scenarios:
-- <strong>Simple Startup</strong> (10 min) - Local nanobot + cloud LLM API
-- <strong>Advanced Startup</strong> (15 min) - VPS nanobot + local Ollama inference</p>
+- <strong>Simple Startup</strong> (10 min) - Local nanobot + cloud LLM (Large Language Model) API
+- <strong>Advanced Startup</strong> (15 min) - VPS (Virtual Private Server) nanobot + local Ollama inference</p>
 <p>Both assume initial setup is complete (config files, secrets stored, channels configured).</p>
 <h2 id="2-assumptions">2. Assumptions<a class="headerlink" href="#2-assumptions" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1781,14 +1863,13 @@
 <li>Obsidian vault exists (if using obsidian skill)</li>
 </ul>
 <h2 id="3-startup-checklist-high-level">3. Startup Checklist (High-Level)<a class="headerlink" href="#3-startup-checklist-high-level" title="Permanent link">&para;</a></h2>
-<ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Verify internet connectivity</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Start required services (Ollama, Tailscale, VPS, etc. per your architecture)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Test LLM provider connectivity</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Verify channel bot status</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Run one test command end-to-end</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Confirm Obsidian write-back (if applicable)</li>
-</ul>
+<p>Before you start, make sure you have:
+- [ ] Internet connection (required for cloud LLM)
+- [ ] Required services running (Ollama, Tailscale, VPS, etc. per your architecture)
+- [ ] LLM (language model) provider accessibility confirmed
+- [ ] Chat bot status verified (Discord/Slack/etc.)
+- [ ] One quick test command ready to verify end-to-end flow
+- [ ] Obsidian integration confirmed (if you're using it)</p>
 <hr />
 <h2 id="path-a-simple-startup-local-cloud-api">Path A: Simple Startup (Local + Cloud API)<a class="headerlink" href="#path-a-simple-startup-local-cloud-api" title="Permanent link">&para;</a></h2>
 <p><strong>For:</strong> Using local nanobot with OpenRouter, Anthropic, OpenAI, or other cloud LLM provider.<br />

@@ -1302,6 +1302,88 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1676,6 +1758,7 @@
 <hr />
 <h2 id="2-access-control-patterns">2. Access Control Patterns<a class="headerlink" href="#2-access-control-patterns" title="Permanent link">&para;</a></h2>
 <h3 id="pattern-a-role-based-tool-allowlisting-rbac">Pattern A: Role-Based Tool Allowlisting (RBAC)<a class="headerlink" href="#pattern-a-role-based-tool-allowlisting-rbac" title="Permanent link">&para;</a></h3>
+<p>RBAC = Role-Based Access Control. (Different people get different permissions based on their job role.)</p>
 <p><strong>Use Case:</strong> Different teams get different tools.</p>
 <p><strong>Config example:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -1828,7 +1911,8 @@
 </code></pre></div></p>
 <hr />
 <h2 id="3-risk-tier-framework-who-needs-approval">3. Risk Tier Framework (Who Needs Approval?)<a class="headerlink" href="#3-risk-tier-framework-who-needs-approval" title="Permanent link">&para;</a></h2>
-<p><strong>Goal:</strong> Classify actions by reversibility. Actions with high impact require human approval.</p>
+<p><strong>Goal:</strong> Classify actions by how easy they are to undo. (Reversibility = can you fix it if something goes wrong?)</p>
+<p>If an action is hard to undo or could cause problems, it needs human approval first.</p>
 <h3 id="risk-tiers-overview">Risk Tiers Overview<a class="headerlink" href="#risk-tiers-overview" title="Permanent link">&para;</a></h3>
 <p>Risk is measured by <strong>Magnitude of Irreversibility</strong>. If an action is hard to undo or compromises core security, it's high-risk.</p>
 <table>
@@ -1867,7 +1951,7 @@
 <td><strong>Tier 3: High</strong></td>
 <td>🛑 Hard-Pause</td>
 <td>Actions affecting identity or security</td>
-<td>Modifying Discord permissions, changing .env files, new SSH node access</td>
+<td>Modifying Discord permissions, changing .env files, new SSH (Secure Shell) node access</td>
 <td><strong>Yes (Approver role)</strong></td>
 </tr>
 <tr>

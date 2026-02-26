@@ -719,10 +719,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-configure-permissions" class="md-nav__link">
+  <a href="#step-2-configure-permissions-scopes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Configure Permissions
+        Step 2: Configure Permissions (Scopes)
       
     </span>
   </a>
@@ -841,7 +841,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-configure-permissions_1" class="md-nav__link">
+  <a href="#step-2-configure-permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
         Step 2: Configure Permissions
@@ -1357,6 +1357,88 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1512,10 +1594,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-configure-permissions" class="md-nav__link">
+  <a href="#step-2-configure-permissions-scopes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Configure Permissions
+        Step 2: Configure Permissions (Scopes)
       
     </span>
   </a>
@@ -1634,7 +1716,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-configure-permissions_1" class="md-nav__link">
+  <a href="#step-2-configure-permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
         Step 2: Configure Permissions
@@ -1788,18 +1870,18 @@ Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix/Element,
 <li>Click <strong>New Application</strong></li>
 <li>Name: <code>My Nanobot</code> (or your preference)</li>
 <li>Go to <strong>Bot</strong> tab → <strong>Add Bot</strong></li>
-<li>Copy bot <strong>TOKEN</strong> (keep secret!)</li>
+<li>Copy bot <strong>TOKEN</strong> (a unique password for your bot—keep it secret!)</li>
 </ol>
-<h3 id="step-2-configure-bot-settings">Step  2: Configure Bot Settings<a class="headerlink" href="#step-2-configure-bot-settings" title="Permanent link">&para;</a></h3>
+<h3 id="step-2-configure-bot-settings">Step 2: Configure Bot Settings<a class="headerlink" href="#step-2-configure-bot-settings" title="Permanent link">&para;</a></h3>
 <p>In Discord Developer Portal, under <strong>Bot</strong>:
-- Toggle <strong>Message Content Intent</strong> ON (required for reading messages)
-- Permissions: <code>Send Messages</code>, <code>Read Message History</code> (minimal)
-- Intents: <code>Message Content</code>, <code>Direct Messages</code></p>
+- Toggle <strong>Message Content Intent</strong> ON (required so bot can read message text)
+- Permissions: <code>Send Messages</code>, <code>Read Message History</code> (minimal required permissions)
+- Intents: <code>Message Content</code>, <code>Direct Messages</code> (events the bot should listen for)</p>
 <h3 id="step-3-invite-bot-to-server">Step 3: Invite Bot to Server<a class="headerlink" href="#step-3-invite-bot-to-server" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Go to <strong>OAuth2</strong> → <strong>URL Generator</strong></li>
-<li>Select Scopes: <code>bot</code></li>
-<li>Select Permissions: <code>Send Messages</code>, <code>Read Message History</code></li>
+<li>Go to <strong>OAuth2</strong> → <strong>URL Generator</strong> (OAuth2 = a standard way to give apps permission to access accounts)</li>
+<li>Select Scopes: <code>bot</code> (tells Discord: this request is for a bot)</li>
+<li>Select Permissions: <code>Send Messages</code>, <code>Read Message History</code> (what the bot is allowed to do)</li>
 <li>Copy generated URL</li>
 <li>Open URL, select your Discord server, authorize</li>
 </ol>
@@ -1831,16 +1913,15 @@ Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix/Element,
 <li>App Name: <code>Nanobot</code></li>
 <li>Pick your workspace</li>
 </ol>
-<h3 id="step-2-configure-permissions">Step 2: Configure Permissions<a class="headerlink" href="#step-2-configure-permissions" title="Permanent link">&para;</a></h3>
-<p>In <strong>OAuth &amp; Permissions</strong>:
-- <strong>Scopes</strong>:
-  - <code>chat:write</code> (send messages)
-  - <code>channels:read</code> (read channel list)
-  - <code>users:read</code> (read user info)
-  - <code>files:read</code> (read files)</p>
+<h3 id="step-2-configure-permissions-scopes">Step 2: Configure Permissions (Scopes)<a class="headerlink" href="#step-2-configure-permissions-scopes" title="Permanent link">&para;</a></h3>
+<p>In <strong>OAuth &amp; Permissions</strong>, add these <strong>Scopes</strong> (permissions the bot needs):
+- <code>chat:write</code> (permission to send messages)
+- <code>channels:read</code> (permission to see list of channels)
+- <code>users:read</code> (permission to read user information)
+- <code>files:read</code> (permission to read files)</p>
 <h3 id="step-3-install-app">Step 3: Install App<a class="headerlink" href="#step-3-install-app" title="Permanent link">&para;</a></h3>
 <p>Click <strong>Install to Workspace</strong> → Authorize</p>
-<p>Copy <strong>Bot User OAuth Token</strong> (starts with <code>xoxb-</code>)</p>
+<p>Copy <strong>Bot User OAuth Token</strong> (starts with <code>xoxb-</code>, this is like a password for the bot)</p>
 <h3 id="step-4-configure-nanobot_1">Step 4: Configure nanobot<a class="headerlink" href="#step-4-configure-nanobot_1" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;channels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1889,7 +1970,7 @@ Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix/Element,
 <li><strong>Create App</strong> → <strong>Bot</strong></li>
 <li>Get <strong>App ID</strong> and <strong>App Secret</strong></li>
 </ol>
-<h3 id="step-2-configure-permissions_1">Step 2: Configure Permissions<a class="headerlink" href="#step-2-configure-permissions_1" title="Permanent link">&para;</a></h3>
+<h3 id="step-2-configure-permissions">Step 2: Configure Permissions<a class="headerlink" href="#step-2-configure-permissions" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Permissions: <code>im:message</code> (send/receive messages)</li>
 <li>Events: <code>im.message.receive_v1</code> (Long Connection mode recommended)</li>

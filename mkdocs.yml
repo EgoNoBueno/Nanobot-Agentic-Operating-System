@@ -92,6 +92,8 @@ nav:
   - Security:
     - Security Validation Runbook: Security-Validation-Runbook.md
     - Emergency Recovery & Troubleshooting: Emergency-Recovery-and-Troubleshooting.md
+  - Reference:
+    - Glossary: Glossary.md
 
 extra:
   social:

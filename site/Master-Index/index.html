@@ -1391,6 +1391,88 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1841,13 +1923,13 @@
 <strong>For Nanobot Version:</strong> v0.1.4 and later<br />
 <strong>Last Updated:</strong> February 25, 2026</p>
 <h2 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h2>
-<p>This document is the control index for the Nanobot operational document set. It shows how <strong>multiple communication channels, LLM governance, and Obsidian memory work together as one coordinated system</strong>—independent of which chat platform (Discord, Slack, Telegram, Feishu, etc.) operators use.</p>
+<p>This document is the control index for the Nanobot documentation set. It explains how <strong>multiple communication channels, LLM (Large Language Model) governance, and Obsidian memory work together as one coordinated system</strong>—independent of which chat platform (Discord, Slack, Telegram, Feishu, etc.) you use.</p>
 <h3 id="11-executive-summary-one-page">1.1 Executive Summary (One-Page)<a class="headerlink" href="#11-executive-summary-one-page" title="Permanent link">&para;</a></h3>
 <p>The Nanobot Agentic Operating System is a <strong>three-plane, channel-agnostic operating model</strong>:
 - <strong>Control Plane (Multi-Channel):</strong> workflow intake via Discord, Slack, Telegram, Feishu, or other platforms; approvals and operator visibility.
 - <strong>Policy Plane (LLM Governance):</strong> model routing (Claude, GPT, Qwen, Ollama, etc.), risk gates, budget controls, and cost optimization.
 - <strong>Memory Plane (Obsidian):</strong> durable records, audit trails, recovery evidence, and long-term knowledge indexing.</p>
-<p><strong>Nanobot</strong> is the agent orchestration runtime: it receives messages from any integrated channel, routes them through policy constraints, executes tasks (shell commands, file operations, web research, API calls, MCP tools, scheduled jobs), manages memory, and returns results back to the operator's chosen platform.</p>
+<p><strong>Nanobot</strong> is the orchestration engine that powers the system. It listens to messages from any integrated channel, routes them through your policies, executes tasks (shell commands, file operations, web research, API calls, MCP (Model Context Protocol) tools, scheduled jobs), remembers what it learns, and sends results back to your chosen chat platform.</p>
 <p><strong>How it works in practice:</strong>
 1. Operator sends request in a policy-approved channel (e.g., Discord <strong>#prd-widget-marketing</strong>, Slack <strong>#prd-widget-marketing</strong>, Telegram group, or any supported platform).
 2. Nanobot receives the message via channel integration.
@@ -1869,36 +1951,36 @@
 </ol>
 <h3 id="12-nanobot-core-capabilities">1.2 Nanobot Core Capabilities<a class="headerlink" href="#12-nanobot-core-capabilities" title="Permanent link">&para;</a></h3>
 <p>Nanobot ships with these built-in features:</p>
-<p><strong>LLM Provider Routing:</strong>
-- OpenAI (GPT-4, etc.), Anthropic (Claude), Google Gemini, Cohere, Mistral, DeepSeek, Qwen, Moonshot, MiniMax, VolcEngine
-- Local inference via vLLM or Ollama
+<p><strong>LLM Provider Routing:</strong> (Choose which AI model to use for each task)
+- Cloud providers: OpenAI (GPT-4, etc.), Anthropic (Claude), Google Gemini, Cohere, Mistral, DeepSeek, Qwen, Moonshot, MiniMax, VolcEngine
+- Local inference via vLLM or Ollama (free, runs on your computer)
 - Custom provider support for proprietary models
-- Prompt caching (Anthropic) for cost optimization
-- Token budgeting and cost estimation</p>
-<p><strong>Multi-Channel Integration:</strong>
-- Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix/Element, Mochat, CLI (local)
-- Channel-level access control and allowlists
-- Media/file support across platforms
-- Long message handling (Discord splitting, Slack threading, etc.)</p>
-<p><strong>Tool System (What Nanobot Can Execute):</strong>
-- <strong>Web Search &amp; Fetch</strong> - Real-time search via Brave API, page retrieval
-- <strong>File Operations</strong> - Read, write, edit, list files (workspace-scoped)
-- <strong>Shell Commands</strong> - Execute system commands (operator-restricted)
-- <strong>Message/Notifications</strong> - Send alerts, escalations, cross-channel notifications
-- <strong>Scheduling (Cron)</strong> - Run tasks on recurring schedules
-- <strong>MCP (Model Context Protocol)</strong> - Integrate external tools/services (filesystem, web, databases, APIs)
-- <strong>Subagents</strong> - Spawn parallel agent instances for complex/delegated work
-- <strong>GitHub Automation</strong> - Search repos, create/update PRs, manage issues, trigger workflows
-- <strong>Custom Tools</strong> - Extend with user-defined tool implementations</p>
-<p><strong>Pre-Built Skills:</strong>
-- <strong>Obsidian</strong> - Read/write vault entries, query knowledge base
-- <strong>Summarize</strong> - Content condensation with context preservation
-- <strong>Memory</strong> - Session management, conversation consolidation
-- <strong>Cron</strong> - Scheduled task definitions and execution
-- <strong>Weather</strong> - Weather data retrieval
-- <strong>Skill Creator</strong> - Auto-generate new skills from natural language
-- <strong>ClawHub</strong> - Search public skill marketplace and install skills
-- <strong>TMUX</strong> - Terminal multiplexer control for advanced automation</p>
+- Prompt caching (Anthropic) to save on costs
+- Automatic cost estimation and token budgeting</p>
+<p><strong>Multi-Channel Integration:</strong> (Listen on any chat platform)
+- Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix/Element, Mochat, CLI (local terminal)
+- Control who can use nanobot in each channel
+- Send and receive media and files
+- Handle long messages automatically (Discord splitting, Slack threading, etc.)</p>
+<p><strong>Tool System:</strong> (Actions nanobot can perform)
+- <strong>Web Search &amp; Fetch</strong> - Find current information using Brave Search, download full pages
+- <strong>File Operations</strong> - Read, write, edit, list files (safely sandboxed)
+- <strong>Shell Commands</strong> - Run system commands (restricted, logged, operator-approved)
+- <strong>Message/Notifications</strong> - Send alerts and updates across channels
+- <strong>Scheduling (Cron)</strong> - Run tasks on a schedule (e.g., "every day at 9 AM")
+- <strong>MCP (Model Context Protocol)</strong> - Connect to external databases, file systems, and APIs
+- <strong>Subagents</strong> - Launch parallel workers to handle parts of complex tasks
+- <strong>GitHub Automation</strong> - Search code repositories, create pull requests (PRs), manage issues
+- <strong>Custom Tools</strong> - Build your own extensions</p>
+<p><strong>Pre-Built Skills:</strong> (Ready-to-use bundles)
+- <strong>Obsidian</strong> - Read and write notes, search knowledge base
+- <strong>Summarize</strong> - Condense long content while keeping the important parts
+- <strong>Memory</strong> - Manage conversations, automatically summarize old history
+- <strong>Cron</strong> - Schedule recurring tasks
+- <strong>Weather</strong> - Fetch weather data
+- <strong>Skill Creator</strong> - Write new skills from natural language descriptions
+- <strong>ClawHub</strong> - Find and install community-created skills
+- <strong>TMUX</strong> - Control terminal sessions for advanced automation</p>
 <p><strong>Reliability &amp; Optimization:</strong>
 - Session continuity with automatic memory consolidation
 - Heartbeat system for connection health monitoring
@@ -1906,24 +1988,24 @@
 - Tool-call validation and error handling
 - Structured logging for debugging and audit</p>
 <h3 id="13-cost-control-summary">1.3 Cost Control Summary<a class="headerlink" href="#13-cost-control-summary" title="Permanent link">&para;</a></h3>
-<p>Primary cost controls used by this AOS:
-- <strong>Tiered model routing</strong> (Class A/B/C) by workflow type and risk level.
-- <strong>Budget caps</strong> at request, workflow/channel, and project levels.
-- <strong>Escalation gates</strong> - Approval required for high-cost model classes or complexity triggers.
-- <strong>Context optimization</strong> - Memory summarization, prompt caching, and efficient retrieval to limit token burn.
-- <strong>Provider selection</strong> - Route to cheaper models (Qwen, DeepSeek) for routine tasks; reserve expensive models (Claude Opus) for complex work.
-- <strong>Fallback/degraded mode</strong> - Stop runaway retries and implement cost circuit-breakers.
-- <strong>Weekly KPI review</strong> - Track cost per successful workflow, escalation rate, and model utilization.</p>
+<p>Ways to control spending and prevent bill shock:
+- <strong>Tiered model routing</strong> (Class A/B/C) - Use cheap models for simple tasks, expensive ones for complex work
+- <strong>Budget caps</strong> - Set spending limits by request, channel, or project
+- <strong>Approval gates</strong> - Require human sign-off before expensive operations
+- <strong>Smart context</strong> - Automatically summarize old conversations to reduce token use
+- <strong>Provider choice</strong> - Use budget-friendly models (Qwen, DeepSeek) for routine work; save Claude Opus for complex problems
+- <strong>Safety limits</strong> - Automatically stop runaway requests and prevent unexpected charges
+- <strong>Weekly reviews</strong> - Track spending patterns and watch for anomalies</p>
 <h3 id="14-security-compliance-baseline">1.4 Security &amp; Compliance Baseline<a class="headerlink" href="#14-security-compliance-baseline" title="Permanent link">&para;</a></h3>
-<p>Primary security &amp; compliance protocols used by this AOS:
-- <strong>Channel isolation</strong> by project/workflow to prevent context bleed between teams.
-- <strong>Role-based access control</strong> - Operator, Reviewer, Owner roles with specific permissions.
-- <strong>Workspace binding</strong> - Agent sandbox respects workspace directory boundaries; no filesystem escape.
-- <strong>Allowlist enforcement</strong> - Only specified users/channels can invoke sensitive tools (shell, MCP, GitHub automation).
-- <strong>Audit trail</strong> - All requests logged with <strong>request_id</strong>, operator identity, timestamp, tool usage, and cost.
-- <strong>Monthly security audit</strong> - Run <code>nanobot security audit --deep</code> to validate config, allowlists, and tool constraints.
-- <strong>Trust boundaries</strong> - Split execution contexts when operators are mutually untrusted; separate sessions per user.
-- <strong>Secret management</strong> - API keys, tokens, MCP auth headers stored in <code>.env</code> files, never committed.</p>
+<p>How we keep your system safe:
+- <strong>Channel isolation</strong> - Teams can't see each other's conversations
+- <strong>Role-based access</strong> - Different users have different permissions (Operator, Reviewer, Owner)
+- <strong>Sandbox</strong> - Nanobot can only access files in its workspace, can't escape to system files
+- <strong>Allowlist</strong> - Only approved people can use dangerous tools (shell commands, APIs, GitHub automation)
+- <strong>Audit log</strong> - Every action is recorded with who did it, when, and what it cost
+- <strong>Monthly security checks</strong> - Run <code>nanobot security audit --deep</code> to verify everything is locked down
+- <strong>Separate sessions</strong> - Each user gets their own isolated workspace
+- <strong>Secret protection</strong> - API keys and tokens stored securely in <code>.env</code> files, never saved in code</p>
 <h3 id="15-small-business-enterprise-support-examples">1.5 Small Business &amp; Enterprise Support Examples<a class="headerlink" href="#15-small-business-enterprise-support-examples" title="Permanent link">&para;</a></h3>
 <p>Example ways this AOS supports organizations:
 - <strong>Bookkeeping:</strong> Ingest expense receipts, reconcile transactions, categorize spending, publish month-end summaries to Obsidian— all with traceable <strong>request_id</strong> chains for audit.

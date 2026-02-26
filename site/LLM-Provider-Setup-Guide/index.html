@@ -1174,6 +1174,88 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1403,7 +1485,7 @@
 
 
 <h1 id="llm-provider-setup-guide">LLM Provider Setup Guide<a class="headerlink" href="#llm-provider-setup-guide" title="Permanent link">&para;</a></h1>
-<p>Configure nanobot to use different AI models based on workflow type, cost, and capability requirements.</p>
+<p>Configure nanobot to use different AI (artificial intelligence) models based on workflow type, cost, and capability requirements.</p>
 <h2 id="document-control">Document Control<a class="headerlink" href="#document-control" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Owner:</strong></li>
@@ -1412,7 +1494,7 @@
 <li><strong>Status:</strong> Active</li>
 </ul>
 <h2 id="1-overview">1. Overview<a class="headerlink" href="#1-overview" title="Permanent link">&para;</a></h2>
-<p>Nanobot supports 100+ LLM models via unified configuration. Choose your provider based on:
+<p>Nanobot supports 100+ LLM (Large Language Model) models via unified configuration. Choose your provider based on:
 - <strong>Cost</strong> - Qwen, DeepSeek cheaper; Opus more expensive but capable
 - <strong>Latency</strong> - Local faster; cloud slightly slower
 - <strong>Capability</strong> - Opus best for complex reasoning; Haiku fastest
@@ -1489,11 +1571,11 @@
 </table>
 <h2 id="3-quick-setup-5-minutes">3. Quick Setup (5 minutes)<a class="headerlink" href="#3-quick-setup-5-minutes" title="Permanent link">&para;</a></h2>
 <h3 id="option-a-openrouter-all-in-one">Option A: OpenRouter (All-in-One)<a class="headerlink" href="#option-a-openrouter-all-in-one" title="Permanent link">&para;</a></h3>
-<p>OpenRouter gives you access to 100+ models with one API key.</p>
+<p>OpenRouter gives you access to 100+ models with one API key. (An API key is like a password that lets nanobot connect to OpenRouter's servers.)</p>
 <p><strong>Step 1: Get API Key</strong>
 - Visit https://openrouter.ai/keys
 - Sign up or log in
-- Copy your API key</p>
+- Copy your API key (this is your unique password—keep it secret!)</p>
 <p><strong>Step 2: Configure</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;providers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1509,18 +1591,21 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-Save to <code>~/.nanobot/config.json</code> (or set <code>OPENROUTER_API_KEY</code> env var)</p>
+Save to <code>~/.nanobot/config.json</code> (or set <code>OPENROUTER_API_KEY</code> environment variable—this is a way to store the API key so programs can read it)</p>
 <p><strong>Step 3: Test</strong>
-<div class="highlight"><pre><span></span><code>nanobot<span class="w"> </span>agent
+<div class="highlight"><pre><span></span><code><span class="c1"># Start nanobot interactive mode and ask it a question</span>
+nanobot<span class="w"> </span>agent
 ask<span class="w"> </span>a<span class="w"> </span>question
 </code></pre></div></p>
 <h3 id="option-b-local-ollama">Option B: Local Ollama<a class="headerlink" href="#option-b-local-ollama" title="Permanent link">&para;</a></h3>
-<p>Perfect for sensitive data, no API costs.</p>
+<p>Perfect for sensitive data, no API costs. (You run the AI on your own computer instead of using a cloud service.)</p>
 <p><strong>Step 1: Install Ollama</strong>
 - Download from https://ollama.ai
 - Install on your machine</p>
 <p><strong>Step 2: Pull a Model</strong>
-<div class="highlight"><pre><span></span><code>ollama<span class="w"> </span>pull<span class="w"> </span>mistral
+<div class="highlight"><pre><span></span><code><span class="c1"># &#39;ollama pull&#39; downloads an AI model to your machine (like downloading a file)</span>
+<span class="c1"># &#39;mistral&#39; is the name of the model</span>
+ollama<span class="w"> </span>pull<span class="w"> </span>mistral
 </code></pre></div></p>
 <p><strong>Step 3: Configure nanobot</strong>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -1538,7 +1623,9 @@ ask<span class="w"> </span>a<span class="w"> </span>question
 <span class="p">}</span>
 </code></pre></div></p>
 <p><strong>Step 4: Start Ollama</strong>
-<div class="highlight"><pre><span></span><code>ollama<span class="w"> </span>serve
+<div class="highlight"><pre><span></span><code><span class="c1"># ollama serve starts the AI server on your machine</span>
+<span class="c1"># Keep this running in a terminal (it will listen for nanobot&#39;s requests)</span>
+ollama<span class="w"> </span>serve
 </code></pre></div>
 (Keep this running in background)</p>
 <p><strong>Step 5: Test</strong>
@@ -1595,7 +1682,7 @@ ask<span class="w"> </span>a<span class="w"> </span>question
 </code></pre></div>
 <p>Then in Discord/Slack policy: Route <code>#bk-*</code> to bookkeeping agent, <code>#res-*</code> to research agent, etc.</p>
 <h2 id="5-token-budgeting-cost-control">5. Token Budgeting &amp; Cost Control<a class="headerlink" href="#5-token-budgeting-cost-control" title="Permanent link">&para;</a></h2>
-<p>Configure per-request and per-agent limits:</p>
+<p>Configure per-request and per-agent limits. (Tokens = words, roughly. This controls how long responses can be.)</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;defaults&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -1613,8 +1700,13 @@ ask<span class="w"> </span>a<span class="w"> </span>question
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p><strong>What each means:</strong>
+- <strong>maxInputTokens</strong> = Maximum words/context to send to AI (8000 ≈ 6,000 words)
+- <strong>maxOutputTokens</strong> = Maximum words in response (4096 ≈ 3,000 words)
+- <strong>temperature</strong> = How "creative" the AI is (0.1 = logical, 1.0 = random)
+- <strong>maxIterations</strong> = How many times AI can self-correct (higher = more thinking, more cost)</p>
 <h2 id="6-prompt-caching-cost-optimization">6. Prompt Caching (Cost Optimization)<a class="headerlink" href="#6-prompt-caching-cost-optimization" title="Permanent link">&para;</a></h2>
-<p>Anthropic Claude supports prompt caching. Enable to reduce costs on repeated queries:</p>
+<p>Anthropic Claude supports prompt caching. (Caching = saving frequently-used context so you don't re-send it every time. This saves money!) Enable to reduce costs on repeated queries:</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;providers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;anthropic&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
