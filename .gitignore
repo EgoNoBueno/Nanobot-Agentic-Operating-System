@@ -29,6 +29,11 @@ ENV/
 env/
 .venv
 
+# Test and type-check caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
 # IDE
 .vscode/
 .idea/
@@ -48,7 +53,6 @@ mkdocs_build/
 
 # OS
 Thumbs.db
-.DS_Store
 .AppleDouble
 .LSOverride
 
