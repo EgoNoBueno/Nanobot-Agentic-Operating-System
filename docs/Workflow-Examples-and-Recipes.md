@@ -609,6 +609,104 @@ Generates summary:
 
 ---
 
+## Common Mistakes & Gotchas
+
+### ❌ Mistake 1: Cron Schedule Syntax Wrong
+**Problem:** Scheduled workflow never runs  
+**Why:** Cron expression uses wrong format (off-by-one in day, wrong timezone)  
+**Fix:**
+- Correct format: `"0 2 * * *"` (minute=0, hour=2, day=any, month=any, day-of-week=any)
+- Test BEFORE deploying: `nanobot cron validate "0 2 * * *"`
+- Check timezone in config matches your office: `"timezone": "America/New_York"` (not UTC)
+- Common mistake: `"2 0 * * *"` runs at 12am not 2am (hour comes AFTER minute)
+
+### ❌ Mistake 2: API Rate Limits Hit, Workflow Stops Silently
+**Problem:** Workflow runs once, then stops. No error messages.  
+**Why:** Discord/Slack/web search API limits exceeded; nanobot backs off  
+**Fix:**
+1. Check logs: `nanobot logs --filter="rate_limit"`
+2. Add backoff to config:
+   ```json
+   {
+     "retry": {
+       "maxAttempts": 3,
+       "backoffMultiplier": 2.0,
+       "initialDelaySeconds": 5
+     }
+   }
+   ```
+3. Stagger workflows: Don't run 5 at 2am (spread to 2am, 2:10am, 2:20am)
+4. Upgrade API tier if hitting hard limits (Discord: Level 2+; OpenRouter: Tier B+)
+
+### ❌ Mistake 3: Config Typo Silently Disables Entire Workflow
+**Problem:** Feature doesn't work, but no error message  
+**Why:** JSON syntax error or misspelled key name  
+**Fix:**
+1. **Validate JSON first:**
+   ```bash
+   python -m json.tool ~/.nanobot/config.json
+   ```
+   (If this fails, JSON is broken)
+2. **Check exact key names:**
+   - ❌ `"obsidian_path"` (underscore wrong)
+   - ✅ `"vault_path"` (correct)
+3. Always restart after config changes: `nanobot gateway` (stop and restart)
+4. Check logs: `nanobot logs | tail -20`
+
+### ❌ Mistake 4: Output File Path Doesn't Exist
+**Problem:** Workflow runs but output file not written  
+**Why:** Directory `/path/to/obsidian/vault/01-Daily/` doesn't exist  
+**Fix:**
+```bash
+# Create directory structure first
+mkdir -p /path/to/obsidian/vault/01-Daily/
+mkdir -p /path/to/obsidian/vault/02-Projects/
+mkdir -p /path/to/obsidian/vault/03-Archive/
+
+# Then grant nanobot write permission
+chmod 755 /path/to/obsidian/vault
+
+# Test write
+nanobot write test "/path/to/obsidian/vault/test.md"
+```
+
+### ❌ Mistake 5: Discord/Slack Bot Missing Permissions
+**Problem:** Workflow tries to send message, fails silently or "Forbidden"  
+**Why:** Bot doesn't have Send Messages / Read History permissions on channel  
+**Fix:**
+1. In Discord/Slack admin panel, grant bot these permissions:
+   - ✅ Send Messages / Post Messages
+   - ✅ Read Message History
+   - ✅ Manage Messages (if deleting old summaries)
+   - ✅ Embed Links (for formatted output)
+2. Test bot can send: `@BotName test` in target channel
+3. If "Missing Access" error: Bot likely removed from channel
+   - Reinvite: `@BotName invite #channel-name`
+
+### ❌ Mistake 6: Tokens/Secrets Hardcoded in Config
+**Problem:** Config file with API keys committed to GitHub (security breach!)  
+**Why:** Used hardcoded token instead of environment variable  
+**Fix:**
+1. **Immediately:** Revoke all tokens in API provider dashboard
+2. **Remove from history:**
+   ```bash
+   git filter-branch --force --index-filter 'git rm --cached -r -f ~/.nanobot/config.json' -- --all
+   ```
+3. **Use environment variables instead:**
+   ```json
+   {
+     "discord": {
+       "token": "${DISCORD_TOKEN}"
+     }
+   }
+   ```
+4. **Set in `.env` file (added to `.gitignore`):**
+   ```
+   DISCORD_TOKEN=your_actual_token_here
+   ```
+
+---
+
 ## Mixing & Matching
 
 All these recipes share common patterns. Combine them:

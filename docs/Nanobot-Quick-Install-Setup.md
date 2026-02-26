@@ -72,14 +72,106 @@ The wizard output shows your bot token and setup instructions for your chosen ch
 **For advanced (VPS + Ollama + Tailscale):**
 - See [Nanobot Build Procedure](Nanobot-Build-Procedure.md)
 
-## 7. Common Issues
+## 7. Common Mistakes & Solutions
 
-| Symptom | Fix |
-|---|---|
-| `ModuleNotFoundError: nanobot` | Reinstall: `pip install nanobot-ai --force-reinstall` |
-| API key rejected | Verify key format and expiry in your API provider dashboard |
-| No response in CLI | Check internet connection and model availability |
-| Discord bot offline | Paste correct bot token and check Message Content Intent is enabled |
+### ❌ Mistake 1: Python Version Too Old
+**Problem:** `nanobot onboard` fails with "Python 3.11 required"  
+**Why:** System Python is 3.10 or older; nanobot needs modern features  
+**Fix:**
+1. Check your Python version: `python --version`
+2. If it's 3.10 or lower:
+   - **Windows:** Download Python 3.12 from python.org, install it
+   - **Mac:** `brew install python@3.12`
+   - **Linux:** `apt install python3.12`
+3. Use the new version explicitly:
+   ```bash
+   python3.12 -m pip install nanobot-ai
+   python3.12 -m nanobot onboard
+   ```
+4. Verify: `python3.12 -c "import sys; print(sys.version)"`
+
+### ❌ Mistake 2: API Key Copied Wrong (Extra Spaces or Newline)
+**Problem:** `Invalid API key` error immediately after pasting  
+**Why:** Pasting from email/Slack adds trailing whitespace  
+**Fix:**
+1. Copy the actual API key again, carefully
+2. **Do NOT paste** from notification emails (they often wrap the key)
+3. Go directly to provider dashboard: GitHub → Anthropic Console → OpenRouter
+4. Copy from the official source
+5. Double-check: Key should be **no spaces** at start or end
+6. Paste: `echo "sk_..." | wc -c` to verify length (should be 40-80 characters, not longer)
+
+### ❌ Mistake 3: Forgot to Start Ollama (If Using Local)
+**Problem:** "Local model 'llama2' not found" when using Ollama  
+**Why:** Didn't start Ollama server; it's not running in background  
+**Fix:**
+1. **Start Ollama first:**
+   ```bash
+   ollama serve
+   ```
+   (You'll see: `Listening on 127.0.0.1:11434`)
+2. **In another terminal**, run nanobot:
+   ```bash
+   nanobot onboard
+   ```
+3. When asked "API key or local?", leave **blank** (hit Enter)
+4. Verify Ollama is still running: `curl http://localhost:11434`
+
+### ❌ Mistake 4: pip Install Failed, Old Version Still Active
+**Problem:** `pip install nanobot-ai` succeeds, but `nanobot --version` shows old version  
+**Why:** Old installation cached or multiple Python installations  
+**Fix:**
+1. **Clean install:**
+   ```bash
+   pip uninstall nanobot-ai
+   pip cache purge
+   pip install nanobot-ai --force-reinstall
+   ```
+2. **Verify new version:**
+   ```bash
+   nanobot --version
+   ```
+3. **If still wrong**, check where nanobot is installed:
+   ```bash
+   which nanobot
+   ```
+   (Should show something like `/usr/local/bin/nanobot` or `~/.local/bin/nanobot`)
+
+### ❌ Mistake 5: Interactive Wizard Didn't Create Config File
+**Problem:** After running `nanobot onboard`, no `~/.nanobot/config.json` exists  
+**Why:** Wizard crashed or you cancelled it mid-setup  
+**Fix:**
+1. Check if file exists:
+   ```bash
+   cat ~/.nanobot/config.json
+   ```
+   (If not found, file doesn't exist yet)
+2. **Rerun wizard:** `nanobot onboard`
+3. **Complete all questions** without canceling
+4. Verify created: `ls -la ~/.nanobot/`
+5. If still failing, create manually:
+   ```bash
+   mkdir -p ~/.nanobot
+   cat > ~/.nanobot/config.json << 'EOF'
+   {
+     "agent": {
+       "name": "nanobot",
+       "model": "gpt-4o"
+     },
+     "providers": {
+       "openai": {
+         "apiKey": "sk_...",
+         "enabled": true
+       }
+     },
+     "channels": {
+       "cli": { "enabled": true }
+     }
+   }
+   EOF
+   ```
+
+---
 
 ## 8. What Nanobot Can Do (Out of the Box)
 

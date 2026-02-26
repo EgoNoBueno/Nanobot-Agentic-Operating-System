@@ -841,6 +841,164 @@ Before going live:
 
 ---
 
+## 13. Common Mistakes & Solutions
+
+### ❌ Mistake 1: RBAC Config Too Restrictive, Users Blocked
+**Problem:** Team members can't use necessary tools; constant "not allowed" errors  
+**Why:** `allowed_tools` list incomplete or too conservative  
+**Fix:**
+1. Audit actual tool usage: `nanobot logs --filter="tool_denied" | head -20`
+2. See what users are trying to do
+3. Update allowed_tools:
+   ```json
+   "engineering": {
+     "allowed_tools": [
+       "web_search",
+       "github_*",        // GitHub operations
+       "shell_exec",      // Command line
+       "file_read",       // Read files
+       "file_write",      // Write files
+       "mcp_call",        // MCP integrations
+       "cron_schedule"    // Scheduled tasks
+     ]
+   }
+   ```
+4. Restart: `nanobot gateway`
+
+### ❌ Mistake 2: Tool Whitelist Misspelled or Mismatched
+**Problem:** User loses access to tool that was supposedly allowed  
+**Why:** Tool name in config doesn't match actual tool name  
+**Fix:**
+1. Check exact tool names: `nanobot tools list`
+2. Common mistakes:
+   ```json
+   ❌ "github"          # Wrong - it's github_search, github_pr, etc.
+   ✅ "github_*"       # Correct - wildcard matches all github tools
+   
+   ❌ "Web_Search"     # Wrong - lowercase, no underscore
+   ✅ "web_search"     # Correct
+   
+   ❌ "file_ops"       # Wrong - not a real tool
+   ✅ "file_read" and "file_write" # Correct - separate tools
+   ```
+3. Validate config: `nanobot config validate`
+
+### ❌ Mistake 3: Approval Chain Never Completes - Bottleneck
+**Problem:** Users waiting hours for approvals; productivity blocked  
+**Why:** Too many approvers, or approvers offline/not checking  
+**Fix:**
+```json
+❌ Too strict:
+{
+  "requires_approval": true,
+  "approval_group": "@devops-leads",  // Only 1 person!
+  "timeout": 86400  // 24 hours to approve
+}
+
+✅ Better:
+{
+  "requires_approval": true,
+  "approval_group": ["@devops-lead", "@devops-oncall", "@devops-backup"],
+  "approval_mode": "any",  // ANY one can approve
+  "timeout": 900  // 15 minutes to request, auto-escalate
+}
+```
+
+### ❌ Mistake 4: Cost Budget Not Enforced - Bills Skyrocketing
+**Problem:** Monthly bill 5x expected; no alerts or controls  
+**Why:** Budget limits set but not actually enforced; no alerts configured  
+**Fix:**
+```json
+❌ Budget defined but no enforcement:
+{
+  "budget": {
+    "monthly": 1000,
+    "team_allocation": { "eng": 600, "marketing": 400 }
+  }
+  // No alerts, no hard limit!
+}
+
+✅ With enforcement:
+{
+  "budget": {
+    "monthly": 1000,
+    "alerts": {
+      "at_50_percent": true,
+      "at_75_percent": true,
+      "at_90_percent": true,
+      "channel": "#finance"
+    },
+    "enforcement": {
+      "hard_limit": true,  
+      "when_exceeded": "disable_high_tier_models"
+    }
+  }
+}
+```
+2. Check spend daily: `nanobot budget status`
+3. Set up alerts: `nanobot budget alert --set 75% --channel #finance`
+
+### ❌ Mistake 5: Audit Logs Deleted, Can't Prove Compliance
+**Problem:** Regulator asks "Who deleted that file?" - No logs!  
+**Why:** Log retention too short; logs not being written  
+**Fix:**
+```json
+❌ Audit logs might get deleted:
+{
+  "audit": {
+    "enabled": true,
+    "retention_days": 7  // Too short!
+  }
+}
+
+✅ Enterprise-grade retention:
+{
+  "audit": {
+    "enabled": true,
+    "level": "verbose",
+    "retention_days": 365,  // Full year
+    "export_format": "json",
+    "backup_location": "s3://compliance-bucket/nanobot-logs/",
+    "tools_logged": ["shell_exec", "file_write", "mcp_call", "github_*"]
+  }
+}
+```
+2. Verify logs exist: `ls -lh ~/.nanobot/logs/`
+3. Export to archive: `nanobot audit export --format=compliance --days=365`
+
+### ❌ Mistake 6: Escalation Rules Never Trigger
+**Problem:** High-risk/high-cost actions run without waiting for approval  
+**Why:** Escalation threshold set too high, or action doesn't match rule  
+**Fix:**
+```json
+❌ Escalation never triggers:
+{
+  "escalation": {
+    "high_risk_threshold": 50000,  // Only escalates if >50k tokens
+    "tools": ["shell_exec"]        // Only shell_exec
+  }
+  // User does web search (5k tokens) - not escalated
+  // User runs github action (3k tokens) - not escalated
+}
+
+✅ Proper escalation:
+{
+  "escalation": {
+    "high_risk_tools": ["shell_exec", "mcp_call", "file_write"],
+    "high_cost_threshold": 5000,   // Escalate high-cost actions
+    "approval_required_for": [
+      "shell_exec:*",         // ALL shell commands need approval
+      "mcp_call:database",    // Database MCP calls
+      "file_write:config"     // Config file writes
+    ]
+  }
+}
+```
+2. Test escalation manually: `/tool shell_exec test`
+3. Check approval queue: `nanobot approvals list`
+
+---
+
 ## Revision History
 
 | Date | Version | Change |

@@ -419,6 +419,169 @@ nanobot cost-report --detailed --month=feb
 
 ---
 
+## 11. Common Mistakes & Solutions
+
+### ❌ Mistake 1: Underestimating Token Usage - Bills 10x Higher Than Expected
+**Problem:** Expected $20/month, got $200 bill  
+**Why:** Didn't account for system prompts, context window growth, or verbose logging  
+**Fix:**
+1. **Check actual usage:** `nanobot cost report --detailed`
+2. **System prompts are expensive:** A 500-word system prompt = 750 tokens per request!
+   ```json
+   ❌ Verbose system prompt (500 words):
+   "You are a helpful assistant. You have the following skills..."
+   [100s of words of instruction]
+   
+   ✅ Concise system prompt (50 words):
+   "You are an assistant. Use web_search, file_read, github_search."
+   ```
+3. **Enable token counting logs:**
+   ```json
+   {
+     "logging": {
+       "track_tokens": true,
+       "log_level": "detail"
+     }
+   }
+   ```
+4. **Review logs daily for first week:** `nanobot logs | grep "tokens_used"`
+
+### ❌ Mistake 2: Wrong Tier Routing - Expensive Model Used for Everything
+**Problem:** Using Claude Opus for every single request; $500/month bill  
+**Why:** Default model set to expensive tier; forgot to set up routing  
+**Fix:**
+```json
+❌ Everything uses Opus (expensive):
+{
+  "llm": {
+    "default_model": "claude-opus"  // Uses Opus for everything!
+  }
+}
+
+✅ Smart routing by task:
+{
+  "llm": {
+    "default_model": "qwen2:72b",   // Default to budget tier
+    "routing": {
+      "channel_rules": [
+        {
+          "channel": "#vip-*",
+          "model": "claude-opus"  // Only VIP gets Opus
+        },
+        {
+          "channel": "#research-*",
+          "model": "qwen2:72b"    // Research uses mid-tier
+        }
+      ]
+    }
+  }
+}
+```
+2. Check routing: `nanobot config llm.routing`
+3. Restart: `nanobot gateway`
+
+### ❌ Mistake 3: Cache Never Hits - Not Getting Prompt Caching Savings
+**Problem:** Prompt caching enabled, but bill still high  
+**Why:** System prompt + context windows keep changing, so cache never reuses  
+**Fix:**
+1. **Check cache stats:** `nanobot cache stats`
+   ```
+   Cache hits: 234 (45%)
+   Cache misses: 256 (55%)
+   Savings: $10/month (at 45% hit rate)
+   ```
+2. **If hits < 20%:** Static prompts not repeating enough
+3. **To improve:** Group similar queries, use consistent context windows
+4. **For Anthropic:** Ensure `prompt_caching` is enabled:
+   ```json
+   {
+     "anthropic": {
+       "prompt_caching": true
+     }
+   }
+   ```
+
+### ❌ Mistake 4: Ollama Running Unused - Wasting GPU Resources
+**Problem:** Deployed self-hosted Ollama; $200/month VPS bill; only 10% usage  
+**Why:** Don't have enough local traffic to justify cost  
+**Fix:**
+1. **Check Ollama usage:** `curl http://localhost:11434/api/ps`
+   (If empty, no models loaded = unused)
+2. **Calculate actual cost per token:** 
+   - If using <20k tokens/day locally but paying $200/month = waste
+   - Switch back to cloud for this usage level
+3. **Keep Ollama IF:**
+   - Using >100k tokens/day locally, OR
+   - Privacy-critical data (don't want to send to cloud)
+4. **Otherwise:** Stop Ollama, save $200/month
+   ```bash
+   systemctl stop ollama  # or: killall ollama
+   uninstall: rm -rf ~/.ollama/
+   ```
+
+### ❌ Mistake 5: Verbose Logging Inflates Token Usage
+**Problem:** Each log entry includes conversation history; tokens pile up  
+**Why:** Logging level set to "verbose" or "debug"; too much context captured  
+**Fix:**
+```json
+❌ Verbose logging (wastes tokens):
+{
+  "logging": {
+    "level": "verbose",
+    "log_full_context": true,    // Logs entire conversation
+    "log_every_token": true      // Way too much!
+  }
+}
+
+✅ Smart logging (balances visibility + cost):
+{
+  "logging": {
+    "level": "info",
+    "log_errors_only": false,
+    "track_cost": true,
+    "on_file_write": true,       // Log important operations
+    "retention_days": 30
+  }
+}
+```
+2. Check logs size: `du -h ~/.nanobot/logs/`
+3. If >1GB/day: Lower verbosity immediately
+4. Adjust: `nanobot config logging.level info`
+
+### ❌ Mistake 6: Batch Jobs Don't Actually Batch - Running Real-Time Instead
+**Problem:** Scheduled batch job to run at 2am, supposed to save 70%; bill didn't change  
+**Why:** Batch job created, but users kept sending real-time requests (default model is expensive)  
+**Fix:**
+1. **Verify batch job runs:** `nanobot cron list | grep batch`
+2. **Check it's actually batching:**
+   ```bash
+   nanobot logs --filter="batch" | tail -20
+   ```
+3. **Ensure default is NOT batch (expensive):**
+   ```json
+   ❌ Real-time requests still go to Opus:
+   {
+     "llm": {
+       "default_model": "claude-opus",
+       "batch_model": "deepseek"  // Batch set but not used!
+     }
+   }
+   
+   ✅ Non-urgent requests route to batch tier:
+   {
+     "llm": {
+       "default_model": "deepseek",  // Cheapest for real-time
+       "urgent_model": "claude-opus",
+       "batch_model": "deepseek",   // Even cheaper for batches
+       "routing": {
+         "keyword": "urgent" → use urgent_model
+       }
+     }
+   }
+   ```
+
+---
+
 ## Revision History
 
 | Date | Version | Change |

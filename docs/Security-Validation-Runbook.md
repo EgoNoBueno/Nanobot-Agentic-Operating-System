@@ -137,7 +137,159 @@ Execute in this order to ensure consistent evidence collection.
 - [Tools & Skills Reference](Tools-and-Skills-Reference.md)
 - [Governance Policies & Config Examples](Governance-Policies-and-Config-Examples.md)
 
-## 10. Revision History
+## 10. Common Mistakes & Solutions
+
+### ❌ Mistake 1: Security Audit Shows Findings But No Remediation Plan
+**Problem:** Audit fails with "3 High severity findings"; validation stops  
+**Why:** Findings documented, but no owner/timeline assigned  
+**Fix:**
+1. For each High/Critical finding, create remediation ticket immediately:
+   ```markdown
+   # Remediation: [Issue name]
+   - Owner: @specific_person (not "team")
+   - Due Date: [7 days from today for High]
+   - Priority: High
+   - Ticket: <link>
+   ```
+2. Don't mark validation as "Conditional Pass" without assigned owner + date
+3. Follow up: Check status 3 days before due date
+
+### ❌ Mistake 2: Token Rotation Never Happens - Old Tokens Still Active
+**Problem:** Last rotation was 6 months ago; old Discord token still working  
+**Why:** No automated reminder; no rotation policy enforced  
+**Fix:**
+1. **Set up rotatio auto-reminders:**
+   ```bash
+   nanobot schedule "Rotate Discord token" cron "0 9 1 * *"  # 1st of month at 9am
+   nanobot schedule "Rotate API keys" cron "0 9 15 * *"     # 15th of month
+   ```
+2. **Document last rotation date:**
+   ```markdown
+   - Discord token: Last rotated [DATE] - Due [DATE+90days]
+   - OpenRouter API: Last rotated [DATE] - Due [DATE+90days]
+   - GitHub token: Last rotated [DATE] - Due [DATE+90days]
+   ```
+3. **Enforce in config:**
+   ```json
+   {
+     "secrets": {
+       "rotation_policy": "every_90_days",
+       "expiry_alert_days": 14
+     }
+   }
+   ```
+
+### ❌ Mistake 3: Sandbox Rules Documented But Not Enforced
+**Problem:** Security says "shared channels run in sandbox"; in reality, they don't  
+**Why:** Sandbox policy written but config doesn't enforce it  
+**Fix:**
+1. **Check actual config enforces sandbox:**
+   ```json
+   {
+     "channels": {
+       "#general": {
+         "sandbox": true,
+         "allowed_tools": ["web_search", "message_send"],
+         "disallowed_tools": ["shell_exec", "file_write"]
+       },
+       "#devops": {
+         "sandbox": false,
+         "allowed_tools": "all"
+       }
+     }
+   }
+   ```
+2. **Verify it's actually enforced:**
+   ```bash
+   nanobot config --validate
+   # If validation passes, config is syntactically correct
+   # But config enforcement = separate system check
+   ```
+3. **Test sandbox actually blocks:**
+   ```
+   /in #general shell_exec ls
+   # Should get: "Blocked: shell_exec not allowed in #general (sandbox)"
+   ```
+
+### ❌ Mistake 4: Secrets in Git History - Can't Be Removed
+**Problem:** Someone committed API key to GitHub 3 months ago; it's still in history  
+**Why:** Used plain `git rm` instead of removing from history  
+**Fix:**
+1. **If accidental commit is recent**, use filter-branch:
+   ```bash
+   git filter-branch --force --index-filter \
+     'git rm --cached --ignore-unmatch config.json' \
+     -- --all
+   ```
+2. **Force push to remote:**
+   ```bash
+   git push origin --force --all
+   ```
+3. **Immediately revoke the compromised token in the service (GitHub, Discord, etc.)**
+4. **Add to .gitignore to prevent future commits:**
+   ```bash
+   echo "config.json" >> .gitignore
+   echo ".env" >> .gitignore
+   echo "secrets/* >> .gitignore
+   git add .gitignore && git commit -m "Add secrets to gitignore"
+   ```
+
+### ❌ Mistake 5: Trust Boundary Violation - Multiple Untrusted Groups Share Gateway
+**Problem:** Engineering team and Marketing team both use same gateway; engineer accesses marketing's Slack token  
+**Why:** Didn't enforce separation; all users on same process  
+**Fix:**
+```yaml
+❌ No trust boundary enforcement:
+gateway:
+  users: ["eng-team", "marketing-team"]  # Same process!
+
+✅ Separate trust boundaries:
+gateway_engineering:
+  users: ["eng-team"]
+  bind: "127.0.0.1:8000"
+
+gateway_marketing:
+  users: ["marketing-team"]
+  bind: "127.0.0.1:8001"
+
+# Even better: Separate hosts/VMs
+```
+2. **Implement:** Create separate gateway instances for each trust group
+3. **Verify separation:**
+   ```bash
+   ps aux | grep nanobot
+   # Should see multiple nanobot processes with different ports
+   ```
+
+### ❌ Mistake 6: Allowlist Has Old Users Who Left Company
+**Problem:** Employee left 6 months ago; bot still accepts DMs from their old Discord account  
+**Why:** Never removed from allowlist config  
+**Fix:**
+1. **Quarterly audit:**
+   ```json
+   {
+     "dms": {
+       "allowlist": [
+         "alice (joined 2026-01-15)",
+         "bob (joined 2025-09-01)",
+         "dave (REVOKED 2026-02-01 - left company)"  // Mark as revoked
+       ]
+     }
+   }
+   ```
+2. **Enforce allowlist strictly:**
+   ```bash
+   nanobot config dms.allowlist --validate
+   # Check for stale/revoked entries
+   ```
+3. **When employee leaves:**
+   - Remove from allowlist immediately
+   - Revoke any API tokens they created
+   - Check `~/.nanobot/logs/` for any emergency access patterns
+
+---
+
+## 11. Revision History
 | Date | Version | Change |
 |---|---|---|
 | 2026-02-24 | 1.1.1 | Added explicit Nanobot minimum patched-version check and latest-advisory verification step |

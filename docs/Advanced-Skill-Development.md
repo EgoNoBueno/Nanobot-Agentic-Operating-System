@@ -489,17 +489,120 @@ permissions:
 5. Post to Discord
 ```
 
-## 10. Troubleshooting
+## 11. Troubleshooting Reference Table
 
 | Problem | Cause | Solution |
 |---------|-------|----------|
 | **Skill won't register** | Malformed SKILL.md metadata | Run `nanobot skill validate` to check syntax |
-| **Skill runs but no output** | Missing tool permissions | Add to `permissions:` in SKILL.md |
+| **Skill runs but no output** | Missing tool permissions | Add to `tools-required:` in SKILL.md |
 | **High token usage** | Inefficient prompting | Add context limits or break into sub-tasks |
 | **Skill crashes silently** | Python dependency missing | Add to `requirements.txt` and reinstall |
 | **Changes don't take effect** | Skill not reloaded | Run `/skill reload skillname` |
+| **Permission denied on file** | Skill doesn't have read/write access | Add permissions in config: `"permissions": ["file_write"]` |
+| **Skill slower than expected** | LLM provider latency or token overhead | Check logs: `nanobot logs --filter="timing"` |
 
-## 11. See Also
+## 12. Common Mistakes & Solutions
+
+### ❌ Mistake 1: SKILL.md Metadata Syntax Wrong
+**Problem:** Skill won't register; error: "Invalid YAML metadata"  
+**Why:** YAML front-matter (the `---` section) has incorrect syntax  
+**Fix:**
+- Field names must be lowercase with hyphens, not underscores:
+  ```
+  ❌ user_invocable: true       # Wrong
+  ✅ user-invocable: true       # Correct
+  
+  ❌ toolsRequired: [...]       # Wrong  
+  ✅ tools-required: [...]      # Correct
+  ```
+- No colons in values without quotes:
+  ```
+  ❌ description: Summarizes recent work    # May fail if contains special chars
+  ✅ description: "Summarizes recent work"  # Safe with quotes
+  ```
+- Validate: `nanobot skill validate ~/.nanobot/skills/my-skill/SKILL.md`
+
+### ❌ Mistake 2: Python Skill Missing Dependencies
+**Problem:** Skill runs, then crashes: `ModuleNotFoundError: psutil`  
+**Why:** `requirements.txt` doesn't list dependencies, or didn't run install  
+**Fix:**
+1. Add to `requirements.txt`:
+   ```
+   psutil==6.0.0
+   requests==2.31.0
+   ```
+2. Install: `pip install -r ~/.nanobot/skills/my-skill/requirements.txt`
+3. Or let nanobot auto-install: Check config `"auto_install_deps": true`
+4. Test import: `python -c "import psutil; print('OK')"`
+
+### ❌ Mistake 3: Skill References Undefined Tool or Permission
+**Problem:** Skill runs but action fails: "Tool not found: web_search"  
+**Why:** Didn't list required tools in `tools-required:` list  
+**Fix:**
+```yaml
+tools-required:
+  - web_search
+  - file_read
+  - message_send
+```
+Check available tools: `nanobot tools list`
+
+### ❌ Mistake 4: Skill Works Locally, But Fails in Discord/Slack
+**Problem:** `/skill-name` works in CLI, fails in Discord  
+**Why:** Output format expects Discord messages, but skill returns raw text  
+**Fix:**
+```python
+# ❌ Returns plain text - looks ugly in Discord
+return "Status: CPU 45%, Memory 60%"
+
+# ✅ Returns Discord embed - looks professional
+return {
+    "type": "discord_embed",
+    "title": "System Health",
+    "fields": [
+        {"name": "CPU", "value": "45%"},
+        {"name": "Memory", "value": "60%"}
+    ]
+}
+```
+
+### ❌ Mistake 5: Hot Reload Doesn't Work - Changes Not Applied
+**Problem:** Modified skill code, but old version still runs  
+**Why:** Didn't reload skill; nanobot still using cached version  
+**Fix:**
+1. After modifying code, reload:
+   ```
+   /skill reload my-skill
+   ```
+   Or at bot prompt: `@BotName reload skill my-skill`
+2. Verify reload: `nanobot skills --status` should show "Loaded: 2 minutes ago" (recent)
+3. If still not working: Restart nanobot entirely
+   ```bash
+   nanobot gateway  # Stop and restart
+   ```
+
+### ❌ Mistake 6: Prompt Bloat = High Token Usage & Cost
+**Problem:** Skill uses 5,000+ tokens per run; costs add up fast  
+**Why:** Skill prompt includes entire history or unnecessary context  
+**Fix:**
+1. **Trim system prompt:**
+   ```yaml
+   # ❌ Too much context
+   workflow: >
+     [100 lines of example outputs]
+   
+   # ✅ Minimal context
+   workflow: |
+     1. Read file
+     2. Extract key data
+     3. Format output
+   ```
+2. **Add token limit:** `max_tokens: 500` (for concise skills)
+3. **Test cost:** `nanobot skill bench my-skill` shows token usage
+
+---
+
+## 13. See Also
 
 - [Tools & Skills Reference](Tools-and-Skills-Reference.md) — Complete list of 14 built-in tools
 - [Governance Policies](Governance-Policies-and-Config-Examples.md) — Skill allowlisting for teams
