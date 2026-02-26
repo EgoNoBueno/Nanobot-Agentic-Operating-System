@@ -4,7 +4,7 @@ Configure nanobot to use different AI (artificial intelligence) models based on 
 
 ## Document Control
 - **Owner:**
-- **Version:** 1.1.0
+- **Version:** 1.2.0
 - **Last Updated:** 2026-02-26
 - **Status:** Active
 
@@ -287,7 +287,102 @@ If primary provider fails, fall back to secondary:
 
 Nanobot tries first provider, falls back to next on error.
 
-## 10. Testing & Troubleshooting
+## 10. Multi-Model Synergy & Advanced Agentic Workflows
+
+Beyond simple failover, you can design workflows where **multiple specialized LLMs collaborate** to solve complex problems more effectively and cheaply than a single expensive model.
+
+### Collaborative Roles & Synergy
+
+When LLMs work together within the Nanobot AOS, they form a **Multi-Agent System**. By assigning specialized roles, each model handles what it does best:
+
+- **The Architect (High Intelligence):** Premium model like **Claude 3.5 Sonnet** or **GPT-4o**. Handles high-level planning, complex reasoning, and final synthesis.
+- **The Worker (Speed/Efficiency):** Faster, cheaper model like **Claude 3 Haiku** or **DeepSeek**. Handles repetitive tasks, data extraction, initial drafting, formatting.
+- **The Critic/Judge (Quality Control):** Independent model (often different provider to avoid bias) that reviews outputs for errors or hallucinations.
+
+### Synergy Schemes in Practice
+
+| Scheme | Pattern | Benefit |
+|---|---|---|
+| **Draft-and-Polish** | Worker (Draft) → Architect (Review) | High-quality output at a fraction of the Architect's full cost |
+| **Search-and-Filter** | Worker (Scout) → Architect (Analyst) | Worker narrows 50 web results to 5 most relevant, saving Architect's expensive context window |
+| **Verification Loop** | Model A (Generator) ↔ Model B (Auditor) | Model B approves shell commands or code before execution for security |
+| **Delegation Chain** | Architect (Plan) → Worker (Execute) → Architect (Verify) | Architect handles intelligence; Worker handles repetitive work; loop closes on verification |
+
+### Implementation via Nanobot Skills
+
+A Nanobot skill implements multi-model collaboration by calling the LLM multiple times within its `implementation.py`. Because Nanobot is **channel-agnostic**, this orchestration happens behind the scenes—users see only the final, verified result in Discord/Slack/Telegram/etc.
+
+**Example: "Secure Coder" Skill**
+
+1. **Step 1:** Skill sends request to **GPT-4o** → writes Python script (cost: ~$0.01)
+2. **Step 2:** Skill sends output to local **Llama 3 (via Ollama)** with security review prompt (cost: $0.00)
+3. **Step 3:** If no issues found, code saved to workspace. If issues found, loop back to GPT-4o with error report for rewrite.
+
+**Cost Example:**
+- Using GPT-4 alone for all steps: ~$0.15-0.30
+- Using GPT-4o for planning + Haiku for drafting + local Llama for verification: ~$0.03-0.05 (80% savings)
+
+### Setup via Skill Configuration
+
+Define multi-model workflows in a custom skill's `SKILL.md`:
+
+```yaml
+name: research-synthesis
+description: "Multi-model research workflow"
+tools-required:
+  - web_search
+  - summarize
+llm-routing:
+  scout:
+    model: "openrouter/qwen"          # Fast, cheap initial search
+    maxTokens: 2000
+  analyst:
+    model: "anthropic/claude-opus"    # Deep analysis
+    maxTokens: 8000
+  critic:
+    model: "local/ollama-mistral"     # Final quality check
+    maxTokens: 4096
+workflow: |
+  1. Scout uses web_search to find 20 sources on topic
+  2. Scout summarizes each source (1-2 sentences)
+  3. Analyst reads Scout's summaries, synthesizes findings (detailed)
+  4. Critic reviews Analyst output for clarity, citations, and accuracy
+  5. Return final synthesis to user
+```
+
+### Global Routing with Tiered Configuration
+
+You can also define multi-model synergy at the **organization level** via `config.json`. Different channels or teams automatically route to different model combinations:
+
+```json
+{
+  "llm_routing": {
+    "rules": [
+      {
+        "channel": "#admin-*",
+        "primary": "anthropic/claude-opus",
+        "secondary": "openrouter/qwen",
+        "verification": "local/ollama"
+      },
+      {
+        "channel": "#general",
+        "primary": "openrouter/qwen",
+        "secondary": "local/ollama"
+      },
+      {
+        "channel": "#research-*",
+        "primary": "anthropic/claude-opus",
+        "secondary": "anthropic/claude-haiku",
+        "verification": "openrouter/deepseek"
+      }
+    ]
+  }
+}
+```
+
+**Result:** Different "brains" automatically handle different organizational responsibilities, optimizing both cost and quality.
+
+## 11. Testing & Troubleshooting
 
 **Test provider connection:**
 ```bash
@@ -308,7 +403,7 @@ Tokens available: Yes ✓
 | `Rate limited` | Wait or upgrade API plan |
 | `Timeout` | Check network connection or try different model |
 
-## 11. Common Mistakes & Solutions
+## 12. Common Mistakes & Solutions
 
 ### ❌ Mistake 1: API Key Has Extra Spaces
 **Problem:** `401 Unauthorized` or `Invalid API key`  
@@ -371,7 +466,7 @@ curl http://localhost:11434/api/tags
 }
 ```
 
-## 12. AOS Integration & Governance
+## 13. AOS Integration & Governance
 
 Map channels to cost-tier models via [Security & Governance Policies](Security-and-Governance-Policies.md):
 
@@ -385,7 +480,7 @@ Configure provider routing in your governance policy file for channel-based tier
 
 ---
 
-## 13. Related Documents
+## 14. Related Documents
 
 - [Cost Calculator & Optimization](Cost-Calculator-and-Optimization.md) — Per-provider cost matrix and monthly spend estimation
 - [Security & Governance Policies](Security-and-Governance-Policies.md) — LLM provider routing, approval workflows, cost allocation
@@ -395,9 +490,10 @@ Configure provider routing in your governance policy file for channel-based tier
 
 ---
 
-## 14. Revision History
+## 15. Revision History
 
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 1.2.0 | Added "Multi-Model Synergy & Advanced Agentic Workflows" section covering collaborative LLM patterns, skill-based coordination, and global routing |
 | 2026-02-26 | 1.1.0 | Updated cross-references to consolidated docs; fixed section numbering; added related documents section |
 | 2026-02-25 | 1.0.0 | Initial guide covering 8 major providers, multi-provider setup, cost controls, and caching |
