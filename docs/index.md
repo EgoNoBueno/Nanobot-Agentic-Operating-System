@@ -86,8 +86,7 @@ For production deployments, advanced governance, and full automation, continue b
 
 ## Operating Nanobot
 
-- **[Essential Skills](Essential-AOS-Skills.md)** — 5 core skills you need
-- **[Tools & Skills Reference](Tools-and-Skills-Reference.md)** — Complete inventory of all capabilities
+- **[Skills & Tools Reference](Skills-and-Tools-Complete-Guide.md)** — Complete inventory of all capabilities
 - **[Workflow Examples](Workflow-Examples-and-Recipes.md)** — Real-world workflows to copy & customize
   - Daily knowledge consolidation
   - Multi-channel content distribution

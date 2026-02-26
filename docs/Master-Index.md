@@ -132,8 +132,7 @@ Choose your path based on your goal:
    - **Advanced Build (60-90 min):** [AOS-Startup-Advanced-Build](AOS-Startup-Advanced-Build.md) - Run on VPS with local Ollama for 24/7 operation
 5. **[LLM Provider Setup](LLM-Provider-Setup-Guide.md)** - Configure all providers you'll use (multi-provider routing)
 6. **[Multi-Channel Integration](Multi-Channel-Integration-Guide.md)** - Set up all communication channels (Discord, Slack, Telegram, etc.)
-7. **[Essential AOS Skills](Essential-AOS-Skills.md)** - Install core skills (obsidian, memory, summarize, github, cron)
-8. **[Tools & Skills Reference](Tools-and-Skills-Reference.md)** - Learn what 14 tools and 9 skills you have available
+7. **[Skills & Tools Reference](Skills-and-Tools-Complete-Guide.md)** - Learn all 14 tools, 9 skills, and how to develop custom skills
 9. **[Workflow Examples](Workflow-Examples-and-Recipes.md)** - Implement 1-2 real workflows for your use case
 10. **[Governance Policies](Governance-Policies-and-Config-Examples.md)** - Set up access control, allowlists, cost caps (optional for solo users; required for teams)
 
@@ -167,9 +166,7 @@ Use these docs as references when following one of the three roadmaps above.
 - [AOS Startup: Advanced Build](AOS-Startup-Advanced-Build.md) - Run on VPS with local Ollama (24/7, zero per-query costs)
 
 ### Features & Extensibility
-- [Tools & Skills Reference](Tools-and-Skills-Reference.md) - All built-in tools, pre-built skills, and how to create custom tools/skills
-- [Essential AOS Skills](Essential-AOS-Skills.md) - Recommended pre-built skills for every deployment
-- [Advanced Skill Development](Advanced-Skill-Development.md) - Create custom skills beyond pre-built capabilities; operator-injectable skills via Discord
+- [Skills & Tools Complete Guide](Skills-and-Tools-Complete-Guide.md) - All 14 built-in tools, 9 pre-built skills, 5-skill essential quickstart, and custom skill development
 
 ### Workflows & Examples
 - [Workflow Examples & Recipes](Workflow-Examples-and-Recipes.md) - Real-world workflows: knowledge consolidation, multi-channel posting, customer support bot, research agent, GitHub automation

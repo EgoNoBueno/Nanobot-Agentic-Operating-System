@@ -145,9 +145,8 @@ Execute in this order to ensure consistent evidence collection.
 - **No-Go:** any unresolved critical finding or trust-boundary violation.
 
 ## 9. Related Documents
-- [Nanobot Build Procedure](Nanobot-Build-Procedure.md)
 - [Master Index](Master-Index.md)
-- [Tools & Skills Reference](Tools-and-Skills-Reference.md)
+- [Skills & Tools Complete Guide](Skills-and-Tools-Complete-Guide.md)
 - [Governance Policies & Config Examples](Governance-Policies-and-Config-Examples.md)
 
 ## 10. Common Mistakes & Solutions
