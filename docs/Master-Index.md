@@ -283,7 +283,7 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 - Monthly: restore drill and policy adjustments.
 - Quarterly: channel cleanup, model portfolio review, disaster drill.
 
-## 8. Change Management Flow
+## 9. Change Management Flow
 1. Propose change in Discord change-review channel.
 2. Assess risk, cost impact, and rollback plan.
 3. Update affected docs (Discord/LLM/Obsidian/Procedure).
@@ -291,7 +291,7 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 5. Approve and promote to active.
 6. Log outcome and references in Obsidian change records.
 
-## 9. Interoperability Health Checklist
+## 10. Interoperability Health Checklist
 - [ ] Channel naming follows the **project_id** pattern.
 - [ ] Each active channel family maps to an Obsidian path.
 - [ ] Each workflow domain maps to a default LLM class.
@@ -303,7 +303,7 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 - [ ] Trust-boundary and sandbox policies are validated for shared channels.
 - [ ] Monthly security audit findings are logged and remediated.
 
-## 10. Common Mistakes & Misunderstandings
+## 11. Common Mistakes & Misunderstandings
 
 ### ❌ Mistake 1: Thinking Nanobot Requires Discord (It Doesn't)
 **Problem:** "We use Slack, not Discord. Can we still use nanobot?"  
@@ -409,12 +409,12 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 
 ---
 
-## 11. Current Status Notes
+## 12. Current Status Notes
 - Document orchestration links exist across Discord, LLM, and Obsidian guides.
 - Discord and Obsidian path placeholders have been aligned to **project_id** and vault v1 structure.
 - Remaining work is execution readiness (creating starter MOCs/notes and running first drill).
 
-## 11. Revision History
+## 13. Revision History
 | Date | Version | Change |
 |---|---|---|
 | 2026-02-25 | 2.0.0 | **Major update:** Made AOS system channel-agnostic (Discord/Slack/Telegram/Feishu/etc.); documented all actual nanobot capabilities (LLM routing, tools, skills, MCP, web search, subagents, cron); updated Core Documents section with new guides; expanded security baseline to cover all deployment scenarios; clarified 3-plane governance model applies to any channel |

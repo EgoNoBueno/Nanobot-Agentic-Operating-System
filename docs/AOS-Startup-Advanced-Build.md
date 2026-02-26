@@ -137,7 +137,7 @@ Popular options (all offer similar features):
 ### What You Get After Creation
 
 Your provider will email you (or show on screen):
-- **VPS IP Address** (e.g., `192.168.1.100`)
+- **VPS IP Address** (e.g., `203.0.113.10`)
 - **Root Password** OR SSH Key (for access)
 - **How to connect** (SSH command)
 
@@ -149,13 +149,11 @@ Your provider will email you (or show on screen):
 
 **SSH** = Secure Shell, a secure way to remotely log into and control a server (your VPS) from your computer. It's like remote desktop but for servers, and it's encrypted (secure) so hackers can't see your commands.
 
-SSH is how you access your VPS from your local computer. It's like remote desktop but for servers.
-
 ### On Windows
 
 1. Download PuTTY: https://www.putty.org/ (a program for SSH—remote terminal access)
 2. Launch PuTTY
-3. Under "Host Name," enter your VPS IP (e.g., `192.168.1.100`)
+- Under "Host Name," enter your VPS IP (e.g., `203.0.113.10`)
 4. Click "Open"
 5. When prompted:
    - Username: `root`
@@ -172,7 +170,7 @@ Open Terminal and type:
 ssh root@YOUR_VPS_IP
 # ssh connects to your VPS server remotely
 # root is the administrator account
-# YOUR_VPS_IP is your VPS's IP address (e.g., ssh root@192.168.1.100)
+# YOUR_VPS_IP is your VPS's IP address (e.g., ssh root@203.0.113.10)
 ```
 
 When prompted for password, paste it (nothing appears—this is normal). Press Enter.
@@ -338,7 +336,7 @@ tailscale up
 SSH back into your VPS (Step B2) and run:
 
 ```bash
-apt install tailscale
+curl -fsSL https://tailscale.com/install.sh | sh
 tailscale up
 # Tailscale prints a login URL (looks like: https://login.tailscale.com/a/...)
 ```

@@ -100,9 +100,8 @@ Complete reference for all built-in tools and pre-built skills in nanobot, plus 
 ```
 
 ### mcp_call
-**Purpose:** Call MCP (Model Context Protocol—a standard way to connect tools/services) server tools
-**Purpose:** Call externally hosted MCP (Model Context Protocol) tools  
-**Examples of MCP Tools:** 
+**Purpose:** Call externally hosted MCP (Model Context Protocol) tools
+**Examples of MCP Tools:**
 - Filesystem operations on remote systems
 - Database queries
 - API calls to internal services
@@ -258,7 +257,7 @@ Pair expensive orchestration with cheap models:
 ```json
 {
   "obsidianVaultPath": "~/Documents/ObsidianVault",
-  "obsidianRestEndpoint": "http://localhost:18790",
+  "obsidianRestEndpoint": "http://localhost:27123",
   "obsidianRestToken": "token..."
 }
 ```
@@ -467,20 +466,6 @@ Restrict tools per channel:
 | subagent_spawn | High | +cost per agent | +memory |
 | github_* | 1-5s | None | <5KB |
 
-## 7. Tool Cost & Performance Reference
-
-| Tool | Latency | Cost/Call | Context Impact |
-|---|---|---|---|
-| web_search | 2-5s | ~$0.01 | 5-10KB |
-| web_fetch | 1-3s | None | 10-50KB |
-| file_* | <100ms | None | <1KB |
-| shell_exec | 1-30s | None | Varies |
-| message_send | <100ms | None | <1KB |
-| mcp_call | Varies | Varies | Depends |
-| cron_schedule | N/A | None | None |
-| subagent_spawn | High | +cost per agent | +memory |
-| github_* | 1-5s | None | <5KB |
-
 ## 8. Common Mistakes & Solutions
 
 ### ❌ Mistake 1: Tool Allowlist Misspelled - Tool Blocked for All Users
@@ -655,7 +640,7 @@ Cannot connect to MCP server: mydb
 ```
 Fix: Verify MCP server is running and auth headers are correct.
 
-## 9. Revision History
+## 10. Revision History
 
 | Date | Version | Change |
 |---|---|---|

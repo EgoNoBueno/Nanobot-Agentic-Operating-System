@@ -579,7 +579,7 @@ You'll get a detailed response shortly."
 
 ---
 
-## 7. Audit & Logging Policies
+## 8. Audit & Logging Policies
 
 **Goal:** Track all actions for security and cost compliance.
 
@@ -636,7 +636,7 @@ nanobot audit export --format csv --destination ./audit-report.csv
 
 ---
 
-## 8. Cost Allocation & Chargeback
+## 9. Cost Allocation & Chargeback
 
 **Goal:** Multi-team deployments need to track who spent what.
 
@@ -695,7 +695,7 @@ Research:
 
 ---
 
-## 9. Sample Complete Config (All Planes)
+## 10. Sample Complete Config (All Planes)
 
 **Control Plane (Access):**
 
@@ -747,7 +747,7 @@ Research:
 
 ---
 
-## 10. Governance Checklist (Deployment)
+## 11. Governance Checklist (Deployment)
 
 Before going live:
 
@@ -783,7 +783,7 @@ Before going live:
 
 ---
 
-## 11. Troubleshooting Governance Issues
+## 12. Troubleshooting Governance Issues
 
 | Problem | Symptom | Solution |
 |---|---|---|
@@ -795,7 +795,7 @@ Before going live:
 
 ---
 
-## 12. Common Patterns by Organization Type
+## 13. Common Patterns by Organization Type
 
 ### Startup (Lean, Speed-Focused)
 
@@ -841,7 +841,7 @@ Before going live:
 
 ---
 
-## 13. Common Mistakes & Solutions
+## 14. Common Mistakes & Solutions
 
 ### ❌ Mistake 1: RBAC Config Too Restrictive, Users Blocked
 **Problem:** Team members can't use necessary tools; constant "not allowed" errors  

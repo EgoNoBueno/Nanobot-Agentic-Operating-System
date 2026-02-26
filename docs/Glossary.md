@@ -34,7 +34,7 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 **CLI** (Command-Line Interface) - A way to interact with a computer by typing commands instead of clicking buttons. All our installation and troubleshooting uses the CLI.
 
-**Cron** - A tool that runs tasks on a schedule (e.g., "every day at 9 AM"). Named after the Roman god of time.
+**Cron** - A tool that runs tasks on a schedule (e.g., "every day at 9 AM"). Named after the Greek word *chronos* (χρόνος), meaning time.
 
 **Config** / **Configuration** - The settings file that tells nanobot how to behave (which channels to listen to, which LLM to use, etc.).
 
@@ -66,7 +66,9 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 **Firewall** - A security tool that controls which network traffic is allowed in and out of a computer.
 
----## G
+---
+
+## G
 
 **Gateway** - The main entry point for nanobot. It listens for incoming messages and routes them to the right handler.
 

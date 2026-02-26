@@ -185,9 +185,9 @@ def format_status_board(metrics, status):
     return board
 ```
 
-## 4. Operator-Injected Skills (Discord)
+## 4. Operator-Injected Skills (via Chat)
 
-You can inject new skills directly through Discord without touching terminals.
+You can inject new skills directly through your chat interface without touching terminals.
 
 ### 4.1 From a Repository
 
@@ -489,7 +489,7 @@ permissions:
 5. Post to Discord
 ```
 
-## 11. Troubleshooting Reference Table
+## 10. Troubleshooting Reference Table
 
 | Problem | Cause | Solution |
 |---------|-------|----------|
@@ -501,7 +501,7 @@ permissions:
 | **Permission denied on file** | Skill doesn't have read/write access | Add permissions in config: `"permissions": ["file_write"]` |
 | **Skill slower than expected** | LLM provider latency or token overhead | Check logs: `nanobot logs --filter="timing"` |
 
-## 12. Common Mistakes & Solutions
+## 11. Common Mistakes & Solutions
 
 ### ❌ Mistake 1: SKILL.md Metadata Syntax Wrong
 **Problem:** Skill won't register; error: "Invalid YAML metadata"  
@@ -578,7 +578,10 @@ return {
 2. Verify reload: `nanobot skills --status` should show "Loaded: 2 minutes ago" (recent)
 3. If still not working: Restart nanobot entirely
    ```bash
-   nanobot gateway  # Stop and restart
+   # Stop nanobot (press Ctrl+C if running in foreground, or:)
+   systemctl stop nanobot  # If running as a system service
+   # Then restart:
+   nanobot gateway
    ```
 
 ### ❌ Mistake 6: Prompt Bloat = High Token Usage & Cost
@@ -602,7 +605,7 @@ return {
 
 ---
 
-## 13. See Also
+## 12. See Also
 
 - [Tools & Skills Reference](Tools-and-Skills-Reference.md) — Complete list of 14 built-in tools
 - [Governance Policies](Governance-Policies-and-Config-Examples.md) — Skill allowlisting for teams

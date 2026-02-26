@@ -18,7 +18,7 @@ Nanobot is a lightweight (~4,000 lines), extensible agentic framework that:
 
 **Repository:** [HKUDS/nanobot](https://github.com/HKUDS/nanobot)  
 **Nanobot Version:** v0.1.4 and later  
-**Documentation Updated:** February 25, 2026
+**Documentation Updated:** February 26, 2026
 
 ### Get the Code
 
@@ -160,19 +160,19 @@ For production deployments, advanced governance, and full automation, continue b
 
 ## Choose Your Path
 
-=== "Local + Cloud LLM (Easiest)"
-    - **Setup:** 5-10 minutes
-    - **Cost:** $0-50/month
-    - **Best for:** Teams, quick experiments, cost-conscious orgs
-    
-    → [Quick Install & Setup](Nanobot-Quick-Install-Setup.md)
+### Option 1 — Local + Cloud LLM (Easiest)
+- **Setup:** 25-35 minutes
+- **Cost:** $0-50/month
+- **Best for:** Teams, quick experiments, cost-conscious orgs
 
-=== "VPS + Local Ollama (Advanced)"
-    - **Setup:** 30-45 minutes
-    - **Cost:** $20-200/month
-    - **Best for:** Privacy, self-hosted inference, scale
-    
-    → [Build Procedure](Nanobot-Build-Procedure.md)
+→ [AOS Startup: Simple Build](AOS-Startup-Simple-Build.md)
+
+### Option 2 — VPS + Local Ollama (Advanced)
+- **Setup:** 60-90 minutes
+- **Cost:** $20-200/month
+- **Best for:** Privacy, self-hosted inference, scale
+
+→ [AOS Startup: Advanced Build](AOS-Startup-Advanced-Build.md)
 
 ---
 
@@ -188,4 +188,4 @@ For production deployments, advanced governance, and full automation, continue b
 
 This documentation covers **Nanobot v0.1.4+** (released February 2026)
 
-Last updated: **February 25, 2026**
+Last updated: **February 26, 2026**

@@ -56,7 +56,7 @@ This launches an interactive wizard. Answer these key questions:
 |---|---|
 | API key or local? | Paste your API key (e.g., OpenRouter, OpenAI, Anthropic) OR leave blank for local Ollama |
 | Which channels? | Choose Discord, Slack, Telegram, Feishu, or CLI (local chat) |
-| Model to start with? | anthropic/claude-opus-4-5 (via OpenRouter) OR llama2 (local) |
+| Model to start with? | anthropic/claude-3-5-sonnet (via OpenRouter) OR llama2 (local) |
 
 The wizard creates `~/.nanobot/config.json` with your choices.
 

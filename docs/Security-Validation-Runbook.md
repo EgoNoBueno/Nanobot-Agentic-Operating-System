@@ -93,7 +93,7 @@ Execute in this order to ensure consistent evidence collection.
 
 ## 5. Evidence to Capture
 - Command output snippets (including security audit)
-- Nanobot version output (**Nanobot --version**) and advisory review date
+- Nanobot version output (**nanobot --version**) and advisory review date
 - Config screenshots or sanitized config excerpts
 - Allowlist review record
 - Sandbox policy verification record
@@ -243,7 +243,7 @@ Execute in this order to ensure consistent evidence collection.
    ```bash
    echo "config.json" >> .gitignore
    echo ".env" >> .gitignore
-   echo "secrets/* >> .gitignore
+   echo "secrets/*" >> .gitignore
    git add .gitignore && git commit -m "Add secrets to gitignore"
    ```
 

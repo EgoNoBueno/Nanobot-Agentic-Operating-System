@@ -100,7 +100,7 @@ Output:
 - Caching strategy for API responses (2 threads)
 
 ## Attendees
-- @alex, @sara, @james, @yuki, @alex
+- @alex, @sara, @james, @yuki
 
 ## Full Transcript
 [link to Discord thread]
@@ -442,7 +442,7 @@ Generated 2026-02-25 by Nanobot Research Agent
 
 **Goal:** Every morning, summarize overnight PRs/issues, post to Discord #engineering.
 
-**Tools used:** github_get_prs, github_get_issues, summarize skill, message_send, cron_schedule
+**Tools used:** github_search, github_pr_create, github_action_trigger, summarize skill, message_send, cron_schedule
 
 **Why useful:** Engineering team aware of PRs needing review without checking GitHub.
 

@@ -20,7 +20,7 @@ This document lists the 5 core skills (pre-built bundles) recommended for every 
 ```json
 {
   "obsidianVaultPath": "~/Documents/ObsidianVault",
-  "obsidianRestEndpoint": "http://localhost:18790",
+  "obsidianRestEndpoint": "http://localhost:27123",
   "obsidianRestToken": "token..."
 }
 ```

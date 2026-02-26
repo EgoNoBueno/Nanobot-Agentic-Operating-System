@@ -151,9 +151,13 @@ RAM is temporary memory your computer uses right now (different from hard drive 
 Get-CimInstance CIM_PhysicalMemory | Measure-Object -Property Capacity -Sum
 # This shows how much RAM (working memory) you have
 
-# macOS/Linux:
+# Linux:
 free -h
 # The "-h" means "show in human-readable format" (like "GB" instead of bytes)
+
+# macOS (the 'free' command is not available on macOS):
+system_profiler SPHardwareDataType | grep "Memory:"
+# Or check via Apple menu → About This Mac → Memory
 ```
 
 You need:
@@ -189,6 +193,8 @@ Nanobot needs internet every time you ask it a question (to reach cloud AI provi
 ```bash
 ping 8.8.8.8
 # Sends a tiny message to Google's server to check if internet works
+# On Windows: stops automatically after 4 packets
+# On macOS/Linux: runs until you press Ctrl+C (or use: ping -c 4 8.8.8.8)
 ```
 
 You should see:
@@ -644,5 +650,5 @@ A: Copy the `~/.nanobot/` directory to a safe location. This contains all config
 | Date | Version | Change |
 |---|---|---|
 | 2026-02-26 | 2.2.0 | Split from AOS-Startup-Procedure.md. Focused entirely on Simple Build (Path A). Added beginner-friendly language, cost expectations, minimum viable system callout, terminal guide, and nuclear reset option. Removed all Advanced Build content. |
-| 2026-02-26 | 2.1.0 | Initial comprehensive rewrite in parent document |
+| 2026-02-25 | 2.1.0 | Initial comprehensive rewrite in parent document |
 | 2026-02-25 | 2.0.0 | Initial version |

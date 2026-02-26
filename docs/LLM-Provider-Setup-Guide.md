@@ -113,7 +113,7 @@ ollama pull mistral
 ✅ Expected: "pulling manifest" then "success"
 
 **Step 3: Configure nanobot**
-⏱️ ~1 minute**
+⏱️ ~1 minute
 ```json
 {
   "providers": {
@@ -246,7 +246,7 @@ Anthropic Claude supports prompt caching. (Caching = saving frequently-used cont
 }
 ```
 
-This re-uses cached prompts for 5 minutes, reducing cost by ~10%.
+This re-uses cached prompts for 5 minutes. Cached tokens are billed at ~10% of normal cost, so total bill savings depend on your cache hit rate (typically 50–80% on repeated prompts).
 
 ## 7. Environment Variable Override
 
@@ -308,7 +308,7 @@ Tokens available: Yes ✓
 | `Rate limited` | Wait or upgrade API plan |
 | `Timeout` | Check network connection or try different model |
 
-## 10. Common Mistakes & Solutions
+## 11. Common Mistakes & Solutions
 
 ### ❌ Mistake 1: API Key Has Extra Spaces
 **Problem:** `401 Unauthorized` or `Invalid API key`  

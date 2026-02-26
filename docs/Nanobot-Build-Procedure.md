@@ -51,7 +51,7 @@ When you see a bash code block below, here are the best ways to copy and paste i
 ### Before You Start
 - ☐ You have Python 3.11 or higher installed (`python --version`)
 - ☐ You have pip installed (`pip --version`)
-- ☐ Internet connection working (test: `ping google.com`)
+- ☐ Internet connection working (test: `ping google.com` on Windows, or `ping -c 4 google.com` on macOS/Linux)
 - ☐ You have an API key from OpenRouter, Anthropic, OpenAI, or similar
 - ☐ You know which chat platform you'll use (Discord, Slack, etc.)
 
@@ -109,7 +109,7 @@ nanobot> exit
 
 ### Validation Gate A - Simple Build Complete ✅
 - ✅ `nanobot version` returns v0.1.4+
-- ✅ `nanobot init` completes without errors
+- ✅ `nanobot onboard` completes without errors
 - ✅ Config file exists and is valid JSON
 - ✅ `nanobot test` returns responses from LLM
 - ✅ Web search, tool execution work in test mode
@@ -428,7 +428,7 @@ sudo journalctl -u nanobot -f
 
 ## Phase F: Startup Validation (Full End-to-End Test)
 
-**Follow [AOS Startup Procedure](AOS-Startup-Procedure.md) (Path B section) for detailed startup testing.**
+**Follow [AOS Startup: Advanced Build](AOS-Startup-Advanced-Build.md) for detailed startup testing.**
 
 Quick version:
 1. Local machine: Start Ollama (`ollama serve`)

@@ -10,7 +10,7 @@ Connect nanobot to Discord, Slack, Telegram, Feishu, or other chat platforms.
 
 ## 1. Overview
 
-Nanobot works across 12+ chat platforms with unified governance. Same policy, security model, and memory apply regardless of which channel operators use.
+Nanobot works across 10+ chat platforms with unified governance. Same policy, security model, and memory apply regardless of which channel operators use.
 
 **Supported Channels:**
 Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix/Element, Mochat
@@ -274,7 +274,7 @@ Operators recognize the same workflow context across platforms.
 **Problem:** `401 Unauthorized` or bot won't authenticate  
 **Why:** Easy to copy the wrong token type  
 **Fix:**
-- Discord: Token must start with "MTA..." not "User:"
+- Discord: Verify you're using the Bot token (not the Client Secret). Found under the **Bot** tab in Discord Developer Portal
 - Slack: Token must start with "xoxb-" not "xoxp-" (xoxp is user personal token)
 - Test token: `curl -H "Authorization: Bearer TOKEN" https://api.slack.com/api/auth.test`
 
@@ -302,8 +302,9 @@ Operators recognize the same workflow context across platforms.
 ```bash
 # Allow inbound HTTPS (443) for webhooks
 sudo ufw allow in 443
-# Or allow from specific IPs (Slack/Discord publish IPs)
-sudo ufw allow from 199.232.0.0/16  # Slack IP range
+# Note: Slack does not publish a fixed IP range for incoming webhooks.
+# Do not restrict by source IP for Slack; instead validate by webhook signing secret.
+sudo ufw allow in 443
 ```
 
 ### ❌ Mistake 5: Wrong allowFrom User IDs
@@ -328,7 +329,7 @@ Telegram: Connected ✓
 Feishu: Connected ✓
 ```
 
-## 10. Troubleshooting
+## 11. Troubleshooting
 
 | Symptom | Fix |
 |---|---|

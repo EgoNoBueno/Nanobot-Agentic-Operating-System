@@ -274,9 +274,9 @@ ollama show llama2
 # List all AI models that are currently loaded in memory
 ollama list
 
-# Free up VRAM by unloading all models
+# Stop a specific model to free up VRAM
 # This clears out the GPU memory so nanobot can start fresh
-ollama pull --unload-all
+ollama stop mistral   # Replace 'mistral' with whichever model is loaded
 
 # Load only the one model you need right now
 ollama run mistral
@@ -568,12 +568,12 @@ nanobot config show allowlist
 nanobot logs export --format json --days 30 > api-usage-$(date +%Y%m).json
 
 # Update channel tokens if not rotated in 90 days
-grep -r "token_created" ~/.nanobot/ | grep -v "$(date -d '3 months ago' +%Y-%m)"
+grep -r "token_created" ~/.nanobot/ | grep -v "$(date -d '3 months ago' +%Y-%m)"  # Linux only; macOS use: date -v-3m
 ```
 
 ## 8. See Also
 
 - [Security Validation Runbook](Security-Validation-Runbook.md) — Monthly security procedures
 - [Governance Policies](Governance-Policies-and-Config-Examples.md) — Access control and escalation
-- [AOS Startup Procedure](AOS-Startup-Procedure.md) — Initial setup and boot sequence
+- [AOS Startup: Simple Build](AOS-Startup-Simple-Build.md) / [AOS Startup: Advanced Build](AOS-Startup-Advanced-Build.md) — Initial setup and boot sequence
 - [Cost Calculator](Cost-Calculator-and-Optimization.md) — Monitor spend to detect anomalies
