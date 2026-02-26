@@ -4,7 +4,7 @@
 
 ## Document Control
 - **Owner:**
-- **Version:** 2.0.0
+- **Version:** 2.1.0
 - **Last Updated:** 2026-02-26
 - **Status:** Active
 - **Scope:** Tools, pre-built skills, essential skills, custom development, troubleshooting
@@ -15,9 +15,13 @@
 
 **New to nanobot?** Start with [Essential 5-Skill Quickstart](#part-2-essential-5-skill-quickstart) → then explore [Pre-Built Skills](#part-1b-the-9-pre-built-skills)
 
-**Building custom skills?** Go to [Custom Skill Development](#part-4-custom-skill-development)
+**Exploring tools?** See [Tool Details & Configuration](#part-1a-tool-details--configuration) or the [Tool Matrix](#tool-matrix-all-14-built-in-tools)
 
-**Troubleshooting?** Jump to [Troubleshooting & Common Mistakes](#part-5-troubleshooting-common-mistakes)
+**Building custom skills?** Go to [Custom Skill Development](#part-4-custom-skill-development) → then [Best Practices](#best-practices)
+
+**Daily automation examples?** See [Part 3: Daily Operations Example](#part-3-daily-operations-example)
+
+**Troubleshooting?** Jump to [Troubleshooting & Common Mistakes](#part-5-troubleshooting--common-mistakes)
 
 ---
 
@@ -554,6 +558,8 @@ Combine three essential skills to automate daily operational journaling:
 
 **Archivist Personality (add to config or SOUL.md):**
 
+> **What is SOUL.md?** A root-level personality file at `~/.nanobot/SOUL.md` that defines persistent behavioral instructions for your nanobot instance — how it addresses users, its default workflow style, and standing operational routines like this journal. It loads on every startup. Think of it as the agent's standing operating procedure.
+
 ```markdown
 # AOS Archivist Identity
 
@@ -783,13 +789,25 @@ permissions:
 | subagent_spawn | High | Variable | +memory |
 | github_* | 1-5s | Free | <5KB |
 
+> **Next:** See [Best Practices](#best-practices) for skill naming conventions, documentation standards, and testing commands before writing your first custom skill.
+
 ---
 
 ## Part 5: Troubleshooting & Common Mistakes
 
 ### Tool Allowlisting (AOS Security)
 
-Restrict tools per channel:
+Restrict tools per channel using tool group aliases (shorthand for the canonical tool names in the Tool Matrix above):
+
+| Alias | Canonical Tool(s) |
+|---|---|
+| `shell` | `shell_exec` |
+| `mcp` | `mcp_call` |
+| `github` | `github_search`, `github_pr_create`, `github_action_trigger` |
+| `web` | `web_search`, `web_fetch` |
+| `file` | `file_read`, `file_write`, `file_edit`, `file_list` |
+| `message` | `message_send` |
+| `obsidian` | skill: obsidian (file_read/write scoped to vault) |
 
 ```json
 {
@@ -903,6 +921,7 @@ Restrict tools per channel:
 ### ❌ Mistake 6: Subagent Spawning Consumes Too Many Tokens - Cost Explosion
 **Problem:** Spawned 5 agents, bill was 10x expected  
 **Fix:**
+1. Give each agent a focused single task and share memory context:
 ```python
 ✅ Better - shared context, split specific tasks:
 agents = await nanobot.spawn_subagents(
@@ -931,10 +950,11 @@ agents = await nanobot.spawn_subagents(
   ❌ user_invocable: true       # Wrong
   ✅ user-invocable: true       # Correct
   ```
-- No colons in values without quotes:
+- Values containing colons must be quoted (bare strings without colons are fine):
   ```
-  ❌ description: Summarizes recent work
-  ✅ description: "Summarizes recent work"
+  ❌ description: Config: phase one   # colon in value breaks YAML parsing
+  ✅ description: "Config: phase one" # quoted = safe
+  ✅ description: Summarizes recent work  # no colon = no quotes needed
   ```
 - Validate: `nanobot skill validate ~/.nanobot/skills/my-skill/SKILL.md`
 
@@ -962,7 +982,8 @@ Check available: `nanobot tools list`
 
 ### ❌ Mistake 4: Skill Works Locally, But Fails in Discord/Slack
 **Problem:** `/skill-name` works in CLI, fails in Discord  
-**Fix:**
+**Why:** The CLI accepts plain text output. Discord/Slack expect structured message objects (embeds/blocks). A skill returning a plain string will silently produce no visible message or an error that doesn't appear in chat.  
+**Fix:** Return a platform-specific structured response:
 ```python
 ✅ Returns Discord embed - looks professional
 return {
@@ -1014,6 +1035,8 @@ return {
 ---
 
 ## Best Practices
+
+> These practices apply to custom skills (Part 4). Follow them for any skill you build, install from ClawHub, or generate with skill-creator.
 
 ### Skill Naming
 - **Action verbs:** `generate-`, `summarize-`, `fetch-`, `track-`
@@ -1100,5 +1123,6 @@ permissions:
 
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 2.1.0 | Review pass: completed Quick Navigation, explained SOUL.md, fixed subagent fix numbering, added tool alias table, fixed SKILL.md YAML quoting guidance, clarified Skill Mistake 4 cause, anchored Best Practices to Part 4 |
 | 2026-02-26 | 2.0.0 | Consolidated Tools & Skills Reference, Essential AOS Skills, and Advanced Skill Development into single comprehensive guide with progressive learning path |
 | 2026-02-25 | 1.0.0 | Original separate documents |
