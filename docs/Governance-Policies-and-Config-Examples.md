@@ -24,6 +24,8 @@ All three planes are **channel-aware** (work in Discord, Slack, Telegram, etc.).
 
 ### Pattern A: Role-Based Tool Allowlisting (RBAC)
 
+RBAC = Role-Based Access Control. (Different people get different permissions based on their job role.)
+
 **Use Case:** Different teams get different tools.
 
 **Config example:**
@@ -175,7 +177,9 @@ Team exceeds budget:
 
 ## 3. Risk Tier Framework (Who Needs Approval?)
 
-**Goal:** Classify actions by reversibility. Actions with high impact require human approval.
+**Goal:** Classify actions by how easy they are to undo. (Reversibility = can you fix it if something goes wrong?)
+
+If an action is hard to undo or could cause problems, it needs human approval first.
 
 ### Risk Tiers Overview
 
@@ -186,7 +190,7 @@ Risk is measured by **Magnitude of Irreversibility**. If an action is hard to un
 | **Tier 0: Safe** | ✅ Autonomous | Read-only, internal logs, low-impact data | Checking weather, reading Obsidian notes, summarizing public PDFs | No |
 | **Tier 1: Minor** | ✅ Autonomous | State changes with undo capability | Creating folders, moving temp files, adding Discord reactions | No (log only) |
 | **Tier 2: Moderate** | ⚠️ Soft-Pause | Actions affecting external data or "shadow" systems | Sending email to known contact, deleting temp folder, running scheduled reports | Conditional* |
-| **Tier 3: High** | 🛑 Hard-Pause | Actions affecting identity or security | Modifying Discord permissions, changing .env files, new SSH node access | **Yes (Approver role)** |
+| **Tier 3: High** | 🛑 Hard-Pause | Actions affecting identity or security | Modifying Discord permissions, changing .env files, new SSH (Secure Shell) node access | **Yes (Approver role)** |
 | **Tier 4: Critical** | 🔒 Locked | Destructive or system-wide changes | Deleting database, mass-sending external messages, changing Primary Operator ID | **Yes (MFA/Admin only)** |
 
 \*Conditional = approved automatically if target is allowlisted; requires approval otherwise
