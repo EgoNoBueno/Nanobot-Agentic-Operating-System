@@ -115,6 +115,8 @@ sudo ufw allow out 443  # HTTPS for cloud providers
 sudo ufw allow in 11434
 ```
 
+⚠️ **Linux Password Note:** When you run `sudo` commands, you may be prompted for your password. **On Linux/Mac, passwords are not displayed as you type—no dots, asterisks, or characters appear.** This is intentional for security. Just type your password and press Enter; the system is listening.
+
 **Option C: Reset provider routing**
 ```bash
 # Temporarily use fallback provider
@@ -205,6 +207,8 @@ chmod 644 /path/to/obsidian/vault/*.md
 # -R = apply recursively to all files inside
 sudo chown -R nanobot:nanobot /path/to/obsidian/vault
 ```
+
+⚠️ **Linux Password Note:** The `sudo` command may prompt for your password. **Passwords are NOT displayed on Linux/Mac as you type—no dots or asterisks appear.** This is normal. Just type and press Enter.
 
 **Option B: Temporarily disable vault auto-save**
 ```bash

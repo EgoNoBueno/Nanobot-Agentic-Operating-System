@@ -159,6 +159,8 @@ ssh your-vps-user@your-vps-ip
 # Or configure SSH key for passwordless access
 ```
 
+⚠️ **Linux Password Entry Note:** If prompted for a password, type it carefully. **On Linux/Mac, the terminal will NOT display any characters (no dots or asterisks) as you type your password.** This is normal and secure—just type and press Enter when done. The password is being entered; you just can't see it.
+
 ### Step 2: System Updates
 ⏱️ ~5 minutes
 
@@ -173,6 +175,8 @@ sudo apt update && sudo apt upgrade -y
 # && means "if that worked, then run this next command"
 sudo apt install -y python3.11 python3.11-venv python3-pip build-essential
 ```
+
+⚠️ **Linux Password Entry Note:** You may be prompted for your sudo password. **The terminal will NOT display any characters (no dots or asterisks) as you type.** This is normal—just type your password and press Enter. The system is listening even though you can't see what you're typing.
 
 ### Step 3: Install Tailscale
 ⏱️ ~3 minutes
@@ -206,6 +210,8 @@ sudo useradd -m -s /bin/bash nanobot
 sudo su - nanobot
 # Now running as nanobot user for isolation
 ```
+
+⚠️ **Linux Password Entry Note:** If prompted for a password, **the terminal will NOT display any characters as you type.** This is normal—just type and press Enter. Do not assume the keyboard is broken if you don't see dots or asterisks.
 
 ### Validation: VPS Ready ✅
 - ✅ SSH access works

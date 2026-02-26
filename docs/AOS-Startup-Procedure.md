@@ -174,6 +174,8 @@ ssh your-vps-user@your-vps-ip
 nanobot gateway
 ```
 
+⚠️ **Linux Password Note:** When connecting with SSH, you'll be prompted for your password. **On Linux/Mac, passwords are NOT displayed as you type—no dots or asterisks appear.** This is normal—just type and press Enter.
+
 Should show:
 ```
 Starting Nanobot Gateway v0.1.4+
