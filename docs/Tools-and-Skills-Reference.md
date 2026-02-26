@@ -467,7 +467,175 @@ Restrict tools per channel:
 | subagent_spawn | High | +cost per agent | +memory |
 | github_* | 1-5s | None | <5KB |
 
-## 8. Troubleshooting Tools
+## 7. Tool Cost & Performance Reference
+
+| Tool | Latency | Cost/Call | Context Impact |
+|---|---|---|---|
+| web_search | 2-5s | ~$0.01 | 5-10KB |
+| web_fetch | 1-3s | None | 10-50KB |
+| file_* | <100ms | None | <1KB |
+| shell_exec | 1-30s | None | Varies |
+| message_send | <100ms | None | <1KB |
+| mcp_call | Varies | Varies | Depends |
+| cron_schedule | N/A | None | None |
+| subagent_spawn | High | +cost per agent | +memory |
+| github_* | 1-5s | None | <5KB |
+
+## 8. Common Mistakes & Solutions
+
+### ❌ Mistake 1: Tool Allowlist Misspelled - Tool Blocked for All Users
+**Problem:** "I configured web_search as allowed, but getting 'tool not allowed' error"  
+**Why:** Tool name in allowlist doesn't match actual tool name; uses underscore instead of exact match  
+**Fix:**
+- Check exact tool names: `nanobot tools list`
+- Common misspellings:
+  ```json
+  ❌ "allowed_tools": ["web search"]      # Wrong - has space
+  ❌ "allowed_tools": ["web_Search"]      # Wrong - capital S
+  ✅ "allowed_tools": ["web_search"]      # Correct - exact match
+  
+  ❌ "allowed_tools": ["github"]          # Too broad
+  ✅ "allowed_tools": ["github_search", "github_pr_create"]  # Explicit
+  ```
+- Validate config: `nanobot config validate`
+- Restart nanobot after config changes
+
+### ❌ Mistake 2: Brave API Key Not Set, web_search Silently Fails
+**Problem:** Users try `/web_search`, nothing happens; no error  
+**Why:** Brave API key not configured, tool disabled but no error shown  
+**Fix:**
+1. Get API key from [Brave Search API](https://api.search.brave.com)
+2. Add to config:
+   ```json
+   {
+     "tools": {
+       "web_search": {
+         "enabled": true,
+         "braveApiKey": "YOUR_KEY_HERE"
+       }
+     }
+   }
+   ```
+3. Restart nanobot
+4. Test: `nanobot test-tool web_search "test query"`
+5. Verify logs: `nanobot logs | grep "brave" | tail -5`
+
+### ❌ Mistake 3: shell_exec Allowlist Is Empty - No One Can Run Commands
+**Problem:** "Need to execute commands but keep getting 'not allowed' error"  
+**Why:** Didn't configure `allowFrom` list; defaults to empty (blocks everyone)  
+**Fix:**
+```json
+❌ No allowlist (everyone blocked):
+{
+  "tools": {
+    "shell_exec": {
+      "enabled": true
+      // Missing allowFrom!
+    }
+  }
+}
+
+✅ With allowlist (specific users allowed):
+{
+  "tools": {
+    "shell_exec": {
+      "enabled": true,
+      "allowFrom": [
+        "DISCORD_USER_ID_1",
+        "DISCORD_USER_ID_2",
+        "@devops"  // Role-based
+      ],
+      "timeout": 30,
+      "blocklist": ["rm -rf", "sudo dd"]
+    }
+  }
+}
+```
+2. Get user IDs: In Discord, @mention user and note the ID that appears
+3. Restart nanobot
+4. Test with allowed user: Have them try `/shell_exec ls`
+
+### ❌ Mistake 4: MCP Server Connections Fail - Auth Headers Missing
+**Problem:** "Cannot connect to MCP server: mydb - Connection refused"  
+**Why:** MCP server requires authentication but config has no auth headers  
+**Fix:**
+1. Verify MCP server is running: `curl http://localhost:3000/health` (replace port/URL)
+2. Check if it requires auth: Check MCP server documentation for required headers
+3. Add auth to config:
+   ```json
+   {
+     "mcpServers": {
+       "mydb": {
+         "command": "python",
+         "args": ["/path/to/db_mcp_server.py"],
+         "customHeaders": {
+           "Authorization": "Bearer YOUR_TOKEN",
+           "X-API-Key": "your-api-key"
+         }
+       }
+     }
+   }
+   ```
+4. Restart nanobot
+5. Test: `nanobot test-tool mcp_call mydb --query "SELECT 1"`
+
+### ❌ Mistake 5: Cron Jobs Never Fire - Wrong Timezone or Syntax
+**Problem:** Scheduled job set for "9 AM daily" but never runs; or runs at wrong time  
+**Why:** Cron syntax wrong, or timezone mismatch  
+**Fix:**
+1. Check timezone in config:
+   ```json
+   {
+     "cron": {
+       "timezone": "UTC"  // ← Is this your actual timezone?
+     }
+   }
+   ```
+2. Verify cron syntax: `nanobot cron validate "0 9 * * *"`
+3. Common syntax mistakes:
+   ```
+   ❌ "9 * * * *"       # Runs every hour at minute 9 (not 9 AM!)
+   ✅ "0 9 * * *"       # Runs at 9 AM (hour=9, minute=0)
+   
+   ❌ "0 9 * * * *"     # Too many fields (cron has 5, not 6)
+   ✅ "0 9 * * *"       # 5 fields: minute, hour, day, month, day-of-week
+   
+   ❌ "at 9am tomorrow"  # Natural language doesn't work
+   ✅ "0 9 * * *"       # Must be cron syntax
+   ```
+4. List cron jobs: `nanobot cron list` - check next run time
+5. If timezone wrong: Change to your zone (`America/New_York`, `Europe/London`, etc.)
+
+### ❌ Mistake 6: Subagent Spawning Consumes Too Many Tokens - Cost Explosion
+**Problem:** Spawned 5 agents for parallel research, bill was 10x expected  
+**Why:** Each agent runs full model reasoning + context; not sharing memory efficiently  
+**Fix:**
+```python
+❌ Inefficient - each agent pays full context cost:
+agents = await nanobot.spawn_subagents(
+    count=5,
+    task="Research competitor X",
+    # Each agent gets full context = 5x cost
+)
+
+✅ Better - shared context, split specific tasks:
+agents = await nanobot.spawn_subagents(
+    count=3,
+    shared_context=True,  # Agents share memory
+    tasks=[
+        "Research company A",
+        "Research company B", 
+        "Research company C"
+    ]
+)
+```
+2. Estimate cost before spawning: `nanobot estimate-cost --agents=5 --context=shared`
+3. Use sparingly: Reserve for complex, high-value tasks (not routine work)
+4. Monitor: `nanobot logs --filter="subagent" | grep "tokens_used"`
+
+---
+
+## 9. Troubleshooting Tools
 
 **Tool disabled error:**
 ```

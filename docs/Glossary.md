@@ -292,4 +292,32 @@ Obsidian is a note-taking app. It runs on your computer and stores notes as mark
 
 ---
 
+## Common Misunderstandings Clarified
+
+**❌ "Nanobot is only for Discord"**  
+✅ **Truth:** Nanobot works with Discord, Slack, Telegram, Feishu, WhatsApp, Email, and more. The platform doesn't matter—the features work the same.
+
+**❌ "API Key = Password"**  
+✅ **Truth:** Similar but different. A password proves *who you are*. An API key lets a program do things *on your behalf*. Treat both as secrets!
+
+**❌ "LLM = ChatGPT"**  
+✅ **Truth:** ChatGPT is one LLM. Claude, Gemini, GPT-4, Qwen, and Ollama are also LLMs. An LLM is the category; ChatGPT is one example.
+
+**❌ "Bash = Python"**  
+✅ **Truth:** Both are programming languages, but different uses. Bash is for command-line/shell tasks (installing software, running scripts). Python is for writing complex programs. Our installation uses Bash; nanobot itself uses Python internally.
+
+**❌ "Allowlist = Allowance (like parents give kids pocket money)"**  
+✅ **Truth:** An allowlist is a security list of *approved things*. Only items on the list are allowed; everything else is blocked. Think of it like a nightclub bouncer with a list of approved guests.
+
+**❌ "Token = Cryptocurrency"**  
+✅ **Truth:** In our docs, "token" has two meanings: (1) a unit of text (~1 word), used for counting AI usage cost, or (2) a secret string (like API key) used for authentication. Not cryptocurrency! Context makes the meaning clear.
+
+**❌ "MCP = a new AI model"**  
+✅ **Truth:** MCP (Model Context Protocol) is a *standard* for connecting external tools/services to AI models. Like an adapter that lets nanobot use databases, file systems, APIs, and custom business logic.
+
+**❌ "Vault = where nanobot stores money"**  
+✅ **Truth:** In our docs, "vault" always means an Obsidian vault—a folder containing your notes that nanobot can read/write. It's called a "vault" because it's secure and locked down.
+
+---
+
 **Have a term that's confusing? Submit an issue or let us know!**

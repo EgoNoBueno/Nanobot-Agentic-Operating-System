@@ -300,7 +300,113 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 - [ ] Trust-boundary and sandbox policies are validated for shared channels.
 - [ ] Monthly security audit findings are logged and remediated.
 
-## 10. Current Status Notes
+## 10. Common Mistakes & Misunderstandings
+
+### ❌ Mistake 1: Thinking Nanobot Requires Discord (It Doesn't)
+**Problem:** "We use Slack, not Discord. Can we still use nanobot?"  
+**Why:** The documentation mentions Discord often, making it seem like Discord is required  
+**Fix:**
+- Nanobot works with **any** chat platform: Discord, Slack, Telegram, Feishu, WhatsApp, Email, CLI, etc.
+- The choice of platform doesn't change nanobot's core behavior
+- Same rules, same capabilities, same governance apply across all platforms
+- See [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md) for setup instructions for your chosen platform
+
+### ❌ Mistake 2: Confusing "Control Plane" with "Discord Control Channel"
+**Problem:** "What's the Control Plane? Is it a Discord channel?"  
+**Why:** The term "plane" is architectural jargon that's not self-explanatory  
+**Fix:**
+- **Control Plane** = the system that routes user requests and manages approvals (exists *across* all channels)
+- **Discord control channel** = just one example of where you might receive requests
+- Think of it as layers: 
+  - **Control** = intake + request routing (works in Discord, Slack, email, CLI, etc.)
+  - **Policy** = which AI model to use + cost controls (same rules everywhere)
+  - **Memory** = where records go (Obsidian vault, same for everyone)
+
+### ❌ Mistake 3: Setting Up Channels with Wrong Naming Convention
+**Problem:** Created channels named `#slack-research`, `#marketing_team`, `#ops`, etc., but system won't recognize them  
+**Why:** Channel names don't follow the documented `project_id` pattern  
+**Fix:**
+- Use pattern: `#[workflow_domain]-[team_or_project]-[optional_detail]`
+- Good examples:
+  - `#prd-widget-marketing` (product team, research)
+  - `#bk-finances` (backlog, financial tasks)
+  - `#res-ai-safety` (research, AI safety topic)
+  - `#ctl-nanobot` (control, nanobot operations)
+- Avoid:
+  - Single-word names like `#marketing`
+  - Descriptive names like `#team-daily-standup`
+  - Special characters or underscores
+
+### ❌ Mistake 4: LLM Routing Not Working - Default Model Used Everywhere
+**Problem:** Set up Tier A/B/C routing, but nanobot always uses the default model  
+**Why:** Routing rules not actually configured in the active config file  
+**Fix:**
+1. Check your active config: `nanobot config --show`
+2. Verify routing rules exist:
+   ```json
+   {
+     "llm": {
+       "routing": {
+         "default": "tier_b",
+         "rules": [
+           { "channel": "#prd-*", "tier": "a" },
+           { "channel": "#bk-*", "tier": "c" }
+         ]
+       }
+     }
+   }
+   ```
+3. Restart nanobot after config changes
+4. Test: Send a message in `#prd-*` channel and check logs: `nanobot logs | grep "model used"`
+
+### ❌ Mistake 5: Obsidian Vault Paths Don't Match Configuration
+**Problem:** "Nanobot says it's writing to my vault, but I don't see files appearing"  
+**Why:** Config has relative path (`~/vault`) but actual vault is at absolute path (`/Users/alice/Documents/My Vault`)  
+**Fix:**
+1. Find actual vault location: Go to Obsidian → Settings → About → Vault location
+2. Copy the **exact full path** (including spaces if any)
+3. Update config to absolute path:
+   ```json
+   ❌ "vault_path": "~/vault"
+   ✅ "vault_path": "/Users/alice/Documents/My Vault"
+   ```
+4. On Windows: Use forward slashes `/` or escaped backslashes `\\`:
+   ```json
+   ✅ "vault_path": "C:/Users/alice/Documents/Nanobot-Vault"
+   ✅ "vault_path": "C:\\Users\\alice\\Documents\\Nanobot-Vault"
+   ```
+5. Restart nanobot and test: `nanobot test-vault`
+
+### ❌ Mistake 6: Budget Controls Set But No Alerts Configured
+**Problem:** "We said no more than $100/month, but bill was $500. No one noticed!"  
+**Why:** Budget limit set but no alert mechanism to notify when approaching limit  
+**Fix:**
+```json
+❌ Budget with no alerts:
+{
+  "budget": {
+    "monthly_limit": 100
+  }
+}
+
+✅ Budget with alerts:
+{
+  "budget": {
+    "monthly_limit": 100,
+    "alerts": {
+      "at_50_percent": { "channel": "#alerts", "message": "50% of budget used" },
+      "at_75_percent": { "channel": "#alerts", "message": "75% of budget used" },
+      "at_90_percent": { "channel": "#alerts", "message": "WARNING: 90% of budget used" }
+    }
+  }
+}
+```
+2. Set up calendar reminders to check: `nanobot budget status` weekly
+3. Review daily: `nanobot cost report --daily`
+
+---
+
+## 11. Current Status Notes
 - Document orchestration links exist across Discord, LLM, and Obsidian guides.
 - Discord and Obsidian path placeholders have been aligned to **project_id** and vault v1 structure.
 - Remaining work is execution readiness (creating starter MOCs/notes and running first drill).
