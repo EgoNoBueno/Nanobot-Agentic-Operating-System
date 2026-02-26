@@ -112,25 +112,23 @@ Example ways this AOS supports organizations:
 
 Choose your path based on your goal:
 
-### 2.1 Quick Trial (5-10 minutes)
+### 2.1 Quick Trial (30-40 minutes)
 **Goal:** Try nanobot immediately with minimal setup.
 
 1. **[Master Index](Master-Index.md)** (this file) - Understand what you're building (3 planes, capabilities, tools)
-2. **[Nanobot Quick Install & Setup](Nanobot-Quick-Install-Setup.md)** - Install and test with default config
-3. **[LLM Provider Setup](LLM-Provider-Setup-Guide.md)** - Add one LLM provider (e.g., OpenRouter or local Ollama)
-4. **[Multi-Channel Integration](Multi-Channel-Integration-Guide.md)** - Connect one chat platform (Discord or Slack)
-5. **[Workflow Examples](Workflow-Examples-and-Recipes.md)** - Copy and run a simple workflow
+2. **[AOS Startup Procedure: Simple Build](AOS-Startup-Simple-Build.md)** - Install and test nanobot locally with cloud LLM
+3. **[Multi-Channel Integration](Multi-Channel-Integration-Guide.md)** - Connect one chat platform (Discord or Slack)
+4. **[Workflow Examples](Workflow-Examples-and-Recipes.md)** - Copy and run a simple workflow
 
-**Result:** Functional nanobot in <15 minutes. Explore, test, then decide to scale.
+**Result:** Functional nanobot in 30-40 minutes. Explore, test, then decide to scale.
 
 ### 2.2 Production Setup (1-2 hours)
 **Goal:** Deploy a professional system with cost controls, governance, and reliability.
 
 1. **[Master Index](Master-Index.md)** - Understand 3-plane model, RACI roles, cost controls
 2. **[Cost Calculator](Cost-Calculator-and-Optimization.md)** - Plan monthly spend, choose provider routing strategy
-3. **[Nanobot Build Procedure](Nanobot-Build-Procedure.md)** - Choose Simple Build (local + cloud LLM) or Advanced Build (VPS + Ollama), deploy
-4. **Choose your startup path:**
-   - **Simple Build (25 min):** [AOS-Startup-Simple-Build](AOS-Startup-Simple-Build.md) - Run nanobot on your computer with cloud AI
+3. **Choose your startup path:**
+   - **Simple Build (25-35 min):** [AOS-Startup-Simple-Build](AOS-Startup-Simple-Build.md) - Run nanobot on your computer with cloud AI
    - **Advanced Build (60-90 min):** [AOS-Startup-Advanced-Build](AOS-Startup-Advanced-Build.md) - Run on VPS with local Ollama for 24/7 operation
 5. **[LLM Provider Setup](LLM-Provider-Setup-Guide.md)** - Configure all providers you'll use (multi-provider routing)
 6. **[Multi-Channel Integration](Multi-Channel-Integration-Guide.md)** - Set up all communication channels (Discord, Slack, Telegram, etc.)
@@ -144,7 +142,7 @@ Choose your path based on your goal:
 ### 2.3 Multi-Team Deployment (2-4 hours + ongoing)
 **Goal:** Deploy across teams with role-based access, approval workflows, and cost chargeback.
 
-Follow **Production Setup** path above, then:
+Follow the **Production Setup** path above (choose Simple or Advanced Build), then:
 
 1. **[Governance Policies](Governance-Policies-and-Config-Examples.md)** - Configure RBAC (Owner, Reviewer, Operator roles), channel namespacing, approval gates, cost allocation
 2. **[Cost Calculator](Cost-Calculator-and-Optimization.md)** - Set up cost chargeback by team/project

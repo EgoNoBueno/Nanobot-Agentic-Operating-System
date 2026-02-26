@@ -36,11 +36,11 @@ pip install nanobot-ai
 ---
 
 
-## Quick Start (5 Minutes)
+## Quick Start (25-35 Minutes)
 
-Start here: **[Quick Install & Setup](Nanobot-Quick-Install-Setup.md)**
+Start here: **[AOS Startup Procedure: Simple Build](AOS-Startup-Simple-Build.md)**
 
-Most users will eventually want full AOS capabilities, allowing increased Autonomous Agent capabilities. The Quick Start is ideal for evaluation, prototyping, and basic use.
+The Simple Build is ideal for evaluation, prototyping, and basic use. Includes step-by-step installation, LLM provider setup, and channel integration.
 
 ### What You Get With Quick Start
 
@@ -63,10 +63,10 @@ If you follow the Quick Start guide, you will have:
 
 **Full AOS Capability:**
 
-For production deployments, advanced governance, and full automation, continue beyond Quick Start:
+For production deployments, advanced governance, and full automation, continue beyond the Simple Build:
 - See the [Governance Policies and Config Examples](Governance-Policies-and-Config-Examples.md) for multi-team, security, and compliance features
 - Use the [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md) for advanced channel management and cross-platform workflows
-- Follow the [Nanobot Build Procedure](Nanobot-Build-Procedure.md) for robust, scalable, and secure deployments
+- Follow the [AOS Startup Procedure: Advanced Build](AOS-Startup-Advanced-Build.md) for robust, scalable, and secure deployments
 
 **Additional Capabilities with Multi-Channel Integration Guide:**
 - Seamless integration with multiple communication platforms (Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix, Mochat)
@@ -81,7 +81,6 @@ For production deployments, advanced governance, and full automation, continue b
 ## Getting Started
 
 - **[Master Index](Master-Index.md)** — Overview of the entire system architecture
-- **[Quick Install & Setup](Nanobot-Quick-Install-Setup.md)** — 5-minute quick start
 - **[AOS Startup Procedure: Simple Build](AOS-Startup-Simple-Build.md)** — Deploy locally with cloud LLM (25-35 minutes)
 - **[AOS Startup Procedure: Advanced Build](AOS-Startup-Advanced-Build.md)** — Deploy on VPS with local Ollama (60-90 minutes)
 
