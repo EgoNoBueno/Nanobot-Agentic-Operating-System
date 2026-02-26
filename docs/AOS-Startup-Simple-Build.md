@@ -4,7 +4,7 @@
 
 ## Document Control
 - **Owner:**
-- **Version:** 2.2.0
+- **Version:** 2.3.0
 - **Last Updated:** 2026-02-26
 - **Status:** Active
 - **Applies To:** Path A (Simple Build) only
@@ -516,7 +516,7 @@ If you want nanobot to respond in Discord/Slack:
 
 ✅ Expected: "Hello! How can I help?" or similar
 
-If the bot doesn't respond, see [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md).
+If the bot doesn't respond, see the [channel integration guide](../nanobot/README.md).
 
 ---
 
@@ -649,6 +649,7 @@ A: Copy the `~/.nanobot/` directory to a safe location. This contains all config
 
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 2.3.0 | Fixed broken link: Multi-Channel-Integration-Guide.md → nanobot/README.md |
 | 2026-02-26 | 2.2.0 | Split from AOS-Startup-Procedure.md. Focused entirely on Simple Build (Path A). Added beginner-friendly language, cost expectations, minimum viable system callout, terminal guide, and nuclear reset option. Removed all Advanced Build content. |
 | 2026-02-25 | 2.1.0 | Initial comprehensive rewrite in parent document |
 | 2026-02-25 | 2.0.0 | Initial version |
