@@ -1,11 +1,13 @@
-# Contributing to Nanobot Agentic Operating System Documentation
+# Contributing to Nanobot AOS Documentation
 
-Thank you for your interest in improving the Nanobot documentation! This guide explains how to contribute.
+Thanks for wanting to help — contributions of all sizes are welcome here, from fixing a typo to writing a full workflow guide.
+
+Not sure if your idea is a good fit? Open an issue and ask. We're happy to talk it through before you spend time writing.
 
 ## Ways to Contribute
 
 ### 1. **Report Documentation Issues**
-Found a broken link, outdated information, or unclear explanation?
+Found a broken link, outdated information, or unclear explanation? That's a valid contribution.
 
 - **Open an issue** with:
   - Which guide has the problem
@@ -37,7 +39,7 @@ Ready to contribute code changes directly?
 1. Fork this repository
 2. Create a branch: `git checkout -b fix/issue-description`
 3. Make your changes
-4. Commit with clear message: `git commit -m "Fix: broken link in Quick Install guide"`
+4. Commit with a clear message: `git commit -m "Fix: broken link in AOS Startup Simple Build"`
 5. Push: `git push origin fix/issue-description`
 6. Open a pull request with:
    - What you fixed
@@ -72,7 +74,7 @@ Workflow examples are especially valuable! When adding one:
   - Expected output with example
   - Estimated monthly cost
   - Variations (how to adapt for different scenarios)
-- Document any platform-specific notes (Discord vs Slack differences, etc.)
+- Document any channel-specific notes (Slack vs Telegram setup differences, etc.)
 
 ## Style Guide
 
@@ -124,14 +126,17 @@ Links to related guides.
 
 **Python example:**
 ```python
-# Configure multi-provider routing
+# Configure multi-provider routing (Tier A = premium, B = balanced, C = budget)
 config = {
-    "default_model": "claude-opus",
-    "model_routing": {
-        "high_cost": ["claude-opus"],
-        "standard": ["gpt-4-turbo", "claude-sonnet"],
-        "budget": ["qwen-max", "deepseek-chat"],
-        "local": ["ollama/mistral"]
+    "llm": {
+        "routing": {
+            "rules": [
+                {"channel": "#prd-*",      "tier": "a", "provider": "anthropic",   "model": "claude-opus"},
+                {"channel": "#research-*", "tier": "b", "provider": "openrouter",  "model": "qwen2:72b"},
+                {"channel": "#bk-*",       "tier": "c", "provider": "openrouter",  "model": "deepseek-67b"},
+                {"keyword":  "urgent",     "tier": "a", "provider": "anthropic",   "model": "claude-opus"}
+            ]
+        }
     }
 }
 ```
@@ -142,8 +147,8 @@ config = {
   "channels": {
     "#prd-marketing": {
       "provider": "openrouter",
-      "model_tier": "standard",
-      "budget_monthly": 500
+      "tier": "b",
+      "monthly_budget": 50
     }
   }
 }
@@ -151,17 +156,17 @@ config = {
 
 ## Review Process
 
-1. **Submit PR** — Describe changes clearly
+1. **Submit PR** — Describe what changed and why
 2. **Automated checks** — Links validated, markdown formatted correctly
-3. **Human review** — Someone reviews for:
+3. **Human review** — We check for:
    - Accuracy (tested against actual code)
-   - Clarity (well-explained for target audience)
+   - Clarity (well-explained for the target audience)
    - Completeness (examples work, links valid)
-   - Style consistency (matches other guides)
-4. **Suggestions or approval** — We'll comment on the PR
+   - Style consistency (matches the other guides)
+4. **Feedback or approval** — Comments on the PR if changes are needed
 5. **Merge** — Once approved, your contribution is live!
 
-**Timeline:** Most reviews complete within 3-5 business days. Urgent fixes get priority.
+**Timeline:** Most reviews are done within 3–5 business days. Typo fixes and broken links get priority.
 
 ## Running Documentation Locally
 
@@ -187,9 +192,9 @@ mkdocs build
 
 ## Questions?
 
-- **Not sure if your idea is a good fit?** Open an issue and ask! We're friendly.
-- **Need clarification on a guide?** Open an issue describing what's confusing.
-- **Want to collaborate?** Mention it in your issue or PR.
+- **Not sure if your idea fits?** Open an issue and ask — no commitment required.
+- **Something in a guide confusing you?** That's useful feedback. Open an issue describing where you got stuck.
+- **Want to collaborate on something bigger?** Mention it in an issue and we can figure out the right approach together.
 
 ## Code of Conduct
 
@@ -197,7 +202,9 @@ This project welcomes contributors from all backgrounds. We expect:
 - **Respectful** — Treat others with kindness
 - **Inclusive** — Welcome diverse perspectives and experiences
 - **Professional** — Focus on the work, not personal attacks
-- **Constructive** — Criticism should be actionable and aimed at improvement
+- **Constructive** — Criticism should be specific, actionable, and aimed at improvement
+
+If something feels off, open an issue or reach out directly.
 
 Examples of unacceptable behavior:
 - Harassment, discrimination, or exclusion
