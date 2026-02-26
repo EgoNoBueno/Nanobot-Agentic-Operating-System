@@ -1,14 +1,26 @@
-# Governance Policies & Config Examples
+# Security & Governance: Policies, Config & Validation
 
-Enforce organizational guardrails, access control, and cost accountability. Templates and patterns for production deployments.
+**Complete reference for governance frameworks, access control patterns, security validation procedures, and compliance auditing.**
+
+Enforce organizational guardrails, access control, cost accountability, and security controls through governance policies and regular validation runbooks.
 
 ## Document Control
 - **Owner:**
-- **Version:** 1.0.0
-- **Last Updated:** 2026-02-25
+- **Version:** 2.0.0
+- **Last Updated:** 2026-02-26
 - **Status:** Active
 
 ---
+
+## Quick Navigation
+
+- **Part 1: Governance Model & Policies** — Access control, policy enforcement, cost routing
+- **Part 2: Security Validation & Auditing** — Monthly validation procedures, compliance checks
+- **Part 3: Common Mistakes & Solutions** — 12 governance mistakes + 6 security mistakes with fixes
+
+---
+
+# Part 1: Governance Model & Policies
 
 ## 1. Overview: The 3-Plane Governance Model
 
@@ -190,7 +202,7 @@ Risk is measured by **Magnitude of Irreversibility**. If an action is hard to un
 | **Tier 0: Safe** | ✅ Autonomous | Read-only, internal logs, low-impact data | Checking weather, reading Obsidian notes, summarizing public PDFs | No |
 | **Tier 1: Minor** | ✅ Autonomous | State changes with undo capability | Creating folders, moving temp files, adding Discord reactions | No (log only) |
 | **Tier 2: Moderate** | ⚠️ Soft-Pause | Actions affecting external data or "shadow" systems | Sending email to known contact, deleting temp folder, running scheduled reports | Conditional* |
-| **Tier 3: High** | 🛑 Hard-Pause | Actions affecting identity or security | Modifying Discord permissions, changing .env files, new SSH (Secure Shell) node access | **Yes (Approver role)** |
+| **Tier 3: High** | 🛑 Hard-Pause | Actions affecting identity or security | Modifying Discord permissions, changing .env files, new SSH node access | **Yes (Approver role)** |
 | **Tier 4: Critical** | 🔒 Locked | Destructive or system-wide changes | Deleting database, mass-sending external messages, changing Primary Operator ID | **Yes (MFA/Admin only)** |
 
 \*Conditional = approved automatically if target is allowlisted; requires approval otherwise
@@ -747,7 +759,7 @@ Research:
 
 ---
 
-## 11. Governance Checklist (Deployment)
+## 11. Governance Deployment Checklist
 
 Before going live:
 
@@ -783,65 +795,175 @@ Before going live:
 
 ---
 
-## 12. Troubleshooting Governance Issues
+# Part 2: Security Validation & Auditing
 
-| Problem | Symptom | Solution |
-|---|---|---|
-| User complains "tool not allowed" | Tool blocked for user | Check RBAC config; user in right team? Check channel policy |
-| Cost running over budget | Monthly spend exceeds threshold | Review routing rules; are low-priority tasks using high tiers? |
-| Approvals taking too long | Users waiting for action | Check approval timeout; add more approvers; use instant approval for low-risk |
-| Audit logs missing | Cannot find historical actions | Check log_level and retention; increase verbosity for critical tools |
-| Escalations not triggering | Cases not bubbling to humans | Verify escalation rules match actual thresholds; test with manual override |
+## 12. Security Validation Runbook
 
----
+**Purpose:** Recurring security validation steps for the Nanobot Agentic Operating System.
 
-## 13. Common Patterns by Organization Type
+### Validation Frequency and Ownership
 
-### Startup (Lean, Speed-Focused)
+- **Frequency:** Monthly (minimum), and after major config changes
+- **Owner:** Security/Platform Owner
+- **Operator:** Assigned Operator
+- **Reviewer:** Assigned Reviewer
 
-```json
-{
-  "teams": ["engineering"],
-  "policies": "minimal",
-  "approval": "self-approve",
-  "audit": "basic",
-  "budget": "flexible"
-}
-```
+### Preconditions
 
-**Philosophy:** Move fast, minimal overhead.
+- Access to gateway host
+- Access to Discord server settings
+- Access to Nanobot config and logs
+- Access to Obsidian operational records
 
-### Scale-Up (Multiple Teams)
+### How to Copy & Paste Commands in Linux
 
-```json
-{
-  "teams": ["engineering", "marketing", "operations"],
-  "policies": "channel-based",
-  "approval": "for high-risk + high-cost",
-  "audit": "weekly reports",
-  "budget": "per-team allocation"
-}
-```
+When you encounter bash commands in validation steps:
 
-**Philosophy:** Balance autonomy + accountability.
+**Quick reference:**
+- **Fastest:** Highlight → middle-click in terminal
+- **Reliable:** Highlight → `Ctrl+Shift+C` → `Ctrl+Shift+V` to paste
+- **Fallback:** Highlight → `Ctrl+C` → right-click Paste
 
-### Enterprise (Compliance-Heavy)
-
-```json
-{
-  "teams": ["engineering", "marketing", "operations", "legal", "finance"],
-  "policies": "strict RBAC",
-  "approval": "required for all risky actions",
-  "audit": "verbose + compliance export",
-  "budget": "strict cost centers + chargeback"
-}
-```
-
-**Philosophy:** Governance by default; audit everything.
+Middle-click paste is native to Linux/Mac terminals and requires no additional steps.
 
 ---
 
-## 14. Common Mistakes & Solutions
+## 13. Validation Sequence
+
+Execute in this order to ensure consistent evidence collection.
+
+### Step 1: Gateway Exposure Check
+- Verify gateway bind is loopback-only. (Loopback = only accessible from this computer)
+- Confirm no unintended public bind (**0.0.0.0**—which means "accessible to the whole internet") is active.
+- Validate remote access path is SSH (Secure Shell—encrypted remote access) tunnel or Tailscale network-based.
+- Validate Ollama on local Windows host is reachable from VPS (Virtual Private Server) only via trusted Tailscale path and is not publicly exposed.
+
+**Pass Criteria**
+- Gateway is loopback-bound and remote access is controlled.
+
+**Fail Criteria**
+- Any direct public exposure without approved exception.
+
+### Step 2: DM Policy and Allowlist Check
+
+**DM** = Direct Message (private messages sent to the bot, not in public channels)
+- Verify DM policy is pairing mode by default.
+- Validate unknown sender behavior (no command execution before approval).
+- Verify allowlist entries are current and minimal. (Allowlist = list of approved people/channels)
+
+**Pass Criteria**
+- DM pairing flow works and allowlist scope is least-privilege.
+
+### Step 3: Trust Boundary Check
+- Confirm no mutually untrusted operator groups share one gateway trust boundary.
+- Validate separation model (separate gateway/host/OS user) where required.
+
+**Pass Criteria**
+- Trust boundaries are documented and enforced.
+
+### Step 4: Sandbox Policy Check
+- Verify non-main/shared channels run under sandbox profile where required.
+- Confirm high-risk tools are not broadly exposed in shared contexts.
+
+**Pass Criteria**
+- Sandbox rules match policy for shared/non-main sessions.
+
+### Step 5: Security Audit Execution
+- Run `nanobot security audit --deep` (automated security check for vulnerabilities)
+- Verify deployed Nanobot version is v0.1.4 or later. (Newer versions have security fixes)
+- Review latest Nanobot security advisories and confirm no unpatched High/Critical findings apply to deployed version.
+- Capture findings and classify severity. (Severity = how serious the issue is)
+- Confirm critical findings have immediate mitigation plan.
+
+**Pass Criteria**
+- No unresolved critical findings.
+- Deployed version is at or above the current patched minimum for published advisories.
+
+### Step 6: Secrets and Token Hygiene
+- Confirm tokens/secrets are in **.env** (configuration file with secrets—NOT shared in code) or approved secret store only.
+- Confirm no secrets (API keys, passwords) are present in notes, docs, or source-controlled config.
+- Validate token rotation readiness and last rotation date. (Rotation = changing tokens regularly, like changing passwords)
+
+**Pass Criteria**
+- Secret handling policy is fully compliant.
+
+### Step 7: Logging and Evidence Integrity
+- Confirm required telemetry fields exist (**request_id**, **project_id**, **workflow_domain**, status, timestamps, model/cost fields where applicable).
+- Confirm incident and change records are persisted to Obsidian.
+
+**Pass Criteria**
+- Security-relevant logs are complete and traceable end-to-end.
+
+---
+
+## 14. Evidence to Capture
+
+- Command output snippets (including security audit)
+- Nanobot version output (**nanobot --version**) and advisory review date
+- Config screenshots or sanitized config excerpts
+- Allowlist review record
+- Sandbox policy verification record
+- Remediation tickets with owners and due dates
+
+---
+
+## 15. Remediation SLA
+
+- **Critical:** immediate containment + fix plan same day
+- **High:** remediation within 7 days
+- **Medium:** remediation within 30 days
+- **Low:** backlog with documented rationale
+
+---
+
+## 16. Runbook Output Record Template
+
+```markdown
+# Security Validation Report - <YYYY-MM-DD>
+- Run ID:
+- Owner:
+- Operator:
+- Reviewer:
+- Environment:
+
+## Results by Step
+1. Gateway Exposure Check: Pass/Fail
+2. DM Policy and Allowlist Check: Pass/Fail
+3. Trust Boundary Check: Pass/Fail
+4. Sandbox Policy Check: Pass/Fail
+5. Security Audit Execution: Pass/Fail
+6. Secrets and Token Hygiene: Pass/Fail
+7. Logging and Evidence Integrity: Pass/Fail
+
+## Findings
+- Critical:
+- High:
+- Medium:
+- Low:
+
+## Remediation Plan
+- Item:
+  - Owner:
+  - Due Date:
+  - Status:
+
+## Final Decision
+- Overall Status: Pass / Conditional Pass / Fail
+- Next Review Date:
+```
+
+---
+
+## 17. Go/No-Go Rule
+
+- **Go:** all critical controls pass and no unresolved critical findings.
+- **No-Go:** any unresolved critical finding or trust-boundary violation.
+
+---
+
+# Part 3: Common Mistakes & Solutions
+
+## 18. Governance Common Mistakes
 
 ### ❌ Mistake 1: RBAC Config Too Restrictive, Users Blocked
 **Problem:** Team members can't use necessary tools; constant "not allowed" errors  
@@ -999,9 +1121,227 @@ Before going live:
 
 ---
 
-## Revision History
+## 19. Security Common Mistakes
+
+### ❌ Mistake 7: Security Audit Shows Findings But No Remediation Plan
+**Problem:** Audit fails with "3 High severity findings"; validation stops  
+**Why:** Findings documented, but no owner/timeline assigned  
+**Fix:**
+1. For each High/Critical finding, create remediation ticket immediately:
+   ```markdown
+   # Remediation: [Issue name]
+   - Owner: @specific_person (not "team")
+   - Due Date: [7 days from today for High]
+   - Priority: High
+   - Ticket: <link>
+   ```
+2. Don't mark validation as "Conditional Pass" without assigned owner + date
+3. Follow up: Check status 3 days before due date
+
+### ❌ Mistake 8: Token Rotation Never Happens - Old Tokens Still Active
+**Problem:** Last rotation was 6 months ago; old Discord token still working  
+**Why:** No automated reminder; no rotation policy enforced  
+**Fix:**
+1. **Set up rotation auto-reminders:**
+   ```bash
+   nanobot schedule "Rotate Discord token" cron "0 9 1 * *"  # 1st of month at 9am
+   nanobot schedule "Rotate API keys" cron "0 9 15 * *"     # 15th of month
+   ```
+2. **Document last rotation date:**
+   ```markdown
+   - Discord token: Last rotated [DATE] - Due [DATE+90days]
+   - OpenRouter API: Last rotated [DATE] - Due [DATE+90days]
+   - GitHub token: Last rotated [DATE] - Due [DATE+90days]
+   ```
+3. **Enforce in config:**
+   ```json
+   {
+     "secrets": {
+       "rotation_policy": "every_90_days",
+       "expiry_alert_days": 14
+     }
+   }
+   ```
+
+### ❌ Mistake 9: Sandbox Rules Documented But Not Enforced
+**Problem:** Security says "shared channels run in sandbox"; in reality, they don't  
+**Why:** Sandbox policy written but config doesn't enforce it  
+**Fix:**
+1. **Check actual config enforces sandbox:**
+   ```json
+   {
+     "channels": {
+       "#general": {
+         "sandbox": true,
+         "allowed_tools": ["web_search", "message_send"],
+         "disallowed_tools": ["shell_exec", "file_write"]
+       },
+       "#devops": {
+         "sandbox": false,
+         "allowed_tools": "all"
+       }
+     }
+   }
+   ```
+2. **Verify it's actually enforced:**
+   ```bash
+   nanobot config --validate
+   # If validation passes, config is syntactically correct
+   # But config enforcement = separate system check
+   ```
+3. **Test sandbox actually blocks:**
+   ```
+   /in #general shell_exec ls
+   # Should get: "Blocked: shell_exec not allowed in #general (sandbox)"
+   ```
+
+### ❌ Mistake 10: Secrets in Git History - Can't Be Removed
+**Problem:** Someone committed API key to GitHub 3 months ago; it's still in history  
+**Why:** Used plain `git rm` instead of removing from history  
+**Fix:**
+1. **If accidental commit is recent**, use filter-branch:
+   ```bash
+   git filter-branch --force --index-filter \
+     'git rm --cached --ignore-unmatch config.json' \
+     -- --all
+   ```
+2. **Force push to remote:**
+   ```bash
+   git push origin --force --all
+   ```
+3. **Immediately revoke the compromised token in the service (GitHub, Discord, etc.)**
+4. **Add to .gitignore to prevent future commits:**
+   ```bash
+   echo "config.json" >> .gitignore
+   echo ".env" >> .gitignore
+   echo "secrets/*" >> .gitignore
+   git add .gitignore && git commit -m "Add secrets to gitignore"
+   ```
+
+### ❌ Mistake 11: Trust Boundary Violation - Multiple Untrusted Groups Share Gateway
+**Problem:** Engineering team and Marketing team both use same gateway; engineer accesses marketing's Slack token  
+**Why:** Didn't enforce separation; all users on same process  
+**Fix:**
+```yaml
+❌ No trust boundary enforcement:
+gateway:
+  users: ["eng-team", "marketing-team"]  # Same process!
+
+✅ Separate trust boundaries:
+gateway_engineering:
+  users: ["eng-team"]
+  bind: "127.0.0.1:8000"
+
+gateway_marketing:
+  users: ["marketing-team"]
+  bind: "127.0.0.1:8001"
+
+# Even better: Separate hosts/VMs
+```
+2. **Implement:** Create separate gateway instances for each trust group
+3. **Verify separation:**
+   ```bash
+   ps aux | grep nanobot
+   # Should see multiple nanobot processes with different ports
+   ```
+
+### ❌ Mistake 12: Allowlist Has Old Users Who Left Company
+**Problem:** Employee left 6 months ago; bot still accepts DMs from their old Discord account  
+**Why:** Never removed from allowlist config  
+**Fix:**
+1. **Quarterly audit:**
+   ```json
+   {
+     "dms": {
+       "allowlist": [
+         "alice (joined 2026-01-15)",
+         "bob (joined 2025-09-01)",
+         "dave (REVOKED 2026-02-01 - left company)"  // Mark as revoked
+       ]
+     }
+   }
+   ```
+2. **Enforce allowlist strictly:**
+   ```bash
+   nanobot config dms.allowlist --validate
+   # Check for stale/revoked entries
+   ```
+3. **When employee leaves:**
+   - Remove from allowlist immediately
+   - Revoke any API tokens they created
+   - Check `~/.nanobot/logs/` for any emergency access patterns
+
+---
+
+## 20. Troubleshooting Governance Issues
+
+| Problem | Symptom | Solution |
+|---|---|---|
+| User complains "tool not allowed" | Tool blocked for user | Check RBAC config; user in right team? Check channel policy |
+| Cost running over budget | Monthly spend exceeds threshold | Review routing rules; are low-priority tasks using high tiers? |
+| Approvals taking too long | Users waiting for action | Check approval timeout; add more approvers; use instant approval for low-risk |
+| Audit logs missing | Cannot find historical actions | Check log_level and retention; increase verbosity for critical tools |
+| Escalations not triggering | Cases not bubbling to humans | Verify escalation rules match actual thresholds; test with manual override |
+
+---
+
+## 21. Common Patterns by Organization Type
+
+### Startup (Lean, Speed-Focused)
+
+```json
+{
+  "teams": ["engineering"],
+  "policies": "minimal",
+  "approval": "self-approve",
+  "audit": "basic",
+  "budget": "flexible"
+}
+```
+
+**Philosophy:** Move fast, minimal overhead.
+
+### Scale-Up (Multiple Teams)
+
+```json
+{
+  "teams": ["engineering", "marketing", "operations"],
+  "policies": "channel-based",
+  "approval": "for high-risk + high-cost",
+  "audit": "weekly reports",
+  "budget": "per-team allocation"
+}
+```
+
+**Philosophy:** Balance autonomy + accountability.
+
+### Enterprise (Compliance-Heavy)
+
+```json
+{
+  "teams": ["engineering", "marketing", "operations", "legal", "finance"],
+  "policies": "strict RBAC",
+  "approval": "required for all risky actions",
+  "audit": "verbose + compliance export",
+  "budget": "strict cost centers + chargeback"
+}
+```
+
+**Philosophy:** Governance by default; audit everything.
+
+---
+
+## 22. Revision History
 
 | Date | Version | Change |
 |---|---|---|
-| 2026-02-25 | 1.0.0 | Initial governance policies and config examples |
+| 2026-02-26 | 2.0.0 | Consolidated Security Validation Runbook and Governance Policies into single comprehensive guide |
+| 2026-02-25 | 1.0.0 (Governance) | Initial governance policies and config examples |
+| 2026-02-23 | 1.0.0 (Security) | Initial monthly security validation runbook |
 
+---
+
+## Related Documents
+- [Master Index](Master-Index.md)
+- [Skills & Tools Complete Guide](Skills-and-Tools-Complete-Guide.md)
+- [Cost Calculator & Optimization](Cost-Calculator-and-Optimization.md)

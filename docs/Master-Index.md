@@ -161,12 +161,12 @@ Use these docs as references when following one of the three roadmaps above.
 - [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md) - Set up Discord, Slack, Telegram, Feishu, or other platforms
 
 ### Operations & Deployment
-- [Nanobot Build Procedure](Nanobot-Build-Procedure.md) - Deploy framework (local or VPS)
 - [AOS Startup: Simple Build](AOS-Startup-Simple-Build.md) - Run nanobot on your computer with cloud LLM (fast, cheapest to test)
 - [AOS Startup: Advanced Build](AOS-Startup-Advanced-Build.md) - Run on VPS with local Ollama (24/7, zero per-query costs)
 
 ### Features & Extensibility
 - [Skills & Tools Complete Guide](Skills-and-Tools-Complete-Guide.md) - All 14 built-in tools, 9 pre-built skills, 5-skill essential quickstart, and custom skill development
+- [Security & Governance Policies](Security-and-Governance-Policies.md) - Access control patterns, approval workflows, governance models, and monthly security validation
 
 ### Workflows & Examples
 - [Workflow Examples & Recipes](Workflow-Examples-and-Recipes.md) - Real-world workflows: knowledge consolidation, multi-channel posting, customer support bot, research agent, GitHub automation

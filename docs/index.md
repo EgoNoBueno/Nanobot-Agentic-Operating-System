@@ -87,6 +87,7 @@ For production deployments, advanced governance, and full automation, continue b
 ## Operating Nanobot
 
 - **[Skills & Tools Reference](Skills-and-Tools-Complete-Guide.md)** — Complete inventory of all capabilities
+- **[Security & Governance](Security-and-Governance-Policies.md)** — Access control, approval workflows, and security validation
 - **[Workflow Examples](Workflow-Examples-and-Recipes.md)** — Real-world workflows to copy & customize
   - Daily knowledge consolidation
   - Multi-channel content distribution
