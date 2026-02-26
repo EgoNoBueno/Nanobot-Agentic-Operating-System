@@ -108,10 +108,56 @@ Example ways this AOS supports organizations:
 - **Customer Support:** Automate FAQ routing, search knowledge base, generate pre-approval responses, escalate complex cases to humans with full context.
 - **Operations/DevOps:** Automate GitHub workflow triggers, monitor system health via cron jobs, log incidents with evidence, execute runbooks via shell tools.
 
-## 2. Core Documents
+## 2. Getting Started Roadmap
+
+Choose your path based on your goal:
+
+### 2.1 Quick Trial (5-10 minutes)
+**Goal:** Try nanobot immediately with minimal setup.
+
+1. **[Master Index](Master-Index.md)** (this file) - Understand what you're building (3 planes, capabilities, tools)
+2. **[Nanobot Quick Install & Setup](Nanobot-Quick-Install-Setup.md)** - Install and test with default config
+3. **[LLM Provider Setup](LLM-Provider-Setup-Guide.md)** - Add one LLM provider (e.g., OpenRouter or local Ollama)
+4. **[Multi-Channel Integration](Multi-Channel-Integration-Guide.md)** - Connect one chat platform (Discord or Slack)
+5. **[Workflow Examples](Workflow-Examples-and-Recipes.md)** - Copy and run a simple workflow
+
+**Result:** Functional nanobot in <15 minutes. Explore, test, then decide to scale.
+
+### 2.2 Production Setup (1-2 hours)
+**Goal:** Deploy a professional system with cost controls, governance, and reliability.
+
+1. **[Master Index](Master-Index.md)** - Understand 3-plane model, RACI roles, cost controls
+2. **[Cost Calculator](Cost-Calculator-and-Optimization.md)** - Plan monthly spend, choose provider routing strategy
+3. **[Nanobot Build Procedure](Nanobot-Build-Procedure.md)** - Choose Path A (local + cloud LLM) or Path B (VPS + Ollama), deploy
+4. **[LLM Provider Setup](LLM-Provider-Setup-Guide.md)** - Configure all providers you'll use (multi-provider routing)
+5. **[Multi-Channel Integration](Multi-Channel-Integration-Guide.md)** - Set up all communication channels (Discord, Slack, Telegram, etc.)
+6. **[Essential AOS Skills](Essential-AOS-Skills.md)** - Install core skills (obsidian, memory, summarize, github, cron)
+7. **[AOS Startup Procedure](AOS-Startup-Procedure.md)** - Start the system and verify health
+8. **[Tools & Skills Reference](Tools-and-Skills-Reference.md)** - Learn what 14 tools and 9 skills you have available
+9. **[Workflow Examples](Workflow-Examples-and-Recipes.md)** - Implement 1-2 real workflows for your use case
+10. **[Governance Policies](Governance-Policies-and-Config-Examples.md)** - Set up access control, allowlists, cost caps (optional for solo users; required for teams)
+
+**Result:** Production-grade nanobot with cost controls, memory/audit trails, and multi-channel support.
+
+### 2.3 Multi-Team Deployment (2-4 hours + ongoing)
+**Goal:** Deploy across teams with role-based access, approval workflows, and cost chargeback.
+
+Follow **Production Setup** path above, then:
+
+1. **[Governance Policies](Governance-Policies-and-Config-Examples.md)** - Configure RBAC (Owner, Reviewer, Operator roles), channel namespacing, approval gates, cost allocation
+2. **[Cost Calculator](Cost-Calculator-and-Optimization.md)** - Set up cost chargeback by team/project
+3. **[Security Validation Runbook](Security-Validation-Runbook.md)** - Run monthly security audit, validate allowlists and tool restrictions
+
+**Result:** Nanobot operates safely across multiple teams with clear governance, spending transparency, and audit trails.
+
+---
+
+## 3. Core Documents (Reference)
+
+Use these docs as references when following one of the three roadmaps above.
 
 ### Setup & Installation
-- [Nanobot Quick Install & Setup](Nanobot-Quick-Install-Setup.md) ⭐ **Start here** - Install nanobot, configure LLM provider, verify setup
+- [Nanobot Quick Install & Setup](Nanobot-Quick-Install-Setup.md) - Install nanobot, configure LLM provider, verify setup
 - [LLM Provider Setup Guide](LLM-Provider-Setup-Guide.md) - Configure Claude, GPT, local Ollama, Qwen, and other models
 - [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md) - Set up Discord, Slack, Telegram, Feishu, or other platforms
 
@@ -133,9 +179,9 @@ Example ways this AOS supports organizations:
 ### Security & Compliance
 - [Nanobot Agentic Operating System Security Validation Runbook](Security-Validation-Runbook.md) - Monthly security audit, hardening steps, incident response
 
-## 3. Interoperability Summary
+## 4. Interoperability Summary
 
-### 3.1 System Handshake (Channel-Independent)
+### 4.1 System Handshake (Channel-Independent)
 1. **Operator sends request** in any integrated channel (Discord, Slack, Telegram, Feishu, etc.) using chat interface.
 2. **Channel Integration** receives message and forwards to Nanobot via message bus event (InboundMessage).
 3. **Agent Loop** receives event; builds context: conversation history, user permissions, LLM policy, available tools.
@@ -149,7 +195,7 @@ Example ways this AOS supports organizations:
 7. **Memory Logging** - Structured metadata written to Obsidian: **request_id**, **project_id**, **workflow_domain**, tokens, cost, tools used
 8. **Channel Output** - Response posted back to original channel (Discord, Slack, Telegram, etc.) with reference links
 
-### 3.2 Shared Control Principles
+### 4.2 Shared Control Principles
 - **Channel agnostic** - Governance works the same regardless of communication platform.
 - **Least privilege** - Bot and user permissions restricted to required channels/tools; operator role gates sensitive actions.
 - **Context isolation** - Separate sessions by user; channel family prevents cross-project data leakage.
@@ -159,7 +205,7 @@ Example ways this AOS supports organizations:
 - **Durable audit trail** - Obsidian artifacts provide replay, recovery, and compliance evidence.
 - **Restore drills** - Periodic validation that artifacts can be replayed and systems recovered.
 
-### 3.3 Security Baseline (Cross-Doc)
+### 4.3 Security Baseline (Cross-Doc)
 - **Configuration-driven access control** - Allowlist of users/channels per tool in `config.json` or environment.
 - **Remote access** - VPS-based agent uses SSH + Tailscale tunnel OR public cloud API auth (no direct public exposure).
 - **Session isolation** - Each user gets independent session; no cross-user context bleed.
@@ -170,7 +216,7 @@ Example ways this AOS supports organizations:
 - **Incident response** - Failed security checks automatically escalate; sensitive operations require explicit approval.
 - **Secret management** - API keys, model credentials, MCP auth stored in `.env`, never committed to version control.
 
-## 4. Shared Data Contract (Cross-Doc)
+## 5. Shared Data Contract (Cross-Doc)
 Use these fields consistently across Discord logs, LLM telemetry, and Obsidian notes:
 - **request_id**
 - **project_id**
@@ -184,9 +230,9 @@ Use these fields consistently across Discord logs, LLM telemetry, and Obsidian n
 
 > **Plain-English Note:** Using the same core fields across systems makes tracing and recovery much faster.
 
-## 5. Naming and Path Standards
+## 6. Naming and Path Standards
 
-### 5.1 Multi-Channel Naming Convention
+### 6.1 Multi-Channel Naming Convention
 Use consistent naming across all integrated channels (Discord, Slack, Telegram, Feishu, etc.) for easy operator recognition:
 - **Product channels:** `prd-<project_id>-marketing`, `prd-<project_id>-sales`, `prd-<project_id>-analytics`
 - **Bookkeeping channels:** `bk-<project_id>-inbox`, `bk-<project_id>-reconcile`, `bk-<project_id>-reporting`
@@ -195,7 +241,7 @@ Use consistent naming across all integrated channels (Discord, Slack, Telegram, 
 
 > **Note:** Exact channel naming syntax varies by platform (Discord uses `#`, Slack uses `#`, Telegram uses group names, Feishu uses channel topics, etc.), but adopt this semantic naming across all platforms.
 
-### 5.2 Obsidian Vault Structure (v1)
+### 6.2 Obsidian Vault Structure (v1)
 - **02-Ideas/<project_id>/** - Proposals, hypotheses, early-stage concepts
 - **08-Research/<year>/<project_id>/** - Research artifacts, syntheses, cited sources
 - **07-Operations/Change-Records/<project_id>/** - Approved changes, executions, outcomes
@@ -203,7 +249,7 @@ Use consistent naming across all integrated channels (Discord, Slack, Telegram, 
 - **00-System/AOS-Journal/** - Daily operational journaling (if journaler skill is enabled)
 - **00-System/Audit-Logs/** - Monthly security audit results and remediation
 
-### 5.3 Web Research Tier Mapping (Channel → Model Class)
+### 6.3 Web Research Tier Mapping (Channel → Model Class)
 When enabling web search (Brave API), use these tier guidelines to balance cost and depth:
 
 | Channel Family | Research Depth | Cost Tier | Model Tier | Notes |
@@ -217,7 +263,7 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 
 > **Plain-English Note:** R1 = cheap/shallow, R2 = moderate cost/depth, R3 = expensive/comprehensive. Model tier (A/B/C) controls which LLM is used; escalate to higher-cost models only for complex work.
 
-## 6. RACI Snapshot (Who Owns What)
+## 7. RACI Snapshot (Who Owns What)
 | Area | Owner | Operator | Reviewer |
 |---|---|---|---|
 | Discord channel policy | Owner | Operator | Reviewer |
@@ -226,7 +272,7 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 | Incident response execution | Owner | Operator | Reviewer |
 | Recovery drill governance | Owner | Operator | Reviewer |
 
-## 7. Review Cadence
+## 8. Review Cadence
 - Daily: alerts, budget anomalies, failed runs.
 - Weekly: KPI and cost review, blocked workflow review.
 - Monthly: restore drill and policy adjustments.
