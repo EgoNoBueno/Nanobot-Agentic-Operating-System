@@ -131,7 +131,7 @@ Choose your path based on your goal:
    - **Simple Build (25-35 min):** [AOS-Startup-Simple-Build](AOS-Startup-Simple-Build.md) - Run nanobot on your computer with cloud AI
    - **Advanced Build (60-90 min):** [AOS-Startup-Advanced-Build](AOS-Startup-Advanced-Build.md) - Run on VPS with local Ollama for 24/7 operation
 5. **[LLM Provider Setup](LLM-Provider-Setup-Guide.md)** - Configure all providers you'll use (multi-provider routing)
-6. **[Multi-Channel Integration](Multi-Channel-Integration-Guide.md)** - Set up all communication channels (Discord, Slack, Telegram, etc.)
+- See **[nanobot/README.md](../nanobot/README.md)** for channel setup (Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix, Mochat)
 7. **[Skills & Tools Reference](Skills-and-Tools-Complete-Guide.md)** - Learn all 14 tools, 9 skills, and how to develop custom skills
 9. **[Workflow Examples](Workflow-Examples-and-Recipes.md)** - Implement 1-2 real workflows for your use case
 10. **[Security & Governance Policies](Security-and-Governance-Policies.md)** - Set up access control, allowlists, cost caps (optional for solo users; required for teams)

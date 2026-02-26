@@ -64,18 +64,9 @@ If you follow the Quick Start guide, you will have:
 **Full AOS Capability:**
 
 For production deployments, advanced governance, and full automation, continue beyond the Simple Build:
-- See the [Governance Policies and Config Examples](Governance-Policies-and-Config-Examples.md) for multi-team, security, and compliance features
-- Use the [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md) for advanced channel management and cross-platform workflows
+- See [Security & Governance Policies](Security-and-Governance-Policies.md) for multi-team access control, approval workflows, and compliance
 - Follow the [AOS Startup Procedure: Advanced Build](AOS-Startup-Advanced-Build.md) for robust, scalable, and secure deployments
-
-**Additional Capabilities with Multi-Channel Integration Guide:**
-- Seamless integration with multiple communication platforms (Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix, Mochat)
-- Centralized management of channel policies, naming conventions, and access controls
-- Ability to route tasks, messages, and workflows across channels for team collaboration
-- Custom channel-specific behaviors, escalation rules, and approval workflows
-- Enhanced notification, alerting, and cross-channel automation
-- Improved audit logging and traceability for all channel interactions
-- Support for multi-team deployments and channel isolation
+- See [nanobot/README.md](../nanobot/README.md) for channel setup (Discord, Slack, Telegram, Feishu, etc.)
 
 
 ## Getting Started
