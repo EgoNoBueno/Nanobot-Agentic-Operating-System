@@ -4,7 +4,7 @@ Real-world nanobot workflows. Copy, customize, and deploy.
 
 ## Document Control
 - **Owner:**
-- **Version:** 1.0.0
+- **Version:** 1.1.0
 - **Last Updated:** 2026-02-25
 - **Status:** Active
 
@@ -12,7 +12,7 @@ Real-world nanobot workflows. Copy, customize, and deploy.
 
 ## 1. Daily Knowledge Consolidation (Obsidian + Cron + Summarize)
 
-**Goal:** Every night at 2am, summarize yesterday's Discord #prd channel into Obsidian vault.
+**Goal:** Every night at 2am, summarize yesterday's activity from a monitored channel into your Obsidian vault.
 
 **Tools used:** cron_schedule, file_read, file_write, shell_exec (python + summarize skill)
 
@@ -47,14 +47,14 @@ Real-world nanobot workflows. Copy, customize, and deploy.
 }
 ```
 
-**1.2 Create Cron Job (in Discord):**
+**1.2 Create Cron Job (in your control channel, e.g. `#ctl-nanobot-commands`):**
 
 Send this message to trigger scheduled job creation:
 
 ```
 @BotName cron create: nightly_prd_summary
   schedule: "0 2 * * *"
-  action: "Summarize Discord #prd from yesterday and write to Obsidian daily-standup/{date}.md"
+  action: "Summarize #prd from yesterday and write to Obsidian daily-standup/{date}.md"
   provider: qwen2:latest
   output_format: markdown
 ```
@@ -138,7 +138,7 @@ action: "Summarize and post to Slack #daily-standup"
 
 ## 2. Multi-Channel Content Distribution
 
-**Goal:** User writes article in Discord. Automatically posts to Discord, Slack, Telegram with platform-specific formatting.
+**Goal:** User posts article in one channel. Nanobot automatically reformats and distributes it to Discord, Slack, and Telegram with platform-specific formatting.
 
 **Tools used:** message_send (with channel routing), file_read, shell_exec (for formatting)
 
@@ -160,18 +160,18 @@ action: "Summarize and post to Slack #daily-standup"
       "enabled": true,
       "default_channel": "discord",
       "routing": {
-        "twitter": "telegram",
         "blog": ["discord", "slack"],
-        "announcement": ["discord", "slack", "telegram"]
+        "announcement": ["discord", "slack", "telegram"],
+        "internal": ["slack"]
       }
     }
   }
 }
 ```
 
-**2.2 Trigger in Discord:**
+**2.2 Trigger (from any connected channel):**
 
-User post in #content-hub:
+User post in `#content-hub` (or equivalent):
 
 ```
 @BotName post:
@@ -410,7 +410,7 @@ Common pattern: LLM routing + tool composition + memory consolidation.
 
 | Framework | LLM Support | Tools | Channels | Cost/mo |
 |---|---|---|---|---|
-| **Nanobot** | 100+ | 14 | 12+ | $0-200 |
+| **Nanobot** | 100+ | 14 | 11 | $0-200 |
 | **AutoGPT-7** | OpenAI only | 30 | 5 | $50-500 |
 | **Cursor-AI** | varies | 50+ | 3 | $20-300 |
 
@@ -440,11 +440,11 @@ Generated 2026-02-25 by Nanobot Research Agent
 
 ## 5. GitHub Automation & Daily Standup
 
-**Goal:** Every morning, summarize overnight PRs/issues, post to Discord #engineering.
+**Goal:** Every morning, summarize overnight PRs/issues, post to `#engineering` (or your team channel).
 
 **Tools used:** github_search, github_pr_create, github_action_trigger, summarize skill, message_send, cron_schedule
 
-**Why useful:** Engineering team aware of PRs needing review without checking GitHub.
+**Why useful:** Engineering team is aware of PRs needing review without checking GitHub manually.
 
 ### Setup
 
@@ -470,7 +470,7 @@ Generated 2026-02-25 by Nanobot Research Agent
 }
 ```
 
-**5.2 Create Cron Job:**
+**5.2 Create Cron Job (in your control channel):**
 
 ```
 @BotName cron create: morning_github_standup
@@ -478,7 +478,7 @@ Generated 2026-02-25 by Nanobot Research Agent
   action: "
     Get all open PRs and issues from last 24h across repos
     Summarize: PRs awaiting review, merged PRs, new critical issues
-    Post to Discord #engineering with action items
+    Post to #engineering with action items
   "
   provider: openrouter/qwen2:latest
 ```
@@ -495,7 +495,7 @@ Bot fetches from GitHub:
 
 Generates summary:
 
-**Discord #engineering:**
+**#engineering (your team channel):**
 
 ```
 📊 GitHub Standup - Thursday Feb 25
@@ -569,13 +569,13 @@ Generates summary:
     3. Summarize project updates
     4. Generate weekly review
     5. Save to 03-Archive/weekly-{date}.md
-    6. Post summary to Discord #weekly-review
+    6. Post summary to #weekly-review
   "
 ```
 
 ### Sample Output
 
-**Discord #weekly-review:**
+**#weekly-review (your channel):**
 
 ```
 📋 Weekly Review - Week of Feb 24
@@ -622,7 +622,7 @@ Generates summary:
 
 ### ❌ Mistake 2: API Rate Limits Hit, Workflow Stops Silently
 **Problem:** Workflow runs once, then stops. No error messages.  
-**Why:** Discord/Slack/web search API limits exceeded; nanobot backs off  
+**Why:** Channel platform or web search API limits exceeded; nanobot backs off  
 **Fix:**
 1. Check logs: `nanobot logs --filter="rate_limit"`
 2. Add backoff to config:
@@ -636,7 +636,7 @@ Generates summary:
    }
    ```
 3. Stagger workflows: Don't run 5 at 2am (spread to 2am, 2:10am, 2:20am)
-4. Upgrade API tier if hitting hard limits (Discord: Level 2+; OpenRouter: Tier B+)
+4. Upgrade API tier if hitting hard limits (check your channel platform's bot documentation for tier options; check your LLM provider dashboard for rate limit upgrades)
 
 ### ❌ Mistake 3: Config Typo Silently Disables Entire Workflow
 **Problem:** Feature doesn't work, but no error message  
@@ -670,27 +670,28 @@ chmod 755 /path/to/obsidian/vault
 nanobot write test "/path/to/obsidian/vault/test.md"
 ```
 
-### ❌ Mistake 5: Discord/Slack Bot Missing Permissions
-**Problem:** Workflow tries to send message, fails silently or "Forbidden"  
-**Why:** Bot doesn't have Send Messages / Read History permissions on channel  
+### ❌ Mistake 5: Bot Missing Channel Permissions
+**Problem:** Workflow tries to send message, fails silently or with "Forbidden" error  
+**Why:** The bot account doesn't have Send/Read permissions for the target channel  
 **Fix:**
-1. In Discord/Slack admin panel, grant bot these permissions:
+1. In your platform's admin panel, grant the bot these permissions on the target channel:
    - ✅ Send Messages / Post Messages
    - ✅ Read Message History
    - ✅ Manage Messages (if deleting old summaries)
-   - ✅ Embed Links (for formatted output)
-2. Test bot can send: `@BotName test` in target channel
-3. If "Missing Access" error: Bot likely removed from channel
-   - Reinvite: `@BotName invite #channel-name`
+   - ✅ Embed Links (for formatted output — Discord/Slack)
+2. Test the bot can send: `@BotName test` in target channel
+3. If access is still denied: the bot may have been removed from the channel — re-invite it via your platform's channel settings
+4. Check nanobot logs for the specific error: `nanobot logs --filter="forbidden\|permission"`
 
 ### ❌ Mistake 6: Tokens/Secrets Hardcoded in Config
 **Problem:** Config file with API keys committed to GitHub (security breach!)  
 **Why:** Used hardcoded token instead of environment variable  
 **Fix:**
 1. **Immediately:** Revoke all tokens in API provider dashboard
-2. **Remove from history:**
+2. **Remove from history** (requires `git filter-repo` — install with `pip install git-filter-repo`):
    ```bash
-   git filter-branch --force --index-filter 'git rm --cached -r -f ~/.nanobot/config.json' -- --all
+   git filter-repo --path ~/.nanobot/config.json --invert-paths
+   git push --force --all
    ```
 3. **Use environment variables instead:**
    ```json
@@ -759,5 +760,6 @@ Variations:
 
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 1.1.0 | Accuracy & utility review: fixed channel count 12+→11 (§4 table); removed unsupported "twitter" routing key from §2 config; generalized Discord-specific goal/trigger/output language to channel-agnostic in §1, §2, §5, §6; generalized §Mistake 2 rate limit guidance; generalized §Mistake 5 title and fix body; replaced deprecated `git filter-branch` with `git filter-repo` in §Mistake 6 |
 | 2026-02-25 | 1.0.0 | Initial workflow examples and recipes |
 
