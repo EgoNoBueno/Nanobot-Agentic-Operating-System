@@ -650,6 +650,79 @@ If you configured Discord/Slack in the config:
 
 ---
 
+## (Optional) Systemd Service: Auto-Start on VPS Reboot
+
+To make nanobot automatically start when your VPS reboots (recommended for production):
+
+### Step 1: Create Service File
+
+On your VPS:
+```bash
+sudo nano /etc/systemd/system/nanobot.service
+```
+
+Paste this content:
+```ini
+[Unit]
+Description=Nanobot Agentic Operating System Gateway
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root
+ExecStart=/usr/bin/python3 -m nanobot.gateway
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Press `Ctrl+X`, then `Y`, then `Enter` to save.
+
+### Step 2: Enable & Start Service
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable nanobot
+sudo systemctl start nanobot
+```
+
+### Step 3: Verify Service Status
+
+```bash
+sudo systemctl status nanobot
+# Should show: active (running)
+```
+
+### Step 4: View Logs
+
+```bash
+# View recent logs
+sudo journalctl -u nanobot -n 50
+
+# Follow logs in real-time (Ctrl+C to exit)
+sudo journalctl -u nanobot -f
+```
+
+---
+
+## Cost & Performance Reference
+
+| Component | Setup Cost | Ongoing Cost/Month | Performance | Best For |
+|---|---|---|---|---|
+| **VPS (gateway)** | $0 | $5–20 | Constant uptime | 24/7 operations |
+| **Local Ollama (inference)** | GPU or CPU | $0 | 2–10s latency | Privacy-first, self-hosted |
+| **Tailscale tunnel** | $0 | $0 (free tier) | <100ms latency | Secure remote connection |
+| **Total (Advanced Build)** | Initial VPS setup | $5–20/month + local electricity (~$10–20) | 3–15s per query | Production, privacy, 24/7 |
+
+**Comparison to Simple Build:** Simple Build costs $0.01–0.10 per message but requires manual operation. Advanced Build has a fixed monthly cost but runs 24/7 without intervention.
+
+---
+
 ## Shutdown Procedure
 
 ### Stop Ollama (Local Computer)
