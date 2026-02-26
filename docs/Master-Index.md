@@ -5,7 +5,7 @@
 **Last Updated:** February 25, 2026
 
 ## 1. Purpose
-This document is the control index for the Nanobot operational document set. It shows how **multiple communication channels, LLM governance, and Obsidian memory work together as one coordinated system**—independent of which chat platform (Discord, Slack, Telegram, Feishu, etc.) operators use.
+This document is the control index for the Nanobot documentation set. It explains how **multiple communication channels, LLM (Large Language Model) governance, and Obsidian memory work together as one coordinated system**—independent of which chat platform (Discord, Slack, Telegram, Feishu, etc.) you use.
 
 ### 1.1 Executive Summary (One-Page)
 The Nanobot Agentic Operating System is a **three-plane, channel-agnostic operating model**:
@@ -13,7 +13,7 @@ The Nanobot Agentic Operating System is a **three-plane, channel-agnostic operat
 - **Policy Plane (LLM Governance):** model routing (Claude, GPT, Qwen, Ollama, etc.), risk gates, budget controls, and cost optimization.
 - **Memory Plane (Obsidian):** durable records, audit trails, recovery evidence, and long-term knowledge indexing.
 
-**Nanobot** is the agent orchestration runtime: it receives messages from any integrated channel, routes them through policy constraints, executes tasks (shell commands, file operations, web research, API calls, MCP tools, scheduled jobs), manages memory, and returns results back to the operator's chosen platform.
+**Nanobot** is the orchestration engine that powers the system. It listens to messages from any integrated channel, routes them through your policies, executes tasks (shell commands, file operations, web research, API calls, MCP (Model Context Protocol) tools, scheduled jobs), remembers what it learns, and sends results back to your chosen chat platform.
 
 **How it works in practice:**
 1. Operator sends request in a policy-approved channel (e.g., Discord **#prd-widget-marketing**, Slack **#prd-widget-marketing**, Telegram group, or any supported platform).
@@ -38,39 +38,39 @@ The Nanobot Agentic Operating System is a **three-plane, channel-agnostic operat
 ### 1.2 Nanobot Core Capabilities
 Nanobot ships with these built-in features:
 
-**LLM Provider Routing:**
-- OpenAI (GPT-4, etc.), Anthropic (Claude), Google Gemini, Cohere, Mistral, DeepSeek, Qwen, Moonshot, MiniMax, VolcEngine
-- Local inference via vLLM or Ollama
+**LLM Provider Routing:** (Choose which AI model to use for each task)
+- Cloud providers: OpenAI (GPT-4, etc.), Anthropic (Claude), Google Gemini, Cohere, Mistral, DeepSeek, Qwen, Moonshot, MiniMax, VolcEngine
+- Local inference via vLLM or Ollama (free, runs on your computer)
 - Custom provider support for proprietary models
-- Prompt caching (Anthropic) for cost optimization
-- Token budgeting and cost estimation
+- Prompt caching (Anthropic) to save on costs
+- Automatic cost estimation and token budgeting
 
-**Multi-Channel Integration:**
-- Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix/Element, Mochat, CLI (local)
-- Channel-level access control and allowlists
-- Media/file support across platforms
-- Long message handling (Discord splitting, Slack threading, etc.)
+**Multi-Channel Integration:** (Listen on any chat platform)
+- Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix/Element, Mochat, CLI (local terminal)
+- Control who can use nanobot in each channel
+- Send and receive media and files
+- Handle long messages automatically (Discord splitting, Slack threading, etc.)
 
-**Tool System (What Nanobot Can Execute):**
-- **Web Search & Fetch** - Real-time search via Brave API, page retrieval
-- **File Operations** - Read, write, edit, list files (workspace-scoped)
-- **Shell Commands** - Execute system commands (operator-restricted)
-- **Message/Notifications** - Send alerts, escalations, cross-channel notifications
-- **Scheduling (Cron)** - Run tasks on recurring schedules
-- **MCP (Model Context Protocol)** - Integrate external tools/services (filesystem, web, databases, APIs)
-- **Subagents** - Spawn parallel agent instances for complex/delegated work
-- **GitHub Automation** - Search repos, create/update PRs, manage issues, trigger workflows
-- **Custom Tools** - Extend with user-defined tool implementations
+**Tool System:** (Actions nanobot can perform)
+- **Web Search & Fetch** - Find current information using Brave Search, download full pages
+- **File Operations** - Read, write, edit, list files (safely sandboxed)
+- **Shell Commands** - Run system commands (restricted, logged, operator-approved)
+- **Message/Notifications** - Send alerts and updates across channels
+- **Scheduling (Cron)** - Run tasks on a schedule (e.g., "every day at 9 AM")
+- **MCP (Model Context Protocol)** - Connect to external databases, file systems, and APIs
+- **Subagents** - Launch parallel workers to handle parts of complex tasks
+- **GitHub Automation** - Search code repositories, create pull requests (PRs), manage issues
+- **Custom Tools** - Build your own extensions
 
-**Pre-Built Skills:**
-- **Obsidian** - Read/write vault entries, query knowledge base
-- **Summarize** - Content condensation with context preservation
-- **Memory** - Session management, conversation consolidation
-- **Cron** - Scheduled task definitions and execution
-- **Weather** - Weather data retrieval
-- **Skill Creator** - Auto-generate new skills from natural language
-- **ClawHub** - Search public skill marketplace and install skills
-- **TMUX** - Terminal multiplexer control for advanced automation
+**Pre-Built Skills:** (Ready-to-use bundles)
+- **Obsidian** - Read and write notes, search knowledge base
+- **Summarize** - Condense long content while keeping the important parts
+- **Memory** - Manage conversations, automatically summarize old history
+- **Cron** - Schedule recurring tasks
+- **Weather** - Fetch weather data
+- **Skill Creator** - Write new skills from natural language descriptions
+- **ClawHub** - Find and install community-created skills
+- **TMUX** - Control terminal sessions for advanced automation
 
 **Reliability & Optimization:**
 - Session continuity with automatic memory consolidation
@@ -80,25 +80,25 @@ Nanobot ships with these built-in features:
 - Structured logging for debugging and audit
 
 ### 1.3 Cost Control Summary
-Primary cost controls used by this AOS:
-- **Tiered model routing** (Class A/B/C) by workflow type and risk level.
-- **Budget caps** at request, workflow/channel, and project levels.
-- **Escalation gates** - Approval required for high-cost model classes or complexity triggers.
-- **Context optimization** - Memory summarization, prompt caching, and efficient retrieval to limit token burn.
-- **Provider selection** - Route to cheaper models (Qwen, DeepSeek) for routine tasks; reserve expensive models (Claude Opus) for complex work.
-- **Fallback/degraded mode** - Stop runaway retries and implement cost circuit-breakers.
-- **Weekly KPI review** - Track cost per successful workflow, escalation rate, and model utilization.
+Ways to control spending and prevent bill shock:
+- **Tiered model routing** (Class A/B/C) - Use cheap models for simple tasks, expensive ones for complex work
+- **Budget caps** - Set spending limits by request, channel, or project
+- **Approval gates** - Require human sign-off before expensive operations
+- **Smart context** - Automatically summarize old conversations to reduce token use
+- **Provider choice** - Use budget-friendly models (Qwen, DeepSeek) for routine work; save Claude Opus for complex problems
+- **Safety limits** - Automatically stop runaway requests and prevent unexpected charges
+- **Weekly reviews** - Track spending patterns and watch for anomalies
 
 ### 1.4 Security & Compliance Baseline
-Primary security & compliance protocols used by this AOS:
-- **Channel isolation** by project/workflow to prevent context bleed between teams.
-- **Role-based access control** - Operator, Reviewer, Owner roles with specific permissions.
-- **Workspace binding** - Agent sandbox respects workspace directory boundaries; no filesystem escape.
-- **Allowlist enforcement** - Only specified users/channels can invoke sensitive tools (shell, MCP, GitHub automation).
-- **Audit trail** - All requests logged with **request_id**, operator identity, timestamp, tool usage, and cost.
-- **Monthly security audit** - Run `nanobot security audit --deep` to validate config, allowlists, and tool constraints.
-- **Trust boundaries** - Split execution contexts when operators are mutually untrusted; separate sessions per user.
-- **Secret management** - API keys, tokens, MCP auth headers stored in `.env` files, never committed.
+How we keep your system safe:
+- **Channel isolation** - Teams can't see each other's conversations
+- **Role-based access** - Different users have different permissions (Operator, Reviewer, Owner)
+- **Sandbox** - Nanobot can only access files in its workspace, can't escape to system files
+- **Allowlist** - Only approved people can use dangerous tools (shell commands, APIs, GitHub automation)
+- **Audit log** - Every action is recorded with who did it, when, and what it cost
+- **Monthly security checks** - Run `nanobot security audit --deep` to verify everything is locked down
+- **Separate sessions** - Each user gets their own isolated workspace
+- **Secret protection** - API keys and tokens stored securely in `.env` files, never saved in code
 
 ### 1.5 Small Business & Enterprise Support Examples
 Example ways this AOS supports organizations:

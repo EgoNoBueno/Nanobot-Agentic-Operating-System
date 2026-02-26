@@ -13,7 +13,7 @@ Build and configure nanobot for deployment. For simple **quick-start in 5 minute
 Two deployment scenarios:
 
 1. **Simple Build** (5 min) - Local pip install + cloud LLM (easiest)
-2. **Advanced Build** (30 min) - VPS infrastructure + local Ollama inference
+2. **Advanced Build** (30 min) - VPS (Virtual Private Server) infrastructure + local Ollama inference
 
 This document covers nanobot build/config steps. For VPS infrastructure (Tailscale, firewall, SSH keys), see your VPS provider's setup guide.
 
@@ -28,14 +28,17 @@ This document covers nanobot build/config steps. For VPS infrastructure (Tailsca
 ### Step 1: Install nanobot
 
 ```bash
+# pip (Python package installer) downloads and installs nanobot
 pip install nanobot-ai
 ```
 
-Verifies:
+Verify installation worked:
 ```bash
+# nanobot version shows which version is installed (should be 0.1.4 or newer)
 nanobot version
 # Output: nanobot v0.1.4+ (or higher)
 
+# nanobot health checks if everything is set up correctly
 nanobot health
 # Output: Checking installation...
 ```
@@ -60,6 +63,8 @@ Config saved to:
 ### Step 3: Test Installation
 
 ```bash
+# nanobot test starts an interactive test session (type commands, see responses)
+# This ensures everything is working before you deploy it
 nanobot test
 ```
 
@@ -67,7 +72,7 @@ Should start interactive test mode:
 ```
 Nanobot Test Mode (type 'exit' to quit)
 Loading config: ✓
-Starting LLM provider: openrouter ✓
+Starting LLM (Large Language Model) provider: openrouter ✓
 Connected to: Discord ✓
 
 nanobot> hello
@@ -98,6 +103,8 @@ Nanobot will now listen to Discord, Slack, or other configured channels and resp
 
 **To run in background (Linux/Mac):**
 ```bash
+# The & symbol means "run this command in the background"
+# This lets you keep using the terminal while nanobot runs
 nanobot gateway &
 # Or use systemd (see Advanced Build)
 ```
@@ -114,13 +121,13 @@ nanobot install-service
 ## Path B: Advanced Build (VPS + Local Ollama)
 
 **For:** Self-hosted inference, privacy-critical workflows, cost optimization with local models.  
-**Architecture:** VPS (gateway + routing) ↔️ Local machine (Ollama inference) via Tailscale-encrypted tunnel  
+**Architecture:** VPS (Virtual Private Server) (gateway + routing) ↔️ Local machine (Ollama inference) via Tailscale-encrypted tunnel  
 **Time:** ~30 minutes for build; ~15 minutes for startup  
 **Prerequisites:** VPS access, local machine with Ollama, Tailscale account
 
 ### Prerequisites Checklist
-- [ ] VPS deployed (Ubuntu 22.04+ recommended)
-- [ ] SSH access to VPS
+- [ ] VPS (Virtual Private Server) deployed (Ubuntu 22.04+ recommended)
+- [ ] SSH (Secure Shell) access to VPS
 - [ ] Local machine with Ollama installed (Windows/Mac/Linux)
 - [ ] Tailscale account (free tier OK)
 - [ ] Discord/Slack token ready
@@ -133,6 +140,8 @@ nanobot install-service
 ### Step 1: Connect to VPS
 
 ```bash
+# ssh (Secure Shell) is how you remotely access a server
+# Replace your-vps-user (e.g., 'ubuntu') and your-vps-ip (e.g., '192.168.1.100')
 ssh your-vps-user@your-vps-ip
 # Or configure SSH key for passwordless access
 ```
@@ -140,27 +149,44 @@ ssh your-vps-user@your-vps-ip
 ### Step 2: System Updates
 
 ```bash
+# apt is the package manager for Ubuntu (like 'store' for software)
+# update checks for new versions of everything
+# upgrade installs those new versions
+# -y means "yes automatically, don't ask"
 sudo apt update && sudo apt upgrade -y
+
+# Install programs nanobot needs (Python, build tools, etc.)
+# && means "if that worked, then run this next command"
 sudo apt install -y python3.11 python3.11-venv python3-pip build-essential
 ```
 
 ### Step 3: Install Tailscale
 
 ```bash
+# curl -fsSL downloads and runs the Tailscale installer script
+# | sh pipes (sends) the output to shell to execute it
 curl -fsSL https://tailscale.com/install.sh | sh
+
+# Start Tailscale (secure network tunnel)
+# This creates an encrypted connection between your machines
 sudo tailscale up
 # Will print auth URL; open in browser; authenticate
 ```
 
 After auth, note your VPS Tailscale IP (e.g., `100.87.123.45`). Print it:
 ```bash
+# Show your Tailscale IP address (the address other machines will use to find you)
 tailscale ip -4
 ```
 
 ### Step 4: Create nanobot User (Optional but Recommended)
 
 ```bash
+# useradd -m creates a new user account named 'nanobot'
+# -s /bin/bash sets bash as the default shell
 sudo useradd -m -s /bin/bash nanobot
+
+# su - nanobot "switches user" to nanobot (logs in as that user)
 sudo su - nanobot
 # Now running as nanobot user for isolation
 ```

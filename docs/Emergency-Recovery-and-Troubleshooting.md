@@ -9,44 +9,49 @@ Before attempting recovery, understand the current state.
 ### 1.1 Quick Status Check
 
 ```bash
-# Check if nanobot is running
+# pgrep searches for running processes (programs) by its name
+# -l displays both the process ID and name
+# This shows if nanobot is currently running
 pgrep -l nanobot
 
-# Check gateway status
+# Check if nanobot is running and report health status
 nanobot status --all
 
-# List connected nodes (if distributed)
+# List all connected nodes (if you're running distributed system)
 nanobot nodes list
 
-# Review recent logs
+# tail shows the last lines of a log file (detailed record of what happened)
+# -50 shows the 50 most recent lines
 tail -50 /var/log/nanobot/gateway.log
 ```
 
 ### 1.2 Connectivity Diagnostic
 
 ```bash
-# Test LLM provider connectivity
+# Test if nanobot can reach each LLM provider
+# Each provider has its own server; this verifies the connection works
 nanobot test-provider --provider openrouter
 nanobot test-provider --provider ollama --host localhost:11434
 
-# Test channel integrations
+# Test if nanobot can send and receive messages from chat platforms
 nanobot test-channel --channel discord
 nanobot test-channel --channel slack
 
-# Verify Obsidian vault access
+# Verify that nanobot can read/write to your Obsidian vault
 nanobot test-vault --path /path/to/vault
 ```
 
 ### 1.3 Configuration Validation
 
 ```bash
-# Validate configuration file syntax
+# Check if configuration file has correct syntax (YAML/JSON formatting)
 nanobot config validate
 
-# Check for deprecated settings
+# Check for settings that are no longer supported (old deprecated features)
 nanobot config audit
 
-# Show active configuration
+# Display the current configuration so you can review it
+# --include-secrets=false means DON'T show passwords/API keys (for security)
 nanobot config show --include-secrets=false  # Never include secrets
 ```
 
@@ -61,8 +66,13 @@ nanobot config show --include-secrets=false  # Never include secrets
 
 **Diagnosis:**
 ```bash
-# Check network connectivity
+# curl -I sends a HEAD request (just check headers, not full page)
+# https://api.openrouter.ai is the OpenRouter server address
+# This shows if you can reach the OpenRouter servers
 curl -I https://api.openrouter.ai  # For OpenRouter
+
+# ping sends test packets to a server to check if it's reachable
+# For local Ollama running on your computer
 ping <ollama-host>                  # For local Ollama
 ```
 
@@ -70,20 +80,28 @@ ping <ollama-host>                  # For local Ollama
 
 **Option A: Verify credentials** (most common)
 ```bash
-# Check if API key is set
+# The 'echo' command prints text to the terminal
+# This shows the current value of the OPENROUTER_API_KEY variable
+# (This is your API key for the server—like a password)
 echo $OPENROUTER_API_KEY
 
-# If empty, reload from .env
+# If the key is empty, reload it from your .env file (configuration file with secrets)
+# 'source' tells bash to read and execute commands from a file
 source ~/.nanobot/.env
 nanobot gateway restart
 ```
 
 **Option B: Check firewall** (VPS → cloud provider)
 ```bash
-# Verify port accessibility
+# ufw (Uncomplicated Firewall) is a tool that blocks/allows network traffic
+# 'status' shows which ports are open and which are blocked
 sudo ufw status
+
+# 'allow out 443' opens port 443 for outgoing traffic (HTTPS = secure web connection)
+# Cloud providers use port 443
 sudo ufw allow out 443  # HTTPS for cloud providers
 
+# 'allow in 11434' opens port 11434 for incoming traffic (where Ollama listens)
 # For Ollama on local network
 sudo ufw allow in 11434
 ```
@@ -109,10 +127,12 @@ nanobot config set llm.provider openrouter
 
 **Diagnosis:**
 ```bash
-# Check if gateway is listening
+# netstat -tlnp shows all network connections and which programs are using them
+# | grep nanobot filters the output to show only nanobot connections
+# This verifies if the nanobot gateway is actually listening for connections
 netstat -tlnp | grep nanobot
 
-# Verify channel token is valid
+# List all connected channels and show if their authentication tokens are valid
 nanobot channel list --show-auth-status
 ```
 
@@ -151,10 +171,12 @@ nanobot channel discord enable
 
 **Diagnosis:**
 ```bash
-# Check vault path accessibility
+# ls -la lists files in a directory with detailed information
+# Shows file sizes, dates, and most importantly: who owns it and what permissions exist
 ls -la /path/to/obsidian/vault
 
-# Check if nanobot process has rights
+# stat shows detailed information about a file (permissions, ownership, timestamps)
+# This checks if nanobot process owner matches the vault owner
 stat /path/to/obsidian/vault
 ```
 
@@ -162,11 +184,16 @@ stat /path/to/obsidian/vault
 
 **Option A: Fix permissions**
 ```bash
-# Give nanobot read/write access
+# chmod changes permissions on files and folders
+# 755 = owner can read/write/execute, others can read/execute but not write
+# This allows nanobot (the process) to read and write to the vault
 chmod 755 /path/to/obsidian/vault
 chmod 644 /path/to/obsidian/vault/*.md
 
-# Or: Change ownership to nanobot user
+# Alternatively: chown changes who owns the file/folder
+# sudo = run as administrator
+# nanobot:nanobot = set ownership to the nanobot user and nanobot group
+# -R = apply recursively to all files inside
 sudo chown -R nanobot:nanobot /path/to/obsidian/vault
 ```
 
@@ -196,13 +223,15 @@ nanobot vault reindex
 
 **Diagnosis:**
 ```bash
-# Check VRAM usage
+# nvidia-smi is a tool from NVIDIA that shows GPU memory usage
+# This tells you how much VRAM (video memory) is being used
 nvidia-smi
 
-# Monitor over time
+# 'watch' reruns a command every 2 seconds so you can see changes in real-time
+# Ctrl+C to stop watching
 watch nvidia-smi  # Ctrl+C to exit
 
-# Check Ollama memory settings
+# Show memory settings for a specific model (Ollama= local AI tool)
 ollama show llama2
 ```
 
@@ -210,13 +239,14 @@ ollama show llama2
 
 **Option A: Unload unused models**
 ```bash
-# List loaded models
+# List all AI models that are currently loaded in memory
 ollama list
 
-# Free VRAM immediately
+# Free up VRAM by unloading all models
+# This clears out the GPU memory so nanobot can start fresh
 ollama pull --unload-all
 
-# Load only the model you need
+# Load only the one model you need right now
 ollama run mistral
 ```
 
@@ -248,18 +278,21 @@ nanobot config set ollama.keep_alive 0  # Never auto-unload
 Use this when services are stuck or deadlocked.
 
 ```bash
-# Step 1: Graceful shutdown
+# Step 1: Graceful shutdown - tell nanobot to stop nicely
 nanobot gateway stop
-sleep 5
+sleep 5  # sleep waits 5 seconds to ensure everything stops
 
 # Step 2: Verify all processes stopped
+# pgrep searches for running processes; || echo means "if nothing found, print a message"
 pgrep -l nanobot || echo "All nanobot processes stopped"
 
 # Step 3: Clean temporary files
+# rm -rf removes files and directories; /tmp/nanobot_* targets temp files
+# ~/.nanobot/cache/* clears the cache (stored temporary data)
 rm -rf /tmp/nanobot_*
 rm -rf ~/.nanobot/cache/*
 
-# Step 4: Restart with diagnostic mode
+# Step 4: Restart with diagnostic mode (verbose = show detailed logging)
 nanobot gateway run --verbose
 
 # Step 5: Test basic functionality
@@ -272,16 +305,17 @@ nanobot test-provider --provider openrouter
 Use this if `~/.nanobot/config.json` is invalid or corrupted.
 
 ```bash
-# Step 1: Backup corrupted config
+# Step 1: Backup corrupted config (cp = copy)
 cp ~/.nanobot/config.json ~/.nanobot/config.json.corrupt
 
 # Step 2: Restore from last known good (if available)
 cp ~/.nanobot/config.json.backup ~/.nanobot/config.json
 
-# Step 3: Validate restored config
+# Step 3: Validate restored config (check syntax)
 nanobot config validate
 
 # Step 4: Compare with corrupted version to check what was lost
+# diff shows differences between two files; -u shows context
 diff -u ~/.nanobot/config.json.corrupt ~/.nanobot/config.json
 
 # Step 5: Re-apply any missing custom settings
@@ -330,23 +364,27 @@ Use this if notes are corrupted, links broken, or vault index outdated.
 
 ```bash
 # Step 1: Backup current vault
+# tar -czf creates a compressed backup file (.tar.gz = compressed archive)
+# $(date +%Y%m%d_%H%M%S) adds timestamp like 20240115_143022
 tar -czf ~/obsidian-backup-$(date +%Y%m%d_%H%M%S).tar.gz /path/to/vault
 
-# Step 2: Check vault integrity
+# Step 2: Check vault integrity (scan for errors)
 nanobot vault check --full
 
-# Step 3: Reindex vault
+# Step 3: Reindex vault (rebuild the searchable index)
 nanobot vault reindex
 
-# Step 4: Verify recovery
+# Step 4: Verify recovery (test a search)
 nanobot vault search --test "example query"
 
 # Step 5: If still broken, restore from backup
-# Restore to timestamped directory first to validate
+# Extract to temp directory first, don't overwrite immediately
 mkdir /tmp/vault-restore
+# tar -xzf extracts; -C specifies destination folder
 tar -xzf ~/obsidian-backup-<date>.tar.gz -C /tmp/vault-restore
 
 # Once verified, move to production
+# rm -rf removes a directory and all its contents
 rm -rf /path/to/vault
 mv /tmp/vault-restore/vault /path/to/vault
 
@@ -360,9 +398,13 @@ nanobot vault reindex
 
 ```bash
 # Check when was the last successful backup
+# ls -lah lists files with human-readable sizes and hidden files
+# ~/ means your home directory
 ls -lah ~/.nanobot/backups/
 
-# Validate backup integrity
+# Validate backup integrity (don't extract, just list contents)
+# tar -tzf lists files inside a compressed archive without extracting
+# | head -20 shows only the first 20 files
 tar -tzf ~/.nanobot/backups/backup-latest.tar.gz | head -20
 
 # Test restore to temp location
@@ -370,6 +412,8 @@ mkdir /tmp/backup-test
 tar -xzf ~/.nanobot/backups/backup-latest.tar.gz -C /tmp/backup-test
 
 # Verify key files exist
+# test -f checks if a file exists; test -d checks if a directory exists
+# && echo prints success message if the test passes
 test -f /tmp/backup-test/config.json && echo "Config backed up ✓"
 test -d /tmp/backup-test/vault && echo "Vault backed up ✓"
 test -d /tmp/backup-test/logs && echo "Logs backed up ✓"
@@ -379,15 +423,21 @@ test -d /tmp/backup-test/logs && echo "Logs backed up ✓"
 
 ```bash
 # Check if audit logs exist and recent
+# ls -lah shows file size and modification date (tells you if logs are current)
 ls -lah ~/.nanobot/logs/audit.log
 
 # Verify recent entries
+# tail -30 shows the last 30 lines
+# grep -i searches for text (case-insensitive)
+# This filters for errors or warnings
 tail -30 ~/.nanobot/logs/audit.log | grep -i "error\|warning"
 
 # Count errors in last 24h
+# date -d yesterday shows yesterday's date
+# wc -l counts lines
 grep "$(date -d yesterday +%Y-%m-%d)" ~/.nanobot/logs/audit.log | grep -i error | wc -l
 
-# Export logs for external review
+# Export logs for external review (backup to a compressed archive)
 tar -czf ~/nanobot-logs-$(date +%Y%m%d).tar.gz ~/.nanobot/logs/
 ```
 
