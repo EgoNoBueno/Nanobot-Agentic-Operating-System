@@ -32,14 +32,25 @@ Nanobot supports 100+ LLM (Large Language Model) models via unified configuratio
 ## 3. Quick Setup (5 minutes)
 
 ### Option A: OpenRouter (All-in-One)
+⏱️ ~5 minutes to complete  
 OpenRouter gives you access to 100+ models with one API key. (An API key is like a password that lets nanobot connect to OpenRouter's servers.)
 
+#### Before You Start
+- ☐ You have a credit card (free tier gives small free allocation)
+- ☐ Internet connection working
+- ☐ Text editor to edit config file
+- ☐ Terminal/shell access to nanobot
+
 **Step 1: Get API Key**
+⏱️ ~2 minutes
+
 - Visit https://openrouter.ai/keys
 - Sign up or log in
 - Copy your API key (this is your unique password—keep it secret!)
 
 **Step 2: Configure**
+⏱️ ~1 minute
+
 ```json
 {
   "providers": {
@@ -65,20 +76,33 @@ ask a question
 ```
 
 ### Option B: Local Ollama
+⏱️ ~10 minutes to complete  
 Perfect for sensitive data, no API costs. (You run the AI on your own computer instead of using a cloud service.)
 
+#### Before You Start
+- ☐ Ollama installed on your local machine
+- ☐ GPU or CPU with at least 4GB RAM (8GB recommended)
+- ☐ 10GB+ disk space for models
+- ☐ Network access from VPS to local machine
+
 **Step 1: Install Ollama**
+⏱️ ~2 minutes
+
 - Download from https://ollama.ai
 - Install on your machine
 
 **Step 2: Pull a Model**
+⏱️ ~2 minutes
+
 ```bash
 # 'ollama pull' downloads an AI model to your machine (like downloading a file)
 # 'mistral' is the name of the model
 ollama pull mistral
 ```
+✅ Expected: "pulling manifest" then "success"
 
 **Step 3: Configure nanobot**
+⏱️ ~1 minute**
 ```json
 {
   "providers": {
@@ -272,6 +296,69 @@ Tokens available: Yes ✓
 | `Model not found` | Confirm model name is correct for provider |
 | `Rate limited` | Wait or upgrade API plan |
 | `Timeout` | Check network connection or try different model |
+
+## 10. Common Mistakes & Solutions
+
+### ❌ Mistake 1: API Key Has Extra Spaces
+**Problem:** `401 Unauthorized` or `Invalid API key`  
+**Why:** Copy/paste sometimes includes leading/trailing whitespace  
+**Fix:**
+```bash
+# Double-check the key has no spaces
+echo "YOUR_API_KEY" | wc -c  # Count characters including any spaces
+# Paste fresh key, remove any spaces, then test
+nanobot doctor
+```
+
+### ❌ Mistake 2: Wrong Model Name for Provider
+**Problem:** `Model not found` or `Unknown model`  
+**Why:** Each provider uses different model naming (Claude 3 vs claude-3-opus vs claude-opus-4-5)  
+**Fix:**
+1. Check provider documentation for exact model names
+2. For OpenRouter, browse https://openrouter.ai/models
+3. For Ollama, run `ollama list` to see available models
+4. Update config with correct name
+
+### ❌ Mistake 3: Temperature & Token Settings Too High
+**Problem:** Very expensive bills, slow responses, incoherent output  
+**Why:** High temperature (>0.8) makes AI more random; large token limits are expensive  
+**Fix:**
+```json
+{
+  "agents": {
+    "defaults": {
+      "temperature": 0.1,        // Use 0.1-0.3 for factual tasks
+      "maxOutputTokens": 1000    // Keep reasonable (500-2000)
+    }
+  }
+}
+```
+
+### ❌ Mistake 4: Forgetting to Start Ollama (Local)
+**Problem:** Nanobot runs but says "Ollama unreachable"  
+**Why:** Ollama must be running as a background service  
+**Fix:**
+```bash
+# Start Ollama in a new terminal
+ollama serve
+
+# In another terminal, verify it's running
+curl http://localhost:11434/api/tags
+# Should show your models
+```
+
+### ❌ Mistake 5: Setting Up Fallback Chain Backwards
+**Problem:** Always uses expensive model even though cheap one is available  
+**Why:** Fallback order matters; nanobot tries providers in config order  
+**Fix:** Put cheap models first:
+```json
+{
+  "fallbackProviders": [
+    "openrouter:qwen",       // Try cheap first
+    "openrouter:claude-opus" // Fall back to expensive
+  ]
+}
+```
 
 ## 11. AOS Integration
 

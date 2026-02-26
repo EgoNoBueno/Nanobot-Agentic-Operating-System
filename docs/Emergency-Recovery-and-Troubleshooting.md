@@ -2,6 +2,13 @@
 
 **Purpose:** Diagnose and recover from system failures, connection loss, or configuration corruption without losing data or requiring full rebuild.
 
+## Before You Start
+- ☐ Terminal/SSH access to the nanobot server
+- ☐ Access to ~/.nanobot/config.json file
+- ☐ Backup of important config files
+- ☐ Optional: Recent backup of vault/workspace
+- ☐ List of your LLM providers and channels (Discord, Slack, etc.)
+
 ## 1. System Health Diagnostics
 
 Before attempting recovery, understand the current state.
@@ -58,11 +65,12 @@ nanobot config show --include-secrets=false  # Never include secrets
 ## 2. Common Issues & Quick Fixes
 
 ### 2.1 "Cannot connect to LLM provider"
+⏱️ ~5 minutes to diagnose
 
 **Symptoms:**
-- Responses timeout
-- "Provider unreachable" errors
-- No tokens being consumed
+- ❌ Responses timeout
+- ❌ "Provider unreachable" errors
+- ❌ No tokens being consumed
 
 **Diagnosis:**
 ```bash
@@ -90,6 +98,7 @@ echo $OPENROUTER_API_KEY
 source ~/.nanobot/.env
 nanobot gateway restart
 ```
+✅ **Success:** `nanobot test-provider` now works without timeout
 
 **Option B: Check firewall** (VPS → cloud provider)
 ```bash

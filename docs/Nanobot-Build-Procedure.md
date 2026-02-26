@@ -22,10 +22,18 @@ This document covers nanobot build/config steps. For VPS infrastructure (Tailsca
 ## Path A: Simple Build (Local + Cloud LLM)
 
 **For:** Personal/team use with OpenRouter, Anthropic, OpenAI, or compatible cloud provider.  
-**Prerequisites:** Python ≥3.11, pip, internet connection  
-**Time:** 5 minutes
+**Prerequisites:** Python ≥3.11, pip, internet connection, API key from your chosen LLM provider  
+**Time:** ⏱️ 5 minutes  
+
+### Before You Start
+- ☐ You have Python 3.11 or higher installed (`python --version`)
+- ☐ You have pip installed (`pip --version`)
+- ☐ Internet connection working (test: `ping google.com`)
+- ☐ You have an API key from OpenRouter, Anthropic, OpenAI, or similar
+- ☐ You know which chat platform you'll use (Discord, Slack, etc.)
 
 ### Step 1: Install nanobot
+⏱️ ~1 minute
 
 ```bash
 # pip (Python package installer) downloads and installs nanobot
@@ -44,6 +52,7 @@ nanobot health
 ```
 
 ### Step 2: Initialize Config
+⏱️ ~2 minutes
 
 ```bash
 nanobot init
@@ -61,6 +70,7 @@ Config saved to:
 - **Windows:** `%APPDATA%\nanobot\config.json`
 
 ### Step 3: Test Installation
+⏱️ ~1 minute
 
 ```bash
 # nanobot test starts an interactive test session (type commands, see responses)
@@ -84,12 +94,14 @@ nanobot> web_search: python async patterns
 nanobot> exit
 ```
 
-### Validation Gate A
-- ✓ `nanobot version` returns v0.1.4+
-- ✓ `nanobot init` completes without errors
-- ✓ Config file exists and is valid JSON
-- ✓ `nanobot test` returns responses from LLM
-- ✓ Web search, tool execution work in test mode
+### Validation Gate A - Simple Build Complete ✅
+- ✅ `nanobot version` returns v0.1.4+
+- ✅ `nanobot init` completes without errors
+- ✅ Config file exists and is valid JSON
+- ✅ `nanobot test` returns responses from LLM
+- ✅ Web search, tool execution work in test mode
+
+If any item shows ❌, see [Common Mistakes](#common-mistakes) below.
 
 ### Deployment: Simple Build
 
@@ -138,6 +150,7 @@ nanobot install-service
 ## Phase A: VPS Preparation (15 min)
 
 ### Step 1: Connect to VPS
+⏱️ ~1 minute
 
 ```bash
 # ssh (Secure Shell) is how you remotely access a server
@@ -147,6 +160,7 @@ ssh your-vps-user@your-vps-ip
 ```
 
 ### Step 2: System Updates
+⏱️ ~5 minutes
 
 ```bash
 # apt is the package manager for Ubuntu (like 'store' for software)
@@ -161,6 +175,7 @@ sudo apt install -y python3.11 python3.11-venv python3-pip build-essential
 ```
 
 ### Step 3: Install Tailscale
+⏱️ ~3 minutes
 
 ```bash
 # curl -fsSL downloads and runs the Tailscale installer script
@@ -180,6 +195,7 @@ tailscale ip -4
 ```
 
 ### Step 4: Create nanobot User (Optional but Recommended)
+⏱️ ~1 minute
 
 ```bash
 # useradd -m creates a new user account named 'nanobot'
@@ -191,11 +207,11 @@ sudo su - nanobot
 # Now running as nanobot user for isolation
 ```
 
-### Validation: VPS Ready
-- ✓ SSH access works
-- ✓ Python 3.11+ installed
-- ✓ Tailscale running and connected
-- ✓ Nanobot user created (optional)
+### Validation: VPS Ready ✅
+- ✅ SSH access works
+- ✅ Python 3.11+ installed
+- ✅ Tailscale running and connected
+- ✅ Nanobot user created (optional)
 
 ---
 
@@ -438,6 +454,61 @@ After build completion:
 | Ollama unreachable | `Ollama connection refused` | Verify Ollama running; check endpoint URL; verify Tailscale tunnel |
 | Discord token invalid | `Discord authentication failed` | Re-generate token in Developer Portal; verify it's bot token, not user token |
 | Dependency conflict | `pip install nanobot-ai` fails | Clean environment: `pip install --upgrade pip setuptools wheel` then retry |
+
+---
+
+## Common Mistakes & Solutions
+
+### ❌ Mistake 1: Using User Token Instead of Bot Token (Discord)
+**Problem:** Discord authorization fails, bot won't authenticate  
+**Why it happens:** Easy to copy the wrong token from Developer Portal  
+**Fix:**
+1. Go to https://discord.com/developers/applications
+2. Select your app
+3. Click **Bot** tab (not General or OAuth2)
+4. Copy the **Token** there
+5. ⚠️ Make sure it says "Bot" not "User"
+6. Update config and restart
+
+### ❌ Mistake 2: API Key Has Expired or Wrong Format
+**Problem:** `Provider unreachable` or `Invalid API key` error  
+**Why it happens:** Keys can expire, or pasted with extra spaces  
+**Fix:**
+1. Check your API key hasn't expired in provider dashboard
+2. Copy fresh key (watch for leading/trailing spaces)
+3. Test manually: `curl -H "Authorization: Bearer YOUR_KEY" https://api.openrouter.ai/api/v1/auth/key`
+4. ✅ If it returns 200, key is valid
+
+### ❌ Mistake 3: Python Version Too Old
+**Problem:** `ModuleNotFoundError` or installation fails  
+**Why it happens:** Nanobot requires Python 3.11+, older versions lack required features  
+**Fix:**
+```bash
+# Check your Python version
+python --version
+# If < 3.11, install newer version
+```
+
+### ❌ Mistake 4: Firewall Blocking Outbound HTTPS (VPS)
+**Problem:** `Connection timeout` when reaching cloud providers  
+**Why it happens:** VPS firewalls sometimes block outbound port 443 by default  
+**Fix:**
+```bash
+# Check firewall status
+sudo ufw status
+# Allow outbound HTTPS (port 443)
+sudo ufw allow out 443
+```
+
+### ❌ Mistake 5: Config.json Syntax Invalid (JSON)
+**Problem:** `Config validation failed` on startup  
+**Why it happens:** Missing comma, unmatched braces, or quotes  
+**Fix:**
+```bash
+# Validate JSON syntax
+python -m json.tool ~/.nanobot/config.json
+# If it shows error, find the line number and fix it
+```
 
 ---
 

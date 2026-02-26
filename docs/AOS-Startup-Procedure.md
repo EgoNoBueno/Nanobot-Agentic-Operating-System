@@ -39,15 +39,27 @@ Before you start, make sure you have:
 ## Path A: Simple Startup (Local + Cloud API)
 
 **For:** Using local nanobot with OpenRouter, Anthropic, OpenAI, or other cloud LLM provider.  
-**Time:** ~10 minutes
+**Time:** ⏱️ ~10 minutes total  
+
+### Before You Start
+- ☐ Nanobot is installed (`nanobot version` works)
+- ☐ Config file has valid API key
+- ☐ Internet connection working
+- ☐ Chat platform (Discord/Slack) already configured
+- ☐ Obsidian vault path configured (if using)
 
 ### Step 1: Verify Connectivity
+⏱️ ~1 minute
+
 ```bash
 ping 8.8.8.8
 # Should respond with pings (internet is up)
 ```
+✅ Expected: At least 4 successful ping responses
 
 ### Step 2: Start nanobot
+⏱️ ~2 minutes
+
 ```bash
 nanobot gateway
 ```
@@ -62,11 +74,12 @@ Ready for messages
 ```
 
 **If provider fails:**
-- Check `.env` or `config.json` for correct API key format
-- Verify key hasn't expired in your provider dashboard
-- If key is fresh, wait 1 minute and retry (API sync delay)
+- ❌ Check `.env` or `config.json` for correct API key format
+- ❌ Verify key hasn't expired in your provider dashboard
+- ❌ If key is fresh, wait 1 minute and retry (API sync delay)
 
 ### Step 3: Discord/Slack Test
+⏱️ ~2 minutes
 
 Send a test message in any channel where bot is installed:
 ```
@@ -74,10 +87,11 @@ Send a test message in any channel where bot is installed:
 ```
 
 Bot should respond within 5 seconds.
+✅ Expected: "Hello! How can I help?" or similar response
 
 **If bot doesn't respond:**
-- Verify bot is in the channel
-- Check bot has `Send Messages` and `Read Message History` permissions
+- ❌ Verify bot is in the channel
+- ❌ Check bot has `Send Messages` and `Read Message History` permissions
 - Verify token in config matches what Discord/Slack shows
 - Check logs: `nanobot logs --last 50` to see errors
 
