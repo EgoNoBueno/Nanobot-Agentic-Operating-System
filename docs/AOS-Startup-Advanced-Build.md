@@ -4,7 +4,7 @@
 
 ## Document Control
 - **Owner:**
-- **Version:** 2.3.0
+- **Version:** 2.4.0
 - **Last Updated:** 2026-02-26
 - **Status:** Active
 - **Applies To:** Path B (Advanced Build) only
@@ -217,10 +217,10 @@ pip install nanobot-ai
 
 Verify:
 ```bash
-python -m nanobot --version
+nanobot --version
 ```
 
-✅ Should print: `nanobot version 0.1.4` or similar
+✅ Should print: `🐈 nanobot v0.1.4.post2` or similar (exact version may differ)
 
 ---
 
@@ -399,55 +399,37 @@ This opens a text editor. Paste this template:
 
 ```json
 {
-  "gateway": {
-    "listen_address": "0.0.0.0",
-    "listen_port": 8000
+  "agents": {
+    "defaults": {
+      "model": "mistral",
+      "provider": "custom"
+    }
   },
-  "llm": {
-    "provider": "ollama",
-    "endpoint": "http://100.123.45.67:11434",
-    "model": "mistral"
+  "providers": {
+    "custom": {
+      "apiBase": "http://100.123.45.67:11434/v1",
+      "apiKey": "ollama"
+    }
   },
   "channels": {
-    "cli": {
-      "enabled": true
-    },
     "discord": {
       "enabled": false,
       "token": ""
     }
-  },
-  "obsidian": {
-    "enabled": false,
-    "vault_path": ""
   }
 }
 ```
 
 **Replace these values:**
-- `100.123.45.67` → **Your LOCAL machine's Tailscale IP** (from Step B7). Example: If your local Tailscale IP is `100.45.67.89`, change that line to `"endpoint": "http://100.45.67.89:11434",`
+- `100.123.45.67` → **Your LOCAL machine's Tailscale IP** (from Step B7). Example: If your local Tailscale IP is `100.45.67.89`, change that line to `"apiBase": "http://100.45.67.89:11434/v1",`
 - `mistral` → **Your model name** (the one you pulled in Step B6). Example: If you pulled `neural-chat`, change `"model": "mistral"` to `"model": "neural-chat"`
+- Note the `/v1` at the end of the URL — Ollama exposes an OpenAI-compatible API at this path; do not omit it
 - If using Discord, set `"enabled": true` and add your bot token (see the [channel integration guide](../nanobot/README.md))
 
 **To save the file:**
 - Press `Ctrl+O`
 - Press `Enter`
 - Press `Ctrl+X`
-
-### Create .env File for Secrets
-
-```bash
-nano ~/.nanobot/.env
-```
-
-Paste:
-```
-OLLAMA_ENDPOINT=http://100.123.45.67:11434
-```
-
-**Replace** `100.123.45.67` with your LOCAL Tailscale IP.
-
-Save (Ctrl+O, Enter, Ctrl+X).
 
 ---
 
@@ -518,8 +500,8 @@ Now that everything is configured, here's how to start nanobot.
 **On your VPS:**
 - ✅ Nanobot is installed
 - ✅ Tailscale is installed and connected
-- ✅ Config file points to correct Ollama IP/port
-- ✅ Ollama endpoint accessible from VPS
+- ✅ `~/.nanobot/config.json` has correct `providers.custom.apiBase` (Tailscale IP + port + `/v1`)
+- ✅ Ollama endpoint accessible from VPS (Step 2 curl test passed)
 
 ---
 
@@ -581,49 +563,59 @@ nanobot gateway
 
 ✅ Expected output:
 ```
-Starting Nanobot Gateway v0.1.4+
-LLM Provider: ollama ✓ Connected to http://100.123.45.67:11434
-CLI: Ready for messages
-Ready for messages
+🐈 Starting nanobot gateway on port 18790...
+Warning: No channels enabled
+✓ Heartbeat: every 1800s
 ```
+
+(If you've enabled a channel like Discord, you'll see `✓ Channels enabled: discord` instead of the warning.)
 
 Keep this terminal open—nanobot is running.
 
 ---
 
-## Step 4: Test End-to-End Message Flow (Open New Terminal on Local Computer)
+## Step 4: Test End-to-End Message Flow
 
-**On your LOCAL computer,** open a NEW terminal (keep everything else running):
-
-```bash
-# Test via SSH tunnel
-ssh root@YOUR_VPS_IP -p 22 -L 8000:localhost:8000
-# This creates a tunnel so you can talk to the VPS gateway locally
-```
-
-When prompted, paste your VPS password.
-
-Then in another local terminal:
+**In your VPS SSH session** (reconnect if needed — see Step B2):
 
 ```bash
-nanobot agent --gateway http://localhost:8000
+nanobot agent
 ```
 
-This connects to your VPS gateway via the tunnel.
-
-Now type a test question:
+You'll see:
 ```
->>> What is 2+2?
+🐈 Interactive mode (type exit or Ctrl+C to quit)
+
+You: 
+```
+
+Type a test question:
+```
+You: What is 2+2?
 ```
 
 ✅ **Expected flow:**
-1. Your question → Local nanobot agent
-2. Local agent → SSH tunnel → VPS gateway
-3. VPS gateway → Tailscale tunnel → Your local Ollama
-4. Ollama generates response
-5. Response comes back through tunnels to your terminal
+1. Your message enters nanobot agent on the VPS
+2. Agent calls Ollama via the Tailscale tunnel to your local computer
+3. Ollama generates a response
+4. Response is printed in your SSH session
 
-You should see a response like: `2 + 2 equals 4.`
+You should see:
+```
+🐈 nanobot
+
+2 + 2 equals 4.
+```
+
+**If you get no response or an error:**
+- Check that Ollama is still running on your local computer
+- Re-run the Tailscale connectivity test from Step 2 above
+- Verify the `apiBase` URL (with `/v1`) in `~/.nanobot/config.json`
+
+To exit:
+```
+exit
+```
 
 ---
 
@@ -772,6 +764,7 @@ A: You can export your config from the VPS, set up Advanced Build→Simple Build
 
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 2.4.0 | Accuracy corrections: replaced fabricated config.json schema with correct nanobot structure (agents.defaults.model/provider, providers.custom.apiBase/apiKey). Added /v1 path to Ollama endpoint. Removed non-existent .env file step. Fixed gateway startup output. Replaced fabricated `nanobot agent --gateway` flag + SSH tunnel test with correct `nanobot agent` on VPS. Fixed --version format. |
 | 2026-02-26 | 2.3.0 | Fixed broken Multi-Channel-Integration-Guide links → nanobot/README.md; fixed B9 ExecStart Python path to /usr/bin/python3.12; removed duplicate systemd section (wrong module path); fixed PuTTY step-3 numbering |
 | 2026-02-26 | 2.2.0 | Split from AOS-Startup-Procedure.md. Focused entirely on Advanced Build (Path B). Added beginner-friendly language, cost expectations, architecture diagram, VPS provider comparison, troubleshooting. Removed all Simple Build content. |
 | 2026-02-26 | 2.1.0 | Initial in parent document |
