@@ -4,7 +4,7 @@
 
 ## Document Control
 - **Owner:**
-- **Version:** 2.2.0
+- **Version:** 2.3.0
 - **Last Updated:** 2026-02-26
 - **Status:** Active
 - **Applies To:** Path B (Advanced Build) only
@@ -153,7 +153,7 @@ Your provider will email you (or show on screen):
 
 1. Download PuTTY: https://www.putty.org/ (a program for SSH—remote terminal access)
 2. Launch PuTTY
-- Under "Host Name," enter your VPS IP (e.g., `203.0.113.10`)
+3. Under "Host Name," enter your VPS IP (e.g., `203.0.113.10`)
 4. Click "Open"
 5. When prompted:
    - Username: `root`
@@ -427,7 +427,7 @@ This opens a text editor. Paste this template:
 **Replace these values:**
 - `100.123.45.67` → **Your LOCAL machine's Tailscale IP** (from Step B7). Example: If your local Tailscale IP is `100.45.67.89`, change that line to `"endpoint": "http://100.45.67.89:11434",`
 - `mistral` → **Your model name** (the one you pulled in Step B6). Example: If you pulled `neural-chat`, change `"model": "mistral"` to `"model": "neural-chat"`
-- If using Discord, set `"enabled": true` and add your bot token (see [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md))
+- If using Discord, set `"enabled": true` and add your bot token (see the [channel integration guide](../nanobot/README.md))
 
 **To save the file:**
 - Press `Ctrl+O`
@@ -472,7 +472,7 @@ After=network.target
 Type=simple
 User=root
 WorkingDirectory=/root
-ExecStart=/usr/local/bin/python3.12 -m nanobot gateway
+ExecStart=/usr/bin/python3.12 -m nanobot gateway
 Restart=always
 RestartSec=10
 StandardOutput=journal
@@ -650,66 +650,6 @@ If you configured Discord/Slack in the config:
 
 ---
 
-## (Optional) Systemd Service: Auto-Start on VPS Reboot
-
-To make nanobot automatically start when your VPS reboots (recommended for production):
-
-### Step 1: Create Service File
-
-On your VPS:
-```bash
-sudo nano /etc/systemd/system/nanobot.service
-```
-
-Paste this content:
-```ini
-[Unit]
-Description=Nanobot Agentic Operating System Gateway
-After=network.target
-
-[Service]
-Type=simple
-User=root
-WorkingDirectory=/root
-ExecStart=/usr/bin/python3 -m nanobot.gateway
-Restart=on-failure
-RestartSec=10
-StandardOutput=journal
-StandardError=journal
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Press `Ctrl+X`, then `Y`, then `Enter` to save.
-
-### Step 2: Enable & Start Service
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable nanobot
-sudo systemctl start nanobot
-```
-
-### Step 3: Verify Service Status
-
-```bash
-sudo systemctl status nanobot
-# Should show: active (running)
-```
-
-### Step 4: View Logs
-
-```bash
-# View recent logs
-sudo journalctl -u nanobot -n 50
-
-# Follow logs in real-time (Ctrl+C to exit)
-sudo journalctl -u nanobot -f
-```
-
----
-
 ## Cost & Performance Reference
 
 | Component | Setup Cost | Ongoing Cost/Month | Performance | Best For |
@@ -821,7 +761,7 @@ A: The VPS can't reach your home computer. Nanobot will fail. You can configure 
 A: Not much—typically 1-10 MB per day unless you ask very large questions. Tailscale is lightweight and encrypted.
 
 **Q: Can I add Discord or Slack later?**  
-A: Yes! Edit your config file, restart nanobot, and follow [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md).
+A: Yes! Edit your config file, restart nanobot, and follow the [channel integration guide](../nanobot/README.md).
 
 **Q: What if I want to go back to Simple Build?**  
 A: You can export your config from the VPS, set up Advanced Build→Simple Build migration, and paste config into your local computer. See [LLM Provider Setup Guide](LLM-Provider-Setup-Guide.md) for multi-provider routing.
@@ -832,6 +772,7 @@ A: You can export your config from the VPS, set up Advanced Build→Simple Build
 
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 2.3.0 | Fixed broken Multi-Channel-Integration-Guide links → nanobot/README.md; fixed B9 ExecStart Python path to /usr/bin/python3.12; removed duplicate systemd section (wrong module path); fixed PuTTY step-3 numbering |
 | 2026-02-26 | 2.2.0 | Split from AOS-Startup-Procedure.md. Focused entirely on Advanced Build (Path B). Added beginner-friendly language, cost expectations, architecture diagram, VPS provider comparison, troubleshooting. Removed all Simple Build content. |
 | 2026-02-26 | 2.1.0 | Initial in parent document |
 | 2026-02-25 | 2.0.0 | Initial version |
