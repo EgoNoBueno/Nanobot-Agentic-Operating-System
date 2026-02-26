@@ -6,7 +6,7 @@ Plan your nanobot deployment cost. Estimate monthly spend, optimize provider rou
 
 ## Document Control
 - **Owner:**
-- **Version:** 1.0.0
+- **Version:** 1.1.0
 - **Last Updated:** 2026-02-25
 - **Status:** Active
 
@@ -130,7 +130,7 @@ Route different tasks to different tiers based on complexity and value.
 **Result:** 
 - VIP channels always get Claude Opus (best quality)
 - Research uses Qwen (good quality, cheaper)
-- Backlog use DeepSeek (budget tier, adequate quality)
+- Bookkeeping channels use DeepSeek (budget tier, adequate quality)
 - Urgent keyword triggers Opus regardless of channel
 
 **Estimated Cost Saving:** 60-70% vs. using Claude Opus for everything
@@ -143,7 +143,7 @@ Real-world costs for common nanobot tasks:
 
 ### Example 1: Daily Knowledge Consolidation
 
-**Workflow:** Cron job nightly; collect Discord messages from #prd channel; summarize + write to Obsidian
+**Workflow:** Cron job nightly; collect messages from #prd channel; summarize + write to Obsidian
 
 **Tokens consumed:**
 - Read 50 messages: 10,000 tokens
@@ -177,7 +177,7 @@ Real-world costs for common nanobot tasks:
 
 ### Example 3: GitHub Automation (Daily)
 
-**Workflow:** Cron job to scan issues, summarize PRs, post status to Discord
+**Workflow:** Cron job to scan issues, summarize PRs, post status to team channel
 
 **Tokens consumed:**
 - Fetch & parse 10 PRs: 8,000 tokens
@@ -586,5 +586,6 @@ nanobot cost-report --detailed --month=feb
 
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 1.1.0 | Fixed #bk-* description (backlog → bookkeeping); generalized Discord-specific workflow language in §4 |
 | 2026-02-25 | 1.0.0 | Initial cost calculator and optimization guide |
 
