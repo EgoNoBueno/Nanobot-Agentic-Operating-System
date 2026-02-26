@@ -1,0 +1,416 @@
+# Tools & Skills Reference
+
+Complete reference for all built-in tools and pre-built skills in nanobot, plus how to create custom tools/skills.
+
+## Document Control
+- **Owner:**
+- **Version:** 1.0.0
+- **Last Updated:** 2026-02-25
+- **Status:** Active
+
+## 1. Tools Overview
+
+**Tools** are the executable actions nanobot can perform. All tools are opt-in and can be allowlisted per channel.
+
+### Quick Tool Matrix
+
+| Tool | Purpose | Risk Tier | Notes |
+|---|---|---|---|
+| **web_search** | Real-time web search (Brave API) | Low | Requires Brave API key |
+| **web_fetch** | Retrieve & parse full web pages | Low | Limited by rate limits & context |
+| **file_read** | Read files (workspace-scoped) | Low | Sandbox-enforced; no parent dir escape |
+| **file_write** | Create/overwrite files | Medium | Audit-logged; idempotent support |
+| **file_edit** | Edit specific lines in files | Medium | Line-based for precision; audit-logged |
+| **file_list** | List directory contents | Low | Only workspace-visible directories |
+| **shell_exec** | Execute shell commands | High | Operator-restricted; all commands logged |
+| **message_send** | Send alerts/notifications | Low | Cross-channel notifications possible |
+| **mcp_call** | Call MCP server tools | High | Custom auth headers supported |
+| **cron_schedule** | Schedule recurring tasks | Medium | Cron syntax; can be expensive at scale |
+| **subagent_spawn** | Launch parallel agents | High | Spawned agents have own context/memory |
+| **github_search** | Search GitHub repos | Low | No auth needed; public access |
+| **github_pr_create** | Create pull requests | High | Requires GitHub token; write access |
+| **github_action_trigger** | Trigger workflows | High | Requires org/repo permissions |
+
+## 2. Tool Details & Configuration
+
+### web_search
+**Purpose:** Real-time search via Brave Search API  
+**Required API Key:** Yes (Brave)  
+**Cost:** ~$0.01-0.05 per search  
+**Config:**
+```json
+{
+  "braveApiKey": "YOUR_BRAVE_KEY"
+}
+```
+**Usage:** `nanobot: "Find 3 articles about AI safety from this week"`
+
+### web_fetch
+**Purpose:** Download and parse web pages full-text  
+**Required API Key:** No  
+**Cost:** None  
+**Config:** Built-in, no config needed  
+**Usage:** `nanobot: "Summarize this page: https://example.com/article"`
+
+### file_read / file_write / file_edit / file_list
+**Purpose:** Access workspace files  
+**Workspace Scope:** All paths are relative to agent workspace (e.g., `~/.nanobot/workspace/`)  
+**Security:** Cannot escape workspace root (e.g., cannot read `/etc/passwd`)  
+**Config:** No special config; enabled by default with workspace binding  
+**Usage Examples:**
+```
+"Read the project README"
+"Create a deployment checklist in deploy-checklist.md"
+"Update line 10 in config.json to set debug=true"
+"List all Python files in src/"
+```
+
+### shell_exec
+**Purpose:** Execute OS commands  
+**Risk Tier:** High  
+**Restrictions:**
+- Only operators with explicit allowlist can invoke
+- All commands logged with timestamp, operator, exit code, output
+- Dangerous commands (rm -rf /, sudo) can be blocklisted
+**Config:**
+```json
+{
+  "tools": {
+    "shell": {
+      "enabled": true,
+      "allowFrom": ["USER_ID_1", "USER_ID_2"],
+      "timeout": 30,
+      "blocklist": ["rm -rf", "sudo dd"]
+    }
+  }
+}
+```
+**Usage:** `nanobot: "Deploy the latest build: make deploy"`
+
+### message_send
+**Purpose:** Send cross-channel alerts, escalations, notifications  
+**Config:** Built-in  
+**Usage Examples:**
+```
+"Alert team in #incidents that model latency > 5s"
+"Send daily summary to #ops-digest"
+"Notify owner in #alerts about high spend ($50/day)"
+```
+
+### mcp_call
+**Purpose:** Call externally hosted MCP (Model Context Protocol) tools  
+**Examples of MCP Tools:** 
+- Filesystem operations on remote systems
+- Database queries
+- API calls to internal services
+- Custom business logic tools
+**Config:**
+```json
+{
+  "mcpServers": {
+    "mydb": {
+      "command": "python",
+      "args": ["/path/to/db_mcp_server.py"],
+      "customHeaders": {
+        "Authorization": "Bearer YOUR_TOKEN"
+      }
+    }
+  }
+}
+```
+**Docs:** https://modelcontextprotocol.io
+
+### cron_schedule
+**Purpose:** Schedule tasks to run on recurring schedule  
+**Syntax:** Standard cron (minute hour day month weekday)  
+**Examples:**
+```
+"0 9 * * 1-5" → Every weekday at 9 AM
+"0 * * * *" → Every hour
+"*/15 * * * *" → Every 15 minutes
+"0 23 * * *" → Daily at 11 PM
+```
+**Config:** No special config; enabled via Cron skill  
+**Usage:** `nanobot: "Schedule a daily digest at 23:50 every day"`
+
+### subagent_spawn
+**Purpose:** Launch independent agents for parallel work  
+**Use Cases:** 
+- Parallel research across multiple sources
+- Delegated tasks (e.g., "research this, fix that, monitor that")
+- Complex multi-step workflows
+**Config:** No special config; built-in  
+**Usage:**
+```
+"Spawn 3 agents to each research a different competitor, then synthesize findings"
+"Spawn agent to monitor GitHub repo for issues while you work on design doc"
+```
+
+### github_search / github_pr_create / github_action_trigger
+**Purpose:** Automate GitHub workflows  
+**Required:** GitHub personal access token (for create/trigger)  
+**Config:**
+```json
+{
+  "tools": {
+    "github": {
+      "token": "github_pat_...",
+      "allowFrom": ["USER_ID"]
+    }
+  }
+}
+```
+**Usage Examples:**
+```
+"Search nanobot repo for issues tagged 'bug'"
+"Create a PR to add docstrings to parser.py"
+"Trigger the 'deploy' workflow in main branch"
+```
+
+## 3. Skills Overview
+
+**Skills** are pre-built, opinionated bundles of tools configured for specific business functions.
+
+### Built-In Skills
+
+#### 1. obsidian
+**Purpose:** Read, write, and query Obsidian vault from nanobot  
+**Install:** `nanobot skill add obsidian` (or included by default)  
+**Config:**
+```json
+{
+  "obsidianVaultPath": "~/Documents/ObsidianVault",
+  "obsidianRestEndpoint": "http://localhost:18790",
+  "obsidianRestToken": "token..."
+}
+```
+**Usage:**
+```
+"Read the project roadmap from Roadmap.md"
+"Write a research summary to 08-Research/AI-Safety/2026-02.md"
+"Query all notes tagged with #decision"
+```
+
+#### 2. memory
+**Purpose:** Manage conversation sessions and memory consolidation  
+**Install:** Built-in  
+**Features:**
+- Automatic memory consolidation for long conversations
+- Session isolation per user
+- Token budget enforcement
+- Retention policies
+**Usage:** Automatic; configure via:
+```json
+{
+  "session": {
+    "memoryWindow": 100,
+    "maxSessionTokens": 32000
+  }
+}
+```
+
+#### 3. summarize
+**Purpose:** Condense long content while preserving key information  
+**Install:** Built-in  
+**Config:** No special config  
+**Usage:**
+```
+"Summarize this 50-page PDF to 1 page"
+"Create a 3-sentence summary of today's Discord activity"
+"Condense this research into key findings + citations"
+```
+
+#### 4. cron (Scheduler)
+**Purpose:** Run tasks on recurring schedules  
+**Install:** `nanobot skill add cron`  
+**Config:**
+```json
+{
+  "cron": {
+    "enabled": true,
+    "allowedJobs": ["daily_digest", "backup", "health_check"]
+  }
+}
+```
+**Usage Examples:**
+```
+"Schedule a health check every hour"
+"Run a daily journal summarizer at 23:50"
+"Backup workspace every Sunday at 2 AM"
+```
+
+#### 5. weather
+**Purpose:** Fetch current and forecast weather data  
+**Install:** `nanobot skill add weather`  
+**Config:** No API key needed (free service)  
+**Usage:**
+```
+"What's the weather in San Francisco?"
+"Get 5-day forecast for New York"
+```
+
+#### 6. clawhub
+**Purpose:** Search and install public skills from ClawHub marketplace  
+**Install:** `nanobot skill add clawhub`  
+**Usage:**
+```
+"Search ClawHub for 'email' skills"
+"Install the 'LinkedIn Poster' skill from ClawHub"
+```
+**Note:** ClawHub is a skill marketplace; vet all skills before installing.
+
+#### 7. skill-creator
+**Purpose:** Auto-generate new skills from natural language descriptions  
+**Install:** `nanobot skill add skill-creator`  
+**Usage:**
+```
+"Create a new skill: read financial PDFs and extract quarterly earnings"
+"Generate a skill for checking DNS records"
+```
+
+#### 8. tmux
+**Purpose:** Control terminal multiplexer for advanced automation  
+**Install:** `nanobot skill add tmux`  
+**Config:**
+```json
+{
+  "tmux": {
+    "defaultSession": "main",
+    "allowFrom": ["TRUSTED_USER_ID"]
+  }
+}
+```
+**Usage:** `"Start a tmux session 'dev' and run my build script"`
+
+#### 9. github
+**Purpose:** GitHub automation (search, create PRs, trigger workflows)  
+**Install:** Built-in  
+**Config:**
+```json
+{
+  "github": {
+    "token": "github_pat_...",
+    "defaultOrg": "your-org"
+  }
+}
+```
+**Usage:**
+```
+"Search our 'frontend' repo for TypeScript issues"
+"Create a PR to update dependencies"
+"Trigger 'test' workflow"
+```
+
+## 4. Custom Tools
+
+Add custom tool implementations to extend nanobot:
+
+**Example: Custom Weather Tool**
+```python
+# ~/.nanobot/tools/custom_weather.py
+from nanobot.agent.tools import BaseTool
+
+class CustomWeatherTool(BaseTool):
+    name = "custom_weather"
+    description = "Fetch weather from internal weather service"
+    
+    async def execute(self, location: str) -> dict:
+        # Your custom logic here
+        return {"temperature": 72, "condition": "sunny"}
+```
+
+**Register in config:**
+```json
+{
+  "customTools": [
+    "~/.nanobot/tools/custom_weather"
+  ]
+}
+```
+
+## 5. Custom Skills
+
+Create a new skill by bundling tools with business logic:
+
+**Example: Bookkeeping Reconciliation Skill**
+```python
+# ~/.nanobot/skills/bk_reconcile.py
+from nanobot.agent.skills import BaseSkill
+
+class BookkeepingReconcileSkill(BaseSkill):
+    id = "bk_reconcile"
+    description = "Reconcile transactions against ledger"
+    
+    async def execute(self, csv_file: str, ledger_date: str) -> dict:
+        # 1. Read CSV via file_read tool
+        # 2. Parse transactions
+        # 3. Query ledger (via MCP or database tool)
+        # 4. identify discrepancies
+        # 5. Write summary to Obsidian
+        return {"status": "reconciled", "discrepancies": [...]}
+```
+
+**Install:**
+```bash
+nanobot skill add ~/.nanobot/skills/bk_reconcile
+```
+
+## 6. Tool Allowlisting (AOS Security)
+
+Restrict tools per channel:
+
+```json
+{
+  "channels": {
+    "discord": {
+      "allowedTools": {
+        "#ctl-nanobot": ["shell", "mcp", "github"],
+        "#prd-*": ["web", "file", "message"],
+        "#bk-*": ["file", "message", "obsidian"],
+        "#res-*": ["web", "message", "obsidian"],
+        "default": ["web", "file", "message"]
+      }
+    }
+  }
+}
+```
+
+## 7. Tool Cost & Performance Reference
+
+| Tool | Latency | Cost/Call | Context Impact |
+|---|---|---|---|
+| web_search | 2-5s | ~$0.01 | 5-10KB |
+| web_fetch | 1-3s | None | 10-50KB |
+| file_* | <100ms | None | <1KB |
+| shell_exec | 1-30s | None | Varies |
+| message_send | <100ms | None | <1KB |
+| mcp_call | Varies | Varies | Depends |
+| cron_schedule | N/A | None | None |
+| subagent_spawn | High | +cost per agent | +memory |
+| github_* | 1-5s | None | <5KB |
+
+## 8. Troubleshooting Tools
+
+**Tool disabled error:**
+```
+"web_search" tool not available in #bk-finances
+```
+Fix: Add `web` to allowed tools for that channel.
+
+**Tool timeout:**
+```
+shell_exec timed out after 30s
+```
+Fix: Increase `timeout` config or optimize command.
+
+**MCP connection failed:**
+```
+Cannot connect to MCP server: mydb
+```
+Fix: Verify MCP server is running and auth headers are correct.
+
+## 9. Revision History
+
+| Date | Version | Change |
+|---|---|---|
+| 2026-02-25 | 1.0.0 | Initial comprehensive reference for 14 tools and 9 pre-built skills |

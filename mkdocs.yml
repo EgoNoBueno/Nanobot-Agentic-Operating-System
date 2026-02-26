@@ -1,0 +1,101 @@
+site_name: Nanobot Agentic Operating System
+site_description: Production-ready documentation for deploying and operating the Nanobot AI agent framework
+repo_url: https://github.com/HKUDS/nanobot
+repo_name: HKUDS/nanobot
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: material
+  logo: assets/nanobot-logo.png
+  favicon: assets/favicon.ico
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.tabs.link
+    - content.code.copy
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/lightbulb
+        name: Switch to light mode
+
+plugins:
+  - search
+  - tags
+
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.attr_list
+  - markdown.extensions.codehilite
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.tables
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.progressbar
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Master Index: Master-Index.md
+    - Quick Install & Setup: Nanobot-Quick-Install-Setup.md
+    - Build Procedure: Nanobot-Build-Procedure.md
+    - Startup Procedure: AOS-Startup-Procedure.md
+  - Setup & Configuration:
+    - LLM Provider Setup: LLM-Provider-Setup-Guide.md
+    - Multi-Channel Integration: Multi-Channel-Integration-Guide.md
+  - Operating:
+    - Essential Skills: Essential-AOS-Skills.md
+    - Tools & Skills Reference: Tools-and-Skills-Reference.md
+    - Workflow Examples: Workflow-Examples-and-Recipes.md
+  - Governance & Cost:
+    - Cost Calculator & Optimization: Cost-Calculator-and-Optimization.md
+    - Governance Policies: Governance-Policies-and-Config-Examples.md
+  - Security:
+    - Security Validation Runbook: Security-Validation-Runbook.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/HKUDS/nanobot
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/nanobot
+
+copyright: Copyright &copy; 2026 Nanobot Contributors
