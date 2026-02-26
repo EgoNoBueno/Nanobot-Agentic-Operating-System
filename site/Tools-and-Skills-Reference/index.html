@@ -14,7 +14,7 @@
         <link rel="prev" href="../Essential-AOS-Skills/">
       
       
-        <link rel="next" href="../Workflow-Examples-and-Recipes/">
+        <link rel="next" href="../Advanced-Skill-Development/">
       
       
         
@@ -837,6 +837,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="subagent_spawn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sub-agent-orchestration-advanced-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sub-Agent Orchestration (Advanced Pattern)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1070,6 +1087,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../Advanced-Skill-Development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Skill Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../Workflow-Examples-and-Recipes/" class="md-nav__link">
         
   
@@ -1283,6 +1328,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Emergency-Recovery-and-Troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emergency Recovery & Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1452,6 +1525,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="subagent_spawn">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sub-agent-orchestration-advanced-pattern" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sub-Agent Orchestration (Advanced Pattern)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1892,11 +1982,95 @@
 - Parallel research across multiple sources
 - Delegated tasks (e.g., "research this, fix that, monitor that")
 - Complex multi-step workflows
+- Fact-checking and verification sub-processes
 <strong>Config:</strong> No special config; built-in<br />
 <strong>Usage:</strong>
 <div class="highlight"><pre><span></span><code>&quot;Spawn 3 agents to each research a different competitor, then synthesize findings&quot;
 &quot;Spawn agent to monitor GitHub repo for issues while you work on design doc&quot;
 </code></pre></div></p>
+<h4 id="sub-agent-orchestration-advanced-pattern">Sub-Agent Orchestration (Advanced Pattern)<a class="headerlink" href="#sub-agent-orchestration-advanced-pattern" title="Permanent link">&para;</a></h4>
+<p>Modern deployments use <strong>Agent Orchestration</strong> to decompose complex tasks into specialized sub-agents:</p>
+<p><strong>Architecture:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+<th>Model Priority</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Manager Agent</strong></td>
+<td>Primary orchestrator</td>
+<td>Fast (e.g., Sonnet)</td>
+<td>Planning, coordination, synthesis</td>
+</tr>
+<tr>
+<td><strong>Fact-Checker Sub-Agent</strong></td>
+<td>Verification &amp; auditing</td>
+<td>Smart (e.g., local 70B)</td>
+<td>Technical accuracy, hallucination detection</td>
+</tr>
+<tr>
+<td><strong>Researcher Sub-Agent</strong></td>
+<td>Information gathering</td>
+<td>Fast (e.g., 8B)</td>
+<td>Web search, data collection</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example Workflow:</strong></p>
+<div class="highlight"><pre><span></span><code>User: &quot;Research competitors and tell me 3 novel features we could implement&quot;
+
+1. Manager Agent receives request
+2. Manager spawns Researcher: &quot;Find top 5 competitors in our space&quot;
+3. Manager spawns Analyzer: &quot;Extract novel features from their product&quot;
+4. Manager spawns Fact-Checker: &quot;Verify these features are real and current&quot;
+5. Manager synthesizes: &quot;Here are 3 novel features we don&#39;t have yet&quot;
+</code></pre></div>
+<p><strong>Configuration:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;orchestration&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;maxSpawnDepth&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;maxConcurrentAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;costCeiling&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.00</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subagentDefaults&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model_fast&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen-2-72b&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;model_smart&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claude-opus&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;timeout_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Safety Controls:</strong></p>
+<ul>
+<li><strong>maxSpawnDepth:</strong> Prevents infinite recursion (agents spawning agents spawning agents...)</li>
+<li><strong>maxConcurrentAgents:</strong> Limits parallel spawns to prevent resource exhaustion</li>
+<li><strong>costCeiling:</strong> Daily budget cap for sub-agent API calls</li>
+<li><strong>timeout_seconds:</strong> Hard kill timeout for stuck sub-agents</li>
+</ul>
+<p><strong>Manual Invocation (Discord/Slack):</strong></p>
+<div class="highlight"><pre><span></span><code>@BotName spawn fact-checker to verify: &quot;The RTX 4090 has 24GB VRAM&quot;
+
+→ Creates isolated agent with:
+   - Access to web search + knowledge base
+   - Specific verification prompt
+   - Confidence scoring
+   - Source citations
+
+Result: 
+✅ VERIFIED (98% confidence)
+Source: NVIDIA official specs
+Details: RTX 4090 has 24GB GDDR6X memory
+</code></pre></div>
+<p><strong>Cost Optimization Tip:</strong></p>
+<p>Pair expensive orchestration with cheap models:
+- Use <strong>Tier C model (fast, cheap)</strong> for initial research
+- Use <strong>Tier A model (slow, powerful)</strong> for final synthesis/verification only
+- Example: 3 parallel Tier C searches → 1 Tier A synthesis = $0.05 total vs. $0.45 for direct Tier A</p>
+<p><strong>See Also:</strong> <a href="../Advanced-Skill-Development/">Advanced Skill Development</a> for custom orchestration patterns.</p>
 <h3 id="github_search-github_pr_create-github_action_trigger">github_search / github_pr_create / github_action_trigger<a class="headerlink" href="#github_search-github_pr_create-github_action_trigger" title="Permanent link">&para;</a></h3>
 <p><strong>Purpose:</strong> Automate GitHub workflows<br />
 <strong>Required:</strong> GitHub personal access token (for create/trigger)<br />

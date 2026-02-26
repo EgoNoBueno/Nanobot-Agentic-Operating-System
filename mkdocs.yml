@@ -84,12 +84,14 @@ nav:
   - Operating:
     - Essential Skills: Essential-AOS-Skills.md
     - Tools & Skills Reference: Tools-and-Skills-Reference.md
+    - Advanced Skill Development: Advanced-Skill-Development.md
     - Workflow Examples: Workflow-Examples-and-Recipes.md
   - Governance & Cost:
     - Cost Calculator & Optimization: Cost-Calculator-and-Optimization.md
     - Governance Policies: Governance-Policies-and-Config-Examples.md
   - Security:
     - Security Validation Runbook: Security-Validation-Runbook.md
+    - Emergency Recovery & Troubleshooting: Emergency-Recovery-and-Troubleshooting.md
 
 extra:
   social:

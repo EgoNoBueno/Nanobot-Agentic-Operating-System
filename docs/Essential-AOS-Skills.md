@@ -24,6 +24,73 @@ This document lists the 5 core skills (pre-built bundles) recommended for every 
   "obsidianRestToken": "token..."
 }
 ```
+
+#### Obsidian Local REST API Setup (Required)
+
+To enable nanobot ↔ Obsidian communication, set up the Local REST API plugin:
+
+**Step 1: Enable Community Plugins**
+1. Open Obsidian → **Settings** → **Community Plugins**
+2. Toggle **Turn on community plugins** (if not already on)
+3. Search for **"Local REST API"** by Coremute
+4. Click **Install**
+
+**Step 2: Configure REST API**
+1. Go to **Settings** → **Local REST API**
+2. Enable the plugin
+3. Note the **Ribbon Icon** appears in left sidebar (scroll down to see it)
+4. Click the icon to see your API details:
+   - **Listening on:** http://localhost:27123 (or another port)
+   - **API Token:** (long hex string)
+
+**Step 3: Get Your Token**
+1. Click the REST API ribbon icon
+2. Copy the access token shown
+
+**Step 4: Update Nanobot Config**
+```json
+{
+  "obsidian": {
+    "vaultPath": "/Users/your-username/Documents/MyVault",
+    "restEndpoint": "http://localhost:27123",
+    "restToken": "<paste-token-here>"
+  }
+}
+```
+
+**Step 5: Test Connection**
+```bash
+# In nanobot terminal, verify Obsidian is reachable
+nanobot test-vault --path /Users/your-username/Documents/MyVault
+
+# Should return: ✅ Vault accessible
+```
+
+**Step 6: Verify with a Simple Command**
+```
+User: "@BotName read the file Getting-Started.md"
+```
+
+If successful, the bot returns the file contents. If it fails:
+- Check Obsidian is running
+- Confirm REST API plugin is enabled
+- Verify vault path and token in config
+- Check firewall isn't blocking localhost:27123
+
+#### Storage & Permissions
+
+**Vault Location Best Practices:**
+- **Local machine:** SSD for speed (e.g., `~/Documents/MyVault`)
+- **NOT in OneDrive/Dropbox initially** — File-locking can conflict with REST API
+- **Network share:** Only if using NFS / SMB (not recommended for reliability)
+
+**File Permissions:**
+```bash
+# Ensure nanobot process can read/write
+chmod 755 ~/Documents/MyVault
+chmod 644 ~/Documents/MyVault/*.md
+```
+
 **Usage Examples:**
 - `"Read the Q1 roadmap from Strategy.md"`
 - `"Write a research summary to 08-Research/AI-Safety/findings.md"`

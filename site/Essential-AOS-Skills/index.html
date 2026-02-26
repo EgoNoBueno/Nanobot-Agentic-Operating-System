@@ -704,6 +704,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1. obsidian">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obsidian-local-rest-api-setup-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obsidian Local REST API Setup (Required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage &amp; Permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -845,6 +873,34 @@
     
   
     Tools & Skills Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Advanced-Skill-Development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Skill Development
   
 
     
@@ -1078,6 +1134,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Emergency-Recovery-and-Troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emergency Recovery & Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1142,6 +1226,34 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="1. obsidian">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obsidian-local-rest-api-setup-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obsidian Local REST API Setup (Required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storage-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Storage &amp; Permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1303,8 +1415,58 @@
 <span class="w">  </span><span class="nt">&quot;obsidianRestEndpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:18790&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;obsidianRestToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;token...&quot;</span>
 <span class="p">}</span>
-</code></pre></div>
-<strong>Usage Examples:</strong>
+</code></pre></div></p>
+<h4 id="obsidian-local-rest-api-setup-required">Obsidian Local REST API Setup (Required)<a class="headerlink" href="#obsidian-local-rest-api-setup-required" title="Permanent link">&para;</a></h4>
+<p>To enable nanobot ↔ Obsidian communication, set up the Local REST API plugin:</p>
+<p><strong>Step 1: Enable Community Plugins</strong>
+1. Open Obsidian → <strong>Settings</strong> → <strong>Community Plugins</strong>
+2. Toggle <strong>Turn on community plugins</strong> (if not already on)
+3. Search for <strong>"Local REST API"</strong> by Coremute
+4. Click <strong>Install</strong></p>
+<p><strong>Step 2: Configure REST API</strong>
+1. Go to <strong>Settings</strong> → <strong>Local REST API</strong>
+2. Enable the plugin
+3. Note the <strong>Ribbon Icon</strong> appears in left sidebar (scroll down to see it)
+4. Click the icon to see your API details:
+   - <strong>Listening on:</strong> http://localhost:27123 (or another port)
+   - <strong>API Token:</strong> (long hex string)</p>
+<p><strong>Step 3: Get Your Token</strong>
+1. Click the REST API ribbon icon
+2. Copy the access token shown</p>
+<p><strong>Step 4: Update Nanobot Config</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;obsidian&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;vaultPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/Users/your-username/Documents/MyVault&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;restEndpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:27123&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;restToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;paste-token-here&gt;&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Step 5: Test Connection</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># In nanobot terminal, verify Obsidian is reachable</span>
+nanobot<span class="w"> </span>test-vault<span class="w"> </span>--path<span class="w"> </span>/Users/your-username/Documents/MyVault
+
+<span class="c1"># Should return: ✅ Vault accessible</span>
+</code></pre></div></p>
+<p><strong>Step 6: Verify with a Simple Command</strong>
+<div class="highlight"><pre><span></span><code>User: &quot;@BotName read the file Getting-Started.md&quot;
+</code></pre></div></p>
+<p>If successful, the bot returns the file contents. If it fails:
+- Check Obsidian is running
+- Confirm REST API plugin is enabled
+- Verify vault path and token in config
+- Check firewall isn't blocking localhost:27123</p>
+<h4 id="storage-permissions">Storage &amp; Permissions<a class="headerlink" href="#storage-permissions" title="Permanent link">&para;</a></h4>
+<p><strong>Vault Location Best Practices:</strong>
+- <strong>Local machine:</strong> SSD for speed (e.g., <code>~/Documents/MyVault</code>)
+- <strong>NOT in OneDrive/Dropbox initially</strong> — File-locking can conflict with REST API
+- <strong>Network share:</strong> Only if using NFS / SMB (not recommended for reliability)</p>
+<p><strong>File Permissions:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Ensure nanobot process can read/write</span>
+chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>~/Documents/MyVault
+chmod<span class="w"> </span><span class="m">644</span><span class="w"> </span>~/Documents/MyVault/*.md
+</code></pre></div></p>
+<p><strong>Usage Examples:</strong>
 - <code>"Read the Q1 roadmap from Strategy.md"</code>
 - <code>"Write a research summary to 08-Research/AI-Safety/findings.md"</code>
 - <code>"Query all notes tagged #decision"</code></p>

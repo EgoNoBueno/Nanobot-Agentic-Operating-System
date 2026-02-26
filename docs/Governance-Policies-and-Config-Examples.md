@@ -173,7 +173,115 @@ Team exceeds budget:
 
 ---
 
-## 3. Channel Naming Convention & Governance
+## 3. Risk Tier Framework (Who Needs Approval?)
+
+**Goal:** Classify actions by reversibility. Actions with high impact require human approval.
+
+### Risk Tiers Overview
+
+Risk is measured by **Magnitude of Irreversibility**. If an action is hard to undo or compromises core security, it's high-risk.
+
+| Tier | Automation | Description | Examples | Approval? |
+|------|-----------|-------------|----------|-----------|
+| **Tier 0: Safe** | ✅ Autonomous | Read-only, internal logs, low-impact data | Checking weather, reading Obsidian notes, summarizing public PDFs | No |
+| **Tier 1: Minor** | ✅ Autonomous | State changes with undo capability | Creating folders, moving temp files, adding Discord reactions | No (log only) |
+| **Tier 2: Moderate** | ⚠️ Soft-Pause | Actions affecting external data or "shadow" systems | Sending email to known contact, deleting temp folder, running scheduled reports | Conditional* |
+| **Tier 3: High** | 🛑 Hard-Pause | Actions affecting identity or security | Modifying Discord permissions, changing .env files, new SSH node access | **Yes (Approver role)** |
+| **Tier 4: Critical** | 🔒 Locked | Destructive or system-wide changes | Deleting database, mass-sending external messages, changing Primary Operator ID | **Yes (MFA/Admin only)** |
+
+\*Conditional = approved automatically if target is allowlisted; requires approval otherwise
+
+### Implementation Example
+
+```json
+{
+  "risk_tiers": {
+    "tier_0": {
+      "automation": "autonomous",
+      "description": "Read-only, safe",
+      "examples": ["web_search", "obsidian_read", "summarize"],
+      "approval_required": false
+    },
+    "tier_1": {
+      "automation": "autonomous", 
+      "description": "Minor changes, recoverable",
+      "examples": ["file_create", "folder_create", "message_react"],
+      "approval_required": false,
+      "audit_logging": true
+    },
+    "tier_2": {
+      "automation": "soft_pause",
+      "description": "External or shadow data impacts",
+      "examples": ["message_send:email", "file_delete:temp", "cron:schedule"],
+      "approval_required": "conditional",
+      "auto_approve_if": "target_in_allowlist"
+    },
+    "tier_3": {
+      "automation": "hard_pause",
+      "description": "Security/identity impacts",
+      "examples": ["permission_modify", "config_write:secrets", "node_authorize"],
+      "approval_required": true,
+      "approver_role": "AOS Approver",
+      "timeout_seconds": 300
+    },
+    "tier_4": {
+      "automation": "locked",
+      "description": "Destructive, system-wide",
+      "examples": ["database_truncate", "message_broadcast:external", "operator_change"],
+      "approval_required": true,
+      "approver_role": "Admin",
+      "requires_mfa": true,
+      "requires_human_review": true
+    }
+  }
+}
+```
+
+### How Tiers Trigger Approval Flows
+
+When user requests a **Tier 3** action:
+
+```
+User: @BotName ssh authorize new-node 192.168.1.50
+
+🛑 HIGH-RISK ACTION: Node Authorization
+   Requested by: @alice (engineering team)
+   Action: Authorize new SSH access to 192.168.1.50
+   
+   Risk Level: Tier 3 (security impact)
+   Reversibility: Revocable but requires cleanup
+   
+   ✋ Approval Required from: @AOS-Approver role
+   Timeout: 5 minutes
+   
+[Review Details] [Approve] [Deny]
+```
+
+When user requests a **Tier 4** action:
+
+```
+User: @BotName database truncate production_logs
+
+🔒 CRITICAL ACTION: Database Truncate
+   Requested by: @alice
+   Action: PERMANENTLY DELETE production_logs
+   
+   Risk Level: Tier 4 (destructive, irreversible)
+   Data Loss: Irreversible
+   
+   ⛔ LOCKED: Only Admin role with MFA can approve
+   Requires: Multi-factor authentication
+   Approval Timeout: 1 hour (imminent action warning)
+   
+   WARNING: This action cannot be undone!
+   All audit trails will be deleted.
+   
+[View Details] [Request Admin] [Cancel]
+```
+
+---
+
+## 4. Channel Naming Convention & Governance
 
 **Goal:** Channel names automatically enforce policy.
 
@@ -254,7 +362,7 @@ When user creates channel `#prd-auth-secret`:
 
 ---
 
-## 4. Provider Routing by Workflow
+## 5. Provider Routing by Workflow
 
 **Goal:** Smart cost optimization. Route by channel/keyword/priority.
 
@@ -340,7 +448,7 @@ Bypass tier restrictions
 
 ---
 
-## 5. Approval Workflows for High-Risk Actions
+## 6. Approval Workflows for High-Risk Actions
 
 **Goal:** Prevent costly or dangerous operations without human review.
 
@@ -414,7 +522,7 @@ Audit entry created: ID-2026-0225-0447
 
 ---
 
-## 6. Escalation Workflows
+## 7. Escalation Workflows
 
 **Goal:** Uncertain decisions bubble up to humans.
 

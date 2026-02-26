@@ -139,12 +139,87 @@ Complete reference for all built-in tools and pre-built skills in nanobot, plus 
 - Parallel research across multiple sources
 - Delegated tasks (e.g., "research this, fix that, monitor that")
 - Complex multi-step workflows
+- Fact-checking and verification sub-processes
 **Config:** No special config; built-in  
 **Usage:**
 ```
 "Spawn 3 agents to each research a different competitor, then synthesize findings"
 "Spawn agent to monitor GitHub repo for issues while you work on design doc"
 ```
+
+#### Sub-Agent Orchestration (Advanced Pattern)
+
+Modern deployments use **Agent Orchestration** to decompose complex tasks into specialized sub-agents:
+
+**Architecture:**
+
+| Component | Role | Model Priority | Focus |
+|-----------|------|---|---|
+| **Manager Agent** | Primary orchestrator | Fast (e.g., Sonnet) | Planning, coordination, synthesis |
+| **Fact-Checker Sub-Agent** | Verification & auditing | Smart (e.g., local 70B) | Technical accuracy, hallucination detection |
+| **Researcher Sub-Agent** | Information gathering | Fast (e.g., 8B) | Web search, data collection |
+
+**Example Workflow:**
+
+```
+User: "Research competitors and tell me 3 novel features we could implement"
+
+1. Manager Agent receives request
+2. Manager spawns Researcher: "Find top 5 competitors in our space"
+3. Manager spawns Analyzer: "Extract novel features from their product"
+4. Manager spawns Fact-Checker: "Verify these features are real and current"
+5. Manager synthesizes: "Here are 3 novel features we don't have yet"
+```
+
+**Configuration:**
+
+```json
+{
+  "orchestration": {
+    "maxSpawnDepth": 2,
+    "maxConcurrentAgents": 5,
+    "costCeiling": 5.00,
+    "subagentDefaults": {
+      "model_fast": "qwen-2-72b",
+      "model_smart": "claude-opus",
+      "timeout_seconds": 300
+    }
+  }
+}
+```
+
+**Safety Controls:**
+
+- **maxSpawnDepth:** Prevents infinite recursion (agents spawning agents spawning agents...)
+- **maxConcurrentAgents:** Limits parallel spawns to prevent resource exhaustion
+- **costCeiling:** Daily budget cap for sub-agent API calls
+- **timeout_seconds:** Hard kill timeout for stuck sub-agents
+
+**Manual Invocation (Discord/Slack):**
+
+```
+@BotName spawn fact-checker to verify: "The RTX 4090 has 24GB VRAM"
+
+→ Creates isolated agent with:
+   - Access to web search + knowledge base
+   - Specific verification prompt
+   - Confidence scoring
+   - Source citations
+
+Result: 
+✅ VERIFIED (98% confidence)
+Source: NVIDIA official specs
+Details: RTX 4090 has 24GB GDDR6X memory
+```
+
+**Cost Optimization Tip:**
+
+Pair expensive orchestration with cheap models:
+- Use **Tier C model (fast, cheap)** for initial research
+- Use **Tier A model (slow, powerful)** for final synthesis/verification only
+- Example: 3 parallel Tier C searches → 1 Tier A synthesis = $0.05 total vs. $0.45 for direct Tier A
+
+**See Also:** [Advanced Skill Development](Advanced-Skill-Development.md) for custom orchestration patterns.
 
 ### github_search / github_pr_create / github_action_trigger
 **Purpose:** Automate GitHub workflows  

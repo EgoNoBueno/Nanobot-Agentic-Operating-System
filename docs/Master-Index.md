@@ -168,6 +168,7 @@ Use these docs as references when following one of the three roadmaps above.
 ### Features & Extensibility
 - [Tools & Skills Reference](Tools-and-Skills-Reference.md) - All built-in tools, pre-built skills, and how to create custom tools/skills
 - [Essential AOS Skills](Essential-AOS-Skills.md) - Recommended pre-built skills for every deployment
+- [Advanced Skill Development](Advanced-Skill-Development.md) - Create custom skills beyond pre-built capabilities; operator-injectable skills via Discord
 
 ### Workflows & Examples
 - [Workflow Examples & Recipes](Workflow-Examples-and-Recipes.md) - Real-world workflows: knowledge consolidation, multi-channel posting, customer support bot, research agent, GitHub automation
@@ -178,6 +179,7 @@ Use these docs as references when following one of the three roadmaps above.
 
 ### Security & Compliance
 - [Nanobot Agentic Operating System Security Validation Runbook](Security-Validation-Runbook.md) - Monthly security audit, hardening steps, incident response
+- [Emergency Recovery and Troubleshooting](Emergency-Recovery-and-Troubleshooting.md) - System diagnostics, recovery procedures, troubleshooting quick reference
 
 ## 4. Interoperability Summary
 
