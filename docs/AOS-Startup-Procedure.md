@@ -11,8 +11,8 @@ Bring nanobot from fully powered down to fully operational. Choose your path bas
 ## 1. Overview
 
 Two startup scenarios:
-- **Simple Startup** (10 min) - Local nanobot + cloud LLM API
-- **Advanced Startup** (15 min) - VPS nanobot + local Ollama inference
+- **Simple Startup** (10 min) - Local nanobot + cloud LLM (Large Language Model) API
+- **Advanced Startup** (15 min) - VPS (Virtual Private Server) nanobot + local Ollama inference
 
 Both assume initial setup is complete (config files, secrets stored, channels configured).
 
@@ -26,12 +26,13 @@ Both assume initial setup is complete (config files, secrets stored, channels co
 
 ## 3. Startup Checklist (High-Level)
 
-- [ ] Verify internet connectivity
-- [ ] Start required services (Ollama, Tailscale, VPS, etc. per your architecture)
-- [ ] Test LLM provider connectivity
-- [ ] Verify channel bot status
-- [ ] Run one test command end-to-end
-- [ ] Confirm Obsidian write-back (if applicable)
+Before you start, make sure you have:
+- [ ] Internet connection (required for cloud LLM)
+- [ ] Required services running (Ollama, Tailscale, VPS, etc. per your architecture)
+- [ ] LLM (language model) provider accessibility confirmed
+- [ ] Chat bot status verified (Discord/Slack/etc.)
+- [ ] One quick test command ready to verify end-to-end flow
+- [ ] Obsidian integration confirmed (if you're using it)
 
 ---
 

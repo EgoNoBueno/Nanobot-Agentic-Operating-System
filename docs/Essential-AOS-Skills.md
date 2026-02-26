@@ -2,7 +2,7 @@
 
 This document lists the 5 core skills (pre-built bundles) recommended for every Nanobot Agentic Operating System deployment. For complete reference including all 9 pre-built skills, 14 tools, and custom skill creation, see [Tools & Skills Reference](Tools-and-Skills-Reference.md).
 
-> **Plain-English Note:** A skill is a pre-built bundle of tools configured for a specific business workflow. Install these five first, then add others as needed.
+> **Plain-English Note:** A skill is a pre-built bundle of tools configured for a specific business workflow. Think of skills as "ready-to-use packages" — install these five first, then add others as needed.
 
 ## Document Control
 - **Owner:**
@@ -27,7 +27,7 @@ This document lists the 5 core skills (pre-built bundles) recommended for every 
 
 #### Obsidian Local REST API Setup (Required)
 
-To enable nanobot ↔ Obsidian communication, set up the Local REST API plugin:
+To enable nanobot ↔ Obsidian communication, set up the Local REST API plugin. (REST API = a way for programs to talk to each other. This lets nanobot read and write to Obsidian.)
 
 **Step 1: Enable Community Plugins**
 1. Open Obsidian → **Settings** → **Community Plugins**

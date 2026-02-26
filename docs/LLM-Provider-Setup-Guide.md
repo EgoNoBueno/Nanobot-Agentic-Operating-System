@@ -1,6 +1,6 @@
 # LLM Provider Setup Guide
 
-Configure nanobot to use different AI models based on workflow type, cost, and capability requirements.
+Configure nanobot to use different AI (artificial intelligence) models based on workflow type, cost, and capability requirements.
 
 ## Document Control
 - **Owner:**
@@ -10,7 +10,7 @@ Configure nanobot to use different AI models based on workflow type, cost, and c
 
 ## 1. Overview
 
-Nanobot supports 100+ LLM models via unified configuration. Choose your provider based on:
+Nanobot supports 100+ LLM (Large Language Model) models via unified configuration. Choose your provider based on:
 - **Cost** - Qwen, DeepSeek cheaper; Opus more expensive but capable
 - **Latency** - Local faster; cloud slightly slower
 - **Capability** - Opus best for complex reasoning; Haiku fastest
@@ -32,12 +32,12 @@ Nanobot supports 100+ LLM models via unified configuration. Choose your provider
 ## 3. Quick Setup (5 minutes)
 
 ### Option A: OpenRouter (All-in-One)
-OpenRouter gives you access to 100+ models with one API key.
+OpenRouter gives you access to 100+ models with one API key. (An API key is like a password that lets nanobot connect to OpenRouter's servers.)
 
 **Step 1: Get API Key**
 - Visit https://openrouter.ai/keys
 - Sign up or log in
-- Copy your API key
+- Copy your API key (this is your unique password—keep it secret!)
 
 **Step 2: Configure**
 ```json
@@ -55,16 +55,17 @@ OpenRouter gives you access to 100+ models with one API key.
   }
 }
 ```
-Save to `~/.nanobot/config.json` (or set `OPENROUTER_API_KEY` env var)
+Save to `~/.nanobot/config.json` (or set `OPENROUTER_API_KEY` environment variable—this is a way to store the API key so programs can read it)
 
 **Step 3: Test**
 ```bash
+# Start nanobot interactive mode and ask it a question
 nanobot agent
 ask a question
 ```
 
 ### Option B: Local Ollama
-Perfect for sensitive data, no API costs.
+Perfect for sensitive data, no API costs. (You run the AI on your own computer instead of using a cloud service.)
 
 **Step 1: Install Ollama**
 - Download from https://ollama.ai
@@ -72,6 +73,8 @@ Perfect for sensitive data, no API costs.
 
 **Step 2: Pull a Model**
 ```bash
+# 'ollama pull' downloads an AI model to your machine (like downloading a file)
+# 'mistral' is the name of the model
 ollama pull mistral
 ```
 
@@ -94,6 +97,8 @@ ollama pull mistral
 
 **Step 4: Start Ollama**
 ```bash
+# ollama serve starts the AI server on your machine
+# Keep this running in a terminal (it will listen for nanobot's requests)
 ollama serve
 ```
 (Keep this running in background)
@@ -164,7 +169,7 @@ Then in Discord/Slack policy: Route `#bk-*` to bookkeeping agent, `#res-*` to re
 
 ## 5. Token Budgeting & Cost Control
 
-Configure per-request and per-agent limits:
+Configure per-request and per-agent limits. (Tokens = words, roughly. This controls how long responses can be.)
 
 ```json
 {
@@ -185,9 +190,15 @@ Configure per-request and per-agent limits:
 }
 ```
 
+**What each means:**
+- **maxInputTokens** = Maximum words/context to send to AI (8000 ≈ 6,000 words)
+- **maxOutputTokens** = Maximum words in response (4096 ≈ 3,000 words)
+- **temperature** = How "creative" the AI is (0.1 = logical, 1.0 = random)
+- **maxIterations** = How many times AI can self-correct (higher = more thinking, more cost)
+
 ## 6. Prompt Caching (Cost Optimization)
 
-Anthropic Claude supports prompt caching. Enable to reduce costs on repeated queries:
+Anthropic Claude supports prompt caching. (Caching = saving frequently-used context so you don't re-send it every time. This saves money!) Enable to reduce costs on repeated queries:
 
 ```json
 {
