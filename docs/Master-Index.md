@@ -2,7 +2,7 @@
 
 ## Document Control
 - **Owner:** Nanobot Community
-- **Version:** 2.1.0
+- **Version:** 2.2.0
 - **Last Updated:** February 26, 2026
 - **Status:** Active
 - **Purpose:** Architecture reference and documentation navigator for the full AOS
@@ -26,7 +26,7 @@ The Nanobot Agentic Operating System is a **three-plane, channel-agnostic operat
 **How it works in practice:**
 1. Operator sends request in a policy-approved channel (e.g., Discord **#prd-widget-marketing**, Slack **#prd-widget-marketing**, Telegram group, or any supported platform).
 2. Nanobot receives the message via channel integration.
-3. LLM policy routes to appropriate model class (Claude, GPT, local Ollama, etc.) with cost/security constraints.
+3. LLM policy routes to appropriate model tier (Claude, GPT, local Ollama, etc.) with cost/security constraints.
 4. Nanobot executes tasks: web search (Brave API), file read/write/edit, shell commands, GitHub automation, weather data, MCP tool calls, cron tasks, or spawns parallel subagents.
 5. Results are logged with structured metadata (**request_id**, **project_id**, tokens, cost, timing).
 6. Response is posted back to the requesting channel with citations, confidence notes, and references.
@@ -153,8 +153,8 @@ Choose your path based on your goal:
 
 Follow the **Production Setup** path above (choose Simple or Advanced Build), then:
 
-1. **[Security & Governance Policies](Security-and-Governance-Policies.md)** - Configure RBAC (Owner, Reviewer, Operator roles), channel namespacing, approval gates, cost allocation, and run monthly security validation
-2. **[Cost Calculator](Cost-Calculator-and-Optimization.md)** - Set up cost chargeback by team/project
+1. **[Security & Governance Policies](Security-and-Governance-Policies.md)** — Configure RBAC (Owner, Reviewer, Operator roles), channel namespacing, approval gates, cost allocation, and run monthly security validation
+2. **[Cost Calculator](Cost-Calculator-and-Optimization.md)** — Set up cost chargeback by team/project
 
 **Result:** Nanobot operates safely across multiple teams with clear governance, spending transparency, and audit trails.
 
@@ -225,14 +225,14 @@ Use these docs as references when following one of the three roadmaps above.
 - **Secret management** - API keys, model credentials, MCP auth stored in `.env`, never committed to version control.
 
 ## 5. Shared Data Contract (Cross-Doc)
-Use these fields consistently across Discord logs, LLM telemetry, and Obsidian notes:
+Use these fields consistently across channel logs, LLM telemetry, and Obsidian notes:
 - **request_id**
 - **project_id**
 - **workflow_domain**
 - **owner** or **requester**
 - **status**
 - **timestamp_utc**
-- **model_class** and **model_name** (when applicable)
+- **model_tier** and **model_name** (when applicable)
 - **input_tokens** / **output_tokens** / **estimated_cost** (LLM executions)
 - **reference** (link to note/runbook/output)
 
@@ -257,7 +257,7 @@ Use consistent naming across all integrated channels (Discord, Slack, Telegram, 
 - **00-System/AOS-Journal/** - Daily operational journaling (if journaler skill is enabled)
 - **00-System/Audit-Logs/** - Monthly security audit results and remediation
 
-### 6.3 Web Research Tier Mapping (Channel → Model Class)
+### 6.3 Web Research Tier Mapping (Channel → Model Tier)
 When enabling web search (Brave API), use these tier guidelines to balance cost and depth:
 
 | Channel Family | Research Depth | Cost Tier | Model Tier | Notes |
@@ -294,7 +294,7 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 ## 9. Change Management Flow
 1. Propose change in the appropriate control channel (e.g., `#ctl-nanobot-commands`).
 2. Assess risk, cost impact, and rollback plan.
-3. Update affected docs (Discord/LLM/Obsidian/Procedure).
+3. Update affected docs (channel integration/LLM/Obsidian/Procedure).
 4. Execute controlled test.
 5. Approve and promote to active.
 6. Log outcome and references in Obsidian change records.
@@ -340,7 +340,7 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 - Use pattern: `#[workflow_domain]-[team_or_project]-[optional_detail]`
 - Good examples:
   - `#prd-widget-marketing` (product team, research)
-  - `#bk-finances` (backlog, financial tasks)
+  - `#bk-finances` (bookkeeping, financial tasks)
   - `#res-ai-safety` (research, AI safety topic)
   - `#ctl-nanobot` (control, nanobot operations)
 - Avoid:
@@ -424,7 +424,7 @@ Current state of the AOS documentation (11 active documents):
 | Document | Version | Status |
 |---|---|---|
 | Getting-Started-With-Nanobot.md | 1.3.0 | ✅ Active — entry point and orientation |
-| Master-Index.md | 2.1.0 | ✅ Active — this file |
+| Master-Index.md | 2.2.0 | ✅ Active — this file |
 | AOS-Startup-Simple-Build.md | 1.0.0 | ✅ Active |
 | AOS-Startup-Advanced-Build.md | 2.2.0 | ✅ Active |
 | LLM-Provider-Setup-Guide.md | 1.3.0 | ✅ Active |
@@ -438,7 +438,8 @@ Current state of the AOS documentation (11 active documents):
 ## 13. Revision History
 | Date | Version | Change |
 |---|---|---|
-| 2026-02-26 | 2.1.0 | Review pass: added Document Control header; added Getting-Started-With-Nanobot.md as entry point in §2 and §3; fixed §2.1 broken Multi-Channel link → nanobot/README.md; fixed §2.2 step numbering (was 1,2,3,5,bullet,7,9,10); fixed §3 (removed deleted Multi-Channel doc, de-duplicated Security & Governance, added Glossary and entry point); fixed §1.3 "Class A/B/C" → "Tier A/B/C"; fixed §7 RACI table (was all placeholder values); added RACI definition; fixed §9 from Discord-specific to channel-agnostic; fixed §10 "Gateway loopback" and "DM pairing policy" jargon; fixed §11 Mistake 1 broken link; replaced stale §12 scratch notes with documentation set status table |
+| 2026-02-26 | 2.2.0 | Second review pass: "model class" → "model tier" (§1.1, §6.3 heading); "Discord logs" → "channel logs" (§5); `model_class` field → `model_tier` (§5); §9 step 3 "Discord/" → "channel integration/"; §11 Mistake 3 `#bk-finances` comment "backlog" → "bookkeeping"; §2.3 hyphens → em dashes |
+| 2026-02-26 | 2.1.0 | First review pass: added Document Control header; added Getting-Started-With-Nanobot.md as entry point; fixed broken links to deleted Multi-Channel doc; repaired §2.2 step numbering; de-duplicated §3; fixed §7 RACI table; added RACI definition; fixed §9 Discord-specific reference; clarified §10 jargon; replaced stale §12 notes with doc status table |
 | 2026-02-25 | 2.0.0 | **Major update:** Made AOS system channel-agnostic (Discord/Slack/Telegram/Feishu/etc.); documented all actual nanobot capabilities (LLM routing, tools, skills, MCP, web search, subagents, cron); updated Core Documents section with new guides; expanded security baseline to cover all deployment scenarios; clarified 3-plane governance model applies to any channel |
 | 2026-02-24 | 1.1.10 | Added Discord Messaging Setup Guide to core docs for onboarding field collection and allowlist formatting |
 | 2026-02-24 | 1.1.9 | Added Nanobot Onboarding Guide link for manual-mode local-gateway onboarding standard |
