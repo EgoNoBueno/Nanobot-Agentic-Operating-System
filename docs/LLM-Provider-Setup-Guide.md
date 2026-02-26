@@ -4,8 +4,8 @@ Configure nanobot to use different AI (artificial intelligence) models based on 
 
 ## Document Control
 - **Owner:**
-- **Version:** 1.0.0
-- **Last Updated:** 2026-02-25
+- **Version:** 1.1.0
+- **Last Updated:** 2026-02-26
 - **Status:** Active
 
 ## 1. Overview
@@ -371,9 +371,9 @@ curl http://localhost:11434/api/tags
 }
 ```
 
-## 11. AOS Integration
+## 12. AOS Integration & Governance
 
-Map channels to cost-tier models:
+Map channels to cost-tier models via [Security & Governance Policies](Security-and-Governance-Policies.md):
 
 - `#bk-*` → Qwen (cheapest, bookkeeping is lower-risk)
 - `#prd-*-analytics` → Claude Haiku (fast, moderate cost)
@@ -381,10 +381,23 @@ Map channels to cost-tier models:
 - `#res-*` → Claude Opus (complex synthesis)
 - `#res-* (escalated)` → Claude Opus (no cost cap)
 
-Implement this via LLM policy document governing which agent routes to which provider.
+Configure provider routing in your governance policy file for channel-based tier assignment.
 
-## 12. Revision History
+---
+
+## 13. Related Documents
+
+- [Cost Calculator & Optimization](Cost-Calculator-and-Optimization.md) — Per-provider cost matrix and monthly spend estimation
+- [Security & Governance Policies](Security-and-Governance-Policies.md) — LLM provider routing, approval workflows, cost allocation
+- [AOS Startup: Advanced Build](AOS-Startup-Advanced-Build.md) — Ollama setup and configuration
+- [AOS Startup: Simple Build](AOS-Startup-Simple-Build.md) — Quick cloud-based setup
+- [Master Index](Master-Index.md) — Complete system documentation
+
+---
+
+## 14. Revision History
 
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 1.1.0 | Updated cross-references to consolidated docs; fixed section numbering; added related documents section |
 | 2026-02-25 | 1.0.0 | Initial guide covering 8 major providers, multi-provider setup, cost controls, and caching |

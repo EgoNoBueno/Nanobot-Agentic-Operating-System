@@ -2,7 +2,7 @@
 
 **Repository:** [HKUDS/nanobot](https://github.com/HKUDS/nanobot)  
 **For Nanobot Version:** v0.1.4 and later  
-**Last Updated:** February 25, 2026
+**Last Updated:** February 26, 2026
 
 ## 1. Purpose
 This document is the control index for the Nanobot documentation set. It explains how **multiple communication channels, LLM (Large Language Model) governance, and Obsidian memory work together as one coordinated system**—independent of which chat platform (Discord, Slack, Telegram, Feishu, etc.) you use.
@@ -134,7 +134,7 @@ Choose your path based on your goal:
 6. **[Multi-Channel Integration](Multi-Channel-Integration-Guide.md)** - Set up all communication channels (Discord, Slack, Telegram, etc.)
 7. **[Skills & Tools Reference](Skills-and-Tools-Complete-Guide.md)** - Learn all 14 tools, 9 skills, and how to develop custom skills
 9. **[Workflow Examples](Workflow-Examples-and-Recipes.md)** - Implement 1-2 real workflows for your use case
-10. **[Governance Policies](Governance-Policies-and-Config-Examples.md)** - Set up access control, allowlists, cost caps (optional for solo users; required for teams)
+10. **[Security & Governance Policies](Security-and-Governance-Policies.md)** - Set up access control, allowlists, cost caps (optional for solo users; required for teams)
 
 **Result:** Production-grade nanobot with cost controls, memory/audit trails, and multi-channel support.
 
@@ -143,9 +143,8 @@ Choose your path based on your goal:
 
 Follow the **Production Setup** path above (choose Simple or Advanced Build), then:
 
-1. **[Governance Policies](Governance-Policies-and-Config-Examples.md)** - Configure RBAC (Owner, Reviewer, Operator roles), channel namespacing, approval gates, cost allocation
+1. **[Security & Governance Policies](Security-and-Governance-Policies.md)** - Configure RBAC (Owner, Reviewer, Operator roles), channel namespacing, approval gates, cost allocation, and run monthly security validation
 2. **[Cost Calculator](Cost-Calculator-and-Optimization.md)** - Set up cost chargeback by team/project
-3. **[Security Validation Runbook](Security-Validation-Runbook.md)** - Run monthly security audit, validate allowlists and tool restrictions
 
 **Result:** Nanobot operates safely across multiple teams with clear governance, spending transparency, and audit trails.
 
@@ -156,7 +155,6 @@ Follow the **Production Setup** path above (choose Simple or Advanced Build), th
 Use these docs as references when following one of the three roadmaps above.
 
 ### Setup & Installation
-- [Nanobot Quick Install & Setup](Nanobot-Quick-Install-Setup.md) - Install nanobot, configure LLM provider, verify setup
 - [LLM Provider Setup Guide](LLM-Provider-Setup-Guide.md) - Configure Claude, GPT, local Ollama, Qwen, and other models
 - [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md) - Set up Discord, Slack, Telegram, Feishu, or other platforms
 
@@ -172,11 +170,8 @@ Use these docs as references when following one of the three roadmaps above.
 - [Workflow Examples & Recipes](Workflow-Examples-and-Recipes.md) - Real-world workflows: knowledge consolidation, multi-channel posting, customer support bot, research agent, GitHub automation
 - [Cost Calculator & Optimization Guide](Cost-Calculator-and-Optimization.md) - Monthly cost estimation, provider routing for cost savings, budget caps and tracking
 
-### Governance & Policy
-- [Governance Policies & Config Examples](Governance-Policies-and-Config-Examples.md) - Role-based access control, channel allowlisting, approval workflows, escalation rules, audit logging, multi-team cost allocation
-
 ### Security & Compliance
-- [Nanobot Agentic Operating System Security Validation Runbook](Security-Validation-Runbook.md) - Monthly security audit, hardening steps, incident response
+- [Security & Governance Policies](Security-and-Governance-Policies.md) - Access control patterns, approval workflows, governance models, and monthly security validation
 - [Emergency Recovery and Troubleshooting](Emergency-Recovery-and-Troubleshooting.md) - System diagnostics, recovery procedures, troubleshooting quick reference
 
 ## 4. Interoperability Summary

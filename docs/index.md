@@ -97,6 +97,7 @@ For production deployments, advanced governance, and full automation, continue b
 
 ## Cost & Governance
 
+- **[LLM Provider Setup Guide](LLM-Provider-Setup-Guide.md)** — Configure AI models (OpenRouter, Claude, OpenAI, local Ollama, etc.)
 - **[Cost Calculator & Optimization](Cost-Calculator-and-Optimization.md)** — Estimate your bill, optimize routing
   - Provider cost matrix (cheapest to premium)
   - Monthly cost calculators with examples
