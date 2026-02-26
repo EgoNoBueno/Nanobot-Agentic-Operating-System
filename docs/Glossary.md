@@ -232,9 +232,14 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 ## W
 
+
 **Webhook** - A way for one system to automatically send data to another system when something happens. Example: "When a PR is created, send a message to Discord."
 
 **Workspace** - The folder where nanobot stores its files and configuration.
+
+**WSL** (Windows Subsystem for Linux) - A feature in Windows that lets you run a real Linux environment directly on your Windows computer, without needing a virtual machine. Useful for running Linux tools, bash scripts, and development workflows natively.
+
+**WSL2** - The second generation of Windows Subsystem for Linux. WSL2 uses a lightweight virtual machine for better performance and full Linux kernel compatibility. Recommended for most users who want the best Linux experience on Windows.
 
 ---
 
