@@ -6,7 +6,7 @@ Enforce organizational guardrails, access control, cost accountability, and secu
 
 ## Document Control
 - **Owner:**
-- **Version:** 2.0.0
+- **Version:** 2.1.0
 - **Last Updated:** 2026-02-26
 - **Status:** Active
 
@@ -449,7 +449,7 @@ User in #bk-categorization:
 @BotName: Classify these 100 support tickets
 
 → Route: deepseek-67b (Tier C, $0.0003/1K tokens)
-Reason: Backlog/batch, low priority
+Reason: Bookkeeping channel, low priority
 Cost estimate: ~$0.03 instead of $0.30 if using Opus
 ```
 
@@ -811,7 +811,7 @@ Before going live:
 ### Preconditions
 
 - Access to gateway host
-- Access to Discord server settings
+- Access to channel/platform settings (Discord, Slack, Telegram, etc.)
 - Access to Nanobot config and logs
 - Access to Obsidian operational records
 
@@ -1199,11 +1199,11 @@ Execute in this order to ensure consistent evidence collection.
 **Problem:** Someone committed API key to GitHub 3 months ago; it's still in history  
 **Why:** Used plain `git rm` instead of removing from history  
 **Fix:**
-1. **If accidental commit is recent**, use filter-branch:
+1. **Remove the file from git history** using `git filter-repo`:
    ```bash
-   git filter-branch --force --index-filter \
-     'git rm --cached --ignore-unmatch config.json' \
-     -- --all
+   # Install if needed:
+   pip install git-filter-repo
+   git filter-repo --path config.json --invert-paths --force
    ```
 2. **Force push to remote:**
    ```bash
@@ -1335,6 +1335,7 @@ gateway_marketing:
 
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 2.1.0 | Fixed #bk-* routing description (backlog → bookkeeping); generalized Discord-specific precondition; replaced deprecated git filter-branch with git filter-repo in Mistake 10 |
 | 2026-02-26 | 2.0.0 | Consolidated Security Validation Runbook and Governance Policies into single comprehensive guide |
 | 2026-02-25 | 1.0.0 (Governance) | Initial governance policies and config examples |
 | 2026-02-23 | 1.0.0 (Security) | Initial monthly security validation runbook |
