@@ -9,6 +9,25 @@
 - ☐ Optional: Recent backup of vault/workspace
 - ☐ List of your LLM providers and channels (Discord, Slack, etc.)
 
+## How to Copy & Paste Commands in Linux
+
+When you see bash code blocks below, here are the best ways to copy commands:
+
+**Method 1: Middle-click paste (Fastest)**
+1. Highlight the command text with your mouse
+2. **Middle-click** (scroll wheel click) in the terminal
+3. Command pastes instantly!
+
+**Method 2: Keyboard shortcuts (Most compatible)**
+1. Highlight and press `Ctrl+Shift+C` to copy
+2. Click in terminal and press `Ctrl+Shift+V` to paste
+
+**Method 3: Right-click menu**
+1. Highlight, copy with `Ctrl+C`
+2. Right-click in terminal → Paste
+
+Use middle-click if your terminal supports it—it's the fastest. Otherwise, keyboard shortcuts work everywhere.
+
 ## 1. System Health Diagnostics
 
 Before attempting recovery, understand the current state.

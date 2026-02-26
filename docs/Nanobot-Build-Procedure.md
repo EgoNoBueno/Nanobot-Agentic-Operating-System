@@ -19,6 +19,29 @@ This document covers nanobot build/config steps. For VPS infrastructure (Tailsca
 
 ---
 
+## How to Copy & Paste Commands in Linux
+
+When you see a bash code block below, here are the best ways to copy and paste into your terminal:
+
+**Method 1: Middle-click paste (Fastest - Linux/Mac)**
+1. Highlight the command text with your mouse
+2. **Middle-click** (or scroll wheel click) in the terminal
+3. Command pastes immediately—no extra steps!
+
+**Method 2: Keyboard shortcuts (Works everywhere)**
+1. Highlight the command text
+2. Press `Ctrl+Shift+C` to copy (note: Shift, not just Ctrl)
+3. Click in terminal and press `Ctrl+Shift+V` to paste
+
+**Method 3: Right-click menu (Your current method)**
+1. Highlight the command text
+2. Copy with `Ctrl+C` or right-click → Copy
+3. Right-click in terminal and select Paste
+
+**Recommendation:** Try middle-click paste if your terminal supports it—it's the fastest (one action instead of three). If that doesn't work, use `Ctrl+Shift+V` keyboard shortcuts.
+
+---
+
 ## Path A: Simple Build (Local + Cloud LLM)
 
 **For:** Personal/team use with OpenRouter, Anthropic, OpenAI, or compatible cloud provider.  

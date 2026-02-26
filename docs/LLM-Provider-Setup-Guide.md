@@ -29,6 +29,17 @@ Nanobot supports 100+ LLM (Large Language Model) models via unified configuratio
 | **Gemini (Google)** | Gemini Pro, Ultra | ⭐ Easy | $0.5-10/M | Medium |
 | **Cohere** | Command R, R+ | ⭐ Easy | $0.5-3/M | Medium |
 
+## How to Copy & Paste Commands in Linux
+
+When following setup steps with bash code blocks:
+
+**Best methods (fastest to slowest):**
+1. **Middle-click paste:** Highlight command → middle-click in terminal (instant!)
+2. **Keyboard:** Highlight → `Ctrl+Shift+C` to copy → `Ctrl+Shift+V` to paste
+3. **Right-click:** Highlight → `Ctrl+C` → right-click → Paste
+
+Most Linux/Mac terminals support middle-click—try it first!
+
 ## 3. Quick Setup (5 minutes)
 
 ### Option A: OpenRouter (All-in-One)

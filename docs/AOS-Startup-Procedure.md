@@ -36,6 +36,19 @@ Before you start, make sure you have:
 
 ---
 
+## How to Copy & Paste Commands in Linux
+
+When following startup steps with bash commands:
+
+**Recommended methods (in order):**
+1. **Middle-click paste:** Select command → middle-click in terminal (fastest)
+2. **Keyboard:** Select → `Ctrl+Shift+C` → `Ctrl+Shift+V` to paste
+3. **Right-click:** Select → `Ctrl+C` → right-click → Paste
+
+Most Linux/Mac terminals support middle-click for instant pasting.
+
+---
+
 ## Path A: Simple Startup (Local + Cloud API)
 
 **For:** Using local nanobot with OpenRouter, Anthropic, OpenAI, or other cloud LLM provider.  

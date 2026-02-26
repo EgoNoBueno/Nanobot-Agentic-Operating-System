@@ -15,6 +15,17 @@ This runbook defines the recurring security validation steps for the Nanobot Age
 - Access to Nanobot config and logs
 - Access to Obsidian operational records
 
+## How to Copy & Paste Commands in Linux
+
+When you encounter bash commands in validation steps below:
+
+**Quick reference:**
+- **Fastest:** Highlight → middle-click in terminal
+- **Reliable:** Highlight → `Ctrl+Shift+C` → `Ctrl+Shift+V` to paste
+- **Fallback:** Highlight → `Ctrl+C` → right-click Paste
+
+Middle-click paste is native to Linux/Mac terminals and requires no additional steps.
+
 ## 4. Validation Sequence
 Execute in this order to ensure consistent evidence collection.
 

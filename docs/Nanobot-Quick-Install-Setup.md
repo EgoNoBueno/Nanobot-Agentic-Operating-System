@@ -16,6 +16,15 @@ Get nanobot installed, configured with an LLM provider, and working end-to-end i
 - An LLM API key (or local Ollama running)
 - Intending to use CLI, Discord, Slack, or another channel
 
+## Tip: Copying & Pasting Commands
+
+For bash code blocks in this guide, use any of these methods:
+- **Middle-click in terminal:** Highlight command → middle-click (instant paste, no menu)
+- **Keyboard:** Highlight → `Ctrl+Shift+C` to copy → `Ctrl+Shift+V` to paste
+- **Right-click menu:** Highlight → `Ctrl+C` → right-click Paste
+
+Middle-click is usually fastest on Linux/Mac!
+
 ## 3. Install (2 minutes)
 
 ### Option A: via pip (Recommended)
