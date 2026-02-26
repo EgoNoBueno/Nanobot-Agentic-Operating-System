@@ -2,6 +2,14 @@
 
 **Purpose:** Diagnose and recover from system failures, connection loss, or configuration corruption without losing data or requiring full rebuild.
 
+## Document Control
+- **Owner:**
+- **Version:** 1.0.0
+- **Last Updated:** 2026-02-26
+- **Status:** Active
+
+---
+
 ## Before You Start
 - ☐ Terminal/SSH access to the nanobot server
 - ☐ Access to ~/.nanobot/config.json file
@@ -573,7 +581,14 @@ grep -r "token_created" ~/.nanobot/ | grep -v "$(date -d '3 months ago' +%Y-%m)"
 
 ## 8. See Also
 
-- [Security Validation Runbook](Security-Validation-Runbook.md) — Monthly security procedures
-- [Governance Policies](Governance-Policies-and-Config-Examples.md) — Access control and escalation
+- [Security & Governance Policies](Security-and-Governance-Policies.md) — Monthly security validation runbook, access control, and escalation
 - [AOS Startup: Simple Build](AOS-Startup-Simple-Build.md) / [AOS Startup: Advanced Build](AOS-Startup-Advanced-Build.md) — Initial setup and boot sequence
 - [Cost Calculator](Cost-Calculator-and-Optimization.md) — Monitor spend to detect anomalies
+
+---
+
+## Revision History
+
+| Date | Version | Change |
+|---|---|---|
+| 2026-02-26 | 1.0.0 | Initial emergency recovery and troubleshooting guide |
