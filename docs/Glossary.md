@@ -2,17 +2,27 @@
 
 Quick reference for technical terms, acronyms, and concepts used throughout the Nanobot documentation.
 
+## Document Control
+- **Owner:**
+- **Version:** 1.2.0
+- **Last Updated:** 2026-02-26
+- **Status:** Active
+
 ---
 
 ## A
 
-**Agent Orchestration** - Splitting large tasks into smaller, specialized agents that work in parallel. Example: one agent researches competitors while another agent verifies the findings.
+**Agent Orchestration** - see *Orchestration*.
 
 **Allowlist** - A list of specific users, channels, or tools that are explicitly approved to use sensitive features. Only items on the allowlist are allowed; everything else is blocked.
 
 **API** (Application Programming Interface) - A way for different programs to talk to each other. Think of it as a standardized menu that one program offers, so other programs know exactly what requests to make.
 
+**Approval Gate** - A policy rule that pauses execution and requires a human to explicitly authorize an action before it proceeds. Used for high-cost operations, sensitive tool calls, or escalated decisions. Defined in your governance policy and enforced by the Policy Plane.
+
 **Artifacts** - Files, notes, or records that the system creates and saves for later reference. In nanobot, artifacts are stored in Obsidian for audit trails and recovery.
+
+**Audit Trail** - A chronological record of all actions taken by nanobot: who requested what, which model was used, what it cost, and what was produced. Stored in Obsidian. Required for compliance, recovery, and debugging. Distinct from general logging in that audit trails are structured and append-only.
 
 **Auth** / **Authentication** - Proving who you are. Usually done with a password or API key.
 
@@ -32,6 +42,10 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 **Channel-Agnostic** - Works the same way no matter which chat platform you use (Discord, Slack, Telegram, etc.). You don't need different rules for each platform.
 
+**Context Window** - The maximum amount of text an LLM can "see" at once, measured in tokens. Once a conversation exceeds the context window, older messages are cut off or must be summarized. This is why Memory Consolidation exists: it compresses old history to keep conversations within the context window without losing important information.
+
+**Control Plane** - see *Plane*.
+
 **CLI** (Command-Line Interface) - A way to interact with a computer by typing commands instead of clicking buttons. All our installation and troubleshooting uses the CLI.
 
 **Cron** - A tool that runs tasks on a schedule (e.g., "every day at 9 AM"). Named after the Greek word *chronos* (χρόνος), meaning time.
@@ -44,11 +58,13 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 ## D
 
-**Deprecated** - Old technology that still works but is being phased out. Using deprecated features is not recommended.
-
 **Dashboard** - A display that shows the current status of your system (e.g., "How many tasks completed today?" or "What's the CPU usage?").
 
-**Delegation** - Asking someone (or something) else to do a task for you. Sub-agents delegate work to other agents.
+**Degraded Mode** - A fallback state where nanobot continues operating with reduced capability when a primary provider or service is unavailable. Example: if Claude (Tier A) is unreachable, nanobot automatically routes to a Tier B model instead of failing completely. Configured as part of the fallback chain in `config.json`.
+
+**Delegation** - Asking a subagent to handle a specific part of a task on behalf of the orchestrating agent.
+
+**Deprecated** - Old technology that still works but is being phased out. Using deprecated features is not recommended.
 
 ---
 
@@ -92,7 +108,7 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 **Inference** - When an AI model processes text and generates a response. "Running inference" means asking the AI a question.
 
-**Injection** - Adding code to the system dynamically (without restarting). You can "inject" a new skill via Discord.
+**Injection** - Installing or activating a new skill or tool at runtime, without restarting the system. You can inject a skill by pasting a repository link or using a `/skill install` command in chat. Distinct from code hot-reload (see *Hot-Reload*).
 
 **Integration** - Connecting two systems so they can work together. Discord integration means nanobot can listen to Discord.
 
@@ -130,7 +146,7 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 **Memory Consolidation** - Summarizing old conversations automatically, so the system doesn't get bogged down with endless history.
 
-**Memory Plane** - The part of nanobot that stores information for later use. Obsidian is the memory store.
+**Memory Plane** - see *Plane*.
 
 **Middleware** - Software that sits in the middle of two other systems and helps them communicate.
 
@@ -152,7 +168,7 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 **Obsidian** - A note-taking app used by nanobot to store memory, audit trails, and artifacts. It runs on your computer.
 
-**Orchestration** - Coordinating multiple agents or tasks to work together smoothly.
+**Orchestration** - Coordinating multiple agents or tasks to work together toward a shared goal. Example: one subagent researches competitors while a second verifies findings, and a third writes the report. The orchestrator manages the handoffs and assembles the result.
 
 **Operator** - A human user who controls nanobot. You're the operator.
 
@@ -164,11 +180,14 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 **Permission** - The right to do something. "Shell execute permission" means you're allowed to run shell commands.
 
-**Plane** - A layer of the system. Nanobot has three planes: Control (channels), Policy (routing), Memory (Obsidian).
+**Plane** - One of the three architectural layers of the Nanobot AOS. Separating the system into planes keeps concerns independent: you can change your chat platform without touching your LLM policy, and change your LLM policy without changing how data is stored.
+- **Control Plane** — The message intake layer. Receives requests from Discord, Slack, Telegram, etc. and routes them into the system.
+- **Policy Plane** — The governance layer. Decides which model to use, enforces cost limits, applies approval gates, and manages RBAC.
+- **Memory Plane** — The storage layer. Obsidian stores artifacts, audit trails, session history, and knowledge for replay and recovery.
 
 **Policy** - A rule about how something should work. "Require approval for costs over $50" is a policy.
 
-**Policy Plane** - The part of nanobot that makes decisions about which model to use, when to escalate, cost limits, etc.
+**Policy Plane** - see *Plane*.
 
 **PR** (Pull Request) - A way to propose changes to code on GitHub. "Create a PR" means suggest a code change.
 
@@ -200,9 +219,13 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 **Skill** - A pre-built bundle of tools configured for a specific task. Example: the "Obsidian" skill reads/writes notes.
 
+**SKILL.md** - The metadata file at the root of every custom skill folder. Defines the skill's name, description, version, required tools, permissions, and workflow instructions in YAML front matter + Markdown. Nanobot reads this file to register and validate a skill. See [Skills & Tools Complete Guide](Skills-and-Tools-Complete-Guide.md) for the full format.
+
+**SOUL.md** - A root-level personality file at `~/.nanobot/SOUL.md`. Loaded on every startup, it defines persistent behavioral instructions for a nanobot instance: tone, default workflow style, and standing routines (e.g., nightly journal). Think of it as the agent's standing operating procedure.
+
 **SSH** (Secure Shell) - A secure way to connect to and control a remote computer from your computer.
 
-**Sub-Agent** - An independent agent spawned to handle a specific part of a task.
+**Subagent** - An independent agent spawned to handle a specific part of a task. Subagents have their own context and memory, run in parallel, and report results back to the parent agent. See also *Orchestration*.
 
 ---
 
@@ -210,7 +233,16 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 **Tailscale** - A tool that creates a secure, private network between computers (even across the internet), so they can communicate safely.
 
-**Token** - A temporary code that proves you're authorized. "API token" proves you have permission to use an API.
+**Tier** / **Model Tier** - A cost and capability classification for LLM models used in the AOS routing policy:
+- **Tier A (Premium):** Claude Opus, GPT-4o — highest capability, highest cost. Used for complex research, synthesis, high-stakes decisions.
+- **Tier B (Standard):** Claude Sonnet/Haiku, GPT-4o-mini — balanced. Used for most production tasks.
+- **Tier C (Budget):** Qwen, DeepSeek, local Ollama — lowest cost, often free. Used for routine tasks like bookkeeping, summaries, high-volume channels.
+
+Channel-to-tier mapping is defined in your governance policy. See [Security & Governance Policies](Security-and-Governance-Policies.md).
+
+**Token** - This word has two distinct meanings in nanobot documentation. Context makes the meaning clear:
+1. **Auth token** — A secret string that proves you are authorized to use a service (e.g., a Discord bot token or API key). Treat like a password.
+2. **LLM token** — A unit of text (roughly one word or subword) used to measure how much text an AI model processes. LLM costs are priced per million tokens. Example: a 500-word message uses ~650 tokens.
 
 **Tool** - An action nanobot can perform. Examples: web search, file read, shell execute.
 
@@ -247,21 +279,9 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 ---
 
-## X
+## X — Z
 
-(Currently empty)
-
----
-
-## Y
-
-(Currently empty)
-
----
-
-## Z
-
-(Currently empty)
+No entries currently. [Suggest a term](https://github.com/EgoNoBueno/Nanobot-Agentic-Operating-System/issues)
 
 ---
 
@@ -330,3 +350,12 @@ Obsidian is a note-taking app. It runs on your computer and stores notes as mark
 ---
 
 **Have a term that's confusing? Submit an issue or let us know!**
+
+---
+
+## Revision History
+
+| Date | Version | Change |
+|---|---|---|
+| 2026-02-26 | 1.2.0 | Added 6 missing AOS terms: Approval Gate, Audit Trail, Context Window, Degraded Mode, SKILL.md, Tier/Model Tier |
+| 2026-02-26 | 1.1.0 | Review pass: merged Agent Orchestration into Orchestration, added Control Plane + SOUL.md entries, expanded Plane and Token entries, fixed Injection definition, fixed Sub-Agent → Subagent, collapsed empty X/Y/Z sections |
