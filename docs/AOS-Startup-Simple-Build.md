@@ -4,7 +4,7 @@
 
 ## Document Control
 - **Owner:**
-- **Version:** 2.3.0
+- **Version:** 2.4.0
 - **Last Updated:** 2026-02-26
 - **Status:** Active
 - **Applies To:** Path A (Simple Build) only
@@ -334,10 +334,10 @@ Takes 1-2 minutes.
 
 ```bash
 nanobot --version
-# Should print something like: nanobot version 0.1.4
+# Should print something like: 🐈 nanobot v0.1.4.post2
 ```
 
-✅ You should see a version number.
+✅ You should see a version number (exact version may differ).
 
 **If you get "command not found" error:**
 
@@ -355,42 +355,76 @@ pip install --force-reinstall nanobot-ai
 
 ---
 
-## Step A5: Run the Interactive Setup Wizard
+## Step A5: Run Onboard and Configure Your API Key
 
-This wizard creates your nanobot configuration file:
+Run the onboard command to create your config file and workspace:
 
 ```bash
 nanobot onboard
 ```
 
-It will ask several questions. **Answer carefully:**
+Expected output:
+```
+🐈 Created config at /home/you/.nanobot/config.json
+🐈 Created workspace at /home/you/.nanobot/workspace
+  Created AGENTS.md
+  Created memory/MEMORY.md
+  Created memory/HISTORY.md
 
-**Question 1: "Do you have an API key or do you want to use local inference?"**
-- **Answer:** Paste your API key from Step A3 (e.g., `sk-or-...` from OpenRouter)
-- OR: Press Enter with nothing to use local Ollama (requires [Advanced Build](AOS-Startup-Advanced-Build.md))
-- **For this guide:** Paste your API key
+🐈 nanobot is ready!
 
-**Question 2: "Which channel would you like to use?"**
-- **Answer:** Type one of: `cli`, `discord`, `slack`, `telegram`, `feishu`
-- **For easiest testing:** Type `cli` (command-line chat on your computer—no Discord/Slack setup needed)
-- **To add others later:** You can add more channels after initial setup
+Next steps:
+  1. Add your API key to ~/.nanobot/config.json
+     Get one at: https://openrouter.ai/keys
+  2. Chat: nanobot agent -m "Hello!"
+```
 
-**Question 3: "Which model would you like to start with?"**
-- **Answer:** Press Enter to accept the default, or type a specific model name
-- **What is a model?** Different AI "brains" from the same provider. OpenRouter offers Claude, GPT models, etc. Different models are faster, cheaper, or smarter—your choice.
-- **Examples:** `anthropic/claude-opus-4-5` (very smart), `gpt-4-mini` (fast & cheap), `gpt-4o` (balanced)
-- **If unsure:** Press Enter for the default (recommended for first-time users)
+(On Windows, paths will look like `C:\Users\YourName\.nanobot\config.json`.)
 
-**Question 4: "Do you want to enable Obsidian vault?"**
-- **Answer:** `yes` if you use Obsidian and want nanobot to read/write your notes
-- **Answer:** `no` if you don't use Obsidian (you can enable it later)
-- **If yes:** Provide the path to your Obsidian vault (e.g., `/Users/yourname/Documents/MyVault`)
+**Now add your API key to the config file.** Open `~/.nanobot/config.json` in any text editor:
 
-The wizard creates:
-- `~/.nanobot/config.json` - Your configuration
-- `~/.nanobot/.env` - Your secrets (API key, tokens)
+- **Windows (PowerShell):** `notepad $env:USERPROFILE\.nanobot\config.json`
+- **macOS:** `open ~/.nanobot/config.json`
+- **Linux:** `nano ~/.nanobot/config.json`
 
-✅ **Success:** The wizard prints "Configuration saved!" You're ready for Part 2.
+Find the `providers` section and add your key to the matching provider block. The file is valid JSON — don't add extra commas or remove brackets.
+
+**For OpenRouter:**
+```json
+{
+  "providers": {
+    "openrouter": {
+      "apiKey": "sk-or-YOUR_KEY_HERE"
+    }
+  }
+}
+```
+
+**For Anthropic:**
+```json
+{
+  "providers": {
+    "anthropic": {
+      "apiKey": "sk-ant-YOUR_KEY_HERE"
+    }
+  }
+}
+```
+
+**For OpenAI:**
+```json
+{
+  "providers": {
+    "openai": {
+      "apiKey": "sk-YOUR_KEY_HERE"
+    }
+  }
+}
+```
+
+Save the file when done.
+
+✅ **Success:** Config file exists at `~/.nanobot/config.json` and contains your API key. You're ready for Part 2.
 
 ---
 
@@ -405,7 +439,7 @@ Now that everything is configured, here's how to start nanobot and test it.
 Before you start, verify you have:
 - ✅ Python 3.11+ installed (`python --version` works)
 - ✅ Nanobot installed (`nanobot --version` works)
-- ✅ API key in `~/.nanobot/.env`
+- ✅ API key added to `~/.nanobot/config.json`
 - ✅ Internet connection working (`ping 8.8.8.8` succeeds)
 
 ---
@@ -421,38 +455,11 @@ ping 8.8.8.8
 
 ---
 
-## Step 2: Start the Nanobot Gateway
+## Step 2: Test with CLI (Terminal Chat—Your First Conversation!)
+
+**This is the fastest way to verify nanobot works.** You don't need Discord, Slack, or a separate gateway for this.
 
 Open a terminal and run:
-
-```bash
-nanobot gateway
-```
-
-Expected output:
-```
-Starting Nanobot Gateway v0.1.4+
-LLM Provider: openrouter ✓ Connected
-CLI: Ready for messages
-Ready for messages
-```
-
-✅ This means nanobot is running and ready. The terminal will stay open and show messages as you interact with nanobot.
-
-**If the gateway fails to start:**
-- ❌ Check `~/.nanobot/.env` for correct API key format (no extra spaces)
-- ❌ Verify API key hasn't expired (log into OpenRouter/Anthropic/OpenAI and check)
-- ❌ Check internet: `ping 8.8.8.8`
-- ❌ Verify config files exist: `ls -la ~/.nanobot/` (should show `config.json` and `.env`)
-- → If still broken, see "Still Completely Stuck? Nuclear Reset" section below
-
----
-
-## Step 3: Test with CLI (Terminal Chat—Your First Conversation!)
-
-**This is your fastest way to test if nanobot actually works.** You don't need Discord/Slack for this.
-
-While `nanobot gateway` is running (from Step 2), **open a NEW terminal window** (keep the first one open) and type:
 
 ```bash
 nanobot agent
@@ -460,55 +467,82 @@ nanobot agent
 
 This starts an interactive chat. You'll see:
 ```
-Nanobot Agent v0.1.4
-Type your question and press Enter. Type 'exit' to quit.
+🐈 Interactive mode (type exit or Ctrl+C to quit)
 
->>>
+You: 
 ```
 
 Now type a simple question:
 
 ```
->>> What is 2+2?
+You: What is 2+2?
 ```
 
 Press Enter and wait 3-5 seconds. Nanobot should respond:
 ```
+🐈 nanobot
+
 2 + 2 equals 4.
 ```
 
-✅ **Success!** If you get a response, nanobot is working end-to-end!
+✅ **Success!** If you get a response, nanobot is working end-to-end.
 
 Try more questions:
 ```
->>> What is the capital of France?
->>> Tell me a joke
->>> What tools do you have?
+You: What is the capital of France?
+You: Tell me a joke
+You: What tools do you have?
 ```
 
 **If you get no response:**
-- ❌ Check that `nanobot gateway` is still running in your first terminal
 - ❌ Check internet: `ping 8.8.8.8`
-- ❌ Check API key: `cat ~/.nanobot/.env` (should show your key without extra spaces)
+- ❌ Verify your API key is correctly set in `~/.nanobot/config.json` (no extra spaces, valid JSON)
 - ❌ Check API provider is active (log into OpenRouter/Anthropic/OpenAI and verify your account)
-- ❌ Try waiting 10 seconds and asking again (APIs sometimes have delays)
+- ❌ Try waiting 10 seconds and asking again (APIs sometimes have brief delays)
+- → If still broken, see "Still Completely Stuck? Nuclear Reset" section below
 
-**To exit CLI test:**
+**To exit:**
 
-Type:
+Type `exit` or press `Ctrl+C`.
+
+---
+
+## Step 3: Start the Gateway for External Channels (Optional)
+
+**Only needed if you've configured Discord, Telegram, Slack, or another external channel.**
+For CLI-only use (Step 2 above), you can skip this step entirely.
+
+The gateway manages background channel connections and heartbeat. Open a terminal and run:
+
+```bash
+nanobot gateway
 ```
->>> exit
+
+Expected output:
+```
+🐈 Starting nanobot gateway on port 18790...
+[yellow]Warning: No channels enabled[/yellow]
+✓ Heartbeat: every 1800s
 ```
 
-Or press `Ctrl+C`.
+(If you've configured a channel, you'll see `✓ Channels enabled: discord` or similar instead of the warning.)
+
+✅ The terminal stays open and shows live activity. Keep it running while nanobot is in use.
+
+**If the gateway fails to start:**
+- ❌ Verify your API key is correctly set in `~/.nanobot/config.json`
+- ❌ Verify API key hasn't expired (log into OpenRouter/Anthropic/OpenAI and check)
+- ❌ Check internet: `ping 8.8.8.8`
+- ❌ Verify config file exists: `cat ~/.nanobot/config.json` (should show valid JSON)
+- → If still broken, see "Still Completely Stuck? Nuclear Reset" section below
 
 ---
 
 ## Step 4 (Optional): Test with Discord or Slack
 
-Once CLI is working, you can optionally add Discord/Slack. **This step is optional.** You already have a working system!
+Once CLI is working (Step 2), you can optionally add Discord/Slack. **This step is optional.** You already have a working system!
 
-If you want nanobot to respond in Discord/Slack:
+**Prerequisite:** `nanobot gateway` must be running (see Step 3) and your Discord/Slack bot token must be configured in `~/.nanobot/config.json`.
 
 1. Go to your Discord/Slack channel where nanobot is a member
 2. Send: `@BotName hello`
@@ -522,11 +556,11 @@ If the bot doesn't respond, see the [channel integration guide](../nanobot/READM
 
 ## Step 5 (Optional): Test with Obsidian
 
-If you configured Obsidian, test write-back:
+If you configured Obsidian vault access, test write-back:
 
-In CLI:
+In CLI (`nanobot agent`):
 ```
->>> Write this to Obsidian: "Startup test at {{timestamp}}" to 00-System/startup-log.md
+You: Write this to Obsidian: "Startup test at {{timestamp}}" to 00-System/startup-log.md
 ```
 
 Check your Obsidian vault: Look in `00-System/startup-log.md`
@@ -539,9 +573,8 @@ If write fails, verify Obsidian vault path in `~/.nanobot/config.json` is correc
 
 ## Validation: Simple Startup Complete ✅
 
-- ✅ Nanobot gateway starts without errors
-- ✅ LLM provider connected (shows in startup message)
-- ✅ CLI test succeeds (nanobot responds to questions in terminal)
+- ✅ CLI test succeeds (`nanobot agent` responds to questions in terminal)
+- ✅ Optional: Gateway starts without errors (`nanobot gateway`, if configured)
 - ✅ Optional: Discord/Slack respond (if configured)
 - ✅ Optional: Obsidian write succeeds (if configured)
 
@@ -555,21 +588,14 @@ If write fails, verify Obsidian vault path in `~/.nanobot/config.json` is correc
 
 ## Shutdown Procedure
 
-To stop nanobot cleanly:
+To stop nanobot cleanly, press `Ctrl+C` in the terminal where it's running. Nanobot finishes any in-progress message before exiting.
 
-**Stop the gateway** (first terminal):
+**If running `nanobot agent` interactively**, you can also type:
 ```
-Press Ctrl+C
-```
-
-Nanobot will finish current message and shut down gracefully.
-
-**Stop the agent** (second terminal, if running):
-```
->>> exit
+exit
 ```
 
-Or press `Ctrl+C`.
+**If running `nanobot gateway`**, `Ctrl+C` is the only option — it has no interactive prompt.
 
 ---
 
@@ -616,9 +642,11 @@ This is exactly the same as Step A4 and A5 above.
 ### Step 5: Retest
 
 ```bash
-nanobot gateway
-# In another terminal:
+# Test CLI directly:
 nanobot agent
+
+# Or, if you use external channels, start the gateway:
+nanobot gateway
 ```
 
 ---
@@ -632,7 +660,7 @@ A: No. Nanobot only runs when you start it. When you stop `nanobot gateway`, it'
 A: It depends on usage. Set a monthly spending limit on your API provider (OpenRouter, Anthropic, OpenAI) to cap costs at whatever you're comfortable with (e.g., $10/month).
 
 **Q: Can I use both OpenRouter AND Anthropic?**  
-A: Not automatically. You can change your API key in `~/.nanobot/.env`, restart nanobot, and switch providers. For automatic multi-provider routing, see the [LLM Provider Setup Guide](LLM-Provider-Setup-Guide.md).
+A: Not simultaneously by default. You can add keys for multiple providers in `~/.nanobot/config.json` and nanobot will route automatically based on the model name. See the [LLM Provider Setup Guide](LLM-Provider-Setup-Guide.md) for details.
 
 **Q: What if I want to move to Advanced Build later?**  
 A: You can! Copy your `~/.nanobot/` directory and import it into a VPS. Both use the same config format.
@@ -649,6 +677,7 @@ A: Copy the `~/.nanobot/` directory to a safe location. This contains all config
 
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 2.4.0 | Accuracy corrections: removed fabricated onboard wizard; replaced with actual `nanobot onboard` behavior + manual config.json setup. Fixed command architecture (nanobot agent is standalone; gateway not required for CLI). Fixed expected terminal output for gateway and agent. Removed all ~/.nanobot/.env references (config.json only). Fixed CLI prompt from >>> to You:. |
 | 2026-02-26 | 2.3.0 | Fixed broken link: Multi-Channel-Integration-Guide.md → nanobot/README.md |
 | 2026-02-26 | 2.2.0 | Split from AOS-Startup-Procedure.md. Focused entirely on Simple Build (Path A). Added beginner-friendly language, cost expectations, minimum viable system callout, terminal guide, and nuclear reset option. Removed all Advanced Build content. |
 | 2026-02-25 | 2.1.0 | Initial comprehensive rewrite in parent document |
