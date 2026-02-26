@@ -4,7 +4,7 @@
 
 ## Document Control
 - **Owner:**
-- **Version:** 2.4.0
+- **Version:** 2.4.1
 - **Last Updated:** 2026-02-26
 - **Status:** Active
 - **Applies To:** Path A (Simple Build) only
@@ -291,7 +291,7 @@ If you've never done this, I recommend **OpenRouter** for beginners—it's easie
 
 **Keep your key private:**
 - Don't share it in chats, Discord messages, GitHub, Slack channels, or public code
-- Only paste it into nanobot's setup wizard in Step A5
+- Only paste it into `~/.nanobot/config.json` in Step A5
 - Don't paste it in Discord servers or forums—anyone with your key can use your API and incur charges
 - If you accidentally share it, go back to OpenRouter immediately and delete/regenerate the key
 
@@ -365,8 +365,8 @@ nanobot onboard
 
 Expected output:
 ```
-🐈 Created config at /home/you/.nanobot/config.json
-🐈 Created workspace at /home/you/.nanobot/workspace
+✓ Created config at /home/you/.nanobot/config.json
+✓ Created workspace at /home/you/.nanobot/workspace
   Created AGENTS.md
   Created memory/MEMORY.md
   Created memory/HISTORY.md
@@ -423,6 +423,18 @@ Find the `providers` section and add your key to the matching provider block. Th
 ```
 
 Save the file when done.
+
+**If you're using an OpenAI key:** The default model in `config.json` is `anthropic/claude-opus-4-5`, which can't be served by OpenAI. Also find the `agents.defaults.model` field and change it to an OpenAI model — for example:
+```json
+{
+  "agents": {
+    "defaults": {
+      "model": "gpt-4o"
+    }
+  }
+}
+```
+OpenRouter and Anthropic users can leave the default model as-is.
 
 ✅ **Success:** Config file exists at `~/.nanobot/config.json` and contains your API key. You're ready for Part 2.
 
@@ -521,7 +533,7 @@ nanobot gateway
 Expected output:
 ```
 🐈 Starting nanobot gateway on port 18790...
-[yellow]Warning: No channels enabled[/yellow]
+Warning: No channels enabled
 ✓ Heartbeat: every 1800s
 ```
 
@@ -654,7 +666,7 @@ nanobot gateway
 ## Frequently Asked Questions (Simple Build)
 
 **Q: Do I need to leave my computer on 24/7?**  
-A: No. Nanobot only runs when you start it. When you stop `nanobot gateway`, it's not running.
+A: No. Nanobot only runs when you start it. Close the terminal running `nanobot agent` or `nanobot gateway` and it stops.
 
 **Q: How much will this cost me?**  
 A: It depends on usage. Set a monthly spending limit on your API provider (OpenRouter, Anthropic, OpenAI) to cap costs at whatever you're comfortable with (e.g., $10/month).
@@ -677,6 +689,7 @@ A: Copy the `~/.nanobot/` directory to a safe location. This contains all config
 
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 2.4.1 | Additional accuracy fixes: corrected onboard output (✓ not 🐈 prefix); removed Rich markup tags from gateway output; fixed stale "setup wizard" reference in Step A3; added OpenAI model override note to Step A5; fixed 24/7 FAQ answer. |
 | 2026-02-26 | 2.4.0 | Accuracy corrections: removed fabricated onboard wizard; replaced with actual `nanobot onboard` behavior + manual config.json setup. Fixed command architecture (nanobot agent is standalone; gateway not required for CLI). Fixed expected terminal output for gateway and agent. Removed all ~/.nanobot/.env references (config.json only). Fixed CLI prompt from >>> to You:. |
 | 2026-02-26 | 2.3.0 | Fixed broken link: Multi-Channel-Integration-Guide.md → nanobot/README.md |
 | 2026-02-26 | 2.2.0 | Split from AOS-Startup-Procedure.md. Focused entirely on Simple Build (Path A). Added beginner-friendly language, cost expectations, minimum viable system callout, terminal guide, and nuclear reset option. Removed all Advanced Build content. |
