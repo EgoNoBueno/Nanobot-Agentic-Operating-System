@@ -4,7 +4,7 @@
 Deploy an AI agent that receives messages from any chat platform, executes governed tasks, and logs everything for audit.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![GitHub Pages](https://img.shields.io/badge/Docs-GitHub%20Pages-green)](https://egonobueño.github.io/Nanobot-Agentic-Operating-System/)
+[![GitHub Pages](https://img.shields.io/badge/Docs-GitHub%20Pages-green)](https://egonobueno.github.io/Nanobot-Agentic-Operating-System/)
 [![For Nanobot v0.1.4+](https://img.shields.io/badge/Nanobot-v0.1.4%2B-purple)](https://github.com/HKUDS/nanobot)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-yellow)](docs/AOS-Startup-Simple-Build.md)
 [![Updated February 2026](https://img.shields.io/badge/Updated-February%202026-blue)](docs/Master-Index.md)
@@ -155,4 +155,4 @@ Maintained by [EgoNoBueno](https://github.com/EgoNoBueno).
 
 ---
 
-*Browse the full docs online: [egonobueño.github.io/Nanobot-Agentic-Operating-System](https://egonobueño.github.io/Nanobot-Agentic-Operating-System/) — includes search (Ctrl+K / Cmd+K), dark mode, and mobile layout.*
+*Browse the full docs online: [egonobueno.github.io/Nanobot-Agentic-Operating-System](https://egonobueno.github.io/Nanobot-Agentic-Operating-System/) — includes search (Ctrl+K / Cmd+K), dark mode, and mobile layout.*

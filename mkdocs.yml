@@ -76,25 +76,19 @@ markdown_extensions:
   - pymdownx.tilde
 
 nav:
-  - Home: index.md
-  - Getting Started:
-    - Master Index: Master-Index.md
-    - Quick Install & Setup: Nanobot-Quick-Install-Setup.md
-    - Build Procedure: Nanobot-Build-Procedure.md
-    - Startup Procedure: AOS-Startup-Procedure.md
-  - Setup & Configuration:
+  - Home: Getting-Started-With-Nanobot.md
+  - Architecture: Master-Index.md
+  - Deployment:
+    - Simple Build (Local + Cloud LLM): AOS-Startup-Simple-Build.md
+    - Advanced Build (VPS + Ollama): AOS-Startup-Advanced-Build.md
+  - Configuration:
     - LLM Provider Setup: LLM-Provider-Setup-Guide.md
-    - Multi-Channel Integration: Multi-Channel-Integration-Guide.md
-  - Operating:
-    - Essential Skills: Essential-AOS-Skills.md
-    - Tools & Skills Reference: Tools-and-Skills-Reference.md
-    - Advanced Skill Development: Advanced-Skill-Development.md
-    - Workflow Examples: Workflow-Examples-and-Recipes.md
-  - Governance & Cost:
+    - Skills & Tools: Skills-and-Tools-Complete-Guide.md
+  - Operations:
+    - Workflow Examples & Recipes: Workflow-Examples-and-Recipes.md
     - Cost Calculator & Optimization: Cost-Calculator-and-Optimization.md
-    - Governance Policies: Governance-Policies-and-Config-Examples.md
-  - Security:
-    - Security Validation Runbook: Security-Validation-Runbook.md
+  - Governance & Security:
+    - Security & Governance Policies: Security-and-Governance-Policies.md
     - Emergency Recovery & Troubleshooting: Emergency-Recovery-and-Troubleshooting.md
   - Reference:
     - Glossary: Glossary.md
