@@ -1,183 +1,158 @@
-# Nanobot Agentic Operating System Documentation
+# Nanobot Agentic Operating System — Documentation
 
-**Comprehensive operational guides for the Nanobot agent orchestration framework.**
+**Operational guides for the [Nanobot](https://github.com/HKUDS/nanobot) agent orchestration framework.**  
+Deploy an AI agent that receives messages from any chat platform, executes governed tasks, and logs everything for audit.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![GitHub Pages](https://img.shields.io/badge/Docs-GitHub%20Pages-green)](https://egonobueño.github.io/Nanobot-Agentic-Operating-System/)
 [![For Nanobot v0.1.4+](https://img.shields.io/badge/Nanobot-v0.1.4%2B-purple)](https://github.com/HKUDS/nanobot)
-[![Last Updated](https://img.shields.io/badge/Updated-February%202026-blue)](docs/Master-Index.md)
-
-## Quick Start – Choose Your Path
-
-Pick the path that matches your goal:
-
-### 🚀 **Quick Trial** (5-10 minutes)
-Want to try nanobot immediately? Follow this fast path.
-- Install nanobot with default settings
-- Add one LLM provider (e.g., OpenRouter or local Ollama)
-- Connect one chat platform (Discord or Slack)  
-- Run a simple workflow
-- **Result:** Working nanobot in under 15 minutes
-
-[**Start Quick Trial** →](docs/Master-Index.md#21-quick-trial-5-10-minutes)
-
-### 🏭 **Production Setup** (1-2 hours)
-Ready to deploy a professional system with cost controls and governance?
-- Understand the 3-plane architecture & RACI roles
-- Plan monthly costs and optimize provider routing
-- Full deployment (local + cloud LLM, or VPS + Ollama)
-- Configure multi-channel communication (Discord, Slack, Telegram, Feishu, etc.)
-- Install essential skills and verify system health
-- **Result:** Production-grade nanobot ready for real workflows
-
-[**Start Production Setup** →](docs/Master-Index.md#22-production-setup-1-2-hours)
-
-### 👥 **Multi-Team Deployment** (2-4 hours+)
-Running nanobot across multiple teams? Set up governance and cost controls.
-- Implement role-based access control (Owner, Reviewer, Operator)
-- Set up approval workflows and escalation rules
-- Configure cost chargeback by team/project  
-- Enable monthly security audits
-- **Result:** Nanobot operates safely across teams with full transparency
-
-[**Start Multi-Team Setup** →](docs/Master-Index.md#23-multi-team-deployment-2-4-hours--ongoing)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-yellow)](docs/AOS-Startup-Simple-Build.md)
+[![Updated February 2026](https://img.shields.io/badge/Updated-February%202026-blue)](docs/Master-Index.md)
 
 ---
 
-## About This Project
+## Choose Your Starting Point
 
-**Nanobot** is a Python agent orchestration framework that receives messages from any supported chat platform (Discord, Slack, Telegram, Feishu, DingTalk, Email, Matrix, etc.), routes them through policy constraints, executes tasks with governed access, and logs all activity for audit trails.
+### ⚡ New to Nanobot?
 
-This documentation package provides:
-- ✅ Step-by-step deployment procedures (local & cloud options)
-- ✅ Multi-channel integration guides with platform-specific setup
-- ✅ LLM provider configuration (Claude, GPT, local Ollama, DeepSeek, Qwen, etc.)
-- ✅ Cost estimation & optimization strategies
-- ✅ Real-world workflow examples (knowledge consolidation, customer support, research automation, GitHub automation)
-- ✅ Governance policies and role-based access control patterns
-- ✅ Security audit procedures & hardening guidelines
-- ✅ Troubleshooting & recovery runbooks
+[**Getting Started With Nanobot →**](docs/Getting-Started-With-Nanobot.md)
 
-## Documentation Structure
+Explains what Nanobot is, what it can do, and which deployment path suits your situation. Read this first — it takes five minutes and will save you from picking the wrong setup path.
 
-All documentation is available in two formats:
+---
 
-1. **Markdown files** — `/docs` folder in this repository
-2. **Professional website** — [GitHub Pages](https://egonobueño.github.io/Nanobot-Agentic-Operating-System/) (with search, dark mode, mobile-friendly)
+### 🖥️ Path A — Simple Build (25–35 min)
 
-### Core Guides
+Run the gateway on your **personal computer** with a **cloud LLM** (OpenRouter, Claude, GPT-4).
 
-| Guide | Purpose | Time |
-|-------|---------|------|
-| [Master Index](docs/Master-Index.md) | Architecture, capabilities, RACI roles, naming standards | 5 min |
-| [Quick Install](docs/Nanobot-Quick-Install-Setup.md) | Fast install with one LLM provider | 5 min |
-| [Build Procedure](docs/Nanobot-Build-Procedure.md) | Deployment options: local vs. VPS, simple vs. advanced | 30-60 min |
-| [LLM Provider Setup](docs/LLM-Provider-Setup-Guide.md) | Configure Claude, GPT, Ollama, Qwen, DeepSeek, etc. | 15 min each |
-| [Multi-Channel Integration](docs/Multi-Channel-Integration-Guide.md) | Set up Discord, Slack, Telegram, Feishu | 15-30 min each |
-| [AOS Startup Procedure](docs/AOS-Startup-Procedure.md) | Launch and verify healthy system operation | 10-15 min |
-| [Tools & Skills Reference](docs/Tools-and-Skills-Reference.md) | 14 built-in tools + 9 pre-built skills + custom extensions | Reference |
-| [Essential Skills](docs/Essential-AOS-Skills.md) | 5 core skills every deployment needs | 30 min |
-| [Workflow Examples](docs/Workflow-Examples-and-Recipes.md) | 6 real workflows ready to copy & customize | Reference |
-| [Cost Calculator](docs/Cost-Calculator-and-Optimization.md) | Monthly cost estimation, provider routing, savings strategies | 15 min |
-| [Governance Policies](docs/Governance-Policies-and-Config-Examples.md) | RBAC, approval workflows, escalation rules, cost chargeback | 30 min |
-| [Security Runbook](docs/Security-Validation-Runbook.md) | Monthly security audit procedures | Monthly |
+**Best for:** First-time users, testing, light personal use.  
+**Cost:** $0–20/month depending on API usage.
 
-## Using This Documentation
+| Step | Guide | Time |
+|------|-------|------|
+| 1. Install and configure | [AOS Startup: Simple Build](docs/AOS-Startup-Simple-Build.md) | 25–35 min |
+| 2. Choose your LLM provider | [LLM Provider Setup Guide](docs/LLM-Provider-Setup-Guide.md) | 10–15 min |
+| 3. Add tools and automations | [Skills & Tools Complete Guide](docs/Skills-and-Tools-Complete-Guide.md) | Reference |
 
-### For Users
-1. Start with the **Master Index** to understand the 3-plane architecture
-2. Follow one of the three paths above (Quick Trial, Production, or Multi-Team)
-3. Refer to specific guides as needed (LLM setup, channel integration, workflow examples)
-4. Use cost calculator before scaling features
-5. Run monthly security audits using the Security Runbook
+---
 
-### For Developers
-- All guides include configuration examples (JSON, Python, YAML)
-- Code snippets are tested against Nanobot v0.1.4+
-- Contributing improvements? See [Contributing](#contributing) below
+### 🏗️ Path B — Advanced Build (60–90 min)
 
-### For Organizations
-- Governance Policies guide includes RBAC examples by org type (startup, scale-up, enterprise)
-- Workflow Examples show how to implement knowledge management, customer support, and GitOps automation
-- Cost calculator helps budget multi-team deployments
+Run the gateway on a **VPS** with **local Ollama** inference on your home computer, connected via Tailscale.
 
-## Features Documented
+**Best for:** 24/7 operation, privacy-first, zero cloud AI costs.  
+**Cost:** $15–30/month (VPS + electricity; no per-query AI charges).
 
-### Core Framework
-- 14 built-in tools (web search, file operations, shell execution, message delivery, scheduling, MCP integration, subagents, GitHub automation)
-- 9 pre-built skills (Obsidian vault management, memory consolidation, content summarization, cron scheduling, weather, GitHub operations, skill marketplace integration, TMUX control, skill auto-generation)
-- 100+ LLM models via unified provider routing
-- 12+ communication channels with multi-channel simultaneous operation
-- Cost controls: tiered model routing, budget caps, escalation gates
-- Session continuity with automatic memory consolidation
-- Structured audit logging for compliance
+| Step | Guide | Time |
+|------|-------|------|
+| 1. VPS + Ollama + Tailscale setup | [AOS Startup: Advanced Build](docs/AOS-Startup-Advanced-Build.md) | 60–90 min |
+| 2. Choose your LLM provider | [LLM Provider Setup Guide](docs/LLM-Provider-Setup-Guide.md) | 10–15 min |
+| 3. Add tools and automations | [Skills & Tools Complete Guide](docs/Skills-and-Tools-Complete-Guide.md) | Reference |
 
-### Deployment Options
-- **Local:** Laptop/desktop with cloud LLM provider
-- **VPS:** Self-hosted Ollama for local inference + VPS runtime
-- **Hybrid:** Mix of cloud providers and local inference
+---
 
-### Security & Compliance
-- Channel-level access control and allowlisting
-- Role-based permissions (Owner, Reviewer, Operator)
-- Workspace binding to prevent filesystem escape
-- Secret management via .env files (never committed)
-- Monthly security validation procedures
-- Audit trails with request IDs and cost tracking
+### 🏢 Path C — Multi-Team / Production
+
+Deploy with governance, cost controls, and security auditing across teams.
+
+**Best for:** Organizations, shared deployments, compliance requirements.  
+**Additional setup time:** 1–3 hours beyond Path A or B.
+
+| Step | Guide | Time |
+|------|-------|------|
+| 1. Complete Path A or B first | ↑ above | — |
+| 2. Governance, RBAC, cost chargeback | [Security & Governance Policies](docs/Security-and-Governance-Policies.md) | 30–60 min |
+| 3. Estimate and optimize costs | [Cost Calculator & Optimization](docs/Cost-Calculator-and-Optimization.md) | 15 min |
+| 4. Review workflows to copy | [Workflow Examples & Recipes](docs/Workflow-Examples-and-Recipes.md) | Reference |
+
+---
+
+## All 11 Guides
+
+| Guide | What It Covers |
+|-------|---------------|
+| [Getting Started With Nanobot](docs/Getting-Started-With-Nanobot.md) | What Nanobot is, capabilities by tier, which path to choose |
+| [Master Index](docs/Master-Index.md) | Full architecture, 3-plane model, RACI roles, naming conventions, navigation map |
+| [AOS Startup: Simple Build](docs/AOS-Startup-Simple-Build.md) | Local setup on Windows/Mac/Linux with cloud LLM — complete walkthrough for beginners |
+| [AOS Startup: Advanced Build](docs/AOS-Startup-Advanced-Build.md) | VPS + local Ollama + Tailscale tunnel — 24/7 self-hosted deployment |
+| [LLM Provider Setup Guide](docs/LLM-Provider-Setup-Guide.md) | Configure OpenRouter, Anthropic, OpenAI, Ollama, DeepSeek, Qwen, and multi-provider routing |
+| [Skills & Tools Complete Guide](docs/Skills-and-Tools-Complete-Guide.md) | All built-in tools, pre-built skills, Clawhub marketplace, and custom skill development |
+| [Workflow Examples & Recipes](docs/Workflow-Examples-and-Recipes.md) | 6 copy-ready workflows: knowledge consolidation, content syndication, GitHub automation, team reporting |
+| [Cost Calculator & Optimization](docs/Cost-Calculator-and-Optimization.md) | Monthly spend estimation, multi-tier routing config, budget caps, break-even analysis |
+| [Security & Governance Policies](docs/Security-and-Governance-Policies.md) | RBAC patterns, approval workflows, risk tiers, audit logging, monthly security validation runbook |
+| [Emergency Recovery & Troubleshooting](docs/Emergency-Recovery-and-Troubleshooting.md) | Diagnose and recover from provider outages, config corruption, vault errors, and credential issues |
+| [Glossary](docs/Glossary.md) | Definitions for all AOS terms: planes, tiers, roles, channels, skills, and config fields |
+
+---
+
+## What Nanobot Does
+
+Nanobot is a Python agent orchestration framework ([HKUDS/nanobot](https://github.com/HKUDS/nanobot)). You connect it to chat platforms and LLM providers; it handles the rest.
+
+```
+User message (any channel)
+    ↓
+Nanobot Gateway  ←→  Policy Engine (RBAC, approval gates, cost limits)
+    ↓
+Tool Execution   ←→  LLM Provider (OpenRouter / Anthropic / local Ollama / ...)
+    ↓
+Response + Audit Log
+```
+
+**Channels supported:** Discord, Slack, Telegram, WhatsApp, Feishu, DingTalk, Matrix, MoChat, QQ, Email, CLI (11 total)
+
+**LLM providers:** OpenRouter (100+ models), Anthropic, OpenAI, Ollama (local), DeepSeek, Qwen, Gemini, Cohere, and any OpenAI-compatible endpoint
+
+**Built-in tools (14):** web search, file read/write, shell execution, message delivery, cron scheduling, MCP integration, GitHub automation, subagent spawning, and more
+
+**Pre-built skills:** Obsidian vault management, memory consolidation, content summarization, weather, GitHub operations, TMUX control, skill auto-generation, and the Clawhub skill marketplace
+
+**Cost model:**
+
+| Tier | Models | Use For |
+|------|--------|---------|
+| **Tier A (Premium)** | Claude Opus, GPT-4 | High-value tasks requiring best quality |
+| **Tier B (Balanced)** | Claude Haiku, GPT-4 Mini, Qwen-72B | General use, moderate reasoning |
+| **Tier C (Budget)** | DeepSeek, Gemini, Cohere | Summarization, classification, routine tasks |
+| **Tier D (Free)** | Local Ollama | Privacy-critical or high-volume — no API charges |
+
+---
 
 ## Getting Help
 
-### I'm stuck on:
-- **Installation?** → Start with [Quick Install](docs/Nanobot-Quick-Install-Setup.md)
-- **LLM provider setup?** → See [LLM Provider Guide](docs/LLM-Provider-Setup-Guide.md)
-- **Connecting Discord/Slack?** → See [Multi-Channel Integration](docs/Multi-Channel-Integration-Guide.md)
-- **Understanding costs?** → See [Cost Calculator](docs/Cost-Calculator-and-Optimization.md)
-- **Setting up governance?** → See [Governance Policies](docs/Governance-Policies-and-Config-Examples.md)
-
-### Need to troubleshoot?
-- Check [Security Validation Runbook](docs/Security-Validation-Runbook.md) for diagnostics
-- Review [Workflow Examples](docs/Workflow-Examples-and-Recipes.md) for working configurations
-- Search the [online documentation site](https://egonobueño.github.io/Nanobot-Agentic-Operating-System/) (Ctrl+K / Cmd+K to open search)
-
-## Contributing
-
-This documentation is maintained for the open-source Nanobot framework. We welcome:
-- **Bug reports** in the documentation (links, outdated info, unclear instructions)
-- **Improvements** to guides and examples
-- **Additional workflows** that solve real problems
-- **Translations** to other languages
-- **Platform-specific guidance** for new channels
-
-Please open an issue or pull request in this repository. Include:
-- What guide/section needs improvement
-- What's unclear or outdated
-- Suggested fix or improvement
-
-## Project Status
-
-- ✅ **Complete:** Master Index, Quick Install, Build Procedure, LLM Provider Setup, Multi-Channel Integration, AOS Startup, Tools & Skills Reference, Essential Skills
-- ✅ **Complete:** Cost Calculator, Workflow Examples, Governance Policies, Security Runbook
-- ✅ **Complete:** Professional documentation site (search, dark mode, mobile-responsive)
-- 🔄 **In Progress:** Translations (community-contributed)
-- 📋 **Planned:** Video tutorials, interactive cost calculator
-
-## License
-
-This documentation is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
-
-The Nanobot framework itself is maintained by [HKUDS/nanobot](https://github.com/HKUDS/nanobot).
-
-## Related Resources
-
-- **Official Nanobot Repository:** [github.com/HKUDS/nanobot](https://github.com/HKUDS/nanobot)
-- **Nanobot Version:** v0.1.4 and later
-- **Python Version:** 3.10+
-- **Documentation Last Updated:** February 25, 2026
-
-## Acknowledgments
-
-This comprehensive documentation set was created to bridge the gap between Nanobot's powerful capabilities (14 tools, 9 skills, 100+ models, 12+ channels) and the documentation available to users. Thanks to anyone who uses, tests, and improves these guides.
+| Problem | Go here |
+|---------|---------|
+| Not sure where to start | [Getting Started With Nanobot](docs/Getting-Started-With-Nanobot.md) |
+| Installation issues | [AOS Startup: Simple Build](docs/AOS-Startup-Simple-Build.md) or [Advanced Build](docs/AOS-Startup-Advanced-Build.md) |
+| LLM provider not connecting | [LLM Provider Setup Guide](docs/LLM-Provider-Setup-Guide.md) |
+| Channel bot not responding | [Channel integration guide](nanobot/README.md) |
+| Unexpected costs | [Cost Calculator & Optimization](docs/Cost-Calculator-and-Optimization.md) |
+| Access control or governance | [Security & Governance Policies](docs/Security-and-Governance-Policies.md) |
+| System failure or recovery | [Emergency Recovery & Troubleshooting](docs/Emergency-Recovery-and-Troubleshooting.md) |
+| Unfamiliar term or acronym | [Glossary](docs/Glossary.md) |
 
 ---
 
-**Ready to get started?** [Choose your path above](#quick-start--choose-your-path) or jump to the [Master Index](docs/Master-Index.md).
+## Contributing
+
+Improvements are welcome. We're particularly interested in:
+
+- **Broken or outdated content** — open an issue with the section and what changed
+- **Additional workflow recipes** — real use cases that solve a concrete problem
+- **Platform-specific guidance** — setup notes for channels or providers not covered
+- **Clarifications** — anything that was harder to follow than it needed to be
+
+Please open an issue or pull request. Describe what guide/section needs attention and what the correct information is.
+
+---
+
+## License & Credits
+
+Documentation licensed under **[MIT](LICENSE)**.
+
+Built for the [HKUDS/nanobot](https://github.com/HKUDS/nanobot) framework (Python 3.11+, Nanobot v0.1.4+).  
+Maintained by [EgoNoBueno](https://github.com/EgoNoBueno).
+
+---
+
+*Browse the full docs online: [egonobueño.github.io/Nanobot-Agentic-Operating-System](https://egonobueño.github.io/Nanobot-Agentic-Operating-System/) — includes search (Ctrl+K / Cmd+K), dark mode, and mobile layout.*
