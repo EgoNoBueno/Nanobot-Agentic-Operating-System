@@ -46,7 +46,8 @@ In Discord Developer Portal, under **Bot**:
 ### Step 3: Invite Bot to Server
 ⏱️ ~1 minute
 
-1. Go to **OAuth2** → **URL Generator** (OAuth2 = a standard way to give apps permission to access accounts)
+1. Go to **OAuth2** → **URL Generator**
+   - **OAuth2** = a standard way to give apps permission to access your accounts (used by Discord, Google, Facebook, etc.)
 2. Select Scopes: `bot` (tells Discord: this request is for a bot)
 3. Select Permissions: `Send Messages`, `Read Message History` (what the bot is allowed to do)
 4. Copy generated URL

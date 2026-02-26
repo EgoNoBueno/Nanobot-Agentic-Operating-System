@@ -76,6 +76,8 @@ Quick reference for technical terms, acronyms, and concepts used throughout the 
 
 ## H
 
+**Hardening** - Securing a system by removing vulnerabilities, applying patches, configuring firewalls, and restricting access. A "hardened" VPS has security best practices applied (firewall rules, SSH key-only auth, no unnecessary services running, etc.).
+
 **Heartbeat** - A periodic check to make sure the system is still alive and healthy. Like taking a pulse.
 
 **Hot-Reload** - Updating code or configuration without needing to restart the system. Changes take effect immediately.

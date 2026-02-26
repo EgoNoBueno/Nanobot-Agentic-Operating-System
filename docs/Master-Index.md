@@ -31,7 +31,7 @@ The Nanobot Agentic Operating System is a **three-plane, channel-agnostic operat
 4. Nanobot invokes: **web_search** tool (Brave API) → retrieves competitor campaign data with cost/context controls.
 5. Web results → **summarize** skill → synthesizes findings with citations.
 6. Nanobot posts back to Slack with recommendation, source links, and confidence assessment.
-7. Nanobot writes structured artifact to Obsidian: **request_id**, **project_id**, sources, reasoning, next steps.
+7. Nanobot writes structured artifact to Obsidian: **request_id** (unique identifier for this request), **project_id** (what project it belongs to), sources, reasoning, next steps.
 8. Operator approves test → change logged in Obsidian for compliance/audit trail.
 
 
@@ -128,11 +128,13 @@ Choose your path based on your goal:
 
 1. **[Master Index](Master-Index.md)** - Understand 3-plane model, RACI roles, cost controls
 2. **[Cost Calculator](Cost-Calculator-and-Optimization.md)** - Plan monthly spend, choose provider routing strategy
-3. **[Nanobot Build Procedure](Nanobot-Build-Procedure.md)** - Choose Path A (local + cloud LLM) or Path B (VPS + Ollama), deploy
-4. **[LLM Provider Setup](LLM-Provider-Setup-Guide.md)** - Configure all providers you'll use (multi-provider routing)
-5. **[Multi-Channel Integration](Multi-Channel-Integration-Guide.md)** - Set up all communication channels (Discord, Slack, Telegram, etc.)
-6. **[Essential AOS Skills](Essential-AOS-Skills.md)** - Install core skills (obsidian, memory, summarize, github, cron)
-7. **[AOS Startup Procedure](AOS-Startup-Procedure.md)** - Start the system and verify health
+3. **[Nanobot Build Procedure](Nanobot-Build-Procedure.md)** - Choose Simple Build (local + cloud LLM) or Advanced Build (VPS + Ollama), deploy
+4. **Choose your startup path:**
+   - **Simple Build (25 min):** [AOS-Startup-Simple-Build](AOS-Startup-Simple-Build.md) - Run nanobot on your computer with cloud AI
+   - **Advanced Build (60-90 min):** [AOS-Startup-Advanced-Build](AOS-Startup-Advanced-Build.md) - Run on VPS with local Ollama for 24/7 operation
+5. **[LLM Provider Setup](LLM-Provider-Setup-Guide.md)** - Configure all providers you'll use (multi-provider routing)
+6. **[Multi-Channel Integration](Multi-Channel-Integration-Guide.md)** - Set up all communication channels (Discord, Slack, Telegram, etc.)
+7. **[Essential AOS Skills](Essential-AOS-Skills.md)** - Install core skills (obsidian, memory, summarize, github, cron)
 8. **[Tools & Skills Reference](Tools-and-Skills-Reference.md)** - Learn what 14 tools and 9 skills you have available
 9. **[Workflow Examples](Workflow-Examples-and-Recipes.md)** - Implement 1-2 real workflows for your use case
 10. **[Governance Policies](Governance-Policies-and-Config-Examples.md)** - Set up access control, allowlists, cost caps (optional for solo users; required for teams)
@@ -162,8 +164,9 @@ Use these docs as references when following one of the three roadmaps above.
 - [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md) - Set up Discord, Slack, Telegram, Feishu, or other platforms
 
 ### Operations & Deployment
-- [Nanobot Build Procedure](Nanobot-Build-Procedure.md) - Deploy to local or VPS (simple and advanced paths)
-- [AOS Startup Procedure](AOS-Startup-Procedure.md) - Bring system from power-down to fully operational
+- [Nanobot Build Procedure](Nanobot-Build-Procedure.md) - Deploy framework (local or VPS)
+- [AOS Startup: Simple Build](AOS-Startup-Simple-Build.md) - Run nanobot on your computer with cloud LLM (fast, cheapest to test)
+- [AOS Startup: Advanced Build](AOS-Startup-Advanced-Build.md) - Run on VPS with local Ollama (24/7, zero per-query costs)
 
 ### Features & Extensibility
 - [Tools & Skills Reference](Tools-and-Skills-Reference.md) - All built-in tools, pre-built skills, and how to create custom tools/skills

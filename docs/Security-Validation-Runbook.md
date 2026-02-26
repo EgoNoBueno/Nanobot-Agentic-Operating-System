@@ -42,7 +42,9 @@ Execute in this order to ensure consistent evidence collection.
 - Any direct public exposure without approved exception.
 
 ### Step 2: DM Policy and Allowlist Check
-- Verify DM (Direct Message—private messages to the bot) policy is pairing mode by default.
+
+**DM** = Direct Message (private messages sent to the bot, not in public channels)
+- Verify DM policy is pairing mode by default.
 - Validate unknown sender behavior (no command execution before approval).
 - Verify allowlist entries are current and minimal. (Allowlist = list of approved people/channels)
 
@@ -65,7 +67,7 @@ Execute in this order to ensure consistent evidence collection.
 
 ### Step 5: Security Audit Execution
 - Run `nanobot security audit --deep` (automated security check for vulnerabilities)
-- Verify deployed Nanobot version is **2026.2.23** or later. (Newer versions have security fixes)
+- Verify deployed Nanobot version is v0.1.4 or later. (Newer versions have security fixes)
 - Review latest Nanobot security advisories and confirm no unpatched High/Critical findings apply to deployed version.
 - Capture findings and classify severity. (Severity = how serious the issue is)
 - Confirm critical findings have immediate mitigation plan.

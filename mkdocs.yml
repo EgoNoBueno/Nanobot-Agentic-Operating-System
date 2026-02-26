@@ -1,43 +1,47 @@
-site_name: Nanobot Agentic Operating System
-site_description: Production-ready documentation for deploying and operating the Nanobot AI agent framework
-repo_url: https://github.com/HKUDS/nanobot
-repo_name: HKUDS/nanobot
-docs_dir: docs
-site_dir: site
-
 theme:
-  name: material
-  logo: assets/nanobot-logo.png
-  favicon: assets/favicon.ico
-  features:
-    - navigation.instant
-    - navigation.tracking
-    - navigation.top
-    - search.highlight
-    - search.share
-    - content.tabs.link
-    - content.code.copy
-  palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/lightbulb-outline
-        name: Switch to dark mode
-    - scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/lightbulb
-        name: Switch to light mode
-
 plugins:
-  - search
-  - tags
-
 markdown_extensions:
-  - markdown.extensions.admonition
-  - markdown.extensions.attr_list
+### MkDocs configuration disabled
+# site_name: Nanobot Agentic Operating System
+# site_description: Production-ready documentation for deploying and operating the Nanobot AI agent framework
+# repo_url: https://github.com/HKUDS/nanobot
+# repo_name: HKUDS/nanobot
+# docs_dir: docs
+# site_dir: site
+#
+# theme:
+#   name: material
+#   logo: assets/nanobot-logo.png
+#   favicon: assets/favicon.ico
+#   features:
+#     - navigation.instant
+#     - navigation.tracking
+#     - navigation.top
+#     - search.highlight
+#     - search.share
+#     - content.tabs.link
+#     - content.code.copy
+#   palette:
+#     - scheme: default
+#       primary: indigo
+#       accent: indigo
+#       toggle:
+#         icon: material/lightbulb-outline
+#         name: Switch to dark mode
+#     - scheme: slate
+#       primary: indigo
+#       accent: indigo
+#       toggle:
+#         icon: material/lightbulb
+#         name: Switch to light mode
+#
+# plugins:
+#   - search
+#   - tags
+#
+# markdown_extensions:
+#   - markdown.extensions.admonition
+#   - markdown.extensions.attr_list
   - markdown.extensions.codehilite
   - markdown.extensions.def_list
   - markdown.extensions.footnotes

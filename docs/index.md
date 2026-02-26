@@ -1,11 +1,15 @@
-# Nanobot Agentic Operating System
+
+# Nanobot Agentic Operating System (AOS)
+
+## Who Is This For?
+This documentation is for developers, operators, and teams who want to deploy, operate, and extend the Nanobot agentic framework for LLM-powered automation, research, and multi-channel communication. It is suitable for both beginners (getting started quickly) and advanced users (production, governance, and customization).
 
 **Production-ready documentation for deploying and operating the Nanobot AI agent framework.**
 
 Nanobot is a lightweight (~4,000 lines), extensible agentic framework that:
-- Routes to 100+ LLM models (Claude, GPT-4, local Ollama, Qwen, DeepSeek, etc.)
+- Routes to 100+ **LLM** (Large Language Model) models: Claude, GPT-4, local Ollama, Qwen, DeepSeek, etc.
 - Integrates with 12+ communication channels (Discord, Slack, Telegram, Feishu, etc.)
-- Executes 14 built-in tools (web search, file ops, shell, GitHub, scheduling, MCP)
+- Executes 14 built-in tools (web search, file ops, shell, GitHub, scheduling, MCP—Model Context Protocol tools for external integrations)
 - Provides 9 pre-built skills (Obsidian, memory, summarization, cron, GitHub automation)
 - Manages cost through tiered routing and budget controls
 - Enforces security with role-based access control and audit logging
@@ -31,17 +35,55 @@ pip install nanobot-ai
 
 ---
 
+
 ## Quick Start (5 Minutes)
 
-1. **[Quick Install & Setup](Nanobot-Quick-Install-Setup.md)** — Get nanobot running locally with your LLM provider
-2. **[LLM Provider Setup](LLM-Provider-Setup-Guide.md)** — Configure any of 100+ models
-3. **[Multi-Channel Integration](Multi-Channel-Integration-Guide.md)** — Connect Discord, Slack, or other platforms
+Start here: **[Quick Install & Setup](Nanobot-Quick-Install-Setup.md)**
+
+Most users will eventually want full AOS capabilities, allowing increased Autonomous Agent capabilities. The Quick Start is ideal for evaluation, prototyping, and basic use.
+
+### What You Get With Quick Start
+
+If you follow the Quick Start guide, you will have:
+
+- A working Nanobot agent connected to your chosen LLM provider (OpenAI, Anthropic, local Ollama, etc.)
+- Basic channel integration (CLI, Discord, Slack, Telegram, Feishu, etc.)
+- Access to core tools: web search, file operations, shell commands, GitHub integration, scheduling, memory, and MCP tools
+- Ability to run and interact with the agent for simple tasks, chat, and automation
+- Default security and cost controls
+
+**Limitations (AOS Standpoint):**
+- Advanced governance features (multi-team policies, role-based access, audit logging, cost allocation) are not configured
+- Custom channel policies, approval workflows, and escalation rules are not set up
+- Multi-provider routing and advanced cost optimization require additional configuration
+- No advanced skills or custom workflows beyond the built-in set
+- Production deployment, backup, and recovery procedures are not established
+- Security validation and compliance runbooks are not enabled by default
+
+
+**Full AOS Capability:**
+
+For production deployments, advanced governance, and full automation, continue beyond Quick Start:
+- See the [Governance Policies and Config Examples](Governance-Policies-and-Config-Examples.md) for multi-team, security, and compliance features
+- Use the [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md) for advanced channel management and cross-platform workflows
+- Follow the [Nanobot Build Procedure](Nanobot-Build-Procedure.md) for robust, scalable, and secure deployments
+
+**Additional Capabilities with Multi-Channel Integration Guide:**
+- Seamless integration with multiple communication platforms (Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix, Mochat)
+- Centralized management of channel policies, naming conventions, and access controls
+- Ability to route tasks, messages, and workflows across channels for team collaboration
+- Custom channel-specific behaviors, escalation rules, and approval workflows
+- Enhanced notification, alerting, and cross-channel automation
+- Improved audit logging and traceability for all channel interactions
+- Support for multi-team deployments and channel isolation
+
 
 ## Getting Started
 
 - **[Master Index](Master-Index.md)** — Overview of the entire system architecture
-- **[Build Procedure](Nanobot-Build-Procedure.md)** — Deploy to production (simple or advanced)
-- **[Startup Procedure](AOS-Startup-Procedure.md)** — Bring system online
+- **[Quick Install & Setup](Nanobot-Quick-Install-Setup.md)** — 5-minute quick start
+- **[AOS Startup Procedure: Simple Build](AOS-Startup-Simple-Build.md)** — Deploy locally with cloud LLM (25-35 minutes)
+- **[AOS Startup Procedure: Advanced Build](AOS-Startup-Advanced-Build.md)** — Deploy on VPS with local Ollama (60-90 minutes)
 
 ## Operating Nanobot
 

@@ -27,7 +27,9 @@ This document lists the 5 core skills (pre-built bundles) recommended for every 
 
 #### Obsidian Local REST API Setup (Required)
 
-To enable nanobot ↔ Obsidian communication, set up the Local REST API plugin. (REST API = a way for programs to talk to each other. This lets nanobot read and write to Obsidian.)
+**REST API** = a standard way for programs to talk to each other and exchange data. In this case, it lets nanobot read and write to Obsidian using HTTP requests (the same protocol your web browser uses).
+
+To enable nanobot ↔ Obsidian communication, set up the Local REST API plugin.
 
 **Step 1: Enable Community Plugins**
 1. Open Obsidian → **Settings** → **Community Plugins**

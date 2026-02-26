@@ -65,28 +65,18 @@ pip install nanobot-ai
 
 Verify installation worked:
 ```bash
-# nanobot version shows which version is installed (should be 0.1.4 or newer)
-nanobot version
-# Output: nanobot v0.1.4+ (or higher)
-
-# nanobot health checks if everything is set up correctly
-nanobot health
-# Output: Checking installation...
+nanobot --version
+# Should show: nanobot v0.1.4 or higher
 ```
 
 ### Step 2: Initialize Config
 ⏱️ ~2 minutes
 
 ```bash
-nanobot init
+nanobot onboard
 ```
 
-Interactive prompt will ask:
-- LLM provider? → Choose cloud provider (openrouter, anthropic, openai, qwen, deepseek)
-- API key? → Paste from provider dashboard
-- Discord token? → (or Slack, Telegram—choose your channel)
-- Default channel? → e.g., #general or DM
-- Obsidian vault path? → (optional; press Enter to skip)
+Interactive wizard will ask several questions. (See [Nanobot Quick Install & Setup](Nanobot-Quick-Install-Setup.md) for details on each question.)
 
 Config saved to:
 - **Linux/Mac:** `~/.nanobot/config.json`
@@ -124,7 +114,7 @@ nanobot> exit
 - ✅ `nanobot test` returns responses from LLM
 - ✅ Web search, tool execution work in test mode
 
-If any item shows ❌, see [Common Mistakes](#common-mistakes) below.
+If any item shows ❌, see [Common Mistakes and Solutions](#common-mistakes-and-solutions) below.
 
 ### Deployment: Simple Build
 
@@ -486,7 +476,7 @@ After build completion:
 
 ---
 
-## Common Mistakes & Solutions
+## Common Mistakes and Solutions
 
 ### ❌ Mistake 1: Using User Token Instead of Bot Token (Discord)
 **Problem:** Discord authorization fails, bot won't authenticate  
