@@ -2,6 +2,8 @@
 
 Plan your nanobot deployment cost. Estimate monthly spend, optimize provider routing, and set budget controls.
 
+(A token ≈ 1 word. This guide helps you predict how much you'll spend.)
+
 ## Document Control
 - **Owner:**
 - **Version:** 1.0.0
@@ -24,10 +26,10 @@ Plan your nanobot deployment cost. Estimate monthly spend, optimize provider rou
 | **Cohere** | Command R | $0.0003 | <3s | Specialized use | Command models; moderate cost |
 
 **Cost Tier Summary:**
-- **Tier A (Premium):** Claude Opus, GPT-4 → $0.015-0.03/1K tokens (use for high-value tasks)
-- **Tier B (Balanced):** Claude Haiku, GPT-4 Mini, Qwen-72B → $0.0005-0.005/1K tokens
-- **Tier C (Budget):** DeepSeek, Gemini, Cohere → $0.0001-0.0005/1K tokens
-- **Tier D (Free):** Ollama local → $0 (infrastructure only)
+- **Tier A (Premium):** Claude Opus, GPT-4 → $0.015-0.03/1K tokens (use for high-value tasks requiring best quality)
+- **Tier B (Balanced):** Claude Haiku, GPT-4 Mini, Qwen-72B → $0.0005-0.005/1K tokens (good middle ground)
+- **Tier C (Budget):** DeepSeek, Gemini, Cohere → $0.0001-0.0005/1K tokens (cheapest cloud options)
+- **Tier D (Free):** Ollama local → $0 (you pay for your computer hardware, but no API charges)
 
 ---
 
@@ -36,9 +38,10 @@ Plan your nanobot deployment cost. Estimate monthly spend, optimize provider rou
 ### Step 1: Estimate Daily Token Usage
 
 **Typical token consumption per interaction:**
-- Simple query (web search): 500 tokens
-- Moderate complexity (multi-step): 2,000 tokens
-- Complex task (analysis + synthesis): 5,000 tokens
+(Remember: tokens ≈ words. Complex tasks use more tokens.)
+- Simple query (web search): 500 tokens (⬇️ low complexity)
+- Moderate complexity (multi-step analysis): 2,000 tokens (⬇️ medium)
+- Complex task (long analysis + synthesis): 5,000 tokens (⬆️ high complexity)
 
 **Example team:**
 - 5 users × 10 interactions/day = 50 total interactions/day

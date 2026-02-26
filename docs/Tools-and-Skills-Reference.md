@@ -10,7 +10,9 @@ Complete reference for all built-in tools and pre-built skills in nanobot, plus 
 
 ## 1. Tools Overview
 
-**Tools** are the executable actions nanobot can perform. All tools are opt-in and can be allowlisted per channel.
+**Tools** are the executable actions nanobot can perform. All tools are opt-in and can be allowlisted (approved) per channel.
+
+**What's a Tool?** Like an extension or app—it's a single action the bot can do (search the web, write a file, run a command, etc.)
 
 ### Quick Tool Matrix
 
@@ -98,6 +100,7 @@ Complete reference for all built-in tools and pre-built skills in nanobot, plus 
 ```
 
 ### mcp_call
+**Purpose:** Call MCP (Model Context Protocol—a standard way to connect tools/services) server tools
 **Purpose:** Call externally hosted MCP (Model Context Protocol) tools  
 **Examples of MCP Tools:** 
 - Filesystem operations on remote systems
@@ -244,7 +247,7 @@ Pair expensive orchestration with cheap models:
 
 ## 3. Skills Overview
 
-**Skills** are pre-built, opinionated bundles of tools configured for specific business functions.
+**Skills** are pre-built, opinionated bundles of tools configured for specific business functions. (Think of a skill as a "ready-to-use package" that combines multiple tools to solve a specific problem.)
 
 ### Built-In Skills
 
