@@ -4,7 +4,7 @@ Configure nanobot to use different AI (artificial intelligence) models based on 
 
 ## Document Control
 - **Owner:**
-- **Version:** 1.2.0
+- **Version:** 1.3.0
 - **Last Updated:** 2026-02-26
 - **Status:** Active
 
@@ -29,16 +29,7 @@ Nanobot supports 100+ LLM (Large Language Model) models via unified configuratio
 | **Gemini (Google)** | Gemini Pro, Ultra | ⭐ Easy | $0.5-10/M | Medium |
 | **Cohere** | Command R, R+ | ⭐ Easy | $0.5-3/M | Medium |
 
-## How to Copy & Paste Commands in Linux
-
-When following setup steps with bash code blocks:
-
-**Best methods (fastest to slowest):**
-1. **Middle-click paste:** Highlight command → middle-click in terminal (instant!)
-2. **Keyboard:** Highlight → `Ctrl+Shift+C` to copy → `Ctrl+Shift+V` to paste
-3. **Right-click:** Highlight → `Ctrl+C` → right-click → Paste
-
-Most Linux/Mac terminals support middle-click—try it first!
+> **Linux/Mac Terminal Tip:** To paste commands — middle-click (fastest), or `Ctrl+Shift+C` / `Ctrl+Shift+V`, or right-click → Paste.
 
 ## 3. Quick Setup (5 minutes)
 
@@ -145,13 +136,24 @@ ask a question
 ```
 
 ### Option C: Direct Anthropic (Claude)
-Best if using Claude exclusively.
+⏱️ ~5 minutes to complete  
+Best if you're using Claude exclusively and want to avoid OpenRouter as an intermediary. Gives access to Anthropic's prompt caching features (see §6).
+
+#### Before You Start
+- ☐ Anthropic account at https://console.anthropic.com
+- ☐ Credit card (free tier credits available on signup)
+- ☐ Text editor to edit config file
 
 **Step 1: Get API Key**
-- Visit https://console.anthropic.com
-- Create API key
+⏱️ ~2 minutes
+
+- Visit https://console.anthropic.com/settings/keys
+- Click **Create Key**
+- Copy the key (shown once—save it securely)
 
 **Step 2: Configure**
+⏱️ ~1 minute
+
 ```json
 {
   "providers": {
@@ -167,6 +169,14 @@ Best if using Claude exclusively.
   }
 }
 ```
+Save to `~/.nanobot/config.json`
+
+**Step 3: Test**
+```bash
+nanobot agent
+ask a question
+```
+✅ Expected: Claude responds within a few seconds
 
 ## 4. Multi-Provider Setup (Cost Optimization)
 
@@ -200,7 +210,7 @@ Use different models for different workflows:
 }
 ```
 
-Then in Discord/Slack policy: Route `#bk-*` to bookkeeping agent, `#res-*` to research agent, etc.
+Then configure channel routing in your governance policy to map channels to agents — see [Security & Governance Policies §5 (Provider Routing by Workflow)](Security-and-Governance-Policies.md) for full routing config examples.
 
 ## 5. Token Budgeting & Cost Control
 
@@ -250,22 +260,35 @@ This re-uses cached prompts for 5 minutes. Cached tokens are billed at ~10% of n
 
 ## 7. Environment Variable Override
 
-Set a model for a single command:
+**When to use:** Override the config-file model for a single command — useful for one-off tests, debugging a specific model, or CI/CD pipelines where you don't want to edit config files.
+
 ```bash
+# Use a specific model for one command only
 NANOBOT_MODEL=openai/gpt-4 nanobot agent
+
+# Override provider too
+NANOBOT_PROVIDER=anthropic NANOBOT_MODEL=claude-opus-4-5 nanobot agent
 ```
+
+This does **not** change `config.json` — the override only applies to that command invocation.
 
 ## 8. Web Search API (Brave)
 
-To enable web search, add Brave API key:
+The `web_search` tool requires a Brave Search API key. This is separate from your LLM provider — it gives nanobot the ability to search the live web in addition to reasoning with an LLM.
 
+**Get a key (~2 minutes):**
+1. Visit https://api.search.brave.com/
+2. Sign up → **Free tier** gives 2,000 queries/month at no cost
+3. Copy your API key
+
+**Add to config:**
 ```json
 {
   "braveApiKey": "YOUR_BRAVE_API_KEY"
 }
 ```
 
-Get key from https://api.search.brave.com/
+**Without this key:** `web_search` tool will be unavailable. All other tools and LLM providers remain functional.
 
 ## 9. Fallback & Degraded Mode
 
@@ -324,30 +347,32 @@ A Nanobot skill implements multi-model collaboration by calling the LLM multiple
 
 ### Setup via Skill Configuration
 
-Define multi-model workflows in a custom skill's `SKILL.md`:
+Multi-model workflows are implemented in a skill's `SKILL.md` instructions and `implementation.py`. The `SKILL.md` describes the workflow in natural language; the implementation script handles the LLM calls.
 
-```yaml
+**SKILL.md excerpt (research-synthesis skill):**
+```markdown
+---
 name: research-synthesis
-description: "Multi-model research workflow"
+description: "Multi-model research workflow: fast model scouts, premium model synthesizes"
 tools-required:
   - web_search
   - summarize
-llm-routing:
-  scout:
-    model: "openrouter/qwen"          # Fast, cheap initial search
-    maxTokens: 2000
-  analyst:
-    model: "anthropic/claude-opus"    # Deep analysis
-    maxTokens: 8000
-  critic:
-    model: "local/ollama-mistral"     # Final quality check
-    maxTokens: 4096
-workflow: |
-  1. Scout uses web_search to find 20 sources on topic
-  2. Scout summarizes each source (1-2 sentences)
-  3. Analyst reads Scout's summaries, synthesizes findings (detailed)
-  4. Critic reviews Analyst output for clarity, citations, and accuracy
-  5. Return final synthesis to user
+models-required:
+  - scout: qwen (cheap, fast — for initial search and filtering)
+  - analyst: claude-opus (premium — for deep synthesis)
+  - critic: ollama-mistral (local/free — for quality review)
+---
+
+## Workflow
+
+1. Use the **scout model** (Qwen via OpenRouter) to run web_search on the topic and summarize
+   each result in 1-2 sentences. Return the top 5 most relevant summaries.
+2. Pass those 5 summaries to the **analyst model** (Claude Opus). Ask it to synthesize a
+   detailed analysis with citations.
+3. Pass the analyst's output to the **critic model** (Ollama Mistral) with the prompt:
+   "Check this analysis for factual errors, missing citations, and unclear claims."
+4. If the critic flags issues, loop back to step 2 with the critique appended.
+5. Return the final verified synthesis to the user.
 ```
 
 ### Global Routing with Tiered Configuration
@@ -468,15 +493,26 @@ curl http://localhost:11434/api/tags
 
 ## 13. AOS Integration & Governance
 
-Map channels to cost-tier models via [Security & Governance Policies](Security-and-Governance-Policies.md):
+LLM provider selections plug directly into the AOS 3-plane governance model. Once providers are configured here, you control *which* provider runs *where* through your governance policy — not by editing this file.
 
-- `#bk-*` → Qwen (cheapest, bookkeeping is lower-risk)
-- `#prd-*-analytics` → Claude Haiku (fast, moderate cost)
-- `#prd-*-marketing` → Claude Opus (high quality, moderate cost)
-- `#res-*` → Claude Opus (complex synthesis)
-- `#res-* (escalated)` → Claude Opus (no cost cap)
+**Typical channel-to-model mapping:**
 
-Configure provider routing in your governance policy file for channel-based tier assignment.
+| Channel Pattern | Recommended Model | Reason |
+|---|---|---|
+| `#bk-*` | Qwen or DeepSeek (Tier C) | Routine bookkeeping; low risk; cheapest |
+| `#prd-*-analytics` | Claude Haiku or GPT-4o-mini (Tier B) | Fast, moderate cost |
+| `#prd-*-marketing` | Claude Sonnet (Tier B-A) | Quality writing; moderate cost |
+| `#res-*` | Claude Opus or GPT-4o (Tier A) | Complex synthesis; accuracy matters |
+| `#admin-*` | Claude Opus + local verification | High responsibility; use Verification Loop (§10) |
+| `#general` | Qwen or local Ollama (Tier C/Free) | High volume; keep costs low |
+
+**Governance setup steps:**
+1. Configure all providers you'll use in `~/.nanobot/config.json` (this guide)
+2. Define channel routing rules in your governance policy — see [Security & Governance Policies §5](Security-and-Governance-Policies.md)
+3. Set per-team budget caps — see [Cost Calculator & Optimization](Cost-Calculator-and-Optimization.md)
+4. Test with `nanobot doctor` to confirm all providers are reachable
+
+Provider routing is **policy-plane configuration** — operations staff can adjust it without touching this guide or your provider credentials.
 
 ---
 
@@ -494,6 +530,7 @@ Configure provider routing in your governance policy file for channel-based tier
 
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 1.3.0 | Review pass: completed Option C format, expanded §7 (env override) and §8 (Brave API), expanded §13 (AOS governance table), fixed §10 SKILL.md schema, clarified cost/M notation, converted copy/paste tip to inline callout |
 | 2026-02-26 | 1.2.0 | Added "Multi-Model Synergy & Advanced Agentic Workflows" section covering collaborative LLM patterns, skill-based coordination, and global routing |
 | 2026-02-26 | 1.1.0 | Updated cross-references to consolidated docs; fixed section numbering; added related documents section |
 | 2026-02-25 | 1.0.0 | Initial guide covering 8 major providers, multi-provider setup, cost controls, and caching |
