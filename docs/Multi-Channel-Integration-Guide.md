@@ -22,18 +22,18 @@ Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix/Element,
 2. Click **New Application**
 3. Name: `My Nanobot` (or your preference)
 4. Go to **Bot** tab → **Add Bot**
-5. Copy bot **TOKEN** (keep secret!)
+5. Copy bot **TOKEN** (a unique password for your bot—keep it secret!)
 
-### Step  2: Configure Bot Settings
+### Step 2: Configure Bot Settings
 In Discord Developer Portal, under **Bot**:
-- Toggle **Message Content Intent** ON (required for reading messages)
-- Permissions: `Send Messages`, `Read Message History` (minimal)
-- Intents: `Message Content`, `Direct Messages`
+- Toggle **Message Content Intent** ON (required so bot can read message text)
+- Permissions: `Send Messages`, `Read Message History` (minimal required permissions)
+- Intents: `Message Content`, `Direct Messages` (events the bot should listen for)
 
 ### Step 3: Invite Bot to Server
-1. Go to **OAuth2** → **URL Generator**
-2. Select Scopes: `bot`
-3. Select Permissions: `Send Messages`, `Read Message History`
+1. Go to **OAuth2** → **URL Generator** (OAuth2 = a standard way to give apps permission to access accounts)
+2. Select Scopes: `bot` (tells Discord: this request is for a bot)
+3. Select Permissions: `Send Messages`, `Read Message History` (what the bot is allowed to do)
 4. Copy generated URL
 5. Open URL, select your Discord server, authorize
 
@@ -73,18 +73,17 @@ Bot should respond.
 3. App Name: `Nanobot`
 4. Pick your workspace
 
-### Step 2: Configure Permissions
-In **OAuth & Permissions**:
-- **Scopes**:
-  - `chat:write` (send messages)
-  - `channels:read` (read channel list)
-  - `users:read` (read user info)
-  - `files:read` (read files)
+### Step 2: Configure Permissions (Scopes)
+In **OAuth & Permissions**, add these **Scopes** (permissions the bot needs):
+- `chat:write` (permission to send messages)
+- `channels:read` (permission to see list of channels)
+- `users:read` (permission to read user information)
+- `files:read` (permission to read files)
 
 ### Step 3: Install App
 Click **Install to Workspace** → Authorize
 
-Copy **Bot User OAuth Token** (starts with `xoxb-`)
+Copy **Bot User OAuth Token** (starts with `xoxb-`, this is like a password for the bot)
 
 ### Step 4: Configure nanobot
 ```json

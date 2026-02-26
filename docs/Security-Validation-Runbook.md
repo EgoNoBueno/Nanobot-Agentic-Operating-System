@@ -19,10 +19,10 @@ This runbook defines the recurring security validation steps for the Nanobot Age
 Execute in this order to ensure consistent evidence collection.
 
 ### Step 1: Gateway Exposure Check
-- Verify gateway bind is loopback-only.
-- Confirm no unintended public bind (**0.0.0.0**) is active.
-- Validate remote access path is SSH tunnel or tailnet-based.
-- Validate Ollama on local Windows host is reachable from VPS only via trusted tailnet path and is not publicly exposed.
+- Verify gateway bind is loopback-only. (Loopback = only accessible from this computer)
+- Confirm no unintended public bind (**0.0.0.0**—which means "accessible to the whole internet") is active.
+- Validate remote access path is SSH (Secure Shell—encrypted remote access) tunnel or Tailscale network-based.
+- Validate Ollama on local Windows host is reachable from VPS (Virtual Private Server) only via trusted Tailscale path and is not publicly exposed.
 
 **Pass Criteria**
 - Gateway is loopback-bound and remote access is controlled.
@@ -31,9 +31,9 @@ Execute in this order to ensure consistent evidence collection.
 - Any direct public exposure without approved exception.
 
 ### Step 2: DM Policy and Allowlist Check
-- Verify DM policy is pairing mode by default.
+- Verify DM (Direct Message—private messages to the bot) policy is pairing mode by default.
 - Validate unknown sender behavior (no command execution before approval).
-- Verify allowlist entries are current and minimal.
+- Verify allowlist entries are current and minimal. (Allowlist = list of approved people/channels)
 
 **Pass Criteria**
 - DM pairing flow works and allowlist scope is least-privilege.
@@ -53,10 +53,10 @@ Execute in this order to ensure consistent evidence collection.
 - Sandbox rules match policy for shared/non-main sessions.
 
 ### Step 5: Security Audit Execution
-- Run **Nanobot security audit --deep**.
-- Verify deployed Nanobot version is **2026.2.23** or later.
+- Run `nanobot security audit --deep` (automated security check for vulnerabilities)
+- Verify deployed Nanobot version is **2026.2.23** or later. (Newer versions have security fixes)
 - Review latest Nanobot security advisories and confirm no unpatched High/Critical findings apply to deployed version.
-- Capture findings and classify severity.
+- Capture findings and classify severity. (Severity = how serious the issue is)
 - Confirm critical findings have immediate mitigation plan.
 
 **Pass Criteria**
@@ -64,9 +64,9 @@ Execute in this order to ensure consistent evidence collection.
 - Deployed version is at or above the current patched minimum for published advisories.
 
 ### Step 6: Secrets and Token Hygiene
-- Confirm tokens/secrets are in **.env** or approved secret store only.
-- Confirm no secrets are present in notes, docs, or source-controlled config.
-- Validate token rotation readiness and last rotation date.
+- Confirm tokens/secrets are in **.env** (configuration file with secrets—NOT shared in code) or approved secret store only.
+- Confirm no secrets (API keys, passwords) are present in notes, docs, or source-controlled config.
+- Validate token rotation readiness and last rotation date. (Rotation = changing tokens regularly, like changing passwords)
 
 **Pass Criteria**
 - Secret handling policy is fully compliant.
