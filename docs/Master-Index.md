@@ -1,8 +1,16 @@
 # Nanobot Agentic Operating System Master Index
 
+## Document Control
+- **Owner:** Nanobot Community
+- **Version:** 2.1.0
+- **Last Updated:** February 26, 2026
+- **Status:** Active
+- **Purpose:** Architecture reference and documentation navigator for the full AOS
+
 **Repository:** [HKUDS/nanobot](https://github.com/HKUDS/nanobot)  
-**For Nanobot Version:** v0.1.4 and later  
-**Last Updated:** February 26, 2026
+**Nanobot Version:** v0.1.4 and later
+
+---
 
 ## 1. Purpose
 This document is the control index for the Nanobot documentation set. It explains how **multiple communication channels, LLM (Large Language Model) governance, and Obsidian memory work together as one coordinated system**—independent of which chat platform (Discord, Slack, Telegram, Feishu, etc.) you use.
@@ -81,7 +89,7 @@ Nanobot ships with these built-in features:
 
 ### 1.3 Cost Control Summary
 Ways to control spending and prevent bill shock:
-- **Tiered model routing** (Class A/B/C) - Use cheap models for simple tasks, expensive ones for complex work
+- **Tiered model routing** (Tier A/B/C) - Use cheap models for simple tasks, expensive ones for complex work
 - **Budget caps** - Set spending limits by request, channel, or project
 - **Approval gates** - Require human sign-off before expensive operations
 - **Smart context** - Automatically summarize old conversations to reduce token use
@@ -110,31 +118,33 @@ Example ways this AOS supports organizations:
 
 ## 2. Getting Started Roadmap
 
+**New to Nanobot?** Start with **[Getting Started With Nanobot](Getting-Started-With-Nanobot.md)** for orientation, a system overview, and deployment path selection. Then return here for the detailed roadmap that matches your goal.
+
 Choose your path based on your goal:
 
 ### 2.1 Quick Trial (30-40 minutes)
 **Goal:** Try nanobot immediately with minimal setup.
 
-1. **[Master Index](Master-Index.md)** (this file) - Understand what you're building (3 planes, capabilities, tools)
-2. **[AOS Startup Procedure: Simple Build](AOS-Startup-Simple-Build.md)** - Install and test nanobot locally with cloud LLM
-3. **[Multi-Channel Integration](Multi-Channel-Integration-Guide.md)** - Connect one chat platform (Discord or Slack)
-4. **[Workflow Examples](Workflow-Examples-and-Recipes.md)** - Copy and run a simple workflow
+1. **[Getting Started With Nanobot](Getting-Started-With-Nanobot.md)** — Orient yourself: 3 planes, deployment options, what you're building
+2. **[AOS Startup Procedure: Simple Build](AOS-Startup-Simple-Build.md)** — Install and test nanobot locally with cloud LLM
+3. **[nanobot/README.md](../nanobot/README.md)** — Connect one chat platform (Discord, Slack, Telegram, etc.)
+4. **[Workflow Examples](Workflow-Examples-and-Recipes.md)** — Copy and run a simple workflow
 
 **Result:** Functional nanobot in 30-40 minutes. Explore, test, then decide to scale.
 
 ### 2.2 Production Setup (1-2 hours)
 **Goal:** Deploy a professional system with cost controls, governance, and reliability.
 
-1. **[Master Index](Master-Index.md)** - Understand 3-plane model, RACI roles, cost controls
-2. **[Cost Calculator](Cost-Calculator-and-Optimization.md)** - Plan monthly spend, choose provider routing strategy
+1. **[Getting Started With Nanobot](Getting-Started-With-Nanobot.md)** — Choose Simple or Advanced Build; understand which planes each activates
+2. **[Cost Calculator](Cost-Calculator-and-Optimization.md)** — Plan monthly spend, choose provider routing strategy
 3. **Choose your startup path:**
-   - **Simple Build (25-35 min):** [AOS-Startup-Simple-Build](AOS-Startup-Simple-Build.md) - Run nanobot on your computer with cloud AI
-   - **Advanced Build (60-90 min):** [AOS-Startup-Advanced-Build](AOS-Startup-Advanced-Build.md) - Run on VPS with local Ollama for 24/7 operation
-5. **[LLM Provider Setup](LLM-Provider-Setup-Guide.md)** - Configure all providers you'll use (multi-provider routing)
-- See **[nanobot/README.md](../nanobot/README.md)** for channel setup (Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix, Mochat)
-7. **[Skills & Tools Reference](Skills-and-Tools-Complete-Guide.md)** - Learn all 14 tools, 9 skills, and how to develop custom skills
-9. **[Workflow Examples](Workflow-Examples-and-Recipes.md)** - Implement 1-2 real workflows for your use case
-10. **[Security & Governance Policies](Security-and-Governance-Policies.md)** - Set up access control, allowlists, cost caps (optional for solo users; required for teams)
+   - **Simple Build (25-35 min):** [AOS Startup: Simple Build](AOS-Startup-Simple-Build.md) — Run nanobot on your computer with cloud API
+   - **Advanced Build (60-90 min):** [AOS Startup: Advanced Build](AOS-Startup-Advanced-Build.md) — Run on VPS with local Ollama for 24/7 operation
+4. **[LLM Provider Setup](LLM-Provider-Setup-Guide.md)** — Configure all providers you'll use (multi-provider routing)
+5. **[nanobot/README.md](../nanobot/README.md)** — Set up your channels (Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix, Mochat)
+6. **[Skills & Tools Reference](Skills-and-Tools-Complete-Guide.md)** — Learn all 14 tools, 9 skills, and how to develop custom skills
+7. **[Workflow Examples](Workflow-Examples-and-Recipes.md)** — Implement 1-2 real workflows for your use case
+8. **[Security & Governance Policies](Security-and-Governance-Policies.md)** — Set up access control, allowlists, cost caps (optional for solo users; required for teams)
 
 **Result:** Production-grade nanobot with cost controls, memory/audit trails, and multi-channel support.
 
@@ -154,25 +164,28 @@ Follow the **Production Setup** path above (choose Simple or Advanced Build), th
 
 Use these docs as references when following one of the three roadmaps above.
 
+### Entry Point
+- [Getting Started With Nanobot](Getting-Started-With-Nanobot.md) — Orientation, 3-plane overview, deployment path selection
+
 ### Setup & Installation
-- [LLM Provider Setup Guide](LLM-Provider-Setup-Guide.md) - Configure Claude, GPT, local Ollama, Qwen, and other models
-- [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md) - Set up Discord, Slack, Telegram, Feishu, or other platforms
+- [LLM Provider Setup Guide](LLM-Provider-Setup-Guide.md) — Configure Claude, GPT, local Ollama, Qwen, and other models
+- [nanobot/README.md](../nanobot/README.md) — Channel setup for Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix, Mochat
 
 ### Operations & Deployment
-- [AOS Startup: Simple Build](AOS-Startup-Simple-Build.md) - Run nanobot on your computer with cloud LLM (fast, cheapest to test)
-- [AOS Startup: Advanced Build](AOS-Startup-Advanced-Build.md) - Run on VPS with local Ollama (24/7, zero per-query costs)
+- [AOS Startup: Simple Build](AOS-Startup-Simple-Build.md) — Run nanobot on your computer with cloud LLM (fast, cheapest to test)
+- [AOS Startup: Advanced Build](AOS-Startup-Advanced-Build.md) — Run on VPS with local Ollama (24/7, zero per-query costs)
 
 ### Features & Extensibility
-- [Skills & Tools Complete Guide](Skills-and-Tools-Complete-Guide.md) - All 14 built-in tools, 9 pre-built skills, 5-skill essential quickstart, and custom skill development
-- [Security & Governance Policies](Security-and-Governance-Policies.md) - Access control patterns, approval workflows, governance models, and monthly security validation
+- [Skills & Tools Complete Guide](Skills-and-Tools-Complete-Guide.md) — All 14 built-in tools, 9 pre-built skills, 5-skill essential quickstart, and custom skill development
+- [Workflow Examples & Recipes](Workflow-Examples-and-Recipes.md) — Real-world workflows: knowledge consolidation, multi-channel posting, customer support bot, research agent, GitHub automation
 
-### Workflows & Examples
-- [Workflow Examples & Recipes](Workflow-Examples-and-Recipes.md) - Real-world workflows: knowledge consolidation, multi-channel posting, customer support bot, research agent, GitHub automation
-- [Cost Calculator & Optimization Guide](Cost-Calculator-and-Optimization.md) - Monthly cost estimation, provider routing for cost savings, budget caps and tracking
+### Governance, Security & Cost
+- [Security & Governance Policies](Security-and-Governance-Policies.md) — Access control patterns, approval workflows, governance models, and monthly security validation
+- [Cost Calculator & Optimization Guide](Cost-Calculator-and-Optimization.md) — Monthly cost estimation, provider routing for cost savings, budget caps and tracking
+- [Emergency Recovery and Troubleshooting](Emergency-Recovery-and-Troubleshooting.md) — System diagnostics, recovery procedures, troubleshooting quick reference
 
-### Security & Compliance
-- [Security & Governance Policies](Security-and-Governance-Policies.md) - Access control patterns, approval workflows, governance models, and monthly security validation
-- [Emergency Recovery and Troubleshooting](Emergency-Recovery-and-Troubleshooting.md) - System diagnostics, recovery procedures, troubleshooting quick reference
+### Reference
+- [Glossary](Glossary.md) — Definitions for all AOS-specific terms: planes, tiers, SOUL.md, SKILL.md, approval gates, and more
 
 ## 4. Interoperability Summary
 
@@ -259,13 +272,18 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 > **Plain-English Note:** R1 = cheap/shallow, R2 = moderate cost/depth, R3 = expensive/comprehensive. Model tier (A/B/C) controls which LLM is used; escalate to higher-cost models only for complex work.
 
 ## 7. RACI Snapshot (Who Owns What)
+
+**RACI key:** R = Responsible (does the work) | A = Accountable (owns the outcome) | C = Consulted (input before action) | I = Informed (notified after)
+
 | Area | Owner | Operator | Reviewer |
 |---|---|---|---|
-| Discord channel policy | Owner | Operator | Reviewer |
-| LLM routing and budgets | Owner | Operator | Reviewer |
-| Obsidian metadata and retention | Owner | Operator | Reviewer |
-| Incident response execution | Owner | Operator | Reviewer |
-| Recovery drill governance | Owner | Operator | Reviewer |
+| Channel policy & naming conventions | A | R | C |
+| LLM routing rules and budget caps | A | R | I |
+| Obsidian vault structure and retention | A | R | I |
+| Incident response execution | A | R | C |
+| Recovery drill scheduling and governance | A | I | R |
+| Monthly security audit | A | R | C |
+| Cost chargeback and reporting | A | R | R |
 
 ## 8. Review Cadence
 - Daily: alerts, budget anomalies, failed runs.
@@ -274,7 +292,7 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 - Quarterly: channel cleanup, model portfolio review, disaster drill.
 
 ## 9. Change Management Flow
-1. Propose change in Discord change-review channel.
+1. Propose change in the appropriate control channel (e.g., `#ctl-nanobot-commands`).
 2. Assess risk, cost impact, and rollback plan.
 3. Update affected docs (Discord/LLM/Obsidian/Procedure).
 4. Execute controlled test.
@@ -284,13 +302,13 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 ## 10. Interoperability Health Checklist
 - [ ] Channel naming follows the **project_id** pattern.
 - [ ] Each active channel family maps to an Obsidian path.
-- [ ] Each workflow domain maps to a default LLM class.
+- [ ] Each workflow domain maps to a default LLM tier (A/B/C).
 - [ ] Escalation and fallback are configured and tested.
 - [ ] Required shared metadata fields appear in logs/notes.
 - [ ] Monthly restore drill completed with evidence.
-- [ ] Gateway loopback and remote-access hardening are validated.
-- [ ] DM pairing policy and allowlists are active and tested.
-- [ ] Trust-boundary and sandbox policies are validated for shared channels.
+- [ ] End-to-end message loop validated: channel → agent → response (send a test message and confirm round-trip).
+- [ ] Direct-message (DM) access to the bot is restricted to approved users via allowlist.
+- [ ] Workspace sandbox verified: agent cannot access files outside its designated workspace root.
 - [ ] Monthly security audit findings are logged and remediated.
 
 ## 11. Common Mistakes & Misunderstandings
@@ -302,7 +320,7 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 - Nanobot works with **any** chat platform: Discord, Slack, Telegram, Feishu, WhatsApp, Email, CLI, etc.
 - The choice of platform doesn't change nanobot's core behavior
 - Same rules, same capabilities, same governance apply across all platforms
-- See [Multi-Channel Integration Guide](Multi-Channel-Integration-Guide.md) for setup instructions for your chosen platform
+- See [nanobot/README.md](../nanobot/README.md) for setup instructions for your chosen platform
 
 ### ❌ Mistake 2: Confusing "Control Plane" with "Discord Control Channel"
 **Problem:** "What's the Control Plane? Is it a Discord channel?"  
@@ -399,25 +417,33 @@ When enabling web search (Brave API), use these tier guidelines to balance cost 
 
 ---
 
-## 12. Current Status Notes
-- Document orchestration links exist across Discord, LLM, and Obsidian guides.
-- Discord and Obsidian path placeholders have been aligned to **project_id** and vault v1 structure.
-- Remaining work is execution readiness (creating starter MOCs/notes and running first drill).
+## 12. Documentation Set Status
+
+Current state of the AOS documentation (11 active documents):
+
+| Document | Version | Status |
+|---|---|---|
+| Getting-Started-With-Nanobot.md | 1.3.0 | ✅ Active — entry point and orientation |
+| Master-Index.md | 2.1.0 | ✅ Active — this file |
+| AOS-Startup-Simple-Build.md | 1.0.0 | ✅ Active |
+| AOS-Startup-Advanced-Build.md | 2.2.0 | ✅ Active |
+| LLM-Provider-Setup-Guide.md | 1.3.0 | ✅ Active |
+| Skills-and-Tools-Complete-Guide.md | 2.1.0 | ✅ Active |
+| Security-and-Governance-Policies.md | 1.0.0 | ✅ Active |
+| Cost-Calculator-and-Optimization.md | 1.0.0 | ✅ Active |
+| Workflow-Examples-and-Recipes.md | 1.0.0 | ✅ Active |
+| Emergency-Recovery-and-Troubleshooting.md | — | ✅ Active |
+| Glossary.md | 1.2.0 | ✅ Active |
 
 ## 13. Revision History
 | Date | Version | Change |
 |---|---|---|
+| 2026-02-26 | 2.1.0 | Review pass: added Document Control header; added Getting-Started-With-Nanobot.md as entry point in §2 and §3; fixed §2.1 broken Multi-Channel link → nanobot/README.md; fixed §2.2 step numbering (was 1,2,3,5,bullet,7,9,10); fixed §3 (removed deleted Multi-Channel doc, de-duplicated Security & Governance, added Glossary and entry point); fixed §1.3 "Class A/B/C" → "Tier A/B/C"; fixed §7 RACI table (was all placeholder values); added RACI definition; fixed §9 from Discord-specific to channel-agnostic; fixed §10 "Gateway loopback" and "DM pairing policy" jargon; fixed §11 Mistake 1 broken link; replaced stale §12 scratch notes with documentation set status table |
 | 2026-02-25 | 2.0.0 | **Major update:** Made AOS system channel-agnostic (Discord/Slack/Telegram/Feishu/etc.); documented all actual nanobot capabilities (LLM routing, tools, skills, MCP, web search, subagents, cron); updated Core Documents section with new guides; expanded security baseline to cover all deployment scenarios; clarified 3-plane governance model applies to any channel |
 | 2026-02-24 | 1.1.10 | Added Discord Messaging Setup Guide to core docs for onboarding field collection and allowlist formatting |
 | 2026-02-24 | 1.1.9 | Added Nanobot Onboarding Guide link for manual-mode local-gateway onboarding standard |
 | 2026-02-23 | 1.1.8 | Added AOS Project Startup Guide for standardized new-project onboarding |
 | 2026-02-23 | 1.1.7 | Renamed document title to "Nanobot Agentic Operating System Master Index" for project-name consistency |
-| 2026-02-23 | 1.1.6 | Added explicit Nanobot orchestration-runtime role statement to Executive Summary |
-| 2026-02-23 | 1.1.5 | Added concrete "How it works in practice" scenario for product campaign research-to-action flow |
-| 2026-02-23 | 1.1.4 | Added executive summary with operating model, cost controls, security protocol overview, and small-business support examples |
-| 2026-02-23 | 1.1.3 | Added compact R1/R2/R3 internet research tier mapping table for operator quick reference |
-| 2026-02-23 | 1.1.2 | Added Master Index reference to LLM Internet Research Policy controls |
-| 2026-02-23 | 1.1.1 | Added Security Validation Runbook to core document set |
 | 2026-02-23 | 1.1.0 | Security Hardening v1: added cross-doc security baseline and enforcement checklist items |
 | 2026-02-23 | 1.0.0 | Initial master index: interoperability map, shared contract, standards, and review cadence |
 
