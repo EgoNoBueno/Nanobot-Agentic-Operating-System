@@ -1,0 +1,2377 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Community documentation for deploying and operating the Nanobot AI agent framework">
+      
+      
+      
+        <link rel="canonical" href="https://egonobue.no.github.io/Nanobot-Agentic-Operating-System/Security-and-Governance-Policies/">
+      
+      
+        <link rel="prev" href="../Cost-Calculator-and-Optimization/">
+      
+      
+        <link rel="next" href="../Emergency-Recovery-and-Troubleshooting/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>Security & Governance Policies - Nanobot Agentic Operating System</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#security-governance-policies-config-validation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Nanobot Agentic Operating System" class="md-header__button md-logo" aria-label="Nanobot Agentic Operating System" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nanobot Agentic Operating System
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Security & Governance Policies
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EgoNoBueno/Nanobot-Agentic-Operating-System" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EgoNoBueno/Nanobot-Agentic-Operating-System
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Nanobot Agentic Operating System" class="md-nav__button md-logo" aria-label="Nanobot Agentic Operating System" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nanobot Agentic Operating System
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EgoNoBueno/Nanobot-Agentic-Operating-System" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EgoNoBueno/Nanobot-Agentic-Operating-System
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Getting-Started-With-Nanobot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Master-Index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AOS-Startup-Simple-Build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simple Build (Local + Cloud LLM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AOS-Startup-Advanced-Build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Build (VPS + Ollama)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM-Provider-Setup-Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Provider Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skills-and-Tools-Complete-Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills & Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Workflow-Examples-and-Recipes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Examples & Recipes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Cost-Calculator-and-Optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Calculator & Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance & Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Governance & Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security & Governance Policies
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security & Governance Policies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#document-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Navigation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Emergency-Recovery-and-Troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emergency Recovery & Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#document-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Navigation
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="security-governance-policies-config-validation">Security &amp; Governance: Policies, Config &amp; Validation<a class="headerlink" href="#security-governance-policies-config-validation" title="Permanent link">&para;</a></h1>
+<p><strong>Complete reference for governance frameworks, access control patterns, security validation procedures, and compliance auditing.</strong></p>
+<p>Enforce organizational guardrails, access control, cost accountability, and security controls through governance policies and regular validation runbooks.</p>
+<h2 id="document-control">Document Control<a class="headerlink" href="#document-control" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Owner:</strong></li>
+<li><strong>Version:</strong> 2.1.0</li>
+<li><strong>Last Updated:</strong> 2026-02-26</li>
+<li><strong>Status:</strong> Active</li>
+</ul>
+<hr />
+<h2 id="quick-navigation">Quick Navigation<a class="headerlink" href="#quick-navigation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Part 1: Governance Model &amp; Policies</strong> — Access control, policy enforcement, cost routing</li>
+<li><strong>Part 2: Security Validation &amp; Auditing</strong> — Monthly validation procedures, compliance checks</li>
+<li><strong>Part 3: Common Mistakes &amp; Solutions</strong> — 12 governance mistakes + 6 security mistakes with fixes</li>
+</ul>
+<hr />
+<h1 id="part-1-governance-model-policies">Part 1: Governance Model &amp; Policies<a class="headerlink" href="#part-1-governance-model-policies" title="Permanent link">&para;</a></h1>
+<h2 id="1-overview-the-3-plane-governance-model">1. Overview: The 3-Plane Governance Model<a class="headerlink" href="#1-overview-the-3-plane-governance-model" title="Permanent link">&para;</a></h2>
+<p><strong>Plane 1: Control</strong> — Who can do what? (access control, tool allowlisting)<br />
+<strong>Plane 2: Policy</strong> — How are decisions made? (routing rules, escalation, approval flows)<br />
+<strong>Plane 3: Memory</strong> — What does the system know? (vault scope, retention policies)</p>
+<p>All three planes are <strong>channel-aware</strong> (work in Discord, Slack, Telegram, etc.).</p>
+<hr />
+<h2 id="2-access-control-patterns">2. Access Control Patterns<a class="headerlink" href="#2-access-control-patterns" title="Permanent link">&para;</a></h2>
+<h3 id="pattern-a-role-based-tool-allowlisting-rbac">Pattern A: Role-Based Tool Allowlisting (RBAC)<a class="headerlink" href="#pattern-a-role-based-tool-allowlisting-rbac" title="Permanent link">&para;</a></h3>
+<p>RBAC = Role-Based Access Control. (Different people get different permissions based on their job role.)</p>
+<p><strong>Use Case:</strong> Different teams get different tools.</p>
+<p><strong>Config example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;teams&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;engineering&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;channels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;#dev&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#devops&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;allowed_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;web_search&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;github_*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;file_*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;mcp_call&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;cron_schedule&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;forbidden_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;shell_exec:rm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;shell_exec:sudo&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;llm_tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;marketing&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;channels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;#marketing&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#content-hub&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;allowed_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;web_search&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;file_read&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;message_send&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;obsidian&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;forbidden_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;github_*&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;llm_tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;executive&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;channels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;#exec&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#leadership&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;allowed_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;web_search&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;file_read&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;message_send&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;summarize&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;forbidden_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;cron&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mcp&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;llm_tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;escalation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;required&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Behavior:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Team</th>
+<th>Can use</th>
+<th>Cannot use</th>
+<th>LLM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Engineering</strong></td>
+<td>All tools except destructive shell</td>
+<td>rm, sudo, reboot</td>
+<td>Tier B</td>
+</tr>
+<tr>
+<td><strong>Marketing</strong></td>
+<td>Search, read, message, obsidian</td>
+<td>Shell, GitHub, MCP</td>
+<td>Tier C</td>
+</tr>
+<tr>
+<td><strong>Executive</strong></td>
+<td>Search, read, message, summarize</td>
+<td>Shell, GitHub, cron, MCP</td>
+<td>Tier A</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Enforcement:</strong></p>
+<p>If marketing user tries <code>@BotName shell_exec: ls /</code>:
+<div class="highlight"><pre><span></span><code>❌ Tool &#39;shell_exec&#39; not allowed for #marketing team.
+   Allowed tools: web_search, file_read, message_send, obsidian
+   Contact: @engineering-lead for access request
+</code></pre></div></p>
+<h3 id="pattern-b-channel-level-tool-restrictions">Pattern B: Channel-Level Tool Restrictions<a class="headerlink" href="#pattern-b-channel-level-tool-restrictions" title="Permanent link">&para;</a></h3>
+<p><strong>Use Case:</strong> Public channels more restricted than private.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;channels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;#general&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;web_search&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;message_send&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;#dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;web_search&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;github_*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mcp_call&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;team&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;#devops-secrets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;file_*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mcp_call&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;restricted&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;requires_approval&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;approval_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@devops-leads&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Behavior:</strong></p>
+<ul>
+<li><code>#general</code>: Only safe, read-only tools</li>
+<li><code>#dev</code>: Dev-friendly tools, no approval needed</li>
+<li><code>#devops-secrets</code>: Full power, but every action logged + approved</li>
+</ul>
+<h3 id="pattern-c-per-user-rate-limiting">Pattern C: Per-User Rate Limiting<a class="headerlink" href="#pattern-c-per-user-rate-limiting" title="Permanent link">&para;</a></h3>
+<p><strong>Use Case:</strong> Prevent cost overruns and abuse.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;rate_limits&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;default_user&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tokens_per_day&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;requests_per_hour&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;web_search_per_day&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;power_users&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tokens_per_day&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;requests_per_hour&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;web_search_per_day&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;limited_users&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;tokens_per_day&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;requests_per_hour&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;web_search_per_day&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;team_quotas&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;engineering&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;daily_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">500000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;monthly_budget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;marketing&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;daily_tokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;monthly_budget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Behavior:</strong></p>
+<p>User exceeds daily limit:
+<div class="highlight"><pre><span></span><code>⚠️ Daily token limit reached (50,000/50,000)
+   Your limit resets tomorrow at 12:00am UTC
+   Need more capacity? Request upgrade: https://...
+</code></pre></div></p>
+<p>Team exceeds budget:
+<div class="highlight"><pre><span></span><code>💰 Team monthly budget exhausted ($100/$100)
+   Remaining requests will use local Ollama (free)
+   Budget resets in 5 days
+</code></pre></div></p>
+<hr />
+<h2 id="3-risk-tier-framework-who-needs-approval">3. Risk Tier Framework (Who Needs Approval?)<a class="headerlink" href="#3-risk-tier-framework-who-needs-approval" title="Permanent link">&para;</a></h2>
+<p><strong>Goal:</strong> Classify actions by how easy they are to undo. (Reversibility = can you fix it if something goes wrong?)</p>
+<p>If an action is hard to undo or could cause problems, it needs human approval first.</p>
+<h3 id="risk-tiers-overview">Risk Tiers Overview<a class="headerlink" href="#risk-tiers-overview" title="Permanent link">&para;</a></h3>
+<p>Risk is measured by <strong>Magnitude of Irreversibility</strong>. If an action is hard to undo or compromises core security, it's high-risk.</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Automation</th>
+<th>Description</th>
+<th>Examples</th>
+<th>Approval?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tier 0: Safe</strong></td>
+<td>✅ Autonomous</td>
+<td>Read-only, internal logs, low-impact data</td>
+<td>Checking weather, reading Obsidian notes, summarizing public PDFs</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Tier 1: Minor</strong></td>
+<td>✅ Autonomous</td>
+<td>State changes with undo capability</td>
+<td>Creating folders, moving temp files, adding Discord reactions</td>
+<td>No (log only)</td>
+</tr>
+<tr>
+<td><strong>Tier 2: Moderate</strong></td>
+<td>⚠️ Soft-Pause</td>
+<td>Actions affecting external data or "shadow" systems</td>
+<td>Sending email to known contact, deleting temp folder, running scheduled reports</td>
+<td>Conditional*</td>
+</tr>
+<tr>
+<td><strong>Tier 3: High</strong></td>
+<td>🛑 Hard-Pause</td>
+<td>Actions affecting identity or security</td>
+<td>Modifying Discord permissions, changing .env files, new SSH node access</td>
+<td><strong>Yes (Approver role)</strong></td>
+</tr>
+<tr>
+<td><strong>Tier 4: Critical</strong></td>
+<td>🔒 Locked</td>
+<td>Destructive or system-wide changes</td>
+<td>Deleting database, mass-sending external messages, changing Primary Operator ID</td>
+<td><strong>Yes (MFA/Admin only)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>*Conditional = approved automatically if target is allowlisted; requires approval otherwise</p>
+<h3 id="implementation-example">Implementation Example<a class="headerlink" href="#implementation-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;risk_tiers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;tier_0&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;automation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;autonomous&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Read-only, safe&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;examples&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;web_search&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;obsidian_read&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;summarize&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;approval_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;tier_1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;automation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;autonomous&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Minor changes, recoverable&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;examples&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;file_create&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;folder_create&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;message_react&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;approval_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;audit_logging&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;tier_2&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;automation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;soft_pause&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;External or shadow data impacts&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;examples&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;message_send:email&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;file_delete:temp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;cron:schedule&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;approval_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;conditional&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;auto_approve_if&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;target_in_allowlist&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;tier_3&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;automation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hard_pause&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Security/identity impacts&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;examples&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;permission_modify&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;config_write:secrets&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;node_authorize&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;approval_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;approver_role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AOS Approver&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;timeout_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;tier_4&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;automation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;locked&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Destructive, system-wide&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;examples&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;database_truncate&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;message_broadcast:external&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;operator_change&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;approval_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;approver_role&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Admin&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;requires_mfa&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;requires_human_review&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="how-tiers-trigger-approval-flows">How Tiers Trigger Approval Flows<a class="headerlink" href="#how-tiers-trigger-approval-flows" title="Permanent link">&para;</a></h3>
+<p>When user requests a <strong>Tier 3</strong> action:</p>
+<div class="highlight"><pre><span></span><code>User: @BotName ssh authorize new-node 192.168.1.50
+
+🛑 HIGH-RISK ACTION: Node Authorization
+   Requested by: @alice (engineering team)
+   Action: Authorize new SSH access to 192.168.1.50
+
+   Risk Level: Tier 3 (security impact)
+   Reversibility: Revocable but requires cleanup
+
+   ✋ Approval Required from: @AOS-Approver role
+   Timeout: 5 minutes
+
+[Review Details] [Approve] [Deny]
+</code></pre></div>
+<p>When user requests a <strong>Tier 4</strong> action:</p>
+<div class="highlight"><pre><span></span><code>User: @BotName database truncate production_logs
+
+🔒 CRITICAL ACTION: Database Truncate
+   Requested by: @alice
+   Action: PERMANENTLY DELETE production_logs
+
+   Risk Level: Tier 4 (destructive, irreversible)
+   Data Loss: Irreversible
+
+   ⛔ LOCKED: Only Admin role with MFA can approve
+   Requires: Multi-factor authentication
+   Approval Timeout: 1 hour (imminent action warning)
+
+   WARNING: This action cannot be undone!
+   All audit trails will be deleted.
+
+[View Details] [Request Admin] [Cancel]
+</code></pre></div>
+<hr />
+<h2 id="4-channel-naming-convention-governance">4. Channel Naming Convention &amp; Governance<a class="headerlink" href="#4-channel-naming-convention-governance" title="Permanent link">&para;</a></h2>
+<p><strong>Goal:</strong> Channel names automatically enforce policy.</p>
+<h3 id="standard-naming-scheme">Standard Naming Scheme<a class="headerlink" href="#standard-naming-scheme" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>{scope}-{purpose}-{privacy}
+
+Scope: prd, bk, res, ctl, fin, hr, lgl
+Purpose: any lowercase string
+Privacy: none (public), -private, -secret
+</code></pre></div>
+<p><strong>Examples:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Scope</th>
+<th>Team</th>
+<th>Tools Allowed</th>
+<th>Privacy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>#prd-architecture</code></td>
+<td>prd</td>
+<td>engineering</td>
+<td>All dev tools</td>
+<td>Public</td>
+</tr>
+<tr>
+<td><code>#prd-secrets</code></td>
+<td>prd</td>
+<td>engineering</td>
+<td>Full power</td>
+<td>Restricted</td>
+</tr>
+<tr>
+<td><code>#bk-payroll</code></td>
+<td>bk</td>
+<td>hr</td>
+<td>Read-only files</td>
+<td>Restricted</td>
+</tr>
+<tr>
+<td><code>#res-customer-data</code></td>
+<td>res</td>
+<td>research</td>
+<td>Web search, file read</td>
+<td>Restricted</td>
+</tr>
+<tr>
+<td><code>#ctl-emergency</code></td>
+<td>ctl</td>
+<td>ops</td>
+<td>All tools, instant approval</td>
+<td>Restricted</td>
+</tr>
+<tr>
+<td><code>#fin-quarterly</code></td>
+<td>fin</td>
+<td>finance</td>
+<td>Summarize, search</td>
+<td>Private</td>
+</tr>
+</tbody>
+</table>
+<h3 id="config-based-routing">Config-based Routing<a class="headerlink" href="#config-based-routing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;channel_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;naming_scheme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{scope}-{purpose}[-{privacy}]&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;routing_rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;prd-*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;team&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;engineering&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;engineering_allowed&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cost_center&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;engineering&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bk-*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;team&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;operations&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;operations_allowed&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cost_center&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;operations&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*-secret&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;requires_approval&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;audit_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verbose&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;approval_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@security-team&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;pattern&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ctl-*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;approval&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;instant&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;cost_center&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;operations&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Behavior:</strong></p>
+<p>When user creates channel <code>#prd-auth-secret</code>:
+<div class="highlight"><pre><span></span><code>✓ Channel created: #prd-auth-secret
+  Automatically assigned:
+  - Team: engineering
+  - Tools allowed: {engineering_allowed}
+  - Cost center: engineering
+  - LLM tier: b
+  - Approval required: Yes (contains &#39;secret&#39;)
+  - Audit logging: Verbose
+
+  Confirm policies? [Y/n]
+</code></pre></div></p>
+<hr />
+<h2 id="5-provider-routing-by-workflow">5. Provider Routing by Workflow<a class="headerlink" href="#5-provider-routing-by-workflow" title="Permanent link">&para;</a></h2>
+<p><strong>Goal:</strong> Smart cost optimization. Route by channel/keyword/priority.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;llm_routing&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#prd-*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;high&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claude-opus&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fallback&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter-qwen&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#research-*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;medium&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen2:72b&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fallback&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter-deepseek&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#bk-*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;low&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deepseek-67b&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;fallback&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;local-ollama&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;keyword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;urgent&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;priority&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;critical&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anthropic&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claude-opus&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;keyword&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;batch&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;time_window&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;02:00-06:00&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;local&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ollama-qwen&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;free&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;time&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;22:00-08:00&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;default_tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;off-peak budget mode&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code>User in #prd-architecture:
+@BotName: Design async connection pooling
+
+→ Route: claude-opus (Tier A, $0.015/1K tokens)
+Reason: High-priority engineering channel
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>User in #bk-categorization:
+@BotName: Classify these 100 support tickets
+
+→ Route: deepseek-67b (Tier C, $0.0003/1K tokens)
+Reason: Bookkeeping channel, low priority
+Cost estimate: ~$0.03 instead of $0.30 if using Opus
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>User in #prd-emergency:
+@BotName urgent: Production database down, need immediate diagnosis
+
+→ Route: claude-opus (Tier A, instant)
+Reason: Keyword &quot;urgent&quot;
+Bypass tier restrictions
+</code></pre></div>
+<hr />
+<h2 id="6-approval-workflows-for-high-risk-actions">6. Approval Workflows for High-Risk Actions<a class="headerlink" href="#6-approval-workflows-for-high-risk-actions" title="Permanent link">&para;</a></h2>
+<p><strong>Goal:</strong> Prevent costly or dangerous operations without human review.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;approval_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;tool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;with_keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;rm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sudo&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;chmod&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;kill&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;approvers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@security-team&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;tool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mcp_call&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;to_system&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;external_api&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;database_write&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;approvers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@devops-leads&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cost_exceeds&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;approvers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@finance-team&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;*-secret&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;any_tool&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;approvers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@security-team&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Example Flow:</strong></p>
+<div class="highlight"><pre><span></span><code>User in #prd-database:
+@BotName shell_exec: rm -rf /data/cache/*
+
+❌ APPROVAL REQUIRED
+Safe mode blocked destructive command: rm
+
+Description: Remove all cache data
+Requested by: @alice
+Approvers needed: @security-team, @devops-leads
+Approval timeout: 5 minutes
+
+Approving this will:
+- Delete /data/cache
+- Cannot be undone
+- See audit trail: https://...
+
+[View Details] [Approve] [Deny]
+</code></pre></div>
+<p>If approved:
+<div class="highlight"><pre><span></span><code>✅ Approved by @eve (security-team)
+✅ Approved by @frank (devops-leads)
+
+Executing: rm -rf /data/cache/*
+
+Command output:
+[operation results]
+
+Audit entry created: ID-2026-0225-0447
+</code></pre></div></p>
+<hr />
+<h2 id="7-escalation-workflows">7. Escalation Workflows<a class="headerlink" href="#7-escalation-workflows" title="Permanent link">&para;</a></h2>
+<p><strong>Goal:</strong> Uncertain decisions bubble up to humans.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;escalation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;confidence_below&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.70</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;escalate_to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@support-team&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Low confidence response; please review&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;cost_estimate_exceeds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;escalate_to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@finance-team&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;High-cost operation; needs approval&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;error_rate_above&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;escalate_to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@devops-team&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Tool failure rate elevated; investigate&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#legal-*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;any_question&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;escalate_to&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@legal-team&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;message&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;All legal channel requests auto-escalate&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code>User in #support:
+@BotName: What&#39;s our HIPAA compliance status?
+
+🤔 Low confidence response (58%)
+Escalating to human...
+
+Conversation forwarded to: @support-team
+Estimated response: 15 mins
+
+Customer message:
+&quot;Our specialist team is reviewing your question.
+You&#39;ll get a detailed response shortly.&quot;
+</code></pre></div>
+<hr />
+<h2 id="8-audit-logging-policies">8. Audit &amp; Logging Policies<a class="headerlink" href="#8-audit-logging-policies" title="Permanent link">&para;</a></h2>
+<p><strong>Goal:</strong> Track all actions for security and cost compliance.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;audit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;log_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;info&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;*-secret&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verbose&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;mcp_call&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verbose&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;shell_exec&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verbose&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;github_*&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;info&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;retention&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;*-secret&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;security_events&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">730</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;fields&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;user_id&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;team&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;channel&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;tool_used&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;cost_incurred&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;tokens_consumed&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;success_or_error&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;approval_chain&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;export&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;daily&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;destination&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s3://audit-logs/&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Usage:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># View audit logs for a user</span>
+nanobot<span class="w"> </span>audit<span class="w"> </span>--user<span class="w"> </span>alice<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;7 days ago&quot;</span>
+
+<span class="c1"># View by team</span>
+nanobot<span class="w"> </span>audit<span class="w"> </span>--team<span class="w"> </span>engineering<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;this month&quot;</span>
+
+<span class="c1"># View security events</span>
+nanobot<span class="w"> </span>audit<span class="w"> </span>--event-type<span class="w"> </span>shell_exec,mcp_call<span class="w"> </span>--since<span class="w"> </span><span class="s2">&quot;30 days ago&quot;</span>
+
+<span class="c1"># Export for compliance</span>
+nanobot<span class="w"> </span>audit<span class="w"> </span><span class="nb">export</span><span class="w"> </span>--format<span class="w"> </span>csv<span class="w"> </span>--destination<span class="w"> </span>./audit-report.csv
+</code></pre></div>
+<hr />
+<h2 id="9-cost-allocation-chargeback">9. Cost Allocation &amp; Chargeback<a class="headerlink" href="#9-cost-allocation-chargeback" title="Permanent link">&para;</a></h2>
+<p><strong>Goal:</strong> Multi-team deployments need to track who spent what.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;cost_allocation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teams&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;engineering&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;cost_center&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eng-ops&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;monthly_budget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;alert_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;override_contact&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;alice@company.com&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;marketing&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;cost_center&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mkt-ops&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;monthly_budget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;alert_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;override_contact&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bob@company.com&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;research&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;cost_center&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;r-and-d&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;monthly_budget&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;alert_at&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">150</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;override_contact&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;carol@company.com&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;reporting&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;frequency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weekly&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;recipients&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cfo@company.com&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ops-team@company.com&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;html&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Weekly Report Example:</strong></p>
+<div class="highlight"><pre><span></span><code>Cost Allocation Report - Week of Feb 24, 2026
+
+Engineering:
+  Budget: $150/month | Spent this week: $32.50 (22%)
+  YTD: $130 / Projected total: $520
+
+Marketing:
+  Budget: $50/month | Spent this week: $8.20 (16%)
+  YTD: $30 / Projected total: $120
+
+Research:
+  Budget: $200/month | Spent this week: $45.80 (23%)
+  YTD: $190 / Projected total: $760 (ESTIMATE EXCEEDS)
+
+⚠️ Research team on track to exceed budget
+   Contact: @carol | Recommend: Increase budget or reduce scope
+</code></pre></div>
+<hr />
+<h2 id="10-sample-complete-config-all-planes">10. Sample Complete Config (All Planes)<a class="headerlink" href="#10-sample-complete-config-all-planes" title="Permanent link">&para;</a></h2>
+<p><strong>Control Plane (Access):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;access_control&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;teams&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;engineering&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;channels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;#dev&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#devops&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;#prd-*&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;allowed_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;web_search&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;github_*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;file_*&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mcp_call&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;excluded_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;shell_exec:rm&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;shell_exec:sudo&quot;</span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Policy Plane (Routing &amp; Approval):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;routing&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tier_b&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#prd-*&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anthropic&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#bk-*&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter-deepseek&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;approval&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tool&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;with_keywords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;rm&quot;</span><span class="p">],</span><span class="w"> </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Memory Plane (Scope &amp; Retention):</strong></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;memory&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;vault_policies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;#dev&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/vault/dev&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;retention&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;#secret&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/vault/secret&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;retention&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">730</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;encrypted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="11-governance-deployment-checklist">11. Governance Deployment Checklist<a class="headerlink" href="#11-governance-deployment-checklist" title="Permanent link">&para;</a></h2>
+<p>Before going live:</p>
+<p><strong>Access Control:</strong>
+- [ ] Define teams and their allowed tools
+- [ ] Set per-user rate limits
+- [ ] Set team budgets
+- [ ] Publish channel naming convention</p>
+<p><strong>Routing &amp; Cost:</strong>
+- [ ] Define tier assignments (A/B/C) by channel
+- [ ] Set provider fallback chain
+- [ ] Test multi-provider failover
+- [ ] Validate cost estimates</p>
+<p><strong>Approval &amp; Escalation:</strong>
+- [ ] List high-risk tools requiring approval
+- [ ] Define escalation rules (confidence, cost)
+- [ ] Train approvers on response time
+- [ ] Test approval workflow end-to-end</p>
+<p><strong>Audit &amp; Compliance:</strong>
+- [ ] Set log retention policy
+- [ ] Configure audit export
+- [ ] Set up weekly cost reports
+- [ ] Define compliance requirements</p>
+<p><strong>Enforcement:</strong>
+- [ ] Test access denied scenario
+- [ ] Test approval workflow
+- [ ] Test escalation triggers
+- [ ] Monitor first week closely</p>
+<hr />
+<h1 id="part-2-security-validation-auditing">Part 2: Security Validation &amp; Auditing<a class="headerlink" href="#part-2-security-validation-auditing" title="Permanent link">&para;</a></h1>
+<h2 id="12-security-validation-runbook">12. Security Validation Runbook<a class="headerlink" href="#12-security-validation-runbook" title="Permanent link">&para;</a></h2>
+<p><strong>Purpose:</strong> Recurring security validation steps for the Nanobot Agentic Operating System.</p>
+<h3 id="validation-frequency-and-ownership">Validation Frequency and Ownership<a class="headerlink" href="#validation-frequency-and-ownership" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Frequency:</strong> Monthly (minimum), and after major config changes</li>
+<li><strong>Owner:</strong> Security/Platform Owner</li>
+<li><strong>Operator:</strong> Assigned Operator</li>
+<li><strong>Reviewer:</strong> Assigned Reviewer</li>
+</ul>
+<h3 id="preconditions">Preconditions<a class="headerlink" href="#preconditions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Access to gateway host</li>
+<li>Access to channel/platform settings (Discord, Slack, Telegram, etc.)</li>
+<li>Access to Nanobot config and logs</li>
+<li>Access to Obsidian operational records</li>
+</ul>
+<h3 id="how-to-copy-paste-commands-in-linux">How to Copy &amp; Paste Commands in Linux<a class="headerlink" href="#how-to-copy-paste-commands-in-linux" title="Permanent link">&para;</a></h3>
+<p>When you encounter bash commands in validation steps:</p>
+<p><strong>Quick reference:</strong>
+- <strong>Fastest:</strong> Highlight → middle-click in terminal
+- <strong>Reliable:</strong> Highlight → <code>Ctrl+Shift+C</code> → <code>Ctrl+Shift+V</code> to paste
+- <strong>Fallback:</strong> Highlight → <code>Ctrl+C</code> → right-click Paste</p>
+<p>Middle-click paste is native to Linux/Mac terminals and requires no additional steps.</p>
+<hr />
+<h2 id="13-validation-sequence">13. Validation Sequence<a class="headerlink" href="#13-validation-sequence" title="Permanent link">&para;</a></h2>
+<p>Execute in this order to ensure consistent evidence collection.</p>
+<h3 id="step-1-gateway-exposure-check">Step 1: Gateway Exposure Check<a class="headerlink" href="#step-1-gateway-exposure-check" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Verify gateway bind is loopback-only. (Loopback = only accessible from this computer)</li>
+<li>Confirm no unintended public bind (<strong>0.0.0.0</strong>—which means "accessible to the whole internet") is active.</li>
+<li>Validate remote access path is SSH (Secure Shell—encrypted remote access) tunnel or Tailscale network-based.</li>
+<li>Validate Ollama on local Windows host is reachable from VPS (Virtual Private Server) only via trusted Tailscale path and is not publicly exposed.</li>
+</ul>
+<p><strong>Pass Criteria</strong>
+- Gateway is loopback-bound and remote access is controlled.</p>
+<p><strong>Fail Criteria</strong>
+- Any direct public exposure without approved exception.</p>
+<h3 id="step-2-dm-policy-and-allowlist-check">Step 2: DM Policy and Allowlist Check<a class="headerlink" href="#step-2-dm-policy-and-allowlist-check" title="Permanent link">&para;</a></h3>
+<p><strong>DM</strong> = Direct Message (private messages sent to the bot, not in public channels)
+- Verify DM policy is pairing mode by default.
+- Validate unknown sender behavior (no command execution before approval).
+- Verify allowlist entries are current and minimal. (Allowlist = list of approved people/channels)</p>
+<p><strong>Pass Criteria</strong>
+- DM pairing flow works and allowlist scope is least-privilege.</p>
+<h3 id="step-3-trust-boundary-check">Step 3: Trust Boundary Check<a class="headerlink" href="#step-3-trust-boundary-check" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Confirm no mutually untrusted operator groups share one gateway trust boundary.</li>
+<li>Validate separation model (separate gateway/host/OS user) where required.</li>
+</ul>
+<p><strong>Pass Criteria</strong>
+- Trust boundaries are documented and enforced.</p>
+<h3 id="step-4-sandbox-policy-check">Step 4: Sandbox Policy Check<a class="headerlink" href="#step-4-sandbox-policy-check" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Verify non-main/shared channels run under sandbox profile where required.</li>
+<li>Confirm high-risk tools are not broadly exposed in shared contexts.</li>
+</ul>
+<p><strong>Pass Criteria</strong>
+- Sandbox rules match policy for shared/non-main sessions.</p>
+<h3 id="step-5-security-audit-execution">Step 5: Security Audit Execution<a class="headerlink" href="#step-5-security-audit-execution" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Run <code>nanobot security audit --deep</code> (automated security check for vulnerabilities)</li>
+<li>Verify deployed Nanobot version is v0.1.4 or later. (Newer versions have security fixes)</li>
+<li>Review latest Nanobot security advisories and confirm no unpatched High/Critical findings apply to deployed version.</li>
+<li>Capture findings and classify severity. (Severity = how serious the issue is)</li>
+<li>Confirm critical findings have immediate mitigation plan.</li>
+</ul>
+<p><strong>Pass Criteria</strong>
+- No unresolved critical findings.
+- Deployed version is at or above the current patched minimum for published advisories.</p>
+<h3 id="step-6-secrets-and-token-hygiene">Step 6: Secrets and Token Hygiene<a class="headerlink" href="#step-6-secrets-and-token-hygiene" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Confirm tokens/secrets are in <strong>.env</strong> (configuration file with secrets—NOT shared in code) or approved secret store only.</li>
+<li>Confirm no secrets (API keys, passwords) are present in notes, docs, or source-controlled config.</li>
+<li>Validate token rotation readiness and last rotation date. (Rotation = changing tokens regularly, like changing passwords)</li>
+</ul>
+<p><strong>Pass Criteria</strong>
+- Secret handling policy is fully compliant.</p>
+<h3 id="step-7-logging-and-evidence-integrity">Step 7: Logging and Evidence Integrity<a class="headerlink" href="#step-7-logging-and-evidence-integrity" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Confirm required telemetry fields exist (<strong>request_id</strong>, <strong>project_id</strong>, <strong>workflow_domain</strong>, status, timestamps, model/cost fields where applicable).</li>
+<li>Confirm incident and change records are persisted to Obsidian.</li>
+</ul>
+<p><strong>Pass Criteria</strong>
+- Security-relevant logs are complete and traceable end-to-end.</p>
+<hr />
+<h2 id="14-evidence-to-capture">14. Evidence to Capture<a class="headerlink" href="#14-evidence-to-capture" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Command output snippets (including security audit)</li>
+<li>Nanobot version output (<strong>nanobot --version</strong>) and advisory review date</li>
+<li>Config screenshots or sanitized config excerpts</li>
+<li>Allowlist review record</li>
+<li>Sandbox policy verification record</li>
+<li>Remediation tickets with owners and due dates</li>
+</ul>
+<hr />
+<h2 id="15-remediation-sla">15. Remediation SLA<a class="headerlink" href="#15-remediation-sla" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Critical:</strong> immediate containment + fix plan same day</li>
+<li><strong>High:</strong> remediation within 7 days</li>
+<li><strong>Medium:</strong> remediation within 30 days</li>
+<li><strong>Low:</strong> backlog with documented rationale</li>
+</ul>
+<hr />
+<h2 id="16-runbook-output-record-template">16. Runbook Output Record Template<a class="headerlink" href="#16-runbook-output-record-template" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gh"># Security Validation Report - &lt;YYYY-MM-DD&gt;</span>
+<span class="k">-</span><span class="w"> </span>Run ID:
+<span class="k">-</span><span class="w"> </span>Owner:
+<span class="k">-</span><span class="w"> </span>Operator:
+<span class="k">-</span><span class="w"> </span>Reviewer:
+<span class="k">-</span><span class="w"> </span>Environment:
+
+<span class="gu">## Results by Step</span>
+<span class="k">1.</span> Gateway Exposure Check: Pass/Fail
+<span class="k">2.</span> DM Policy and Allowlist Check: Pass/Fail
+<span class="k">3.</span> Trust Boundary Check: Pass/Fail
+<span class="k">4.</span> Sandbox Policy Check: Pass/Fail
+<span class="k">5.</span> Security Audit Execution: Pass/Fail
+<span class="k">6.</span> Secrets and Token Hygiene: Pass/Fail
+<span class="k">7.</span> Logging and Evidence Integrity: Pass/Fail
+
+<span class="gu">## Findings</span>
+<span class="k">-</span><span class="w"> </span>Critical:
+<span class="k">-</span><span class="w"> </span>High:
+<span class="k">-</span><span class="w"> </span>Medium:
+<span class="k">-</span><span class="w"> </span>Low:
+
+<span class="gu">## Remediation Plan</span>
+<span class="k">-</span><span class="w"> </span>Item:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>Owner:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>Due Date:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>Status:
+
+<span class="gu">## Final Decision</span>
+<span class="k">-</span><span class="w"> </span>Overall Status: Pass / Conditional Pass / Fail
+<span class="k">-</span><span class="w"> </span>Next Review Date:
+</code></pre></div>
+<hr />
+<h2 id="17-gono-go-rule">17. Go/No-Go Rule<a class="headerlink" href="#17-gono-go-rule" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Go:</strong> all critical controls pass and no unresolved critical findings.</li>
+<li><strong>No-Go:</strong> any unresolved critical finding or trust-boundary violation.</li>
+</ul>
+<hr />
+<h1 id="part-3-common-mistakes-solutions">Part 3: Common Mistakes &amp; Solutions<a class="headerlink" href="#part-3-common-mistakes-solutions" title="Permanent link">&para;</a></h1>
+<h2 id="18-governance-common-mistakes">18. Governance Common Mistakes<a class="headerlink" href="#18-governance-common-mistakes" title="Permanent link">&para;</a></h2>
+<h3 id="mistake-1-rbac-config-too-restrictive-users-blocked">❌ Mistake 1: RBAC Config Too Restrictive, Users Blocked<a class="headerlink" href="#mistake-1-rbac-config-too-restrictive-users-blocked" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Team members can't use necessary tools; constant "not allowed" errors<br />
+<strong>Why:</strong> <code>allowed_tools</code> list incomplete or too conservative<br />
+<strong>Fix:</strong>
+1. Audit actual tool usage: <code>nanobot logs --filter="tool_denied" | head -20</code>
+2. See what users are trying to do
+3. Update allowed_tools:
+   <div class="highlight"><pre><span></span><code><span class="nt">&quot;engineering&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;allowed_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;web_search&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;github_*&quot;</span><span class="p">,</span><span class="w">        </span><span class="c1">// GitHub operations</span>
+<span class="w">    </span><span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span><span class="w">      </span><span class="c1">// Command line</span>
+<span class="w">    </span><span class="s2">&quot;file_read&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// Read files</span>
+<span class="w">    </span><span class="s2">&quot;file_write&quot;</span><span class="p">,</span><span class="w">      </span><span class="c1">// Write files</span>
+<span class="w">    </span><span class="s2">&quot;mcp_call&quot;</span><span class="p">,</span><span class="w">        </span><span class="c1">// MCP integrations</span>
+<span class="w">    </span><span class="s2">&quot;cron_schedule&quot;</span><span class="w">    </span><span class="c1">// Scheduled tasks</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+4. Restart: <code>nanobot gateway</code></p>
+<h3 id="mistake-2-tool-whitelist-misspelled-or-mismatched">❌ Mistake 2: Tool Whitelist Misspelled or Mismatched<a class="headerlink" href="#mistake-2-tool-whitelist-misspelled-or-mismatched" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> User loses access to tool that was supposedly allowed<br />
+<strong>Why:</strong> Tool name in config doesn't match actual tool name<br />
+<strong>Fix:</strong>
+1. Check exact tool names: <code>nanobot tools list</code>
+2. Common mistakes:
+   <div class="highlight"><pre><span></span><code><span class="err">❌</span><span class="w"> </span><span class="s2">&quot;github&quot;</span><span class="w">          </span><span class="err">#</span><span class="w"> </span><span class="err">Wro</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="mi">-</span><span class="w"> </span><span class="err">i</span><span class="kc">t</span><span class="err">&#39;s</span><span class="w"> </span><span class="err">gi</span><span class="kc">t</span><span class="err">hub_search</span><span class="p">,</span><span class="w"> </span><span class="err">gi</span><span class="kc">t</span><span class="err">hub_pr</span><span class="p">,</span><span class="w"> </span><span class="err">e</span><span class="kc">t</span><span class="err">c.</span>
+<span class="err">✅</span><span class="w"> </span><span class="s2">&quot;github_*&quot;</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="err">Correc</span><span class="kc">t</span><span class="w"> </span><span class="mi">-</span><span class="w"> </span><span class="err">wildcard</span><span class="w"> </span><span class="err">ma</span><span class="kc">t</span><span class="err">ches</span><span class="w"> </span><span class="err">all</span><span class="w"> </span><span class="err">gi</span><span class="kc">t</span><span class="err">hub</span><span class="w"> </span><span class="kc">t</span><span class="err">ools</span>
+
+<span class="err">❌</span><span class="w"> </span><span class="s2">&quot;Web_Search&quot;</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="err">Wro</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="mi">-</span><span class="w"> </span><span class="err">lowercase</span><span class="p">,</span><span class="w"> </span><span class="kc">n</span><span class="err">o</span><span class="w"> </span><span class="err">u</span><span class="kc">n</span><span class="err">derscore</span>
+<span class="err">✅</span><span class="w"> </span><span class="s2">&quot;web_search&quot;</span><span class="w">     </span><span class="err">#</span><span class="w"> </span><span class="err">Correc</span><span class="kc">t</span>
+
+<span class="err">❌</span><span class="w"> </span><span class="s2">&quot;file_ops&quot;</span><span class="w">       </span><span class="err">#</span><span class="w"> </span><span class="err">Wro</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="mi">-</span><span class="w"> </span><span class="kc">n</span><span class="err">o</span><span class="kc">t</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">real</span><span class="w"> </span><span class="kc">t</span><span class="err">ool</span>
+<span class="err">✅</span><span class="w"> </span><span class="s2">&quot;file_read&quot;</span><span class="w"> </span><span class="err">a</span><span class="kc">n</span><span class="err">d</span><span class="w"> </span><span class="s2">&quot;file_write&quot;</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="err">Correc</span><span class="kc">t</span><span class="w"> </span><span class="mi">-</span><span class="w"> </span><span class="err">separa</span><span class="kc">te</span><span class="w"> </span><span class="kc">t</span><span class="err">ools</span>
+</code></pre></div>
+3. Validate config: <code>nanobot config validate</code></p>
+<h3 id="mistake-3-approval-chain-never-completes-bottleneck">❌ Mistake 3: Approval Chain Never Completes - Bottleneck<a class="headerlink" href="#mistake-3-approval-chain-never-completes-bottleneck" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Users waiting hours for approvals; productivity blocked<br />
+<strong>Why:</strong> Too many approvers, or approvers offline/not checking<br />
+<strong>Fix:</strong>
+<div class="highlight"><pre><span></span><code><span class="err">❌</span><span class="w"> </span><span class="err">Too</span><span class="w"> </span><span class="err">s</span><span class="kc">tr</span><span class="err">ic</span><span class="kc">t</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;requires_approval&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;approval_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@devops-leads&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Only 1 person!</span>
+<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">86400</span><span class="w">  </span><span class="c1">// 24 hours to approve</span>
+<span class="p">}</span>
+
+<span class="err">✅</span><span class="w"> </span><span class="err">Be</span><span class="kc">tter</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;requires_approval&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;approval_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;@devops-lead&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@devops-oncall&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;@devops-backup&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;approval_mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;any&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// ANY one can approve</span>
+<span class="w">  </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="w">  </span><span class="c1">// 15 minutes to request, auto-escalate</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="mistake-4-cost-budget-not-enforced-bills-skyrocketing">❌ Mistake 4: Cost Budget Not Enforced - Bills Skyrocketing<a class="headerlink" href="#mistake-4-cost-budget-not-enforced-bills-skyrocketing" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Monthly bill 5x expected; no alerts or controls<br />
+<strong>Why:</strong> Budget limits set but not actually enforced; no alerts configured<br />
+<strong>Fix:</strong>
+<div class="highlight"><pre><span></span><code><span class="err">❌</span><span class="w"> </span><span class="err">Budge</span><span class="kc">t</span><span class="w"> </span><span class="err">de</span><span class="kc">f</span><span class="err">i</span><span class="kc">ne</span><span class="err">d</span><span class="w"> </span><span class="err">bu</span><span class="kc">t</span><span class="w"> </span><span class="kc">n</span><span class="err">o</span><span class="w"> </span><span class="err">e</span><span class="kc">nf</span><span class="err">orceme</span><span class="kc">nt</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;budget&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;monthly&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;team_allocation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;eng&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">600</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;marketing&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">// No alerts, no hard limit!</span>
+<span class="p">}</span>
+
+<span class="err">✅</span><span class="w"> </span><span class="err">Wi</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="err">e</span><span class="kc">nf</span><span class="err">orceme</span><span class="kc">nt</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;budget&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;monthly&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;alerts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;at_50_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;at_75_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;at_90_percent&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#finance&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;enforcement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;hard_limit&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">  </span>
+<span class="w">      </span><span class="nt">&quot;when_exceeded&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;disable_high_tier_models&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+2. Check spend daily: <code>nanobot budget status</code>
+3. Set up alerts: <code>nanobot budget alert --set 75% --channel #finance</code></p>
+<h3 id="mistake-5-audit-logs-deleted-cant-prove-compliance">❌ Mistake 5: Audit Logs Deleted, Can't Prove Compliance<a class="headerlink" href="#mistake-5-audit-logs-deleted-cant-prove-compliance" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Regulator asks "Who deleted that file?" - No logs!<br />
+<strong>Why:</strong> Log retention too short; logs not being written<br />
+<strong>Fix:</strong>
+<div class="highlight"><pre><span></span><code><span class="err">❌</span><span class="w"> </span><span class="err">Audi</span><span class="kc">t</span><span class="w"> </span><span class="err">logs</span><span class="w"> </span><span class="err">migh</span><span class="kc">t</span><span class="w"> </span><span class="err">ge</span><span class="kc">t</span><span class="w"> </span><span class="err">dele</span><span class="kc">te</span><span class="err">d</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;audit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;retention_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">  </span><span class="c1">// Too short!</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="err">✅</span><span class="w"> </span><span class="err">E</span><span class="kc">nter</span><span class="err">prise</span><span class="mi">-</span><span class="err">grade</span><span class="w"> </span><span class="err">re</span><span class="kc">tent</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;audit&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verbose&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;retention_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">365</span><span class="p">,</span><span class="w">  </span><span class="c1">// Full year</span>
+<span class="w">    </span><span class="nt">&quot;export_format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;backup_location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;s3://compliance-bucket/nanobot-logs/&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;tools_logged&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;file_write&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mcp_call&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;github_*&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+2. Verify logs exist: <code>ls -lh ~/.nanobot/logs/</code>
+3. Export to archive: <code>nanobot audit export --format=compliance --days=365</code></p>
+<h3 id="mistake-6-escalation-rules-never-trigger">❌ Mistake 6: Escalation Rules Never Trigger<a class="headerlink" href="#mistake-6-escalation-rules-never-trigger" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> High-risk/high-cost actions run without waiting for approval<br />
+<strong>Why:</strong> Escalation threshold set too high, or action doesn't match rule<br />
+<strong>Fix:</strong>
+<div class="highlight"><pre><span></span><code><span class="err">❌</span><span class="w"> </span><span class="err">Escala</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="w"> </span><span class="kc">ne</span><span class="err">ver</span><span class="w"> </span><span class="kc">tr</span><span class="err">iggers</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;escalation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;high_risk_threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50000</span><span class="p">,</span><span class="w">  </span><span class="c1">// Only escalates if &gt;50k tokens</span>
+<span class="w">    </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;shell_exec&quot;</span><span class="p">]</span><span class="w">        </span><span class="c1">// Only shell_exec</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="c1">// User does web search (5k tokens) - not escalated</span>
+<span class="w">  </span><span class="c1">// User runs github action (3k tokens) - not escalated</span>
+<span class="p">}</span>
+
+<span class="err">✅</span><span class="w"> </span><span class="err">Proper</span><span class="w"> </span><span class="err">escala</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;escalation&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;high_risk_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mcp_call&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;file_write&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;high_cost_threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">   </span><span class="c1">// Escalate high-cost actions</span>
+<span class="w">    </span><span class="nt">&quot;approval_required_for&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;shell_exec:*&quot;</span><span class="p">,</span><span class="w">         </span><span class="c1">// ALL shell commands need approval</span>
+<span class="w">      </span><span class="s2">&quot;mcp_call:database&quot;</span><span class="p">,</span><span class="w">    </span><span class="c1">// Database MCP calls</span>
+<span class="w">      </span><span class="s2">&quot;file_write:config&quot;</span><span class="w">     </span><span class="c1">// Config file writes</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+2. Test escalation manually: <code>/tool shell_exec test</code>
+3. Check approval queue: <code>nanobot approvals list</code></p>
+<hr />
+<h2 id="19-security-common-mistakes">19. Security Common Mistakes<a class="headerlink" href="#19-security-common-mistakes" title="Permanent link">&para;</a></h2>
+<h3 id="mistake-7-security-audit-shows-findings-but-no-remediation-plan">❌ Mistake 7: Security Audit Shows Findings But No Remediation Plan<a class="headerlink" href="#mistake-7-security-audit-shows-findings-but-no-remediation-plan" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Audit fails with "3 High severity findings"; validation stops<br />
+<strong>Why:</strong> Findings documented, but no owner/timeline assigned<br />
+<strong>Fix:</strong>
+1. For each High/Critical finding, create remediation ticket immediately:
+   <div class="highlight"><pre><span></span><code><span class="gh"># Remediation: [Issue name]</span>
+<span class="k">-</span><span class="w"> </span>Owner: <span class="ni">@specific_person</span> (not &quot;team&quot;)
+<span class="k">-</span><span class="w"> </span>Due Date: [7 days from today for High]
+<span class="k">-</span><span class="w"> </span>Priority: High
+<span class="k">-</span><span class="w"> </span>Ticket: &lt;link&gt;
+</code></pre></div>
+2. Don't mark validation as "Conditional Pass" without assigned owner + date
+3. Follow up: Check status 3 days before due date</p>
+<h3 id="mistake-8-token-rotation-never-happens-old-tokens-still-active">❌ Mistake 8: Token Rotation Never Happens - Old Tokens Still Active<a class="headerlink" href="#mistake-8-token-rotation-never-happens-old-tokens-still-active" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Last rotation was 6 months ago; old Discord token still working<br />
+<strong>Why:</strong> No automated reminder; no rotation policy enforced<br />
+<strong>Fix:</strong>
+1. <strong>Set up rotation auto-reminders:</strong>
+   <div class="highlight"><pre><span></span><code>nanobot<span class="w"> </span>schedule<span class="w"> </span><span class="s2">&quot;Rotate Discord token&quot;</span><span class="w"> </span>cron<span class="w"> </span><span class="s2">&quot;0 9 1 * *&quot;</span><span class="w">  </span><span class="c1"># 1st of month at 9am</span>
+nanobot<span class="w"> </span>schedule<span class="w"> </span><span class="s2">&quot;Rotate API keys&quot;</span><span class="w"> </span>cron<span class="w"> </span><span class="s2">&quot;0 9 15 * *&quot;</span><span class="w">     </span><span class="c1"># 15th of month</span>
+</code></pre></div>
+2. <strong>Document last rotation date:</strong>
+   <div class="highlight"><pre><span></span><code><span class="k">-</span><span class="w"> </span>Discord token: Last rotated [DATE] - Due [DATE+90days]
+<span class="k">-</span><span class="w"> </span>OpenRouter API: Last rotated [DATE] - Due [DATE+90days]
+<span class="k">-</span><span class="w"> </span>GitHub token: Last rotated [DATE] - Due [DATE+90days]
+</code></pre></div>
+3. <strong>Enforce in config:</strong>
+   <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;secrets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;rotation_policy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;every_90_days&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;expiry_alert_days&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="mistake-9-sandbox-rules-documented-but-not-enforced">❌ Mistake 9: Sandbox Rules Documented But Not Enforced<a class="headerlink" href="#mistake-9-sandbox-rules-documented-but-not-enforced" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Security says "shared channels run in sandbox"; in reality, they don't<br />
+<strong>Why:</strong> Sandbox policy written but config doesn't enforce it<br />
+<strong>Fix:</strong>
+1. <strong>Check actual config enforces sandbox:</strong>
+   <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;channels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;#general&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;sandbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;allowed_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;web_search&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;message_send&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;disallowed_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;shell_exec&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;file_write&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;#devops&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;sandbox&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;allowed_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;all&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+2. <strong>Verify it's actually enforced:</strong>
+   <div class="highlight"><pre><span></span><code>nanobot<span class="w"> </span>config<span class="w"> </span>--validate
+<span class="c1"># If validation passes, config is syntactically correct</span>
+<span class="c1"># But config enforcement = separate system check</span>
+</code></pre></div>
+3. <strong>Test sandbox actually blocks:</strong>
+   <div class="highlight"><pre><span></span><code>/in #general shell_exec ls
+# Should get: &quot;Blocked: shell_exec not allowed in #general (sandbox)&quot;
+</code></pre></div></p>
+<h3 id="mistake-10-secrets-in-git-history-cant-be-removed">❌ Mistake 10: Secrets in Git History - Can't Be Removed<a class="headerlink" href="#mistake-10-secrets-in-git-history-cant-be-removed" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Someone committed API key to GitHub 3 months ago; it's still in history<br />
+<strong>Why:</strong> Used plain <code>git rm</code> instead of removing from history<br />
+<strong>Fix:</strong>
+1. <strong>Remove the file from git history</strong> using <code>git filter-repo</code>:
+   <div class="highlight"><pre><span></span><code><span class="c1"># Install if needed:</span>
+pip<span class="w"> </span>install<span class="w"> </span>git-filter-repo
+git<span class="w"> </span>filter-repo<span class="w"> </span>--path<span class="w"> </span>config.json<span class="w"> </span>--invert-paths<span class="w"> </span>--force
+</code></pre></div>
+2. <strong>Force push to remote:</strong>
+   <div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>--force<span class="w"> </span>--all
+</code></pre></div>
+3. <strong>Immediately revoke the compromised token in the service (GitHub, Discord, etc.)</strong>
+4. <strong>Add to .gitignore to prevent future commits:</strong>
+   <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;config.json&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;.env&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;secrets/*&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore
+git<span class="w"> </span>add<span class="w"> </span>.gitignore<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Add secrets to gitignore&quot;</span>
+</code></pre></div></p>
+<h3 id="mistake-11-trust-boundary-violation-multiple-untrusted-groups-share-gateway">❌ Mistake 11: Trust Boundary Violation - Multiple Untrusted Groups Share Gateway<a class="headerlink" href="#mistake-11-trust-boundary-violation-multiple-untrusted-groups-share-gateway" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Engineering team and Marketing team both use same gateway; engineer accesses marketing's Slack token<br />
+<strong>Why:</strong> Didn't enforce separation; all users on same process<br />
+<strong>Fix:</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">❌ No trust boundary enforcement</span><span class="p">:</span>
+<span class="nt">gateway</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;eng-team&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;marketing-team&quot;</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># Same process!</span>
+
+<span class="nt">✅ Separate trust boundaries</span><span class="p">:</span>
+<span class="nt">gateway_engineering</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;eng-team&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">bind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1:8000&quot;</span>
+
+<span class="nt">gateway_marketing</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">users</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;marketing-team&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">bind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;127.0.0.1:8001&quot;</span>
+
+<span class="c1"># Even better: Separate hosts/VMs</span>
+</code></pre></div>
+2. <strong>Implement:</strong> Create separate gateway instances for each trust group
+3. <strong>Verify separation:</strong>
+   <div class="highlight"><pre><span></span><code>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nanobot
+<span class="c1"># Should see multiple nanobot processes with different ports</span>
+</code></pre></div></p>
+<h3 id="mistake-12-allowlist-has-old-users-who-left-company">❌ Mistake 12: Allowlist Has Old Users Who Left Company<a class="headerlink" href="#mistake-12-allowlist-has-old-users-who-left-company" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Employee left 6 months ago; bot still accepts DMs from their old Discord account<br />
+<strong>Why:</strong> Never removed from allowlist config<br />
+<strong>Fix:</strong>
+1. <strong>Quarterly audit:</strong>
+   <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;dms&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;allowlist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="s2">&quot;alice (joined 2026-01-15)&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;bob (joined 2025-09-01)&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="s2">&quot;dave (REVOKED 2026-02-01 - left company)&quot;</span><span class="w">  </span><span class="c1">// Mark as revoked</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+2. <strong>Enforce allowlist strictly:</strong>
+   <div class="highlight"><pre><span></span><code>nanobot<span class="w"> </span>config<span class="w"> </span>dms.allowlist<span class="w"> </span>--validate
+<span class="c1"># Check for stale/revoked entries</span>
+</code></pre></div>
+3. <strong>When employee leaves:</strong>
+   - Remove from allowlist immediately
+   - Revoke any API tokens they created
+   - Check <code>~/.nanobot/logs/</code> for any emergency access patterns</p>
+<hr />
+<h2 id="20-troubleshooting-governance-issues">20. Troubleshooting Governance Issues<a class="headerlink" href="#20-troubleshooting-governance-issues" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Symptom</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User complains "tool not allowed"</td>
+<td>Tool blocked for user</td>
+<td>Check RBAC config; user in right team? Check channel policy</td>
+</tr>
+<tr>
+<td>Cost running over budget</td>
+<td>Monthly spend exceeds threshold</td>
+<td>Review routing rules; are low-priority tasks using high tiers?</td>
+</tr>
+<tr>
+<td>Approvals taking too long</td>
+<td>Users waiting for action</td>
+<td>Check approval timeout; add more approvers; use instant approval for low-risk</td>
+</tr>
+<tr>
+<td>Audit logs missing</td>
+<td>Cannot find historical actions</td>
+<td>Check log_level and retention; increase verbosity for critical tools</td>
+</tr>
+<tr>
+<td>Escalations not triggering</td>
+<td>Cases not bubbling to humans</td>
+<td>Verify escalation rules match actual thresholds; test with manual override</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="21-common-patterns-by-organization-type">21. Common Patterns by Organization Type<a class="headerlink" href="#21-common-patterns-by-organization-type" title="Permanent link">&para;</a></h2>
+<h3 id="startup-lean-speed-focused">Startup (Lean, Speed-Focused)<a class="headerlink" href="#startup-lean-speed-focused" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;teams&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;engineering&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;policies&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;minimal&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;approval&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;self-approve&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;audit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;basic&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;budget&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;flexible&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Philosophy:</strong> Move fast, minimal overhead.</p>
+<h3 id="scale-up-multiple-teams">Scale-Up (Multiple Teams)<a class="headerlink" href="#scale-up-multiple-teams" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;teams&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;engineering&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;marketing&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;operations&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;policies&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;channel-based&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;approval&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;for high-risk + high-cost&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;audit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;weekly reports&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;budget&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;per-team allocation&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Philosophy:</strong> Balance autonomy + accountability.</p>
+<h3 id="enterprise-compliance-heavy">Enterprise (Compliance-Heavy)<a class="headerlink" href="#enterprise-compliance-heavy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;teams&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;engineering&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;marketing&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;operations&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;legal&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;finance&quot;</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;policies&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;strict RBAC&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;approval&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;required for all risky actions&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;audit&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;verbose + compliance export&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;budget&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;strict cost centers + chargeback&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Philosophy:</strong> Governance by default; audit everything.</p>
+<hr />
+<h2 id="22-revision-history">22. Revision History<a class="headerlink" href="#22-revision-history" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Version</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-02-26</td>
+<td>2.1.0</td>
+<td>Fixed #bk-* routing description (backlog → bookkeeping); generalized Discord-specific precondition; replaced deprecated git filter-branch with git filter-repo in Mistake 10</td>
+</tr>
+<tr>
+<td>2026-02-26</td>
+<td>2.0.0</td>
+<td>Consolidated Security Validation Runbook and Governance Policies into single comprehensive guide</td>
+</tr>
+<tr>
+<td>2026-02-25</td>
+<td>1.0.0 (Governance)</td>
+<td>Initial governance policies and config examples</td>
+</tr>
+<tr>
+<td>2026-02-23</td>
+<td>1.0.0 (Security)</td>
+<td>Initial monthly security validation runbook</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="related-documents">Related Documents<a class="headerlink" href="#related-documents" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../Master-Index/">Master Index</a></li>
+<li><a href="../Skills-and-Tools-Complete-Guide/">Skills &amp; Tools Complete Guide</a></li>
+<li><a href="../Cost-Calculator-and-Optimization/">Cost Calculator &amp; Optimization</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Nanobot Contributors
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/EgoNoBueno/Nanobot-Agentic-Operating-System" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/HKUDS/nanobot" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "content.tabs.link", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

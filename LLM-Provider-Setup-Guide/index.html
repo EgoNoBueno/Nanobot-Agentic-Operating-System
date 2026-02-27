@@ -1,0 +1,2404 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Community documentation for deploying and operating the Nanobot AI agent framework">
+      
+      
+      
+        <link rel="canonical" href="https://egonobue.no.github.io/Nanobot-Agentic-Operating-System/LLM-Provider-Setup-Guide/">
+      
+      
+        <link rel="prev" href="../AOS-Startup-Advanced-Build/">
+      
+      
+        <link rel="next" href="../Skills-and-Tools-Complete-Guide/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>LLM Provider Setup - Nanobot Agentic Operating System</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#llm-provider-setup-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Nanobot Agentic Operating System" class="md-header__button md-logo" aria-label="Nanobot Agentic Operating System" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nanobot Agentic Operating System
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              LLM Provider Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EgoNoBueno/Nanobot-Agentic-Operating-System" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EgoNoBueno/Nanobot-Agentic-Operating-System
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Nanobot Agentic Operating System" class="md-nav__button md-logo" aria-label="Nanobot Agentic Operating System" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nanobot Agentic Operating System
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EgoNoBueno/Nanobot-Agentic-Operating-System" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EgoNoBueno/Nanobot-Agentic-Operating-System
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Getting-Started-With-Nanobot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Master-Index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AOS-Startup-Simple-Build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simple Build (Local + Cloud LLM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AOS-Startup-Advanced-Build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Build (VPS + Ollama)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Provider Setup
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Provider Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#document-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-supported-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Supported Providers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-quick-setup-5-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Quick Setup (5 minutes)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Quick Setup (5 minutes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-openrouter-all-in-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A: OpenRouter (All-in-One)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option A: OpenRouter (All-in-One)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before You Start
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-local-ollama" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B: Local Ollama
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option B: Local Ollama">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-you-start_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before You Start
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-c-direct-anthropic-claude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option C: Direct Anthropic (Claude)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option C: Direct Anthropic (Claude)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-you-start_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before You Start
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-multi-provider-setup-cost-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Multi-Provider Setup (Cost Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-token-budgeting-cost-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Token Budgeting &amp; Cost Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-prompt-caching-cost-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Prompt Caching (Cost Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-environment-variable-override" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Environment Variable Override
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-web-search-api-brave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Web Search API (Brave)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-fallback-degraded-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Fallback &amp; Degraded Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-multi-model-synergy-advanced-agentic-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Multi-Model Synergy &amp; Advanced Agentic Workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Multi-Model Synergy &amp; Advanced Agentic Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collaborative-roles-synergy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collaborative Roles &amp; Synergy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synergy-schemes-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Synergy Schemes in Practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-via-nanobot-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation via Nanobot Skills
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-via-skill-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup via Skill Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-routing-with-tiered-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Routing with Tiered Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-testing-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Testing &amp; Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-common-mistakes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Common Mistakes &amp; Solutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Common Mistakes &amp; Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-api-key-has-extra-spaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: API Key Has Extra Spaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-wrong-model-name-for-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Wrong Model Name for Provider
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-temperature-token-settings-too-high" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Temperature &amp; Token Settings Too High
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-forgetting-to-start-ollama-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 4: Forgetting to Start Ollama (Local)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-setting-up-fallback-chain-backwards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 5: Setting Up Fallback Chain Backwards
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-aos-integration-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. AOS Integration &amp; Governance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-related-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Related Documents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-revision-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Revision History
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Skills-and-Tools-Complete-Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills & Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Workflow-Examples-and-Recipes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Examples & Recipes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Cost-Calculator-and-Optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Calculator & Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance & Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Governance & Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-and-Governance-Policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security & Governance Policies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Emergency-Recovery-and-Troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emergency Recovery & Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#document-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-supported-providers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Supported Providers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-quick-setup-5-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Quick Setup (5 minutes)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Quick Setup (5 minutes)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-a-openrouter-all-in-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option A: OpenRouter (All-in-One)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option A: OpenRouter (All-in-One)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before You Start
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-b-local-ollama" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option B: Local Ollama
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option B: Local Ollama">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-you-start_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before You Start
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-c-direct-anthropic-claude" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Option C: Direct Anthropic (Claude)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Option C: Direct Anthropic (Claude)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#before-you-start_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before You Start
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-multi-provider-setup-cost-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Multi-Provider Setup (Cost Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-token-budgeting-cost-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Token Budgeting &amp; Cost Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-prompt-caching-cost-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Prompt Caching (Cost Optimization)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-environment-variable-override" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Environment Variable Override
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-web-search-api-brave" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Web Search API (Brave)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-fallback-degraded-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Fallback &amp; Degraded Mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-multi-model-synergy-advanced-agentic-workflows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Multi-Model Synergy &amp; Advanced Agentic Workflows
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Multi-Model Synergy &amp; Advanced Agentic Workflows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#collaborative-roles-synergy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Collaborative Roles &amp; Synergy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synergy-schemes-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Synergy Schemes in Practice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-via-nanobot-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation via Nanobot Skills
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-via-skill-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup via Skill Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#global-routing-with-tiered-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Global Routing with Tiered Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-testing-troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Testing &amp; Troubleshooting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-common-mistakes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Common Mistakes &amp; Solutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Common Mistakes &amp; Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-api-key-has-extra-spaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: API Key Has Extra Spaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-wrong-model-name-for-provider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Wrong Model Name for Provider
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-temperature-token-settings-too-high" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Temperature &amp; Token Settings Too High
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-forgetting-to-start-ollama-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 4: Forgetting to Start Ollama (Local)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-setting-up-fallback-chain-backwards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 5: Setting Up Fallback Chain Backwards
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-aos-integration-governance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. AOS Integration &amp; Governance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-related-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Related Documents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-revision-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Revision History
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="llm-provider-setup-guide">LLM Provider Setup Guide<a class="headerlink" href="#llm-provider-setup-guide" title="Permanent link">&para;</a></h1>
+<p>Configure nanobot to use different AI (artificial intelligence) models based on workflow type, cost, and capability requirements.</p>
+<h2 id="document-control">Document Control<a class="headerlink" href="#document-control" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Owner:</strong></li>
+<li><strong>Version:</strong> 1.3.0</li>
+<li><strong>Last Updated:</strong> 2026-02-26</li>
+<li><strong>Status:</strong> Active</li>
+</ul>
+<h2 id="1-overview">1. Overview<a class="headerlink" href="#1-overview" title="Permanent link">&para;</a></h2>
+<p>Nanobot supports 100+ LLM (Large Language Model) models via unified configuration. Choose your provider based on:
+- <strong>Cost</strong> - Qwen, DeepSeek cheaper; Opus more expensive but capable
+- <strong>Latency</strong> - Local faster; cloud slightly slower
+- <strong>Capability</strong> - Opus best for complex reasoning; Haiku fastest
+- <strong>Data residency</strong> - Local Ollama for sensitive data</p>
+<h2 id="2-supported-providers">2. Supported Providers<a class="headerlink" href="#2-supported-providers" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Models</th>
+<th>Setup Difficulty</th>
+<th>Cost</th>
+<th>Latency</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OpenRouter</strong> (Recommended)</td>
+<td>100+ (Claude, GPT, Qwen, etc.)</td>
+<td>⭐ Easy</td>
+<td>$1-5/M</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Anthropic Direct</strong></td>
+<td>Claude Opus, Sonnet, Haiku</td>
+<td>⭐ Easy</td>
+<td>$3-15/M</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>OpenAI Direct</strong></td>
+<td>GPT-4, GPT-4o, GPT-3.5</td>
+<td>⭐ Easy</td>
+<td>$5-30/M</td>
+<td>Fast</td>
+</tr>
+<tr>
+<td><strong>Local (Ollama)</strong></td>
+<td>Llama, Mistral, etc.</td>
+<td>⭐⭐ Moderate</td>
+<td>$0</td>
+<td>Fast</td>
+</tr>
+<tr>
+<td><strong>DeepSeek</strong></td>
+<td>DeepSeek-Chat, Code</td>
+<td>⭐ Easy</td>
+<td>$0.14/M</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Qwen (Alibaba)</strong></td>
+<td>Qwen-Plus, -Turbo</td>
+<td>⭐ Easy</td>
+<td>$0.008/M</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Gemini (Google)</strong></td>
+<td>Gemini Pro, Ultra</td>
+<td>⭐ Easy</td>
+<td>$0.5-10/M</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>Cohere</strong></td>
+<td>Command R, R+</td>
+<td>⭐ Easy</td>
+<td>$0.5-3/M</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Linux/Mac Terminal Tip:</strong> To paste commands — middle-click (fastest), or <code>Ctrl+Shift+C</code> / <code>Ctrl+Shift+V</code>, or right-click → Paste.</p>
+</blockquote>
+<h2 id="3-quick-setup-5-minutes">3. Quick Setup (5 minutes)<a class="headerlink" href="#3-quick-setup-5-minutes" title="Permanent link">&para;</a></h2>
+<h3 id="option-a-openrouter-all-in-one">Option A: OpenRouter (All-in-One)<a class="headerlink" href="#option-a-openrouter-all-in-one" title="Permanent link">&para;</a></h3>
+<p>⏱️ ~5 minutes to complete<br />
+OpenRouter gives you access to 100+ models with one API key. (An API key is like a password that lets nanobot connect to OpenRouter's servers.)</p>
+<h4 id="before-you-start">Before You Start<a class="headerlink" href="#before-you-start" title="Permanent link">&para;</a></h4>
+<ul>
+<li>☐ You have a credit card (free tier gives small free allocation)</li>
+<li>☐ Internet connection working</li>
+<li>☐ Text editor to edit config file</li>
+<li>☐ Terminal/shell access to nanobot</li>
+</ul>
+<p><strong>Step 1: Get API Key</strong>
+⏱️ ~2 minutes</p>
+<ul>
+<li>Visit https://openrouter.ai/keys</li>
+<li>Sign up or log in</li>
+<li>Copy your API key (this is your unique password—keep it secret!)</li>
+</ul>
+<p><strong>Step 2: Configure</strong>
+⏱️ ~1 minute</p>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;providers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;openrouter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;apiKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sk-or-v1-YOUR_KEY_HERE&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;defaults&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anthropic/claude-opus-4-5&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+Save to <code>~/.nanobot/config.json</code> (or set <code>OPENROUTER_API_KEY</code> environment variable—this is a way to store the API key so programs can read it)</p>
+<p><strong>Step 3: Test</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start nanobot interactive mode and ask it a question</span>
+nanobot<span class="w"> </span>agent
+ask<span class="w"> </span>a<span class="w"> </span>question
+</code></pre></div></p>
+<h3 id="option-b-local-ollama">Option B: Local Ollama<a class="headerlink" href="#option-b-local-ollama" title="Permanent link">&para;</a></h3>
+<p>⏱️ ~10 minutes to complete<br />
+Perfect for sensitive data, no API costs. (You run the AI on your own computer instead of using a cloud service.)</p>
+<h4 id="before-you-start_1">Before You Start<a class="headerlink" href="#before-you-start_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>☐ Ollama installed on your local machine</li>
+<li>☐ GPU or CPU with at least 4GB RAM (8GB recommended)</li>
+<li>☐ 10GB+ disk space for models</li>
+<li>☐ Network access from VPS to local machine</li>
+</ul>
+<p><strong>Step 1: Install Ollama</strong>
+⏱️ ~2 minutes</p>
+<ul>
+<li>Download from https://ollama.ai</li>
+<li>Install on your machine</li>
+</ul>
+<p><strong>Step 2: Pull a Model</strong>
+⏱️ ~2 minutes</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># &#39;ollama pull&#39; downloads an AI model to your machine (like downloading a file)</span>
+<span class="c1"># &#39;mistral&#39; is the name of the model</span>
+ollama<span class="w"> </span>pull<span class="w"> </span>mistral
+</code></pre></div>
+✅ Expected: "pulling manifest" then "success"</p>
+<p><strong>Step 3: Configure nanobot</strong>
+⏱️ ~1 minute
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;providers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;ollama&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;baseUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:11434&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;defaults&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mistral&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ollama&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Step 4: Start Ollama</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># ollama serve starts the AI server on your machine</span>
+<span class="c1"># Keep this running in a terminal (it will listen for nanobot&#39;s requests)</span>
+ollama<span class="w"> </span>serve
+</code></pre></div>
+(Keep this running in background)</p>
+<p><strong>Step 5: Test</strong>
+<div class="highlight"><pre><span></span><code>nanobot<span class="w"> </span>agent
+ask<span class="w"> </span>a<span class="w"> </span>question
+</code></pre></div></p>
+<h3 id="option-c-direct-anthropic-claude">Option C: Direct Anthropic (Claude)<a class="headerlink" href="#option-c-direct-anthropic-claude" title="Permanent link">&para;</a></h3>
+<p>⏱️ ~5 minutes to complete<br />
+Best if you're using Claude exclusively and want to avoid OpenRouter as an intermediary. Gives access to Anthropic's prompt caching features (see §6).</p>
+<h4 id="before-you-start_2">Before You Start<a class="headerlink" href="#before-you-start_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>☐ Anthropic account at https://console.anthropic.com</li>
+<li>☐ Credit card (free tier credits available on signup)</li>
+<li>☐ Text editor to edit config file</li>
+</ul>
+<p><strong>Step 1: Get API Key</strong>
+⏱️ ~2 minutes</p>
+<ul>
+<li>Visit https://console.anthropic.com/settings/keys</li>
+<li>Click <strong>Create Key</strong></li>
+<li>Copy the key (shown once—save it securely)</li>
+</ul>
+<p><strong>Step 2: Configure</strong>
+⏱️ ~1 minute</p>
+<p><div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;providers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;anthropic&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;apiKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sk-ant-YOUR_KEY_HERE&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;defaults&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claude-opus-4-5&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anthropic&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+Save to <code>~/.nanobot/config.json</code></p>
+<p><strong>Step 3: Test</strong>
+<div class="highlight"><pre><span></span><code>nanobot<span class="w"> </span>agent
+ask<span class="w"> </span>a<span class="w"> </span>question
+</code></pre></div>
+✅ Expected: Claude responds within a few seconds</p>
+<h2 id="4-multi-provider-setup-cost-optimization">4. Multi-Provider Setup (Cost Optimization)<a class="headerlink" href="#4-multi-provider-setup-cost-optimization" title="Permanent link">&para;</a></h2>
+<p>Use different models for different workflows:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;providers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;openrouter&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;apiKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sk-or-v1-...&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openai/gpt-4-turbo&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;research&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anthropic/claude-opus-4-5&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;bookkeeping&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen/qwen-plus&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;fast-response&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anthropic/claude-haiku&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Then configure channel routing in your governance policy to map channels to agents — see <a href="../Security-and-Governance-Policies/">Security &amp; Governance Policies §5 (Provider Routing by Workflow)</a> for full routing config examples.</p>
+<h2 id="5-token-budgeting-cost-control">5. Token Budgeting &amp; Cost Control<a class="headerlink" href="#5-token-budgeting-cost-control" title="Permanent link">&para;</a></h2>
+<p>Configure per-request and per-agent limits. (Tokens = words, roughly. This controls how long responses can be.)</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;defaults&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;maxInputTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;maxOutputTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4096</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;maxIterations&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;research&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;maxInputTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;maxOutputTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8192</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;maxIterations&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>What each means:</strong>
+- <strong>maxInputTokens</strong> = Maximum words/context to send to AI (8000 ≈ 6,000 words)
+- <strong>maxOutputTokens</strong> = Maximum words in response (4096 ≈ 3,000 words)
+- <strong>temperature</strong> = How "creative" the AI is (0.1 = logical, 1.0 = random)
+- <strong>maxIterations</strong> = How many times AI can self-correct (higher = more thinking, more cost)</p>
+<h2 id="6-prompt-caching-cost-optimization">6. Prompt Caching (Cost Optimization)<a class="headerlink" href="#6-prompt-caching-cost-optimization" title="Permanent link">&para;</a></h2>
+<p>Anthropic Claude supports prompt caching. (Caching = saving frequently-used context so you don't re-send it every time. This saves money!) Enable to reduce costs on repeated queries:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;providers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;anthropic&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;apiKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sk-ant-...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;cacheControl&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This re-uses cached prompts for 5 minutes. Cached tokens are billed at ~10% of normal cost, so total bill savings depend on your cache hit rate (typically 50–80% on repeated prompts).</p>
+<h2 id="7-environment-variable-override">7. Environment Variable Override<a class="headerlink" href="#7-environment-variable-override" title="Permanent link">&para;</a></h2>
+<p><strong>When to use:</strong> Override the config-file model for a single command — useful for one-off tests, debugging a specific model, or CI/CD pipelines where you don't want to edit config files.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Use a specific model for one command only</span>
+<span class="nv">NANOBOT_MODEL</span><span class="o">=</span>openai/gpt-4<span class="w"> </span>nanobot<span class="w"> </span>agent
+
+<span class="c1"># Override provider too</span>
+<span class="nv">NANOBOT_PROVIDER</span><span class="o">=</span>anthropic<span class="w"> </span><span class="nv">NANOBOT_MODEL</span><span class="o">=</span>claude-opus-4-5<span class="w"> </span>nanobot<span class="w"> </span>agent
+</code></pre></div>
+<p>This does <strong>not</strong> change <code>config.json</code> — the override only applies to that command invocation.</p>
+<h2 id="8-web-search-api-brave">8. Web Search API (Brave)<a class="headerlink" href="#8-web-search-api-brave" title="Permanent link">&para;</a></h2>
+<p>The <code>web_search</code> tool requires a Brave Search API key. This is separate from your LLM provider — it gives nanobot the ability to search the live web in addition to reasoning with an LLM.</p>
+<p><strong>Get a key (~2 minutes):</strong>
+1. Visit https://api.search.brave.com/
+2. Sign up → <strong>Free tier</strong> gives 2,000 queries/month at no cost
+3. Copy your API key</p>
+<p><strong>Add to config:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;braveApiKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_BRAVE_API_KEY&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Without this key:</strong> <code>web_search</code> tool will be unavailable. All other tools and LLM providers remain functional.</p>
+<h2 id="9-fallback-degraded-mode">9. Fallback &amp; Degraded Mode<a class="headerlink" href="#9-fallback-degraded-mode" title="Permanent link">&para;</a></h2>
+<p>If primary provider fails, fall back to secondary:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;defaults&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;fallbackChain&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;openrouter&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;anthropic&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;ollama&quot;</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Nanobot tries first provider, falls back to next on error.</p>
+<h2 id="10-multi-model-synergy-advanced-agentic-workflows">10. Multi-Model Synergy &amp; Advanced Agentic Workflows<a class="headerlink" href="#10-multi-model-synergy-advanced-agentic-workflows" title="Permanent link">&para;</a></h2>
+<p>Beyond simple failover, you can design workflows where <strong>multiple specialized LLMs collaborate</strong> to solve complex problems more effectively and cheaply than a single expensive model.</p>
+<h3 id="collaborative-roles-synergy">Collaborative Roles &amp; Synergy<a class="headerlink" href="#collaborative-roles-synergy" title="Permanent link">&para;</a></h3>
+<p>When LLMs work together within the Nanobot AOS, they form a <strong>Multi-Agent System</strong>. By assigning specialized roles, each model handles what it does best:</p>
+<ul>
+<li><strong>The Architect (High Intelligence):</strong> Premium model like <strong>Claude 3.5 Sonnet</strong> or <strong>GPT-4o</strong>. Handles high-level planning, complex reasoning, and final synthesis.</li>
+<li><strong>The Worker (Speed/Efficiency):</strong> Faster, cheaper model like <strong>Claude 3 Haiku</strong> or <strong>DeepSeek</strong>. Handles repetitive tasks, data extraction, initial drafting, formatting.</li>
+<li><strong>The Critic/Judge (Quality Control):</strong> Independent model (often different provider to avoid bias) that reviews outputs for errors or hallucinations.</li>
+</ul>
+<h3 id="synergy-schemes-in-practice">Synergy Schemes in Practice<a class="headerlink" href="#synergy-schemes-in-practice" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Scheme</th>
+<th>Pattern</th>
+<th>Benefit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Draft-and-Polish</strong></td>
+<td>Worker (Draft) → Architect (Review)</td>
+<td>High-quality output at a fraction of the Architect's full cost</td>
+</tr>
+<tr>
+<td><strong>Search-and-Filter</strong></td>
+<td>Worker (Scout) → Architect (Analyst)</td>
+<td>Worker narrows 50 web results to 5 most relevant, saving Architect's expensive context window</td>
+</tr>
+<tr>
+<td><strong>Verification Loop</strong></td>
+<td>Model A (Generator) ↔ Model B (Auditor)</td>
+<td>Model B approves shell commands or code before execution for security</td>
+</tr>
+<tr>
+<td><strong>Delegation Chain</strong></td>
+<td>Architect (Plan) → Worker (Execute) → Architect (Verify)</td>
+<td>Architect handles intelligence; Worker handles repetitive work; loop closes on verification</td>
+</tr>
+</tbody>
+</table>
+<h3 id="implementation-via-nanobot-skills">Implementation via Nanobot Skills<a class="headerlink" href="#implementation-via-nanobot-skills" title="Permanent link">&para;</a></h3>
+<p>A Nanobot skill implements multi-model collaboration by calling the LLM multiple times within its <code>implementation.py</code>. Because Nanobot is <strong>channel-agnostic</strong>, this orchestration happens behind the scenes—users see only the final, verified result in Discord/Slack/Telegram/etc.</p>
+<p><strong>Example: "Secure Coder" Skill</strong></p>
+<ol>
+<li><strong>Step 1:</strong> Skill sends request to <strong>GPT-4o</strong> → writes Python script (cost: ~$0.01)</li>
+<li><strong>Step 2:</strong> Skill sends output to local <strong>Llama 3 (via Ollama)</strong> with security review prompt (cost: $0.00)</li>
+<li><strong>Step 3:</strong> If no issues found, code saved to workspace. If issues found, loop back to GPT-4o with error report for rewrite.</li>
+</ol>
+<p><strong>Cost Example:</strong>
+- Using GPT-4 alone for all steps: ~$0.15-0.30
+- Using GPT-4o for planning + Haiku for drafting + local Llama for verification: ~$0.03-0.05 (80% savings)</p>
+<h3 id="setup-via-skill-configuration">Setup via Skill Configuration<a class="headerlink" href="#setup-via-skill-configuration" title="Permanent link">&para;</a></h3>
+<p>Multi-model workflows are implemented in a skill's <code>SKILL.md</code> instructions and <code>implementation.py</code>. The <code>SKILL.md</code> describes the workflow in natural language; the implementation script handles the LLM calls.</p>
+<p><strong>SKILL.md excerpt (research-synthesis skill):</strong>
+<div class="highlight"><pre><span></span><code>---
+name: research-synthesis
+description: &quot;Multi-model research workflow: fast model scouts, premium model synthesizes&quot;
+tools-required:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>web_search
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>summarize
+models-required:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>scout: qwen (cheap, fast — for initial search and filtering)
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>analyst: claude-opus (premium — for deep synthesis)
+<span class="gu">  - critic: ollama-mistral (local/free — for quality review)</span>
+<span class="gu">---</span>
+
+<span class="gu">## Workflow</span>
+
+<span class="k">1.</span> Use the <span class="gs">**scout model**</span> (Qwen via OpenRouter) to run web_search on the topic and summarize
+   each result in 1-2 sentences. Return the top 5 most relevant summaries.
+<span class="k">2.</span> Pass those 5 summaries to the <span class="gs">**analyst model**</span> (Claude Opus). Ask it to synthesize a
+   detailed analysis with citations.
+<span class="k">3.</span> Pass the analyst&#39;s output to the <span class="gs">**critic model**</span> (Ollama Mistral) with the prompt:
+   &quot;Check this analysis for factual errors, missing citations, and unclear claims.&quot;
+<span class="k">4.</span> If the critic flags issues, loop back to step 2 with the critique appended.
+<span class="k">5.</span> Return the final verified synthesis to the user.
+</code></pre></div></p>
+<h3 id="global-routing-with-tiered-configuration">Global Routing with Tiered Configuration<a class="headerlink" href="#global-routing-with-tiered-configuration" title="Permanent link">&para;</a></h3>
+<p>You can also define multi-model synergy at the <strong>organization level</strong> via <code>config.json</code>. Different channels or teams automatically route to different model combinations:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;llm_routing&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;rules&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#admin-*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;primary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anthropic/claude-opus&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;secondary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter/qwen&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;local/ollama&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#general&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;primary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter/qwen&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;secondary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;local/ollama&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;channel&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;#research-*&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;primary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anthropic/claude-opus&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;secondary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;anthropic/claude-haiku&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;verification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;openrouter/deepseek&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Result:</strong> Different "brains" automatically handle different organizational responsibilities, optimizing both cost and quality.</p>
+<h2 id="11-testing-troubleshooting">11. Testing &amp; Troubleshooting<a class="headerlink" href="#11-testing-troubleshooting" title="Permanent link">&para;</a></h2>
+<p><strong>Test provider connection:</strong>
+<div class="highlight"><pre><span></span><code>nanobot<span class="w"> </span>doctor
+</code></pre></div></p>
+<p>Expected output:
+<div class="highlight"><pre><span></span><code>Provider: openrouter ✓ Connected
+Model: claude-opus-4-5 ✓ Available
+Tokens available: Yes ✓
+</code></pre></div></p>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>401 Unauthorized</code></td>
+<td>Verify API key format and validity</td>
+</tr>
+<tr>
+<td><code>Model not found</code></td>
+<td>Confirm model name is correct for provider</td>
+</tr>
+<tr>
+<td><code>Rate limited</code></td>
+<td>Wait or upgrade API plan</td>
+</tr>
+<tr>
+<td><code>Timeout</code></td>
+<td>Check network connection or try different model</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12-common-mistakes-solutions">12. Common Mistakes &amp; Solutions<a class="headerlink" href="#12-common-mistakes-solutions" title="Permanent link">&para;</a></h2>
+<h3 id="mistake-1-api-key-has-extra-spaces">❌ Mistake 1: API Key Has Extra Spaces<a class="headerlink" href="#mistake-1-api-key-has-extra-spaces" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>401 Unauthorized</code> or <code>Invalid API key</code><br />
+<strong>Why:</strong> Copy/paste sometimes includes leading/trailing whitespace<br />
+<strong>Fix:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Double-check the key has no spaces</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;YOUR_API_KEY&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-c<span class="w">  </span><span class="c1"># Count characters including any spaces</span>
+<span class="c1"># Paste fresh key, remove any spaces, then test</span>
+nanobot<span class="w"> </span>doctor
+</code></pre></div></p>
+<h3 id="mistake-2-wrong-model-name-for-provider">❌ Mistake 2: Wrong Model Name for Provider<a class="headerlink" href="#mistake-2-wrong-model-name-for-provider" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>Model not found</code> or <code>Unknown model</code><br />
+<strong>Why:</strong> Each provider uses different model naming (Claude 3 vs claude-3-opus vs claude-opus-4-5)<br />
+<strong>Fix:</strong>
+1. Check provider documentation for exact model names
+2. For OpenRouter, browse https://openrouter.ai/models
+3. For Ollama, run <code>ollama list</code> to see available models
+4. Update config with correct name</p>
+<h3 id="mistake-3-temperature-token-settings-too-high">❌ Mistake 3: Temperature &amp; Token Settings Too High<a class="headerlink" href="#mistake-3-temperature-token-settings-too-high" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Very expensive bills, slow responses, incoherent output<br />
+<strong>Why:</strong> High temperature (&gt;0.8) makes AI more random; large token limits are expensive<br />
+<strong>Fix:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;agents&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;defaults&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;temperature&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w">        </span><span class="c1">// Use 0.1-0.3 for factual tasks</span>
+<span class="w">      </span><span class="nt">&quot;maxOutputTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="w">    </span><span class="c1">// Keep reasonable (500-2000)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="mistake-4-forgetting-to-start-ollama-local">❌ Mistake 4: Forgetting to Start Ollama (Local)<a class="headerlink" href="#mistake-4-forgetting-to-start-ollama-local" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Nanobot runs but says "Ollama unreachable"<br />
+<strong>Why:</strong> Ollama must be running as a background service<br />
+<strong>Fix:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Start Ollama in a new terminal</span>
+ollama<span class="w"> </span>serve
+
+<span class="c1"># In another terminal, verify it&#39;s running</span>
+curl<span class="w"> </span>http://localhost:11434/api/tags
+<span class="c1"># Should show your models</span>
+</code></pre></div></p>
+<h3 id="mistake-5-setting-up-fallback-chain-backwards">❌ Mistake 5: Setting Up Fallback Chain Backwards<a class="headerlink" href="#mistake-5-setting-up-fallback-chain-backwards" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Always uses expensive model even though cheap one is available<br />
+<strong>Why:</strong> Fallback order matters; nanobot tries providers in config order<br />
+<strong>Fix:</strong> Put cheap models first:
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;fallbackProviders&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;openrouter:qwen&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1">// Try cheap first</span>
+<span class="w">    </span><span class="s2">&quot;openrouter:claude-opus&quot;</span><span class="w"> </span><span class="c1">// Fall back to expensive</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="13-aos-integration-governance">13. AOS Integration &amp; Governance<a class="headerlink" href="#13-aos-integration-governance" title="Permanent link">&para;</a></h2>
+<p>LLM provider selections plug directly into the AOS 3-plane governance model. Once providers are configured here, you control <em>which</em> provider runs <em>where</em> through your governance policy — not by editing this file.</p>
+<p><strong>Typical channel-to-model mapping:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Channel Pattern</th>
+<th>Recommended Model</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>#bk-*</code></td>
+<td>Qwen or DeepSeek (Tier C)</td>
+<td>Routine bookkeeping; low risk; cheapest</td>
+</tr>
+<tr>
+<td><code>#prd-*-analytics</code></td>
+<td>Claude Haiku or GPT-4o-mini (Tier B)</td>
+<td>Fast, moderate cost</td>
+</tr>
+<tr>
+<td><code>#prd-*-marketing</code></td>
+<td>Claude Sonnet (Tier B-A)</td>
+<td>Quality writing; moderate cost</td>
+</tr>
+<tr>
+<td><code>#res-*</code></td>
+<td>Claude Opus or GPT-4o (Tier A)</td>
+<td>Complex synthesis; accuracy matters</td>
+</tr>
+<tr>
+<td><code>#admin-*</code></td>
+<td>Claude Opus + local verification</td>
+<td>High responsibility; use Verification Loop (§10)</td>
+</tr>
+<tr>
+<td><code>#general</code></td>
+<td>Qwen or local Ollama (Tier C/Free)</td>
+<td>High volume; keep costs low</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Governance setup steps:</strong>
+1. Configure all providers you'll use in <code>~/.nanobot/config.json</code> (this guide)
+2. Define channel routing rules in your governance policy — see <a href="../Security-and-Governance-Policies/">Security &amp; Governance Policies §5</a>
+3. Set per-team budget caps — see <a href="../Cost-Calculator-and-Optimization/">Cost Calculator &amp; Optimization</a>
+4. Test with <code>nanobot doctor</code> to confirm all providers are reachable</p>
+<p>Provider routing is <strong>policy-plane configuration</strong> — operations staff can adjust it without touching this guide or your provider credentials.</p>
+<hr />
+<h2 id="14-related-documents">14. Related Documents<a class="headerlink" href="#14-related-documents" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../Cost-Calculator-and-Optimization/">Cost Calculator &amp; Optimization</a> — Per-provider cost matrix and monthly spend estimation</li>
+<li><a href="../Security-and-Governance-Policies/">Security &amp; Governance Policies</a> — LLM provider routing, approval workflows, cost allocation</li>
+<li><a href="../AOS-Startup-Advanced-Build/">AOS Startup: Advanced Build</a> — Ollama setup and configuration</li>
+<li><a href="../AOS-Startup-Simple-Build/">AOS Startup: Simple Build</a> — Quick cloud-based setup</li>
+<li><a href="../Master-Index/">Master Index</a> — Complete system documentation</li>
+</ul>
+<hr />
+<h2 id="15-revision-history">15. Revision History<a class="headerlink" href="#15-revision-history" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Version</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-02-26</td>
+<td>1.3.0</td>
+<td>Review pass: completed Option C format, expanded §7 (env override) and §8 (Brave API), expanded §13 (AOS governance table), fixed §10 SKILL.md schema, clarified cost/M notation, converted copy/paste tip to inline callout</td>
+</tr>
+<tr>
+<td>2026-02-26</td>
+<td>1.2.0</td>
+<td>Added "Multi-Model Synergy &amp; Advanced Agentic Workflows" section covering collaborative LLM patterns, skill-based coordination, and global routing</td>
+</tr>
+<tr>
+<td>2026-02-26</td>
+<td>1.1.0</td>
+<td>Updated cross-references to consolidated docs; fixed section numbering; added related documents section</td>
+</tr>
+<tr>
+<td>2026-02-25</td>
+<td>1.0.0</td>
+<td>Initial guide covering 8 major providers, multi-provider setup, cost controls, and caching</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Nanobot Contributors
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/EgoNoBueno/Nanobot-Agentic-Operating-System" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/HKUDS/nanobot" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "content.tabs.link", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

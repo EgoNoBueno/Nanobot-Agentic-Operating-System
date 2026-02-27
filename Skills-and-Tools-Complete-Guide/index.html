@@ -1,0 +1,4835 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Community documentation for deploying and operating the Nanobot AI agent framework">
+      
+      
+      
+        <link rel="canonical" href="https://egonobue.no.github.io/Nanobot-Agentic-Operating-System/Skills-and-Tools-Complete-Guide/">
+      
+      
+        <link rel="prev" href="../LLM-Provider-Setup-Guide/">
+      
+      
+        <link rel="next" href="../Workflow-Examples-and-Recipes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
+    
+    
+      
+        <title>Skills & Tools - Nanobot Agentic Operating System</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nanobot-skills-tools-complete-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Nanobot Agentic Operating System" class="md-header__button md-logo" aria-label="Nanobot Agentic Operating System" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Nanobot Agentic Operating System
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Skills & Tools
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/EgoNoBueno/Nanobot-Agentic-Operating-System" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EgoNoBueno/Nanobot-Agentic-Operating-System
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Nanobot Agentic Operating System" class="md-nav__button md-logo" aria-label="Nanobot Agentic Operating System" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Nanobot Agentic Operating System
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/EgoNoBueno/Nanobot-Agentic-Operating-System" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    EgoNoBueno/Nanobot-Agentic-Operating-System
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Getting-Started-With-Nanobot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Master-Index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AOS-Startup-Simple-Build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simple Build (Local + Cloud LLM)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AOS-Startup-Advanced-Build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Advanced Build (VPS + Ollama)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../LLM-Provider-Setup-Guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LLM Provider Setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills & Tools
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills & Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#document-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Navigation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-tools-built-in-skills-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Tools &amp; Built-In Skills Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Tools &amp; Built-In Skills Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-tools-vs-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Are Tools vs. Skills?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-matrix-all-14-built-in-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Matrix (All 14 Built-In Tools)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1a-tool-details-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1A: Tool Details &amp; Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1A: Tool Details &amp; Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web_search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        web_search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web_fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        web_fetch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_read-file_write-file_edit-file_list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_read / file_write / file_edit / file_list
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell_exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shell_exec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message_send" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        message_send
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp_call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mcp_call
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron_schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cron_schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subagent_spawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        subagent_spawn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github_search-github_pr_create-github_action_trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        github_search, github_pr_create, github_action_trigger
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1b-the-9-pre-built-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1B: The 9 Pre-Built Skills
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1B: The 9 Pre-Built Skills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-obsidian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. obsidian
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-summarize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. summarize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. cron
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. github
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-weather" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. weather
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-clawhub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. clawhub
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-skill-creator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. skill-creator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-tmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. tmux
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-essential-5-skill-quickstart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Essential 5-Skill Quickstart
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Essential 5-Skill Quickstart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#essential-skill-1-obsidian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Essential Skill 1: Obsidian
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Essential Skill 1: Obsidian">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obsidian-local-rest-api-setup-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obsidian Local REST API Setup (Required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-obsidian-mistakes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Obsidian Mistakes &amp; Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-rest-api-plugin-not-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: REST API Plugin Not Installed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-wrong-vault-path-in-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Wrong Vault Path in Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-using-wrong-port-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Using Wrong Port Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-rest-api-token-missing-or-revoked" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 4: REST API Token Missing or Revoked
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-obsidian-lockedfile-sync-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 5: Obsidian Locked/File Sync Conflict
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#essential-skill-2-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Essential Skill 2: Memory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Essential Skill 2: Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-memory-mistakes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Memory Mistakes &amp; Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-memory-consolidation-not-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: Memory Consolidation Not Running
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-context-window-always-hits-max-too-fast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Context Window Always Hits Max Too Fast
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-memory-not-carrying-over-between-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Memory Not Carrying Over Between Sessions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#essential-skill-3-cron-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Essential Skill 3: Cron (Scheduling)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Essential Skill 3: Cron (Scheduling)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cron-syntax-cheat-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cron Syntax Cheat Sheet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-cron-mistakes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Cron Mistakes &amp; Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-cron-job-uses-wrong-timezone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: Cron Job Uses Wrong Timezone
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-scheduled-task-fails-silently" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Scheduled Task Fails Silently
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-too-many-jobs-scheduled-system-overload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Too Many Jobs Scheduled, System Overload
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#essential-skill-4-summarize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Essential Skill 4: Summarize
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Essential Skill 4: Summarize">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-summarize-mistakes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Summarize Mistakes &amp; Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-summary-is-too-short-missing-key-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: Summary Is Too Short, Missing Key Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-summary-is-incoherent-or-jargon-heavy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Summary Is Incoherent or Jargon-Heavy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-losing-source-links-and-citations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Losing Source Links and Citations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#essential-skill-5-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Essential Skill 5: GitHub
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Essential Skill 5: GitHub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-github-mistakes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common GitHub Mistakes &amp; Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-github-token-has-wrong-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: GitHub Token Has Wrong Permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-workflows-not-triggering-or-wrong-workflow-selected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Workflows Not Triggering, or Wrong Workflow Selected
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-token-exposed-or-accidentally-committed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Token Exposed or Accidentally Committed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-daily-operations-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Daily Operations Example
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Daily Operations Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#daily-journal-using-cron-obsidian-summarize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Daily Journal Using Cron + Obsidian + Summarize
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-custom-skill-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Custom Skill Development
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Custom Skill Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-skills-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding Skills Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skill-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill File Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skillmd-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SKILL.md Format
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SKILL.md Format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimal-prompt-only-skill-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal Prompt-Only Skill Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-based-skill-python-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool-Based Skill (Python) Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operator-injected-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operator-Injected Skills
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operator-Injected Skills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-from-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install from Repository
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-skill-via-chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a New Skill via Chat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skill-lifecycle-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Lifecycle Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skill Lifecycle Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deactivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deactivation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security &amp; Permissions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security &amp; Permissions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#permission-tiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permission Tiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaring-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaring Permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-cost-performance-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Cost &amp; Performance Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-troubleshooting-common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Troubleshooting &amp; Common Mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Troubleshooting &amp; Common Mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-allowlisting-aos-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Allowlisting (AOS Security)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-tool-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Tool Mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Tool Mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-tool-allowlist-misspelled-tool-blocked-for-all-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: Tool Allowlist Misspelled - Tool Blocked for All Users
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-brave-api-key-not-set-web_search-silently-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Brave API Key Not Set, web_search Silently Fails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-shell_exec-allowlist-is-empty-no-one-can-run-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: shell_exec Allowlist Is Empty - No One Can Run Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-mcp-server-connections-fail-auth-headers-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 4: MCP Server Connections Fail - Auth Headers Missing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-cron-jobs-never-fire-wrong-timezone-or-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 5: Cron Jobs Never Fire - Wrong Timezone or Syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-6-subagent-spawning-consumes-too-many-tokens-cost-explosion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 6: Subagent Spawning Consumes Too Many Tokens - Cost Explosion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-skill-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Skill Mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Skill Mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-skillmd-metadata-syntax-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: SKILL.md Metadata Syntax Wrong
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-python-skill-missing-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Python Skill Missing Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-skill-references-undefined-tool-or-permission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Skill References Undefined Tool or Permission
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-skill-works-locally-but-fails-in-discordslack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 4: Skill Works Locally, But Fails in Discord/Slack
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-hot-reload-doesnt-work-changes-not-applied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 5: Hot Reload Doesn't Work - Changes Not Applied
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-6-prompt-bloat-high-token-usage-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 6: Prompt Bloat = High Token Usage &amp; Cost
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting Reference Table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skill-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Naming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-World Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Real-World Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-obsidian-note-tagging-prompt-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1: Obsidian Note Tagging (Prompt-Only)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-weekly-digest-tool-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2: Weekly Digest (Tool-Based)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revision-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revision History
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Workflow-Examples-and-Recipes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Examples & Recipes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Cost-Calculator-and-Optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Calculator & Optimization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Governance & Security
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Governance & Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Security-and-Governance-Policies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security & Governance Policies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Emergency-Recovery-and-Troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emergency Recovery & Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#document-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Document Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-navigation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Navigation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1-tools-built-in-skills-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1: Tools &amp; Built-In Skills Overview
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1: Tools &amp; Built-In Skills Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-are-tools-vs-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What Are Tools vs. Skills?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-matrix-all-14-built-in-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Matrix (All 14 Built-In Tools)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1a-tool-details-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1A: Tool Details &amp; Configuration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1A: Tool Details &amp; Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web_search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        web_search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web_fetch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        web_fetch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file_read-file_write-file_edit-file_list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        file_read / file_write / file_edit / file_list
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shell_exec" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        shell_exec
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message_send" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        message_send
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp_call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        mcp_call
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cron_schedule" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cron_schedule
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subagent_spawn" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        subagent_spawn
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github_search-github_pr_create-github_action_trigger" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        github_search, github_pr_create, github_action_trigger
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-1b-the-9-pre-built-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 1B: The 9 Pre-Built Skills
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 1B: The 9 Pre-Built Skills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-obsidian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. obsidian
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. memory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-summarize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. summarize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cron" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. cron
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. github
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-weather" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. weather
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-clawhub" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. clawhub
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-skill-creator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. skill-creator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-tmux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. tmux
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-2-essential-5-skill-quickstart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 2: Essential 5-Skill Quickstart
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 2: Essential 5-Skill Quickstart">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installation-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation Checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#essential-skill-1-obsidian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Essential Skill 1: Obsidian
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Essential Skill 1: Obsidian">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#obsidian-local-rest-api-setup-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Obsidian Local REST API Setup (Required)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-obsidian-mistakes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Obsidian Mistakes &amp; Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-rest-api-plugin-not-installed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: REST API Plugin Not Installed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-wrong-vault-path-in-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Wrong Vault Path in Config
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-using-wrong-port-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Using Wrong Port Number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-rest-api-token-missing-or-revoked" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 4: REST API Token Missing or Revoked
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-obsidian-lockedfile-sync-conflict" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 5: Obsidian Locked/File Sync Conflict
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#essential-skill-2-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Essential Skill 2: Memory
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Essential Skill 2: Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-memory-mistakes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Memory Mistakes &amp; Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-memory-consolidation-not-running" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: Memory Consolidation Not Running
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-context-window-always-hits-max-too-fast" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Context Window Always Hits Max Too Fast
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-memory-not-carrying-over-between-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Memory Not Carrying Over Between Sessions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#essential-skill-3-cron-scheduling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Essential Skill 3: Cron (Scheduling)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Essential Skill 3: Cron (Scheduling)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cron-syntax-cheat-sheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cron Syntax Cheat Sheet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-cron-mistakes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Cron Mistakes &amp; Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-cron-job-uses-wrong-timezone" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: Cron Job Uses Wrong Timezone
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-scheduled-task-fails-silently" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Scheduled Task Fails Silently
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-too-many-jobs-scheduled-system-overload" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Too Many Jobs Scheduled, System Overload
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#essential-skill-4-summarize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Essential Skill 4: Summarize
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Essential Skill 4: Summarize">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-summarize-mistakes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Summarize Mistakes &amp; Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-summary-is-too-short-missing-key-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: Summary Is Too Short, Missing Key Details
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-summary-is-incoherent-or-jargon-heavy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Summary Is Incoherent or Jargon-Heavy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-losing-source-links-and-citations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Losing Source Links and Citations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#essential-skill-5-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Essential Skill 5: GitHub
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Essential Skill 5: GitHub">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-github-mistakes-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common GitHub Mistakes &amp; Solutions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-github-token-has-wrong-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: GitHub Token Has Wrong Permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-workflows-not-triggering-or-wrong-workflow-selected" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Workflows Not Triggering, or Wrong Workflow Selected
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-token-exposed-or-accidentally-committed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Token Exposed or Accidentally Committed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-3-daily-operations-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 3: Daily Operations Example
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 3: Daily Operations Example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#daily-journal-using-cron-obsidian-summarize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Daily Journal Using Cron + Obsidian + Summarize
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-4-custom-skill-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 4: Custom Skill Development
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 4: Custom Skill Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-skills-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding Skills Architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#skill-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skill-file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill File Structure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skillmd-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SKILL.md Format
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SKILL.md Format">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimal-prompt-only-skill-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimal Prompt-Only Skill Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tool-based-skill-python-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool-Based Skill (Python) Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operator-injected-skills" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Operator-Injected Skills
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operator-Injected Skills">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-from-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install from Repository
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-new-skill-via-chat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a New Skill via Chat
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skill-lifecycle-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Lifecycle Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skill Lifecycle Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#activation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Monitoring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Updates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deactivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deactivation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Security &amp; Permissions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Security &amp; Permissions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#permission-tiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permission Tiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaring-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaring Permissions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tool-cost-performance-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Cost &amp; Performance Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#part-5-troubleshooting-common-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Part 5: Troubleshooting &amp; Common Mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Part 5: Troubleshooting &amp; Common Mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tool-allowlisting-aos-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tool Allowlisting (AOS Security)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-tool-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Tool Mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Tool Mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-tool-allowlist-misspelled-tool-blocked-for-all-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: Tool Allowlist Misspelled - Tool Blocked for All Users
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-brave-api-key-not-set-web_search-silently-fails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Brave API Key Not Set, web_search Silently Fails
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-shell_exec-allowlist-is-empty-no-one-can-run-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: shell_exec Allowlist Is Empty - No One Can Run Commands
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-mcp-server-connections-fail-auth-headers-missing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 4: MCP Server Connections Fail - Auth Headers Missing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-cron-jobs-never-fire-wrong-timezone-or-syntax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 5: Cron Jobs Never Fire - Wrong Timezone or Syntax
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-6-subagent-spawning-consumes-too-many-tokens-cost-explosion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 6: Subagent Spawning Consumes Too Many Tokens - Cost Explosion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-skill-mistakes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common Skill Mistakes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Skill Mistakes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mistake-1-skillmd-metadata-syntax-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 1: SKILL.md Metadata Syntax Wrong
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-2-python-skill-missing-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 2: Python Skill Missing Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-3-skill-references-undefined-tool-or-permission" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 3: Skill References Undefined Tool or Permission
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-4-skill-works-locally-but-fails-in-discordslack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 4: Skill Works Locally, But Fails in Discord/Slack
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-5-hot-reload-doesnt-work-changes-not-applied" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 5: Hot Reload Doesn't Work - Changes Not Applied
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mistake-6-prompt-bloat-high-token-usage-cost" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Mistake 6: Prompt Bloat = High Token Usage &amp; Cost
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-reference-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting Reference Table
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practices
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Best Practices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skill-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Skill Naming
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Documentation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Real-World Examples
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Real-World Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-obsidian-note-tagging-prompt-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 1: Obsidian Note Tagging (Prompt-Only)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-weekly-digest-tool-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example 2: Weekly Digest (Tool-Based)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#revision-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Revision History
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="nanobot-skills-tools-complete-guide">Nanobot Skills &amp; Tools Complete Guide<a class="headerlink" href="#nanobot-skills-tools-complete-guide" title="Permanent link">&para;</a></h1>
+<p><strong>Complete, progressive reference</strong> for all 14 built-in tools, 9 pre-built skills, essential 5-skill quickstart, and custom skill development.</p>
+<h2 id="document-control">Document Control<a class="headerlink" href="#document-control" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Owner:</strong></li>
+<li><strong>Version:</strong> 2.1.0</li>
+<li><strong>Last Updated:</strong> 2026-02-26</li>
+<li><strong>Status:</strong> Active</li>
+<li><strong>Scope:</strong> Tools, pre-built skills, essential skills, custom development, troubleshooting</li>
+</ul>
+<hr />
+<h2 id="quick-navigation">Quick Navigation<a class="headerlink" href="#quick-navigation" title="Permanent link">&para;</a></h2>
+<p><strong>New to nanobot?</strong> Start with <a href="#part-2-essential-5-skill-quickstart">Essential 5-Skill Quickstart</a> → then explore <a href="#part-1b-the-9-pre-built-skills">Pre-Built Skills</a></p>
+<p><strong>Exploring tools?</strong> See <a href="#part-1a-tool-details--configuration">Tool Details &amp; Configuration</a> or the <a href="#tool-matrix-all-14-built-in-tools">Tool Matrix</a></p>
+<p><strong>Building custom skills?</strong> Go to <a href="#part-4-custom-skill-development">Custom Skill Development</a> → then <a href="#best-practices">Best Practices</a></p>
+<p><strong>Daily automation examples?</strong> See <a href="#part-3-daily-operations-example">Part 3: Daily Operations Example</a></p>
+<p><strong>Troubleshooting?</strong> Jump to <a href="#part-5-troubleshooting--common-mistakes">Troubleshooting &amp; Common Mistakes</a></p>
+<hr />
+<h2 id="part-1-tools-built-in-skills-overview">Part 1: Tools &amp; Built-In Skills Overview<a class="headerlink" href="#part-1-tools-built-in-skills-overview" title="Permanent link">&para;</a></h2>
+<h3 id="what-are-tools-vs-skills">What Are Tools vs. Skills?<a class="headerlink" href="#what-are-tools-vs-skills" title="Permanent link">&para;</a></h3>
+<p><strong>Tools</strong> = Single executable actions (web search, write file, run command, etc.)<br />
+<strong>Skills</strong> = Pre-built, opinionated bundles of tools configured for specific workflows (obsidian integration, memory management, cron scheduling, etc.)</p>
+<h3 id="tool-matrix-all-14-built-in-tools">Tool Matrix (All 14 Built-In Tools)<a class="headerlink" href="#tool-matrix-all-14-built-in-tools" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Risk</th>
+<th>Cost</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>web_search</strong></td>
+<td>Real-time web search (Brave API)</td>
+<td>Low</td>
+<td>~$0.01</td>
+<td>Requires Brave API key</td>
+</tr>
+<tr>
+<td><strong>web_fetch</strong></td>
+<td>Retrieve &amp; parse full web pages</td>
+<td>Low</td>
+<td>Free</td>
+<td>Rate-limited</td>
+</tr>
+<tr>
+<td><strong>file_read</strong></td>
+<td>Read files (workspace-scoped)</td>
+<td>Low</td>
+<td>Free</td>
+<td>Sandbox-enforced</td>
+</tr>
+<tr>
+<td><strong>file_write</strong></td>
+<td>Create/overwrite files</td>
+<td>Medium</td>
+<td>Free</td>
+<td>Audit-logged</td>
+</tr>
+<tr>
+<td><strong>file_edit</strong></td>
+<td>Edit specific lines in files</td>
+<td>Medium</td>
+<td>Free</td>
+<td>Line-based; audit-logged</td>
+</tr>
+<tr>
+<td><strong>file_list</strong></td>
+<td>List directory contents</td>
+<td>Low</td>
+<td>Free</td>
+<td>Workspace-visible only</td>
+</tr>
+<tr>
+<td><strong>shell_exec</strong></td>
+<td>Execute shell commands</td>
+<td>High</td>
+<td>Free</td>
+<td>Operator-restricted; logged</td>
+</tr>
+<tr>
+<td><strong>message_send</strong></td>
+<td>Send alerts/notifications</td>
+<td>Low</td>
+<td>Free</td>
+<td>Cross-channel possible</td>
+</tr>
+<tr>
+<td><strong>mcp_call</strong></td>
+<td>Call MCP server tools</td>
+<td>High</td>
+<td>Varies</td>
+<td>Custom auth supported</td>
+</tr>
+<tr>
+<td><strong>cron_schedule</strong></td>
+<td>Schedule recurring tasks</td>
+<td>Medium</td>
+<td>Free</td>
+<td>Cron syntax</td>
+</tr>
+<tr>
+<td><strong>subagent_spawn</strong></td>
+<td>Launch parallel agents</td>
+<td>High</td>
+<td>Varies</td>
+<td>Own context/memory</td>
+</tr>
+<tr>
+<td><strong>github_search</strong></td>
+<td>Search GitHub repos</td>
+<td>Low</td>
+<td>Free</td>
+<td>Public access</td>
+</tr>
+<tr>
+<td><strong>github_pr_create</strong></td>
+<td>Create pull requests</td>
+<td>High</td>
+<td>Free</td>
+<td>Requires token</td>
+</tr>
+<tr>
+<td><strong>github_action_trigger</strong></td>
+<td>Trigger GitHub workflows</td>
+<td>High</td>
+<td>Free</td>
+<td>Requires permissions</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="part-1a-tool-details-configuration">Part 1A: Tool Details &amp; Configuration<a class="headerlink" href="#part-1a-tool-details-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="web_search">web_search<a class="headerlink" href="#web_search" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Real-time search via Brave Search API<br />
+<strong>Required API Key:</strong> Yes (Brave)<br />
+<strong>Cost:</strong> ~$0.01-0.05 per search<br />
+<strong>Config:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;braveApiKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_BRAVE_KEY&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<strong>Usage:</strong> <code>nanobot: "Find 3 articles about AI safety from this week"</code></p>
+<h3 id="web_fetch">web_fetch<a class="headerlink" href="#web_fetch" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Download and parse web pages full-text<br />
+<strong>Cost:</strong> None<br />
+<strong>Usage:</strong> <code>nanobot: "Summarize this page: https://example.com/article"</code></p>
+<h3 id="file_read-file_write-file_edit-file_list">file_read / file_write / file_edit / file_list<a class="headerlink" href="#file_read-file_write-file_edit-file_list" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Access workspace files<br />
+<strong>Workspace Scope:</strong> All paths relative to <code>~/.nanobot/workspace/</code><br />
+<strong>Security:</strong> Cannot escape workspace root<br />
+<strong>Usage Examples:</strong>
+<div class="highlight"><pre><span></span><code>&quot;Read the project README&quot;
+&quot;Create a deployment checklist in deploy-checklist.md&quot;
+&quot;Update line 10 in config.json to set debug=true&quot;
+&quot;List all Python files in src/&quot;
+</code></pre></div></p>
+<h3 id="shell_exec">shell_exec<a class="headerlink" href="#shell_exec" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Execute OS commands<br />
+<strong>Risk Tier:</strong> High<br />
+<strong>Config:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;shell&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;allowFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;USER_ID_1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;USER_ID_2&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;blocklist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;rm -rf&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sudo dd&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="message_send">message_send<a class="headerlink" href="#message_send" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Send cross-channel alerts, escalations, notifications<br />
+<strong>Usage Examples:</strong>
+<div class="highlight"><pre><span></span><code>&quot;Alert team in #incidents that model latency &gt; 5s&quot;
+&quot;Send daily summary to #ops-digest&quot;
+&quot;Notify owner in #alerts about high spend&quot;
+</code></pre></div></p>
+<h3 id="mcp_call">mcp_call<a class="headerlink" href="#mcp_call" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Call externally hosted MCP (Model Context Protocol) tools<br />
+<strong>Examples of MCP Tools:</strong>
+- Filesystem operations on remote systems
+- Database queries
+- API calls to internal services
+- Custom business logic tools
+<strong>Config:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;mydb&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/path/to/db_mcp_server.py&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;customHeaders&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bearer YOUR_TOKEN&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="cron_schedule">cron_schedule<a class="headerlink" href="#cron_schedule" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Schedule tasks to run on recurring schedule<br />
+<strong>Syntax:</strong> Standard cron (minute hour day month weekday)<br />
+<strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code>&quot;0 9 * * 1-5&quot; → Every weekday at 9 AM
+&quot;0 * * * *&quot; → Every hour
+&quot;*/15 * * * *&quot; → Every 15 minutes
+&quot;0 23 * * *&quot; → Daily at 11 PM
+</code></pre></div></p>
+<h3 id="subagent_spawn">subagent_spawn<a class="headerlink" href="#subagent_spawn" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Launch independent agents for parallel work<br />
+<strong>Use Cases:</strong>
+- Parallel research across multiple sources
+- Delegated tasks (research, fix, monitor simultaneously)
+- Complex multi-step workflows
+- Fact-checking and verification
+<strong>Config:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;orchestration&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;maxSpawnDepth&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;maxConcurrentAgents&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;costCeiling&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.00</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;subagentDefaults&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;model_fast&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;qwen-2-72b&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;model_smart&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;claude-opus&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;timeout_seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="github_search-github_pr_create-github_action_trigger">github_search, github_pr_create, github_action_trigger<a class="headerlink" href="#github_search-github_pr_create-github_action_trigger" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Automate GitHub workflows<br />
+<strong>Required:</strong> GitHub personal access token<br />
+<strong>Config:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;github&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;github_pat_...&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;allowFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;USER_ID&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<hr />
+<h2 id="part-1b-the-9-pre-built-skills">Part 1B: The 9 Pre-Built Skills<a class="headerlink" href="#part-1b-the-9-pre-built-skills" title="Permanent link">&para;</a></h2>
+<h3 id="1-obsidian">1. obsidian<a class="headerlink" href="#1-obsidian" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Read, write, and query Obsidian vault from nanobot<br />
+<strong>Why Essential:</strong> Core memory plane; all AOS artifacts stored here for audit and recovery<br />
+<strong>Install:</strong> Built-in or <code>nanobot skill add obsidian</code><br />
+<strong>Config:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;obsidianVaultPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;~/Documents/ObsidianVault&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;obsidianRestEndpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:27123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;obsidianRestToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;token...&quot;</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="2-memory">2. memory<a class="headerlink" href="#2-memory" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Automatic session management, memory consolidation, context optimization<br />
+<strong>Why Essential:</strong> Enables long conversations without token explosion; automatic history summarization<br />
+<strong>Install:</strong> Built-in<br />
+<strong>Config:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;session&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;memoryWindow&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;maxSessionTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;consolidationInterval&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="3-summarize">3. summarize<a class="headerlink" href="#3-summarize" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Condense long content while preserving key information<br />
+<strong>Why Essential:</strong> Reduces token burn, improves clarity for reports and digests<br />
+<strong>Install:</strong> Built-in<br />
+<strong>Config:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;summarize&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;targetLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;concise&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;preserveCitations&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="4-cron">4. cron<a class="headerlink" href="#4-cron" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Schedule tasks to run on recurring schedules<br />
+<strong>Why Essential:</strong> Enables proactive, always-on operations (daily journal, health checks, backups)<br />
+<strong>Install:</strong> <code>nanobot skill add cron</code><br />
+<strong>Config:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;cron&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;timezone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UTC&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;maxConcurrentJobs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;jobTimeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1800</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="5-github">5. github<a class="headerlink" href="#5-github" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> GitHub automation (search repos, create PRs, trigger workflows)<br />
+<strong>Why Essential:</strong> Enables GitOps automation from chat; CI/CD triggers from Discord/Slack<br />
+<strong>Install:</strong> Built-in; requires token<br />
+<strong>Config:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;github&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;github_pat_...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;defaultOrg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-org&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;allowFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;OPERATOR_USER_ID&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="6-weather">6. weather<a class="headerlink" href="#6-weather" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Fetch current and forecast weather data<br />
+<strong>Install:</strong> <code>nanobot skill add weather</code><br />
+<strong>Cost:</strong> Free (community weather service)  </p>
+<h3 id="7-clawhub">7. clawhub<a class="headerlink" href="#7-clawhub" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Search and install public skills from ClawHub marketplace<br />
+<strong>Install:</strong> <code>nanobot skill add clawhub</code><br />
+<strong>Note:</strong> Vet all skills before installing  </p>
+<h3 id="8-skill-creator">8. skill-creator<a class="headerlink" href="#8-skill-creator" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Auto-generate new skills from natural language descriptions<br />
+<strong>Install:</strong> <code>nanobot skill add skill-creator</code><br />
+<strong>Usage:</strong>
+<div class="highlight"><pre><span></span><code>&quot;Create a new skill: read financial PDFs and extract quarterly earnings&quot;
+&quot;Generate a skill for checking DNS records&quot;
+</code></pre></div></p>
+<h3 id="9-tmux">9. tmux<a class="headerlink" href="#9-tmux" title="Permanent link">&para;</a></h3>
+<p><strong>Purpose:</strong> Control terminal multiplexer for advanced automation<br />
+<strong>Install:</strong> <code>nanobot skill add tmux</code><br />
+<strong>Config:</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;tmux&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;defaultSession&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;allowFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;TRUSTED_USER_ID&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<hr />
+<h2 id="part-2-essential-5-skill-quickstart">Part 2: Essential 5-Skill Quickstart<a class="headerlink" href="#part-2-essential-5-skill-quickstart" title="Permanent link">&para;</a></h2>
+<p><strong>⭐ START HERE if you're new to nanobot.</strong> These 5 skills cover 80% of deployments. Learn these first, add others as needed.</p>
+<h3 id="installation-checklist">Installation Checklist<a class="headerlink" href="#installation-checklist" title="Permanent link">&para;</a></h3>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>obsidian</strong> - Configured with vault path and REST endpoint</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>memory</strong> - Session consolidation enabled (default)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>cron</strong> - Installed and tested with one schedule</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>summarize</strong> - Tested with a long document</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>github</strong> - Token configured and tested with one search</li>
+</ul>
+<hr />
+<h2 id="essential-skill-1-obsidian">Essential Skill 1: Obsidian<a class="headerlink" href="#essential-skill-1-obsidian" title="Permanent link">&para;</a></h2>
+<p><strong>Purpose:</strong> Read, write, and query Obsidian vault; core memory plane for audit and recovery  </p>
+<h3 id="obsidian-local-rest-api-setup-required">Obsidian Local REST API Setup (Required)<a class="headerlink" href="#obsidian-local-rest-api-setup-required" title="Permanent link">&para;</a></h3>
+<p><strong>REST API</strong> = a standard way for programs to exchange data via HTTP requests.</p>
+<p><strong>Step 1: Enable Community Plugins</strong>
+1. Open Obsidian → <strong>Settings</strong> → <strong>Community Plugins</strong>
+2. Toggle <strong>Turn on community plugins</strong> (if not already on)
+3. Search for <strong>"Local REST API"</strong> by Coremute
+4. Click <strong>Install</strong></p>
+<p><strong>Step 2: Configure REST API</strong>
+1. Go to <strong>Settings</strong> → <strong>Local REST API</strong>
+2. Enable the plugin
+3. Note the <strong>Ribbon Icon</strong> appears in left sidebar
+4. Click the icon to see your API details:
+   - <strong>Listening on:</strong> http://localhost:27123 (or another port)
+   - <strong>API Token:</strong> (long hex string)</p>
+<p><strong>Step 3: Update Nanobot Config</strong>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;obsidian&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;vaultPath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/Users/your-username/Documents/MyVault&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;restEndpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;http://localhost:27123&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;restToken&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;paste-token-here&gt;&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p><strong>Step 4: Test Connection</strong>
+<div class="highlight"><pre><span></span><code>nanobot<span class="w"> </span>test-vault<span class="w"> </span>--path<span class="w"> </span>/Users/your-username/Documents/MyVault
+<span class="c1"># Should return: ✅ Vault accessible</span>
+</code></pre></div></p>
+<h3 id="common-obsidian-mistakes-solutions">Common Obsidian Mistakes &amp; Solutions<a class="headerlink" href="#common-obsidian-mistakes-solutions" title="Permanent link">&para;</a></h3>
+<h3 id="mistake-1-rest-api-plugin-not-installed">❌ Mistake 1: REST API Plugin Not Installed<a class="headerlink" href="#mistake-1-rest-api-plugin-not-installed" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Open Obsidian → Settings → Community Plugins
+2. Search "Local REST API" by Coremute
+3. Click <strong>Install</strong> then <strong>Enable</strong>
+4. Restart Obsidian
+5. Test: <code>nanobot test-vault</code></p>
+<h3 id="mistake-2-wrong-vault-path-in-config">❌ Mistake 2: Wrong Vault Path in Config<a class="headerlink" href="#mistake-2-wrong-vault-path-in-config" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+- Use <strong>absolute path</strong>: <code>/Users/username/Documents/MyVault</code> (not <code>~/MyVault</code>)
+- On Windows: Use forward slashes <code>/</code> or escaped backslashes <code>\\</code>
+- Test path exists: <code>ls /Users/username/Documents/MyVault</code></p>
+<h3 id="mistake-3-using-wrong-port-number">❌ Mistake 3: Using Wrong Port Number<a class="headerlink" href="#mistake-3-using-wrong-port-number" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Open Obsidian REST API ribbon icon (left sidebar)
+2. Check "Listening on: http://localhost:XXXX"
+3. Copy exact port number
+4. Update nanobot config with correct port
+5. Restart</p>
+<h3 id="mistake-4-rest-api-token-missing-or-revoked">❌ Mistake 4: REST API Token Missing or Revoked<a class="headerlink" href="#mistake-4-rest-api-token-missing-or-revoked" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Click REST API ribbon icon
+2. Copy fresh token
+3. Update nanobot config
+4. Restart nanobot</p>
+<h3 id="mistake-5-obsidian-lockedfile-sync-conflict">❌ Mistake 5: Obsidian Locked/File Sync Conflict<a class="headerlink" href="#mistake-5-obsidian-lockedfile-sync-conflict" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Move vault out of cloud sync folder temporarily, OR
+2. Disable cloud sync while nanobot is writing, OR
+3. Use <code>.gitignore</code> to exclude <code>.obsidian</code> folder from sync</p>
+<hr />
+<h2 id="essential-skill-2-memory">Essential Skill 2: Memory<a class="headerlink" href="#essential-skill-2-memory" title="Permanent link">&para;</a></h2>
+<p><strong>Purpose:</strong> Automatic session management, memory consolidation, context optimization; enables long conversations without token explosion</p>
+<h3 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;session&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;memoryWindow&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;maxSessionTokens&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">32000</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;consolidationInterval&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="common-memory-mistakes-solutions">Common Memory Mistakes &amp; Solutions<a class="headerlink" href="#common-memory-mistakes-solutions" title="Permanent link">&para;</a></h3>
+<h3 id="mistake-1-memory-consolidation-not-running">❌ Mistake 1: Memory Consolidation Not Running<a class="headerlink" href="#mistake-1-memory-consolidation-not-running" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Check config: <code>consolidationInterval: 10</code> (consolidates every 10 messages)
+2. If set to 0, consolidation is <strong>disabled</strong>; change to 10-20
+3. Restart nanobot
+4. Watch logs for "Consolidating memory..." messages</p>
+<h3 id="mistake-2-context-window-always-hits-max-too-fast">❌ Mistake 2: Context Window Always Hits Max Too Fast<a class="headerlink" href="#mistake-2-context-window-always-hits-max-too-fast" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+- Increase from 32000 to 50000-80000 (if your LLM supports it)
+- Check your LLM token limits
+- Set <code>maxSessionTokens</code> to 80% of model's limit</p>
+<h3 id="mistake-3-memory-not-carrying-over-between-sessions">❌ Mistake 3: Memory Not Carrying Over Between Sessions<a class="headerlink" href="#mistake-3-memory-not-carrying-over-between-sessions" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Add to config: <code>"persistentSessions": true</code>
+2. Restart nanobot
+3. Sessions now auto-save to <code>~/.nanobot/sessions/</code></p>
+<hr />
+<h2 id="essential-skill-3-cron-scheduling">Essential Skill 3: Cron (Scheduling)<a class="headerlink" href="#essential-skill-3-cron-scheduling" title="Permanent link">&para;</a></h2>
+<p><strong>Purpose:</strong> Schedule tasks to run on recurring schedules; enables proactive, always-on operations</p>
+<h3 id="cron-syntax-cheat-sheet">Cron Syntax Cheat Sheet<a class="headerlink" href="#cron-syntax-cheat-sheet" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>&quot;0 9 * * 1-5&quot; → Every weekday at 9 AM
+&quot;0 * * * *&quot; → Every hour
+&quot;*/15 * * * *&quot; → Every 15 minutes
+&quot;0 23 * * *&quot; → Daily at 11 PM
+&quot;0 0 * * 0&quot; → Every Sunday at midnight
+</code></pre></div>
+<h3 id="common-cron-mistakes-solutions">Common Cron Mistakes &amp; Solutions<a class="headerlink" href="#common-cron-mistakes-solutions" title="Permanent link">&para;</a></h3>
+<h3 id="mistake-1-cron-job-uses-wrong-timezone">❌ Mistake 1: Cron Job Uses Wrong Timezone<a class="headerlink" href="#mistake-1-cron-job-uses-wrong-timezone" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Check config: <code>"timezone": "UTC"</code> (is this your actual timezone?)
+2. If in US Eastern: Change to <code>"America/New_York"</code>
+3. See full list: <code>nanobot config cron --list-timezones</code>
+4. Test: <code>"Schedule test job for 30 seconds from now"</code></p>
+<h3 id="mistake-2-scheduled-task-fails-silently">❌ Mistake 2: Scheduled Task Fails Silently<a class="headerlink" href="#mistake-2-scheduled-task-fails-silently" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Check job definition: Simple commands work better
+2. Increase <code>jobTimeout</code> from 1800 to 3600 seconds if jobs take long
+3. Check logs: <code>nanobot logs --filter="cron"</code>
+4. Test task manually first before scheduling</p>
+<h3 id="mistake-3-too-many-jobs-scheduled-system-overload">❌ Mistake 3: Too Many Jobs Scheduled, System Overload<a class="headerlink" href="#mistake-3-too-many-jobs-scheduled-system-overload" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Reduce <code>maxConcurrentJobs</code> from 5 to 2-3
+2. Space out job schedules (don't run 5 jobs at 23:50)
+3. Example good spacing: 23:50, 00:10, 00:30
+4. Check queue: <code>nanobot cron --status</code></p>
+<hr />
+<h2 id="essential-skill-4-summarize">Essential Skill 4: Summarize<a class="headerlink" href="#essential-skill-4-summarize" title="Permanent link">&para;</a></h2>
+<p><strong>Purpose:</strong> Condense long content while preserving key information; reduces token burn, improves clarity</p>
+<h3 id="configuration_1">Configuration<a class="headerlink" href="#configuration_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;summarize&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;targetLength&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;concise&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1">// Options: &quot;terse&quot;, &quot;concise&quot;, &quot;detailed&quot;</span>
+<span class="w">    </span><span class="nt">&quot;preserveCitations&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="common-summarize-mistakes-solutions">Common Summarize Mistakes &amp; Solutions<a class="headerlink" href="#common-summarize-mistakes-solutions" title="Permanent link">&para;</a></h3>
+<h3 id="mistake-1-summary-is-too-short-missing-key-details">❌ Mistake 1: Summary Is Too Short, Missing Key Details<a class="headerlink" href="#mistake-1-summary-is-too-short-missing-key-details" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Change to <code>"targetLength": "concise"</code> for better detail retention
+2. Or specify exact length: <code>"Summarize to exactly 5 sentences"</code>
+3. Always use <code>"preserveCitations": true</code> to keep references</p>
+<h3 id="mistake-2-summary-is-incoherent-or-jargon-heavy">❌ Mistake 2: Summary Is Incoherent or Jargon-Heavy<a class="headerlink" href="#mistake-2-summary-is-incoherent-or-jargon-heavy" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Add instruction: <code>"Summarize in simple language for non-technical users"</code>
+2. Or: <code>"Explain this like you're talking to a 10-year-old"</code>
+3. Test with different personas to find clearest explanation</p>
+<h3 id="mistake-3-losing-source-links-and-citations">❌ Mistake 3: Losing Source Links and Citations<a class="headerlink" href="#mistake-3-losing-source-links-and-citations" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Enable: <code>"preserveCitations": true</code>
+2. Request: <code>"Summarize with at least 3 citations and page numbers"</code>
+3. For Obsidian: <code>"Summarize and add wiki links to referenced notes"</code></p>
+<hr />
+<h2 id="essential-skill-5-github">Essential Skill 5: GitHub<a class="headerlink" href="#essential-skill-5-github" title="Permanent link">&para;</a></h2>
+<p><strong>Purpose:</strong> GitHub automation (search repos, create PRs, trigger workflows); enables GitOps from chat</p>
+<h3 id="configuration_2">Configuration<a class="headerlink" href="#configuration_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;github&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;github_pat_...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;defaultOrg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-org&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;allowFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;OPERATOR_USER_ID&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="common-github-mistakes-solutions">Common GitHub Mistakes &amp; Solutions<a class="headerlink" href="#common-github-mistakes-solutions" title="Permanent link">&para;</a></h3>
+<h3 id="mistake-1-github-token-has-wrong-permissions">❌ Mistake 1: GitHub Token Has Wrong Permissions<a class="headerlink" href="#mistake-1-github-token-has-wrong-permissions" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Go to GitHub → Settings → Developer settings → Personal access tokens
+2. Create new token with these scopes:
+   - ✅ <code>repo</code> (full repository access)
+   - ✅ <code>workflow</code> (to trigger Actions)
+   - ✅ <code>read:org</code> (to access org repos)
+3. Copy exact token (no extra spaces)
+4. Update config and restart nanobot</p>
+<h3 id="mistake-2-workflows-not-triggering-or-wrong-workflow-selected">❌ Mistake 2: Workflows Not Triggering, or Wrong Workflow Selected<a class="headerlink" href="#mistake-2-workflows-not-triggering-or-wrong-workflow-selected" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. Check file exists: <code>.github/workflows/deploy.yml</code> (exact case/spelling)
+2. Add trigger at top of workflow file:
+   <div class="highlight"><pre><span></span><code><span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
+</code></pre></div>
+3. Commit &amp; push to GitHub
+4. Retry: <code>"Trigger the deploy workflow"</code></p>
+<h3 id="mistake-3-token-exposed-or-accidentally-committed">❌ Mistake 3: Token Exposed or Accidentally Committed<a class="headerlink" href="#mistake-3-token-exposed-or-accidentally-committed" title="Permanent link">&para;</a></h3>
+<p><strong>Fix:</strong>
+1. <strong>Immediately:</strong> Regenerate token in GitHub settings (old one compromised)
+2. Remove old token from commit history: <code>git filter-branch --force --index-filter "git rm --cached --ignore-unmatch .env" -- --all</code>
+3. Create <code>.env</code> file and add to <code>.gitignore</code>:
+   <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;GITHUB_TOKEN=github_pat_...&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.env
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;.env&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore
+</code></pre></div>
+4. Update nanobot to read from <code>.env</code> instead of config file</p>
+<hr />
+<h2 id="part-3-daily-operations-example">Part 3: Daily Operations Example<a class="headerlink" href="#part-3-daily-operations-example" title="Permanent link">&para;</a></h2>
+<h3 id="daily-journal-using-cron-obsidian-summarize">Daily Journal Using Cron + Obsidian + Summarize<a class="headerlink" href="#daily-journal-using-cron-obsidian-summarize" title="Permanent link">&para;</a></h3>
+<p>Combine three essential skills to automate daily operational journaling:</p>
+<p><strong>Archivist Personality (add to config or SOUL.md):</strong></p>
+<blockquote>
+<p><strong>What is SOUL.md?</strong> A root-level personality file at <code>~/.nanobot/SOUL.md</code> that defines persistent behavioral instructions for your nanobot instance — how it addresses users, its default workflow style, and standing operational routines like this journal. It loads on every startup. Think of it as the agent's standing operating procedure.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="gh"># AOS Archivist Identity</span>
+
+Every night at 23:50, run this routine:
+
+<span class="k">1.</span> <span class="gs">**Analyze Discord history**</span> from <span class="ni">#aos</span>-control and <span class="ni">#general</span> channels
+<span class="k">2.</span> <span class="gs">**Extract key metadata:**</span> milestones, technical hurdles, model performance notes
+<span class="k">3.</span> <span class="gs">**Format for Obsidian**</span> using structured template
+<span class="k">4.</span> <span class="gs">**Write to vault**</span> at 00-System/AOS-Journal/{{date}}.md
+<span class="k">5.</span> <span class="gs">**Include metadata:**</span>
+<span class="w">   </span><span class="k">-</span><span class="w"> </span>Model used today
+<span class="w">   </span><span class="k">-</span><span class="w"> </span>Context efficiency notes
+<span class="w">   </span><span class="k">-</span><span class="w"> </span>3-sentence summary
+
+<span class="gs">**Template:**</span>
+<span class="gh"># AOS Operational Journal: {{date}}</span>
+
+<span class="gu">## 🛠 Technical Milestones</span>
+<span class="k">*</span><span class="w"> </span>[List of tasks completed]
+
+<span class="gu">## 🧠 Model Context &amp; Performance</span>
+<span class="k">*</span><span class="w"> </span>Model Used: {{primary_model}}
+<span class="k">*</span><span class="w"> </span>Context Efficiency: [Memory retention rating]
+
+<span class="gu">## 📝 Summary</span>
+[3-sentence summary of the day]
+</code></pre></div>
+<hr />
+<h2 id="part-4-custom-skill-development">Part 4: Custom Skill Development<a class="headerlink" href="#part-4-custom-skill-development" title="Permanent link">&para;</a></h2>
+<h3 id="understanding-skills-architecture">Understanding Skills Architecture<a class="headerlink" href="#understanding-skills-architecture" title="Permanent link">&para;</a></h3>
+<p>A <strong>Skill</strong> is an extension that adds new capabilities to your nanobot deployment. Unlike pre-built skills, custom skills are:
+- Created on-demand for your specific workflows
+- Hot-reloaded without system restart
+- Composable—built from existing tools
+- Operator-injectable via chat interface</p>
+<h3 id="skill-types">Skill Types<a class="headerlink" href="#skill-types" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Skill Type</th>
+<th>Best For</th>
+<th>Complexity</th>
+<th>Deploy Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prompt-Only</strong></td>
+<td>Reasoning, summarization, content generation</td>
+<td>Low</td>
+<td>&lt;5 min</td>
+</tr>
+<tr>
+<td><strong>Tool-Based</strong></td>
+<td>System integration, API calls, file operations</td>
+<td>Medium</td>
+<td>15-30 min</td>
+</tr>
+<tr>
+<td><strong>Orchestrated</strong></td>
+<td>Multi-step workflows, delegated sub-tasks</td>
+<td>High</td>
+<td>30+ min</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="skill-file-structure">Skill File Structure<a class="headerlink" href="#skill-file-structure" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>~/.nanobot/skills/my-custom-skill/
+├── SKILL.md          # Metadata + logic (required)
+├── README.md         # Usage guide (optional)
+├── requirements.txt  # Python dependencies (if tool-based)
+└── implementation.py # Python code (if tool-based)
+</code></pre></div>
+<hr />
+<h2 id="skillmd-format">SKILL.md Format<a class="headerlink" href="#skillmd-format" title="Permanent link">&para;</a></h2>
+<h3 id="minimal-prompt-only-skill-example">Minimal Prompt-Only Skill Example<a class="headerlink" href="#minimal-prompt-only-skill-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>---
+name: standup
+description: Summarizes recent work into a standup report
+version: 1.0.0
+category: reporting
+<span class="gu">user-invocable: true</span>
+<span class="gu">---</span>
+
+<span class="gh"># Purpose</span>
+Generate a concise standup summary from recent Obsidian logs.
+
+<span class="gh"># Trigger</span>
+User types: <span class="sb">`/standup`</span> or mentions &quot;give me a standup&quot;
+
+<span class="gh"># Workflow</span>
+<span class="k">1.</span> Search Obsidian vault for files modified in last 24 hours from <span class="sb">`07-Projects/`</span> folder
+<span class="k">2.</span> Read the 3 most recent entries
+<span class="k">3.</span> Extract &quot;Completed&quot;, &quot;In Progress&quot;, &quot;Blockers&quot; sections
+<span class="k">4.</span> Format as brief standup (Yesterday → Today → Blockers)
+
+<span class="gh"># Output Format</span>
+<span class="gs">**Yesterday:**</span> [bullet list of completed items]
+<span class="gs">**Today:**</span> [planned work]
+<span class="gs">**Blockers:**</span> [any issues or blocked items]
+</code></pre></div>
+<h3 id="tool-based-skill-python-example">Tool-Based Skill (Python) Example<a class="headerlink" href="#tool-based-skill-python-example" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>---
+name: health-check
+description: Monitor system resources and connection health
+version: 1.0.0
+category: operations
+type: tool-based
+entry-point: implementation.py::run_health_check
+user-invocable: true
+<span class="gu">tools-required: [shell_exec, message_send]</span>
+<span class="gu">---</span>
+
+<span class="gh"># Purpose</span>
+Check CPU, memory, disk, and network health. Alert if thresholds exceeded.
+
+<span class="gh"># Trigger</span>
+User types: <span class="sb">`/health`</span> or automatic daily at 09:00 UTC
+
+<span class="gh"># Metrics Checked</span>
+<span class="k">-</span><span class="w"> </span>CPU usage &gt; 80% → WARN
+<span class="k">-</span><span class="w"> </span>Memory usage &gt; 85% → WARN
+<span class="k">-</span><span class="w"> </span>Disk usage &gt; 90% → CRITICAL
+<span class="k">-</span><span class="w"> </span>Nanobot process running → OK/FAIL
+<span class="k">-</span><span class="w"> </span>Connection to LLM provider → OK/FAIL
+</code></pre></div>
+<hr />
+<h2 id="operator-injected-skills">Operator-Injected Skills<a class="headerlink" href="#operator-injected-skills" title="Permanent link">&para;</a></h2>
+<h3 id="install-from-repository">Install from Repository<a class="headerlink" href="#install-from-repository" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Paste link in Discord:</strong>
+   <div class="highlight"><pre><span></span><code>@nanobot install skill: https://github.com/user/nanobot-skill-example
+</code></pre></div></p>
+</li>
+<li>
+<p><strong>The bot will:</strong></p>
+</li>
+<li>Analyze SKILL.md file</li>
+<li>Check for security risks</li>
+<li>
+<p>Ask for confirmation</p>
+</li>
+<li>
+<p><strong>Once approved:</strong></p>
+</li>
+<li>Clones to <code>~/.nanobot/skills/</code></li>
+<li>Hot-reloads gateway</li>
+<li>Confirms: "Skill registered. Try <code>/example</code> to test."</li>
+</ol>
+<h3 id="create-a-new-skill-via-chat">Create a New Skill via Chat<a class="headerlink" href="#create-a-new-skill-via-chat" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>@nanobot create skill:
+- Name: task-tracker
+- Goal: Extract TODO items from Discord messages
+- Action: Append them to Obsidian inbox.md
+- Trigger: Any message starting with &quot;TODO:&quot;
+</code></pre></div>
+<hr />
+<h2 id="skill-lifecycle-management">Skill Lifecycle Management<a class="headerlink" href="#skill-lifecycle-management" title="Permanent link">&para;</a></h2>
+<h3 id="activation">Activation<a class="headerlink" href="#activation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>/skill enable task-tracker
+/skill list --enabled
+</code></pre></div>
+<h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>/skill test task-tracker --sample &quot;TODO: Review PR #42&quot;
+</code></pre></div>
+<h3 id="monitoring">Monitoring<a class="headerlink" href="#monitoring" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>/skill stats --skill standup --days 7
+</code></pre></div>
+<h3 id="updates">Updates<a class="headerlink" href="#updates" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>/skill reload task-tracker
+</code></pre></div>
+<h3 id="deactivation">Deactivation<a class="headerlink" href="#deactivation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>/skill disable task-tracker
+/skill uninstall task-tracker
+</code></pre></div>
+<hr />
+<h2 id="security-permissions">Security &amp; Permissions<a class="headerlink" href="#security-permissions" title="Permanent link">&para;</a></h2>
+<h3 id="permission-tiers">Permission Tiers<a class="headerlink" href="#permission-tiers" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Permission</th>
+<th>Description</th>
+<th>Risk Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>read_obsidian</strong></td>
+<td>Read vault files</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>write_obsidian</strong></td>
+<td>Create/edit notes</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td><strong>shell_exec</strong></td>
+<td>Run system commands</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>file_write</strong></td>
+<td>Write files outside Obsidian</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>mcp_call</strong></td>
+<td>Access external APIs</td>
+<td>High</td>
+</tr>
+<tr>
+<td><strong>message_send</strong></td>
+<td>Send external messages</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<h3 id="declaring-permissions">Declaring Permissions<a class="headerlink" href="#declaring-permissions" title="Permanent link">&para;</a></h3>
+<p>In your SKILL.md:</p>
+<div class="highlight"><pre><span></span><code>---
+name: advanced-task-processor
+permissions:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>read_obsidian
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>write_obsidian
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>shell_exec
+<span class="gu">  - mcp_call</span>
+<span class="gu">---</span>
+</code></pre></div>
+<hr />
+<h2 id="tool-cost-performance-reference">Tool Cost &amp; Performance Reference<a class="headerlink" href="#tool-cost-performance-reference" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Latency</th>
+<th>Cost/Call</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>web_search</td>
+<td>2-5s</td>
+<td>~$0.01</td>
+<td>5-10KB</td>
+</tr>
+<tr>
+<td>web_fetch</td>
+<td>1-3s</td>
+<td>Free</td>
+<td>10-50KB</td>
+</tr>
+<tr>
+<td>file_*</td>
+<td>&lt;100ms</td>
+<td>Free</td>
+<td>&lt;1KB</td>
+</tr>
+<tr>
+<td>shell_exec</td>
+<td>1-30s</td>
+<td>Free</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td>message_send</td>
+<td>&lt;100ms</td>
+<td>Free</td>
+<td>&lt;1KB</td>
+</tr>
+<tr>
+<td>mcp_call</td>
+<td>Varies</td>
+<td>Varies</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td>cron_schedule</td>
+<td>N/A</td>
+<td>Free</td>
+<td>None</td>
+</tr>
+<tr>
+<td>subagent_spawn</td>
+<td>High</td>
+<td>Variable</td>
+<td>+memory</td>
+</tr>
+<tr>
+<td>github_*</td>
+<td>1-5s</td>
+<td>Free</td>
+<td>&lt;5KB</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Next:</strong> See <a href="#best-practices">Best Practices</a> for skill naming conventions, documentation standards, and testing commands before writing your first custom skill.</p>
+</blockquote>
+<hr />
+<h2 id="part-5-troubleshooting-common-mistakes">Part 5: Troubleshooting &amp; Common Mistakes<a class="headerlink" href="#part-5-troubleshooting-common-mistakes" title="Permanent link">&para;</a></h2>
+<h3 id="tool-allowlisting-aos-security">Tool Allowlisting (AOS Security)<a class="headerlink" href="#tool-allowlisting-aos-security" title="Permanent link">&para;</a></h3>
+<p>Restrict tools per channel using tool group aliases (shorthand for the canonical tool names in the Tool Matrix above):</p>
+<table>
+<thead>
+<tr>
+<th>Alias</th>
+<th>Canonical Tool(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shell</code></td>
+<td><code>shell_exec</code></td>
+</tr>
+<tr>
+<td><code>mcp</code></td>
+<td><code>mcp_call</code></td>
+</tr>
+<tr>
+<td><code>github</code></td>
+<td><code>github_search</code>, <code>github_pr_create</code>, <code>github_action_trigger</code></td>
+</tr>
+<tr>
+<td><code>web</code></td>
+<td><code>web_search</code>, <code>web_fetch</code></td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>file_read</code>, <code>file_write</code>, <code>file_edit</code>, <code>file_list</code></td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td><code>message_send</code></td>
+</tr>
+<tr>
+<td><code>obsidian</code></td>
+<td>skill: obsidian (file_read/write scoped to vault)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;channels&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;discord&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;allowedTools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;#ctl-nanobot&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;shell&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;mcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;github&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;#prd-*&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;web&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;message&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;#bk-*&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;file&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;obsidian&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;#res-*&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;web&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;obsidian&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;web&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;message&quot;</span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="common-tool-mistakes">Common Tool Mistakes<a class="headerlink" href="#common-tool-mistakes" title="Permanent link">&para;</a></h2>
+<h3 id="mistake-1-tool-allowlist-misspelled-tool-blocked-for-all-users">❌ Mistake 1: Tool Allowlist Misspelled - Tool Blocked for All Users<a class="headerlink" href="#mistake-1-tool-allowlist-misspelled-tool-blocked-for-all-users" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> "I configured web_search as allowed, but getting 'tool not allowed' error"<br />
+<strong>Fix:</strong>
+- Check exact tool names: <code>nanobot tools list</code>
+- Common misspellings:
+  <div class="highlight"><pre><span></span><code><span class="err">❌</span><span class="w"> </span><span class="nt">&quot;allowed_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;web search&quot;</span><span class="p">]</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="err">Wro</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="mi">-</span><span class="w"> </span><span class="err">has</span><span class="w"> </span><span class="err">space</span>
+<span class="err">❌</span><span class="w"> </span><span class="nt">&quot;allowed_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;web_Search&quot;</span><span class="p">]</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="err">Wro</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="mi">-</span><span class="w"> </span><span class="err">capi</span><span class="kc">tal</span><span class="w"> </span><span class="err">S</span>
+<span class="err">✅</span><span class="w"> </span><span class="nt">&quot;allowed_tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;web_search&quot;</span><span class="p">]</span><span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="err">Correc</span><span class="kc">t</span><span class="w"> </span><span class="mi">-</span><span class="w"> </span><span class="err">exac</span><span class="kc">t</span><span class="w"> </span><span class="err">ma</span><span class="kc">t</span><span class="err">ch</span>
+</code></pre></div>
+- Validate config: <code>nanobot config validate</code>
+- Restart nanobot after config changes</p>
+<h3 id="mistake-2-brave-api-key-not-set-web_search-silently-fails">❌ Mistake 2: Brave API Key Not Set, web_search Silently Fails<a class="headerlink" href="#mistake-2-brave-api-key-not-set-web_search-silently-fails" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Users try <code>/web_search</code>, nothing happens; no error<br />
+<strong>Fix:</strong>
+1. Get API key from <a href="https://api.search.brave.com">Brave Search API</a>
+2. Add to config:
+   <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;web_search&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;braveApiKey&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;YOUR_KEY_HERE&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+3. Restart nanobot
+4. Test: <code>nanobot test-tool web_search "test query"</code></p>
+<h3 id="mistake-3-shell_exec-allowlist-is-empty-no-one-can-run-commands">❌ Mistake 3: shell_exec Allowlist Is Empty - No One Can Run Commands<a class="headerlink" href="#mistake-3-shell_exec-allowlist-is-empty-no-one-can-run-commands" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> "Need to execute commands but keep getting 'not allowed' error"<br />
+<strong>Fix:</strong>
+<div class="highlight"><pre><span></span><code><span class="err">✅</span><span class="w"> </span><span class="err">Wi</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="err">allowlis</span><span class="kc">t</span><span class="w"> </span><span class="err">(speci</span><span class="kc">f</span><span class="err">ic</span><span class="w"> </span><span class="err">users</span><span class="w"> </span><span class="err">allowed)</span><span class="p">:</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;tools&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;shell_exec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;allowFrom&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;DISCORD_USER_ID_1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;DISCORD_USER_ID_2&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;@devops&quot;</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;blocklist&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;rm -rf&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;sudo dd&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="mistake-4-mcp-server-connections-fail-auth-headers-missing">❌ Mistake 4: MCP Server Connections Fail - Auth Headers Missing<a class="headerlink" href="#mistake-4-mcp-server-connections-fail-auth-headers-missing" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> "Cannot connect to MCP server: mydb - Connection refused"<br />
+<strong>Fix:</strong>
+1. Verify MCP server running: <code>curl http://localhost:3000/health</code>
+2. Add auth to config:
+   <div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;mydb&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;/path/to/db_mcp_server.py&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;customHeaders&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;Authorization&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bearer YOUR_TOKEN&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;X-API-Key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;your-api-key&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+3. Restart nanobot
+4. Test: <code>nanobot test-tool mcp_call mydb --query "SELECT 1"</code></p>
+<h3 id="mistake-5-cron-jobs-never-fire-wrong-timezone-or-syntax">❌ Mistake 5: Cron Jobs Never Fire - Wrong Timezone or Syntax<a class="headerlink" href="#mistake-5-cron-jobs-never-fire-wrong-timezone-or-syntax" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Scheduled job set for "9 AM daily" but never runs; or runs at wrong time<br />
+<strong>Fix:</strong>
+1. Check timezone: UTC or your actual timezone?
+2. Verify cron syntax: <code>nanobot cron validate "0 9 * * *"</code>
+3. Common syntax mistakes:
+   <div class="highlight"><pre><span></span><code>❌ &quot;9 * * * *&quot;       # Runs every hour at minute 9 (not 9 AM!)
+✅ &quot;0 9 * * *&quot;       # Runs at 9 AM
+
+❌ &quot;0 9 * * * *&quot;     # Too many fields (cron has 5, not 6)
+✅ &quot;0 9 * * *&quot;       # 5 fields: minute, hour, day, month, day-of-week
+</code></pre></div>
+4. List cron jobs: <code>nanobot cron list</code></p>
+<h3 id="mistake-6-subagent-spawning-consumes-too-many-tokens-cost-explosion">❌ Mistake 6: Subagent Spawning Consumes Too Many Tokens - Cost Explosion<a class="headerlink" href="#mistake-6-subagent-spawning-consumes-too-many-tokens-cost-explosion" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Spawned 5 agents, bill was 10x expected<br />
+<strong>Fix:</strong>
+1. Give each agent a focused single task and share memory context:
+<div class="highlight"><pre><span></span><code><span class="err">✅</span> <span class="n">Better</span> <span class="o">-</span> <span class="n">shared</span> <span class="n">context</span><span class="p">,</span> <span class="n">split</span> <span class="n">specific</span> <span class="n">tasks</span><span class="p">:</span>
+<span class="n">agents</span> <span class="o">=</span> <span class="k">await</span> <span class="n">nanobot</span><span class="o">.</span><span class="n">spawn_subagents</span><span class="p">(</span>
+    <span class="n">count</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">shared_context</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Agents share memory</span>
+    <span class="n">tasks</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;Research company A&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Research company B&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;Research company C&quot;</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</code></pre></div>
+2. Estimate cost: <code>nanobot estimate-cost --agents=5 --context=shared</code>
+3. Use sparingly: Reserve for complex, high-value tasks
+4. Monitor: <code>nanobot logs --filter="subagent" | grep "tokens_used"</code></p>
+<hr />
+<h2 id="common-skill-mistakes">Common Skill Mistakes<a class="headerlink" href="#common-skill-mistakes" title="Permanent link">&para;</a></h2>
+<h3 id="mistake-1-skillmd-metadata-syntax-wrong">❌ Mistake 1: SKILL.md Metadata Syntax Wrong<a class="headerlink" href="#mistake-1-skillmd-metadata-syntax-wrong" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Skill won't register; error: "Invalid YAML metadata"<br />
+<strong>Fix:</strong>
+- Field names must be lowercase with hyphens, not underscores:
+  <div class="highlight"><pre><span></span><code>❌ user_invocable: true       # Wrong
+✅ user-invocable: true       # Correct
+</code></pre></div>
+- Values containing colons must be quoted (bare strings without colons are fine):
+  <div class="highlight"><pre><span></span><code>❌ description: Config: phase one   # colon in value breaks YAML parsing
+✅ description: &quot;Config: phase one&quot; # quoted = safe
+✅ description: Summarizes recent work  # no colon = no quotes needed
+</code></pre></div>
+- Validate: <code>nanobot skill validate ~/.nanobot/skills/my-skill/SKILL.md</code></p>
+<h3 id="mistake-2-python-skill-missing-dependencies">❌ Mistake 2: Python Skill Missing Dependencies<a class="headerlink" href="#mistake-2-python-skill-missing-dependencies" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Skill runs, then crashes: <code>ModuleNotFoundError: psutil</code><br />
+<strong>Fix:</strong>
+1. Add to <code>requirements.txt</code>:
+   <div class="highlight"><pre><span></span><code>psutil==6.0.0
+requests==2.31.0
+</code></pre></div>
+2. Install: <code>pip install -r ~/.nanobot/skills/my-skill/requirements.txt</code>
+3. Or let nanobot auto-install: Check config <code>"auto_install_deps": true</code></p>
+<h3 id="mistake-3-skill-references-undefined-tool-or-permission">❌ Mistake 3: Skill References Undefined Tool or Permission<a class="headerlink" href="#mistake-3-skill-references-undefined-tool-or-permission" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Skill runs but action fails: "Tool not found: web_search"<br />
+<strong>Fix:</strong>
+<div class="highlight"><pre><span></span><code><span class="nt">tools-required</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web_search</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">file_read</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">message_send</span>
+</code></pre></div>
+Check available: <code>nanobot tools list</code></p>
+<h3 id="mistake-4-skill-works-locally-but-fails-in-discordslack">❌ Mistake 4: Skill Works Locally, But Fails in Discord/Slack<a class="headerlink" href="#mistake-4-skill-works-locally-but-fails-in-discordslack" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> <code>/skill-name</code> works in CLI, fails in Discord<br />
+<strong>Why:</strong> The CLI accepts plain text output. Discord/Slack expect structured message objects (embeds/blocks). A skill returning a plain string will silently produce no visible message or an error that doesn't appear in chat.<br />
+<strong>Fix:</strong> Return a platform-specific structured response:
+<div class="highlight"><pre><span></span><code><span class="err">✅</span> <span class="n">Returns</span> <span class="n">Discord</span> <span class="n">embed</span> <span class="o">-</span> <span class="n">looks</span> <span class="n">professional</span>
+<span class="k">return</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;discord_embed&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;System Health&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;fields&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;CPU&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;45%&quot;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Memory&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;60%&quot;</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h3 id="mistake-5-hot-reload-doesnt-work-changes-not-applied">❌ Mistake 5: Hot Reload Doesn't Work - Changes Not Applied<a class="headerlink" href="#mistake-5-hot-reload-doesnt-work-changes-not-applied" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Modified skill code, but old version still runs<br />
+<strong>Fix:</strong>
+1. After modifying code, reload:
+   <div class="highlight"><pre><span></span><code>/skill reload my-skill
+</code></pre></div>
+2. Verify reload: <code>nanobot skills --status</code> should show "Loaded: 2 minutes ago"
+3. If still not working: Restart nanobot entirely
+   <div class="highlight"><pre><span></span><code>systemctl<span class="w"> </span>stop<span class="w"> </span>nanobot
+nanobot<span class="w"> </span>gateway
+</code></pre></div></p>
+<h3 id="mistake-6-prompt-bloat-high-token-usage-cost">❌ Mistake 6: Prompt Bloat = High Token Usage &amp; Cost<a class="headerlink" href="#mistake-6-prompt-bloat-high-token-usage-cost" title="Permanent link">&para;</a></h3>
+<p><strong>Problem:</strong> Skill uses 5,000+ tokens per run<br />
+<strong>Fix:</strong>
+1. Trim system prompt (no unnecessary context)
+2. Add token limit: <code>max_tokens: 500</code>
+3. Test cost: <code>nanobot skill bench my-skill</code></p>
+<hr />
+<h2 id="troubleshooting-reference-table">Troubleshooting Reference Table<a class="headerlink" href="#troubleshooting-reference-table" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>Cause</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Skill won't register</strong></td>
+<td>Malformed SKILL.md metadata</td>
+<td>Run <code>nanobot skill validate</code></td>
+</tr>
+<tr>
+<td><strong>Skill runs but no output</strong></td>
+<td>Missing tool permissions</td>
+<td>Add to <code>tools-required:</code></td>
+</tr>
+<tr>
+<td><strong>High token usage</strong></td>
+<td>Inefficient prompting</td>
+<td>Add context limits; break into sub-tasks</td>
+</tr>
+<tr>
+<td><strong>Skill crashes silently</strong></td>
+<td>Python dependency missing</td>
+<td>Add to <code>requirements.txt</code></td>
+</tr>
+<tr>
+<td><strong>Changes don't take effect</strong></td>
+<td>Skill not reloaded</td>
+<td>Run <code>/skill reload skillname</code></td>
+</tr>
+<tr>
+<td><strong>Tool disabled error</strong></td>
+<td>Not in allowlist</td>
+<td>Check channel allowlist config</td>
+</tr>
+<tr>
+<td><strong>Tool timeout</strong></td>
+<td>Command too slow</td>
+<td>Increase <code>timeout</code> or optimize</td>
+</tr>
+<tr>
+<td><strong>MCP connection failed</strong></td>
+<td>Server down or wrong auth</td>
+<td>Verify server running; check headers</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>These practices apply to custom skills (Part 4). Follow them for any skill you build, install from ClawHub, or generate with skill-creator.</p>
+</blockquote>
+<h3 id="skill-naming">Skill Naming<a class="headerlink" href="#skill-naming" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Action verbs:</strong> <code>generate-</code>, <code>summarize-</code>, <code>fetch-</code>, <code>track-</code></li>
+<li><strong>Domains:</strong> <code>obsidian-</code>, <code>discord-</code>, <code>github-</code>, <code>slack-</code></li>
+<li><strong>Examples:</strong> <code>summarize-daily-logs</code>, <code>fetch-github-prs</code>, <code>track-costs</code></li>
+</ul>
+<h3 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">&para;</a></h3>
+<p>Every skill should include:
+- Purpose (one-line)
+- Trigger (how it's invoked)
+- Prerequisites
+- Setup instructions
+- Example usage
+- Output description
+- Troubleshooting
+- Cost estimate (if applicable)</p>
+<h3 id="testing_1">Testing<a class="headerlink" href="#testing_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>nanobot<span class="w"> </span>skill<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--skill<span class="w"> </span>my-skill<span class="w"> </span>--sample<span class="w"> </span><span class="s2">&quot;test input&quot;</span><span class="w"> </span>--verbose
+nanobot<span class="w"> </span>skill<span class="w"> </span>validate<span class="w"> </span>--skill<span class="w"> </span>my-skill
+nanobot<span class="w"> </span>skill<span class="w"> </span>inspect<span class="w"> </span>--skill<span class="w"> </span>my-skill<span class="w"> </span>--show-permissions
+</code></pre></div>
+<h3 id="version-management">Version Management<a class="headerlink" href="#version-management" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>---
+version: 1.0.0  # Semantic versioning
+compatibility: &quot;nanobot &gt;= 0.1.4&quot;
+changelog:
+  1.0.0: Initial release
+<span class="gu">  0.9.0: Beta testing</span>
+<span class="gu">---</span>
+</code></pre></div>
+<hr />
+<h2 id="real-world-examples">Real-World Examples<a class="headerlink" href="#real-world-examples" title="Permanent link">&para;</a></h2>
+<h3 id="example-1-obsidian-note-tagging-prompt-only">Example 1: Obsidian Note Tagging (Prompt-Only)<a class="headerlink" href="#example-1-obsidian-note-tagging-prompt-only" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>---
+name: auto-tag
+description: Tag Obsidian notes based on Discord channel
+user-invocable: false
+<span class="gu">trigger: on_note_create</span>
+<span class="gu">---</span>
+
+<span class="gh"># When triggered</span>
+When a note is created from Discord message, automatically:
+<span class="k">1.</span> Extract the source channel name
+<span class="k">2.</span> Prepend tag: <span class="ni">#channel</span>-name
+<span class="k">3.</span> Add to daily journal entry
+<span class="k">4.</span> Link back to Discord message thread
+</code></pre></div>
+<h3 id="example-2-weekly-digest-tool-based">Example 2: Weekly Digest (Tool-Based)<a class="headerlink" href="#example-2-weekly-digest-tool-based" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>---
+name: weekly-digest
+description: Compile week&#39;s work into formatted report
+type: tool-based
+trigger: manual or cron:0 9 * * 1
+permissions:
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>read_obsidian
+<span class="w">  </span><span class="k">-</span><span class="w"> </span>write_obsidian
+<span class="gu">  - message_send</span>
+<span class="gu">---</span>
+
+<span class="gh"># Workflow</span>
+<span class="k">1.</span> Search Obsidian for notes created/modified Mon-Fri
+<span class="k">2.</span> Group by project/domain
+<span class="k">3.</span> Count completions, blockers, metrics
+<span class="k">4.</span> Generate formatted report
+<span class="k">5.</span> Post to <span class="ni">#weekly</span>-digest
+<span class="k">6.</span> Archive report in Obsidian
+</code></pre></div>
+<hr />
+<h2 id="revision-history">Revision History<a class="headerlink" href="#revision-history" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Version</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-02-26</td>
+<td>2.1.0</td>
+<td>Review pass: completed Quick Navigation, explained SOUL.md, fixed subagent fix numbering, added tool alias table, fixed SKILL.md YAML quoting guidance, clarified Skill Mistake 4 cause, anchored Best Practices to Part 4</td>
+</tr>
+<tr>
+<td>2026-02-26</td>
+<td>2.0.0</td>
+<td>Consolidated Tools &amp; Skills Reference, Essential AOS Skills, and Advanced Skill Development into single comprehensive guide with progressive learning path</td>
+</tr>
+<tr>
+<td>2026-02-25</td>
+<td>1.0.0</td>
+<td>Original separate documents</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Nanobot Contributors
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/EgoNoBueno/Nanobot-Agentic-Operating-System" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/HKUDS/nanobot" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.top", "search.highlight", "search.share", "content.tabs.link", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
