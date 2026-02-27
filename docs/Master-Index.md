@@ -10,6 +10,8 @@
 **Repository:** [HKUDS/nanobot](https://github.com/HKUDS/nanobot)  
 **Nanobot Version:** v0.1.4 and later
 
+> **New:** [AOS Specification: The Sovereignty Protocol](AOS-Specification.md) — the overarching design specification for where the AOS is going and why.
+
 ---
 
 ## 1. Purpose

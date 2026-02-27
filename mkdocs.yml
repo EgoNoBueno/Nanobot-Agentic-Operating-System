@@ -67,6 +67,7 @@ markdown_extensions:
 nav:
   - Home: Getting-Started-With-Nanobot.md
   - Architecture: Master-Index.md
+  - Specification: AOS-Specification.md
   - Deployment:
     - Simple Build (Local + Cloud LLM): AOS-Startup-Simple-Build.md
     - Advanced Build (VPS + Ollama): AOS-Startup-Advanced-Build.md
