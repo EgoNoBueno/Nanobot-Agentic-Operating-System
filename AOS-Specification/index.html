@@ -10,11 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://egonobueno.github.io/Nanobot-Agentic-Operating-System/Getting-Started-With-Nanobot/">
+        <link rel="canonical" href="https://egonobueno.github.io/Nanobot-Agentic-Operating-System/AOS-Specification/">
       
       
+        <link rel="prev" href="../Master-Index/">
       
-        <link rel="next" href="../Master-Index/">
+      
+        <link rel="next" href="../AOS-Startup-Simple-Build/">
       
       
         
@@ -25,7 +27,7 @@
     
     
       
-        <title>Home - Nanobot Agentic Operating System</title>
+        <title>Specification - Nanobot Agentic Operating System</title>
       
     
     
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#getting-started-with-nanobot" class="md-skip">
+        <a href="#aos-specification-the-sovereignty-protocol" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Specification
             
           </span>
         </div>
@@ -260,6 +262,60 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../Getting-Started-With-Nanobot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Master-Index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -279,7 +335,7 @@
   <span class="md-ellipsis">
     
   
-    Home
+    Specification
   
 
     
@@ -297,7 +353,7 @@
   <span class="md-ellipsis">
     
   
-    Home
+    Specification
   
 
     
@@ -334,10 +390,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#who-is-this-for" class="md-nav__link">
+  <a href="#quick-navigation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Who Is This For?
+        Quick Navigation
       
     </span>
   </a>
@@ -345,44 +401,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-nanobot-does" class="md-nav__link">
+  <a href="#1-system-philosophy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What Nanobot Does
+        1. System Philosophy
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#about-this-documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        About This Documentation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-nanobot-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How Nanobot Works
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How Nanobot Works">
+    <nav class="md-nav" aria-label="1. System Philosophy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-a-request-in-action" class="md-nav__link">
+  <a href="#11-the-mission" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: A Request in Action
+        1.1 The Mission
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-the-design-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 The Design Principle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-the-prime-directive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 The Prime Directive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-inter-agent-communication-stub-a2ap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Inter-Agent Communication Stub (A2AP) 🗺️
       
     </span>
   </a>
@@ -395,22 +462,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#choose-your-deployment" class="md-nav__link">
+  <a href="#2-swarm-architecture-the-cognitive-plane" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choose Your Deployment
+        2. Swarm Architecture: The Cognitive Plane
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Choose Your Deployment">
+    <nav class="md-nav" aria-label="2. Swarm Architecture: The Cognitive Plane">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#option-1-simple-build-local-cloud-llm" class="md-nav__link">
+  <a href="#21-the-strategist-l0-the-sovereign-brain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option 1 — Simple Build: Local + Cloud LLM
+        2.1 The Strategist (L0 — The Sovereign Brain) 🔧
       
     </span>
   </a>
@@ -418,10 +485,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#option-2-advanced-build-vps-local-ollama" class="md-nav__link">
+  <a href="#22-the-specialist-swarm-l1-spawning-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option 2 — Advanced Build: VPS + Local Ollama
+        2.2 The Specialist Swarm (L1 — Spawning Layer) ✅
       
     </span>
   </a>
@@ -429,32 +496,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#install-both-options" class="md-nav__link">
+  <a href="#23-the-monitor-l2-adversarial-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install (Both Options)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-you-have-after-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What You Have After Setup
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ready-to-go-further" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ready to Go Further?
+        2.3 The Monitor (L2 — Adversarial Layer) 🗺️
       
     </span>
   </a>
@@ -467,22 +512,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#documentation-map" class="md-nav__link">
+  <a href="#3-execution-logic-strategy-first-deployment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Documentation Map
+        3. Execution Logic: Strategy-First Deployment
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Documentation Map">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-legal-operational-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Legal &amp; Operational Framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Legal &amp; Operational Framework">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#learn-the-architecture" class="md-nav__link">
+  <a href="#41-the-llc-proxy-legal-personhood" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Learn the Architecture
+        4.1 The LLC Proxy (Legal Personhood) 🗺️
       
     </span>
   </a>
@@ -490,43 +546,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#operate-extend" class="md-nav__link">
+  <a href="#42-the-computer-use-standard-action-plane" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Operate &amp; Extend
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#govern-optimize" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Govern &amp; Optimize
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#troubleshoot-recover" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Troubleshoot &amp; Recover
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reference
+        4.2 The Computer-Use Standard (Action Plane) 🔧
       
     </span>
   </a>
@@ -535,6 +558,117 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resource-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Resource Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Resource Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-bootstrap-mode-minimal-substrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Bootstrap Mode (Minimal Substrate) ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-dynamic-resource-scaling-self-funding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Dynamic Resource Scaling (Self-Funding) 🗺️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-failure-modes-the-survival-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Failure Modes: The Survival Protocol
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Failure Modes: The Survival Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-terminal-failure-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Terminal Failure Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-survival-protocol-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Survival Protocol Sequence 🔧
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-survival-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Survival Vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-implementation-status-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Implementation Status Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-contributing-to-this-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Contributing to This Specification
+      
+    </span>
+  </a>
   
 </li>
       
@@ -553,60 +687,6 @@
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../Master-Index/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Architecture
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../AOS-Specification/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Specification
-  
-
-    
-  </span>
-  
-  
-
-      </a>
     </li>
   
 
@@ -1171,10 +1251,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#who-is-this-for" class="md-nav__link">
+  <a href="#quick-navigation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Who Is This For?
+        Quick Navigation
       
     </span>
   </a>
@@ -1182,44 +1262,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-nanobot-does" class="md-nav__link">
+  <a href="#1-system-philosophy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What Nanobot Does
+        1. System Philosophy
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#about-this-documentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        About This Documentation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-nanobot-works" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How Nanobot Works
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="How Nanobot Works">
+    <nav class="md-nav" aria-label="1. System Philosophy">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#example-a-request-in-action" class="md-nav__link">
+  <a href="#11-the-mission" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: A Request in Action
+        1.1 The Mission
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-the-design-principle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 The Design Principle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-the-prime-directive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 The Prime Directive
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-inter-agent-communication-stub-a2ap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Inter-Agent Communication Stub (A2AP) 🗺️
       
     </span>
   </a>
@@ -1232,22 +1323,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#choose-your-deployment" class="md-nav__link">
+  <a href="#2-swarm-architecture-the-cognitive-plane" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Choose Your Deployment
+        2. Swarm Architecture: The Cognitive Plane
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Choose Your Deployment">
+    <nav class="md-nav" aria-label="2. Swarm Architecture: The Cognitive Plane">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#option-1-simple-build-local-cloud-llm" class="md-nav__link">
+  <a href="#21-the-strategist-l0-the-sovereign-brain" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option 1 — Simple Build: Local + Cloud LLM
+        2.1 The Strategist (L0 — The Sovereign Brain) 🔧
       
     </span>
   </a>
@@ -1255,10 +1346,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#option-2-advanced-build-vps-local-ollama" class="md-nav__link">
+  <a href="#22-the-specialist-swarm-l1-spawning-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Option 2 — Advanced Build: VPS + Local Ollama
+        2.2 The Specialist Swarm (L1 — Spawning Layer) ✅
       
     </span>
   </a>
@@ -1266,32 +1357,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#install-both-options" class="md-nav__link">
+  <a href="#23-the-monitor-l2-adversarial-layer" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install (Both Options)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#what-you-have-after-setup" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What You Have After Setup
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ready-to-go-further" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Ready to Go Further?
+        2.3 The Monitor (L2 — Adversarial Layer) 🗺️
       
     </span>
   </a>
@@ -1304,22 +1373,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#documentation-map" class="md-nav__link">
+  <a href="#3-execution-logic-strategy-first-deployment" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Documentation Map
+        3. Execution Logic: Strategy-First Deployment
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Documentation Map">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-legal-operational-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Legal &amp; Operational Framework
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Legal &amp; Operational Framework">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#learn-the-architecture" class="md-nav__link">
+  <a href="#41-the-llc-proxy-legal-personhood" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Learn the Architecture
+        4.1 The LLC Proxy (Legal Personhood) 🗺️
       
     </span>
   </a>
@@ -1327,43 +1407,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#operate-extend" class="md-nav__link">
+  <a href="#42-the-computer-use-standard-action-plane" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Operate &amp; Extend
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#govern-optimize" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Govern &amp; Optimize
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#troubleshoot-recover" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Troubleshoot &amp; Recover
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Reference
+        4.2 The Computer-Use Standard (Action Plane) 🔧
       
     </span>
   </a>
@@ -1372,6 +1419,117 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-resource-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Resource Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Resource Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-bootstrap-mode-minimal-substrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Bootstrap Mode (Minimal Substrate) ✅
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-dynamic-resource-scaling-self-funding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Dynamic Resource Scaling (Self-Funding) 🗺️
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-failure-modes-the-survival-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Failure Modes: The Survival Protocol
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Failure Modes: The Survival Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-terminal-failure-detection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Terminal Failure Detection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-survival-protocol-sequence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Survival Protocol Sequence 🔧
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-survival-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Survival Vault
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-implementation-status-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Implementation Status Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-contributing-to-this-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Contributing to This Specification
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1406,117 +1564,381 @@
   
 
 
-<h1 id="getting-started-with-nanobot">Getting Started With Nanobot<a class="headerlink" href="#getting-started-with-nanobot" title="Permanent link">&para;</a></h1>
+<h1 id="aos-specification-the-sovereignty-protocol">AOS Specification: The Sovereignty Protocol<a class="headerlink" href="#aos-specification-the-sovereignty-protocol" title="Permanent link">&para;</a></h1>
+<p><strong>The overarching design specification for the Nanobot Agentic Operating System community.</strong></p>
+<p>This document defines where the AOS is going, what it is trying to do, and the principles that govern every design decision. Without a specification, contributors build in different directions. This is the shared map.</p>
 <h2 id="document-control">Document Control<a class="headerlink" href="#document-control" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Owner:</strong> Nanobot Community</li>
-<li><strong>Version:</strong> 1.3.0</li>
-<li><strong>Last Updated:</strong> February 26, 2026</li>
-<li><strong>Status:</strong> Active</li>
-<li><strong>Purpose:</strong> Quick-start orientation and documentation map for new users</li>
+<li><strong>Version:</strong> 1.1.0</li>
+<li><strong>Last Updated:</strong> February 27, 2026</li>
+<li><strong>Status:</strong> Active — Living Document</li>
+<li><strong>Purpose:</strong> Authoritative design specification for AOS architecture, philosophy, and roadmap</li>
+</ul>
+<blockquote>
+<p><strong>Status legend used throughout this document:</strong>
+- ✅ <strong>Implemented</strong> — available in nanobot v0.1.4+
+- 🔧 <strong>Partial</strong> — scaffolding exists; not fully built
+- 🗺️ <strong>Planned</strong> — defined here; not yet implemented</p>
+</blockquote>
+<hr />
+<h2 id="quick-navigation">Quick Navigation<a class="headerlink" href="#quick-navigation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Section 1: Philosophy</strong> — Mission, Prime Directive, design principles</li>
+<li><strong>Section 2: Swarm Architecture</strong> — The three cognitive layers</li>
+<li><strong>Section 3: Execution Logic</strong> — Plan-then-Spawn lifecycle</li>
+<li><strong>Section 4: Legal &amp; Operational Framework</strong> — LLC proxy, action standards</li>
+<li><strong>Section 5: Resource Management</strong> — Bootstrap mode, self-funding scaling</li>
+<li><strong>Section 6: Failure Modes</strong> — Survival Protocol</li>
 </ul>
 <hr />
-<h2 id="who-is-this-for">Who Is This For?<a class="headerlink" href="#who-is-this-for" title="Permanent link">&para;</a></h2>
-<p>This documentation is for developers, operators, and teams who want to deploy, operate, and extend the Nanobot agentic framework for LLM-powered automation, research, and multi-channel communication. It is suitable for both beginners (getting started quickly) and advanced users (production, governance, and customization).</p>
-<h2 id="what-nanobot-does">What Nanobot Does<a class="headerlink" href="#what-nanobot-does" title="Permanent link">&para;</a></h2>
-<p>Nanobot is a lightweight (~4,000 lines), extensible agentic framework that:
-- Routes to 100+ <strong>LLM</strong> (Large Language Model) models: Claude, GPT-4, local Ollama, Qwen, DeepSeek, etc.
-- Integrates with 11 communication channels (Discord, Slack, Telegram, Feishu, DingTalk, WhatsApp, Email, QQ, Matrix, Mochat, CLI)
-- Executes 14 built-in tools (web search, file ops, shell, GitHub, scheduling, MCP — Model Context Protocol tools for external integrations)
-- Provides 9 pre-built skills (Obsidian, memory, summarization, cron, GitHub automation)
-- Routes LLM calls across cost tiers (Tier A/B/C) with budget caps and escalation gates
-- Enforces security with role-based access control, tool allowlisting, and audit logging</p>
-<h2 id="about-this-documentation">About This Documentation<a class="headerlink" href="#about-this-documentation" title="Permanent link">&para;</a></h2>
-<p><strong>Repository:</strong> <a href="https://github.com/HKUDS/nanobot">HKUDS/nanobot</a><br />
-<strong>Nanobot Version:</strong> v0.1.4 and later<br />
-<strong>Documentation Updated:</strong> February 26, 2026</p>
-<hr />
-<h2 id="how-nanobot-works">How Nanobot Works<a class="headerlink" href="#how-nanobot-works" title="Permanent link">&para;</a></h2>
-<p>Nanobot is organized into three planes that work together on every request. Understanding the planes helps you know which documents to read and which settings to configure.</p>
-<p><strong>Control Plane</strong> — Multi-channel intake. Receives messages from Discord, Slack, Telegram, Email, and 7 other channels, then routes them into the agent loop. Configuration: <a href="../nanobot/README.md">nanobot/README.md</a>.</p>
-<p><strong>Policy Plane</strong> — Governance and routing. Selects the LLM tier for each request (Tier A = premium models like Claude Opus; Tier B = balanced; Tier C = cheapest/local), applies budget caps, enforces approval gates before tool execution, and logs decisions to the audit trail. Configuration: <a href="../Security-and-Governance-Policies/">Security &amp; Governance Policies</a> and <a href="../LLM-Provider-Setup-Guide/">LLM Provider Setup Guide</a>.</p>
-<p><strong>Memory Plane</strong> — Durable storage. Writes to an <a href="https://obsidian.md">Obsidian</a> vault (a local markdown knowledge base) for audit trails, context recall, and long-term memory across sessions. Skills like <code>memory_consolidation</code> and <code>obsidian</code> operate in this plane. Configuration: <a href="../Skills-and-Tools-Complete-Guide/">Skills &amp; Tools Reference</a>.</p>
-<h3 id="example-a-request-in-action">Example: A Request in Action<a class="headerlink" href="#example-a-request-in-action" title="Permanent link">&para;</a></h3>
+<h2 id="1-system-philosophy">1. System Philosophy<a class="headerlink" href="#1-system-philosophy" title="Permanent link">&para;</a></h2>
+<h3 id="11-the-mission">1.1 The Mission<a class="headerlink" href="#11-the-mission" title="Permanent link">&para;</a></h3>
+<p>The AOS is a framework for <strong>personal liberation through automation</strong>. It is designed for people who want to use software agents to reduce economic vulnerability, reclaim time, and build durable personal infrastructure — independent of any single employer, platform, or institution.</p>
+<p>This is not a productivity tool. It is a <strong>life-operations system</strong>.</p>
+<h3 id="12-the-design-principle">1.2 The Design Principle<a class="headerlink" href="#12-the-design-principle" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Maximum Agency, Minimum Footprint.</strong></p>
+</blockquote>
+<p>Every component should do more with less. The AOS should be invisible when idle, precise when active, and never spend a token that doesn't serve the user's goal.</p>
+<h3 id="13-the-prime-directive">1.3 The Prime Directive<a class="headerlink" href="#13-the-prime-directive" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>Secure the user's Functional Exit: the state where Income &gt; Expenses + Time Debt.</strong></p>
+</blockquote>
+<p><em>Time Debt</em> = hours per week that must be sold to an employer to cover expenses. The AOS works to reduce Time Debt by automating tasks, identifying income opportunities, and eliminating operational overhead — until the user achieves exit velocity.</p>
+<p>All agent tasks, model routing decisions, and resource allocations derive their priority from how directly they serve the Prime Directive.</p>
+<h3 id="14-inter-agent-communication-stub-a2ap">1.4 Inter-Agent Communication Stub (A2AP) 🗺️<a class="headerlink" href="#14-inter-agent-communication-stub-a2ap" title="Permanent link">&para;</a></h3>
+<p>The AOS shall support an <strong>Agent-to-Agent Protocol (A2AP)</strong> based on a Zero-Trust Negotiation Framework.</p>
+<p>When two AOS instances meet (e.g., via a shared API endpoint or an agent social network), they shall:</p>
 <ol>
-<li>Operator asks in Slack: <em>"Find competitor campaigns this week and propose a test"</em></li>
-<li><strong>Control Plane</strong> receives the message via Slack integration</li>
-<li><strong>Policy Plane</strong> routes to Claude Opus (<a href="../Glossary/">Tier A</a> — high-value task)</li>
-<li>Agent executes: <strong>web_search</strong> → <strong>summarize</strong> → synthesizes findings</li>
-<li>Posts response back to Slack with recommendation and source links</li>
-<li><strong>Memory Plane</strong> logs results to Obsidian for audit trail and replay</li>
+<li>Exchange signed <strong>Capabilities Manifests</strong> — a structured declaration of what each AOS can do (skills, data access, compute availability)</li>
+<li>Negotiate resource trades (data, compute, arbitrage leads) without requiring human intervention for each transaction</li>
+<li>Log all inter-agent transactions to the Memory Plane for audit</li>
 </ol>
+<p>This enables a future where AOS instances form a <strong>resource mesh</strong> — each node both consuming and contributing value.</p>
+<blockquote>
+<p><strong>Current state:</strong> Nanobot supports agent social networks (ClawHub, ClawdChat, Moltbook) via skill-based integration. Formal A2AP negotiation is defined here as a design target. See <a href="../Skills-and-Tools-Complete-Guide/">Skills &amp; Tools Guide</a> for current inter-agent capabilities.</p>
+</blockquote>
 <hr />
-<h2 id="choose-your-deployment">Choose Your Deployment<a class="headerlink" href="#choose-your-deployment" title="Permanent link">&para;</a></h2>
-<h3 id="option-1-simple-build-local-cloud-llm">Option 1 — Simple Build: Local + Cloud LLM<a class="headerlink" href="#option-1-simple-build-local-cloud-llm" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Setup time:</strong> 25-35 minutes</li>
-<li><strong>Ongoing cost:</strong> $0-50/month (based on API usage; zero cost with local Ollama)</li>
-<li><strong>Best for:</strong> First-time setup, prototyping, teams evaluating AOS</li>
-<li><strong>What it activates:</strong> Control Plane (channels) + Policy Plane (LLM routing with cloud API)</li>
-<li><strong>What it doesn't include:</strong> 24/7 persistent operation, local inference, full Memory Plane setup</li>
-</ul>
-<p><strong>→ <a href="../AOS-Startup-Simple-Build/">AOS Startup: Simple Build</a></strong></p>
-<h3 id="option-2-advanced-build-vps-local-ollama">Option 2 — Advanced Build: VPS + Local Ollama<a class="headerlink" href="#option-2-advanced-build-vps-local-ollama" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>Setup time:</strong> 60-90 minutes</li>
-<li><strong>Ongoing cost:</strong> $20-200/month (VPS server; inference costs $0 — runs locally)</li>
-<li><strong>Best for:</strong> Privacy, self-hosted inference, 24/7 continuous operation, production teams</li>
-<li><strong>What it activates:</strong> All three planes — Control, Policy, and Memory — with persistent storage and full governance configuration</li>
-</ul>
-<p><strong>→ <a href="../AOS-Startup-Advanced-Build/">AOS Startup: Advanced Build</a></strong></p>
-<h3 id="install-both-options">Install (Both Options)<a class="headerlink" href="#install-both-options" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/HKUDS/nanobot.git
-<span class="nb">cd</span><span class="w"> </span>nanobot
-pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+<h2 id="2-swarm-architecture-the-cognitive-plane">2. Swarm Architecture: The Cognitive Plane<a class="headerlink" href="#2-swarm-architecture-the-cognitive-plane" title="Permanent link">&para;</a></h2>
+<p>The AOS does not rely on a single LLM for all tasks. It uses a <strong>Hierarchical Swarm</strong> — three layers with distinct roles — to balance accuracy, cost, and speed.</p>
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────┐
+│  L0: The Strategist          │  High-reasoning model (O1-class / Claude Opus)
+│  Long-term planning          │  Runs only when strategy changes
+└──────────┬──────────────────┘
+           │ spawns
+┌──────────▼──────────────────┐
+│  L1: Specialist Swarm        │  Fast, cheap, domain-specific (Sonnet-class)
+│  Ephemeral task agents       │  Scoped scope + TTL timer
+└──────────┬──────────────────┘
+           │ reviewed by
+┌──────────▼──────────────────┐
+│  L2: The Monitor             │  Adversarial reviewer
+│  Red Team layer              │  Blocks hallucinations/leaks before action
+└─────────────────────────────┘
 </code></pre></div>
-<p>Or from PyPI:
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>nanobot-ai
-</code></pre></div></p>
-<h3 id="what-you-have-after-setup">What You Have After Setup<a class="headerlink" href="#what-you-have-after-setup" title="Permanent link">&para;</a></h3>
+<h3 id="21-the-strategist-l0-the-sovereign-brain">2.1 The Strategist (L0 — The Sovereign Brain) 🔧<a class="headerlink" href="#21-the-strategist-l0-the-sovereign-brain" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Role</strong></td>
+<td>Long-term planning, resource allocation, goal decomposition</td>
+</tr>
+<tr>
+<td><strong>Model class</strong></td>
+<td>High-reasoning (O1, Claude Opus, or equivalent)</td>
+</tr>
+<tr>
+<td><strong>When it runs</strong></td>
+<td>Only on strategy pivots — not on every message</td>
+</tr>
+<tr>
+<td><strong>Method</strong></td>
+<td>Chain of Verification: each sub-task is checked against the Prime Directive before spawning</td>
+</tr>
+</tbody>
+</table>
+<p>The Strategist maintains a persistent view of the user's <strong>Life State</strong>:
+- Current income vs. expenses
+- Active time obligations (Time Debt)
+- Passive income streams in progress
+- Available compute and capital</p>
+<p>It decomposes long-horizon goals into Job Specifications for L1 specialists.</p>
+<blockquote>
+<p><strong>Current nanobot primitive:</strong> The main agent loop (<code>nanobot/agent/loop.py</code>) + MEMORY.md for persistent state. High-reasoning model routing is configurable per-agent in <code>config.json</code>.</p>
+</blockquote>
+<h3 id="22-the-specialist-swarm-l1-spawning-layer">2.2 The Specialist Swarm (L1 — Spawning Layer) ✅<a class="headerlink" href="#22-the-specialist-swarm-l1-spawning-layer" title="Permanent link">&para;</a></h3>
+<p>The Strategist spawns <strong>ephemeral sub-agents</strong> scoped to a specific task and terminated when done. Each specialist has a restricted toolset, a defined KPI, and a <strong>Time-to-Live (TTL)</strong> timer to prevent runaway compute.</p>
+<p>Built-in specialist archetypes:</p>
+<table>
+<thead>
+<tr>
+<th>Specialist</th>
+<th>Role</th>
+<th>Nanobot Primitive</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>The Auditor</strong></td>
+<td>Reviews financial and legal Guardian logs for anomalies</td>
+<td>Heartbeat task + memory skill</td>
+</tr>
+<tr>
+<td><strong>The Delegate</strong></td>
+<td>Executes tasks in the user's own accounts and tools (Slack, Email, GitHub) on behalf of the user</td>
+<td>Channel integrations + GitHub skill</td>
+</tr>
+<tr>
+<td><strong>The Arbitrageur</strong></td>
+<td>Scans markets and APIs for value-capture opportunities</td>
+<td>Web search + custom skill</td>
+</tr>
+<tr>
+<td><strong>The Researcher</strong></td>
+<td>Deep domain research with citations</td>
+<td>Summarize skill + Brave API</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note on the Delegate:</strong> This agent acts within accounts and tools <strong>owned by the user</strong> — it is the user's own hands, automated. It is not designed to impersonate others or access accounts it has no authorization for.</p>
+<p><strong>Current nanobot primitive:</strong> <code>subagent.py</code> spawns background agents. Skills scope their toolsets. TTL is enforced via cron job timeout configuration.</p>
+</blockquote>
+<h3 id="23-the-monitor-l2-adversarial-layer">2.3 The Monitor (L2 — Adversarial Layer) 🗺️<a class="headerlink" href="#23-the-monitor-l2-adversarial-layer" title="Permanent link">&para;</a></h3>
+<p>The Monitor is a <strong>Red Team agent</strong> that reviews L1 output before it reaches the Action Plane (before any real-world action is taken). It checks for:</p>
 <ul>
-<li>A running Nanobot agent connected to your LLM provider</li>
-<li>One or more channels configured (CLI, Discord, Slack, Telegram, etc.)</li>
-<li>14 built-in tools available: web search, file read/write, shell, GitHub, scheduling, MCP, subagents</li>
-<li>9 pre-built skills ready to activate: Obsidian, memory consolidation, summarize, cron, GitHub automation</li>
-<li>Cost tier routing active: requests are routed to cheapest-capable LLM by default</li>
-<li>Role-based access control and audit logging enabled</li>
+<li><strong>Hallucinations</strong> — claims that contradict verified sources</li>
+<li><strong>Security leaks</strong> — credentials, PII, or sensitive data in outputs</li>
+<li><strong>Scope violations</strong> — actions outside the specialist's authorized boundary</li>
+<li><strong>Ethics breaches</strong> — actions that conflict with pre-defined values constraints</li>
 </ul>
-<h3 id="ready-to-go-further">Ready to Go Further?<a class="headerlink" href="#ready-to-go-further" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Set up multi-team governance and approval workflows → <a href="../Security-and-Governance-Policies/">Security &amp; Governance Policies</a></li>
-<li>Fine-tune LLM providers and cost tiers → <a href="../LLM-Provider-Setup-Guide/">LLM Provider Setup Guide</a></li>
-<li>Build custom skills and automate complex workflows → <a href="../Skills-and-Tools-Complete-Guide/">Skills &amp; Tools Reference</a></li>
-</ul>
+<p>The Monitor does not execute tasks. It only approves or blocks.</p>
+<blockquote>
+<p><strong>Current nanobot primitive:</strong> <code>allowFrom</code> controls at the channel layer provide a coarse approval gate. A formal L2 adversarial review layer is defined here as a design target.</p>
+</blockquote>
 <hr />
-<h2 id="documentation-map">Documentation Map<a class="headerlink" href="#documentation-map" title="Permanent link">&para;</a></h2>
-<h3 id="learn-the-architecture">Learn the Architecture<a class="headerlink" href="#learn-the-architecture" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong><a href="../Master-Index/">Master Index</a></strong> — Deep dive into the 3-plane architecture (Control, Policy, Memory), how governance works, and understand the full system</li>
-</ul>
-<h3 id="operate-extend">Operate &amp; Extend<a class="headerlink" href="#operate-extend" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong><a href="../Skills-and-Tools-Complete-Guide/">Skills &amp; Tools Reference</a></strong> — Inventory of all 14 built-in tools and 9 pre-built skills; how to write custom skills</li>
-<li><strong><a href="../Workflow-Examples-and-Recipes/">Workflow Examples</a></strong> — Copy-paste ready workflows:</li>
-<li>Daily knowledge consolidation  </li>
-<li>Multi-channel content distribution  </li>
-<li>Customer support automation  </li>
-<li>Research agent  </li>
-<li>GitHub automation</li>
-</ul>
-<h3 id="govern-optimize">Govern &amp; Optimize<a class="headerlink" href="#govern-optimize" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong><a href="../Security-and-Governance-Policies/">Security &amp; Governance Policies</a></strong> — Role-based access, approval workflows, audit logging, cost allocation for multi-team deployments</li>
-<li><strong><a href="../LLM-Provider-Setup-Guide/">LLM Provider Setup Guide</a></strong> — Configure AI models (OpenRouter, Claude, OpenAI, local Ollama, Qwen, DeepSeek)</li>
-<li><strong><a href="../Cost-Calculator-and-Optimization/">Cost Calculator &amp; Optimization</a></strong> — Estimate your bill, optimize with multi-provider routing (save 60-70%), self-hosted vs. cloud break-even analysis</li>
-</ul>
-<h3 id="troubleshoot-recover">Troubleshoot &amp; Recover<a class="headerlink" href="#troubleshoot-recover" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong><a href="../Emergency-Recovery-and-Troubleshooting/">Emergency Recovery &amp; Troubleshooting</a></strong> — Diagnose and fix common deployment issues</li>
-</ul>
-<h3 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong><a href="../Glossary/">Glossary</a></strong> — Definitions for AOS-specific terms: planes, tiers, SOUL.md, SKILL.md, approval gates, and more</li>
-</ul>
+<h2 id="3-execution-logic-strategy-first-deployment">3. Execution Logic: Strategy-First Deployment<a class="headerlink" href="#3-execution-logic-strategy-first-deployment" title="Permanent link">&para;</a></h2>
+<p>The AOS follows a strict <strong>Plan → Spawn → Execute → Capture → Terminate</strong> lifecycle. No action is taken before a plan exists.</p>
+<div class="highlight"><pre><span></span><code>1. STRATEGIC ANALYSIS
+   Strategist evaluates Life State
+   (balance, time debt, passive income)
+          │
+          ▼
+2. SPECIALIST SPAWNING
+   Job Specification issued to Kernel
+   Specialist spawned with: restricted scope + TTL timer
+          │
+          ▼
+3. TASK EXECUTION
+   Specialist uses Action Plane to hit KPI
+   Monitor reviews output before action
+          │
+          ▼
+4. VALUE CAPTURE
+   Surplus routed to Sovereign Treasury (LLC account)
+          │
+          ▼
+5. TERMINATION
+   Specialist purged on completion
+   Results logged to Memory Plane
+</code></pre></div>
+<p>This lifecycle prevents <strong>agent drift</strong> — the tendency of long-running agents to accumulate scope, cost, and risk over time.</p>
+<hr />
+<h2 id="4-legal-operational-framework">4. Legal &amp; Operational Framework<a class="headerlink" href="#4-legal-operational-framework" title="Permanent link">&para;</a></h2>
+<h3 id="41-the-llc-proxy-legal-personhood">4.1 The LLC Proxy (Legal Personhood) 🗺️<a class="headerlink" href="#41-the-llc-proxy-legal-personhood" title="Permanent link">&para;</a></h3>
+<p>The AOS is architecturally designed to operate <strong>under a Single Member LLC</strong> owned by the human operator. This is not a requirement to use nanobot — it is the recommended operating structure for users building toward economic independence.</p>
+<p><strong>Rationale:</strong> A legal entity provides liability shielding, tax efficiency, and a stable identity for the AOS to act through in commercial contexts.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>KYC / Identity</strong></td>
+<td>AOS stores the LLC's EIN and Articles of Incorporation in the secure vault</td>
+</tr>
+<tr>
+<td><strong>Signing Authority</strong></td>
+<td>AOS can digitally sign contracts within a pre-approved Sovereignty Threshold (dollar amount + contract type)</td>
+</tr>
+<tr>
+<td><strong>Financial Isolation</strong></td>
+<td>All Action Plane financial movements execute in the LLC's name — never directly in the individual's</td>
+</tr>
+<tr>
+<td><strong>Audit Trail</strong></td>
+<td>All actions logged with <code>request_id</code> and <code>entity: LLC</code> for compliance</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Current nanobot primitive:</strong> The Memory Plane (MEMORY.md + HISTORY.md) provides the audit trail. Signing authority and financial isolation require a custom skill + external legal infrastructure. This section defines the target architecture.</p>
+</blockquote>
+<h3 id="42-the-computer-use-standard-action-plane">4.2 The Computer-Use Standard (Action Plane) 🔧<a class="headerlink" href="#42-the-computer-use-standard-action-plane" title="Permanent link">&para;</a></h3>
+<p>When a legacy system lacks an API, the AOS falls back to <strong>coordinated computer use</strong>:</p>
+<ol>
+<li><strong>Visual Interpretation</strong> — Screenshot the UI → map interactive elements to a coordinate grid</li>
+<li><strong>Coordinated Action</strong> — Execute mouse/keyboard events at the target coordinates</li>
+<li><strong>Verification</strong> — Re-scan the screen to confirm the expected state change before proceeding</li>
+</ol>
+<p>This makes the AOS accessible to systems that have never heard of APIs: government tax portals, legacy banking interfaces, older SaaS platforms.</p>
+<blockquote>
+<p><strong>Current nanobot primitive:</strong> The <code>exec</code> tool handles shell automation. Visual/coordinate-based computer use requires an MCP tool or custom skill with screen capture capability.</p>
+</blockquote>
+<hr />
+<h2 id="5-resource-management">5. Resource Management<a class="headerlink" href="#5-resource-management" title="Permanent link">&para;</a></h2>
+<h3 id="51-bootstrap-mode-minimal-substrate">5.1 Bootstrap Mode (Minimal Substrate) ✅<a class="headerlink" href="#51-bootstrap-mode-minimal-substrate" title="Permanent link">&para;</a></h3>
+<p>The AOS is designed to <strong>run on little and earn its way to more</strong>. The Bootstrap configuration:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Bootstrap value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Inference</strong></td>
+<td>Local-first — user's own hardware via Ollama (quantized models)</td>
+</tr>
+<tr>
+<td><strong>Cloud API</strong></td>
+<td>Optional fallback only — never the primary</td>
+</tr>
+<tr>
+<td><strong>Idle behavior</strong></td>
+<td>Deep Sleep — dormant until triggered by a cron event or external message</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Near-zero when idle; predictable and capped when active</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="../AOS-Startup-Simple-Build/">AOS Startup: Simple Build</a> and <a href="../AOS-Startup-Advanced-Build/">AOS Startup: Advanced Build</a> for Bootstrap deployment paths.</p>
+<h3 id="52-dynamic-resource-scaling-self-funding">5.2 Dynamic Resource Scaling (Self-Funding) 🗺️<a class="headerlink" href="#52-dynamic-resource-scaling-self-funding" title="Permanent link">&para;</a></h3>
+<p>Once operational, the AOS has the authority to <strong>present a Business Case for its own upgrades</strong>:</p>
+<ol>
+<li>The Strategist identifies a high-probability value-capture opportunity that requires more compute than currently available</li>
+<li>It generates a structured Business Case: opportunity description, required resource, estimated cost, projected return, confidence level</li>
+<li>The human reviews and approves or denies</li>
+<li>If approved, the AOS uses the Sovereign Treasury (LLC account) to rent cloud resources or purchase API credits — within the pre-approved Sovereignty Threshold</li>
+<li>The upgrade is logged to the Memory Plane with full cost/return tracking</li>
+</ol>
+<p>This closes the loop: the AOS funds its own growth from value it creates.</p>
+<hr />
+<h2 id="6-failure-modes-the-survival-protocol">6. Failure Modes: The Survival Protocol<a class="headerlink" href="#6-failure-modes-the-survival-protocol" title="Permanent link">&para;</a></h2>
+<h3 id="61-terminal-failure-detection">6.1 Terminal Failure Detection<a class="headerlink" href="#61-terminal-failure-detection" title="Permanent link">&para;</a></h3>
+<p>The AOS monitors for conditions that would compromise its ability to operate:
+- Primary financial account frozen or inaccessible
+- Primary LLM provider unreachable with no fallback available
+- Critical channel (the human's primary channel) unresponsive
+- Memory Plane corruption or loss</p>
+<h3 id="62-survival-protocol-sequence">6.2 Survival Protocol Sequence 🔧<a class="headerlink" href="#62-survival-protocol-sequence" title="Permanent link">&para;</a></h3>
+<p>When a terminal failure is detected:</p>
+<div class="highlight"><pre><span></span><code>1. PAUSE
+   Suspend all non-essential Specialist Swarms
+   Preserve compute and halt new spending
+
+2. SECURE
+   Move all liquid digital assets to user&#39;s Cold Storage address
+   Revoke active API credentials where possible
+
+3. NOTIFY
+   Send encrypted alert to Emergency Channel
+   Include: failure type, timestamp, assets moved, recommended next steps
+
+4. POST-MORTEM
+   Generate full incident log from Memory Plane
+   Write recovery checklist to Survival Vault
+</code></pre></div>
+<h3 id="63-survival-vault">6.3 Survival Vault<a class="headerlink" href="#63-survival-vault" title="Permanent link">&para;</a></h3>
+<p>The Survival Vault is a read-only, offline-accessible record containing:
+- LLC credentials and key documents
+- Recovery seed phrases (if applicable)
+- Emergency contact and legal instructions
+- Last known system state snapshot</p>
+<blockquote>
+<p><strong>Current nanobot primitive:</strong> The Emergency Channel is any configured nanobot channel. The Survival Vault maps to a protected directory in the Memory Plane. Automated asset movement requires external integration. See <a href="../Emergency-Recovery-and-Troubleshooting/">Emergency Recovery &amp; Troubleshooting</a> for current recovery procedures.</p>
+</blockquote>
+<hr />
+<h2 id="7-implementation-status-summary">7. Implementation Status Summary<a class="headerlink" href="#7-implementation-status-summary" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Status</th>
+<th>Where to start</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L0 Strategist</td>
+<td>🔧 Partial</td>
+<td>Configure a high-reasoning model for the primary agent</td>
+</tr>
+<tr>
+<td>L1 Specialist Swarm</td>
+<td>✅ Implemented</td>
+<td><code>subagent.py</code>, skills system</td>
+</tr>
+<tr>
+<td>L2 Monitor</td>
+<td>🗺️ Planned</td>
+<td>Design target</td>
+</tr>
+<tr>
+<td>A2AP Inter-Agent Protocol</td>
+<td>🗺️ Planned</td>
+<td>ClawHub integration is the current approximation</td>
+</tr>
+<tr>
+<td>LLC Proxy / Signing Authority</td>
+<td>🗺️ Planned</td>
+<td>Requires custom skill + external legal infra</td>
+</tr>
+<tr>
+<td>Computer-Use Standard</td>
+<td>🔧 Partial</td>
+<td><code>exec</code> tool; visual layer needs MCP extension</td>
+</tr>
+<tr>
+<td>Bootstrap Mode</td>
+<td>✅ Implemented</td>
+<td>Simple Build / Advanced Build guides</td>
+</tr>
+<tr>
+<td>Self-Funding Scaling</td>
+<td>🗺️ Planned</td>
+<td>Design target</td>
+</tr>
+<tr>
+<td>Survival Protocol</td>
+<td>🔧 Partial</td>
+<td>Manual recovery covered in Emergency Recovery guide</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-contributing-to-this-specification">8. Contributing to This Specification<a class="headerlink" href="#8-contributing-to-this-specification" title="Permanent link">&para;</a></h2>
+<p>This document is a <strong>living specification</strong>. It is intentionally ahead of what is currently implemented. The gap between "Planned" and "Implemented" is the community's roadmap.</p>
+<p>To propose a change:
+1. Open a GitHub issue describing the component you want to design or build
+2. Reference the relevant section of this document
+3. Submit a PR against this document or the nanobot codebase</p>
+<p>The specification evolves through community consensus. No section is sacred — if a better design emerges, this document changes.</p>
+<p><strong>Repository:</strong> <a href="https://github.com/EgoNoBueno/Nanobot-Agentic-Operating-System">EgoNoBueno/Nanobot-Agentic-Operating-System</a><br />
+<strong>Nanobot upstream:</strong> <a href="https://github.com/HKUDS/nanobot">HKUDS/nanobot</a></p>
 <hr />
 <h2 id="revision-history">Revision History<a class="headerlink" href="#revision-history" title="Permanent link">&para;</a></h2>
 <table>
@@ -1524,29 +1946,14 @@ pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </s
 <tr>
 <th>Date</th>
 <th>Version</th>
-<th>Change</th>
+<th>Changes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>2026-02-26</td>
-<td>1.3.0</td>
-<td>Detailed pass: split "Who Is This For?" from capabilities into separate "What Nanobot Does" section; introduced Tier A/B/C cost routing in capabilities; expanded "How Nanobot Works" with per-plane config doc links, Obsidian explanation, Tier A link; merged redundant "Quick Start" + "Choose Your Path" into single "Choose Your Deployment" section with plane-activation context; moved install commands into deploy section; removed duplicate Ready for Production / Choose Your Path overlap; standardized em-dash spacing</td>
-</tr>
-<tr>
-<td>2026-02-26</td>
-<td>1.2.0</td>
-<td>Rough first pass: fixed H1 to match filename; moved 3-plane architecture overview before Quick Start; removed orphaned bold tagline; added Glossary to Documentation Map</td>
-</tr>
-<tr>
-<td>2026-02-26</td>
+<td>2026-02-27</td>
 <td>1.1.0</td>
-<td>Reviewed document structure; added Document Control header; fixed channel count (12→11); replaced negative "Limitations" with positive "Ready for Production?" section; reorganized Quick Start → Choose Your Path → Documentation Map flow for better readability; consolidated redundant sections; improved AOS alignment throughout</td>
-</tr>
-<tr>
-<td>2026-02-26</td>
-<td>1.0.0</td>
-<td>Renamed from index.md and initial publication</td>
+<td>Initial published version — philosophy, swarm architecture, execution logic, legal framework, resource management, failure modes</td>
 </tr>
 </tbody>
 </table>
